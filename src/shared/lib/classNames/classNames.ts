@@ -1,6 +1,6 @@
 type Mode = Record<string, boolean | string>;
 
-export const classNames = (cls: string, mode: any, additional: string[]): string => 
+export const classNames = (cls: string, mode: Mode = {}, additional: string[] = []): string => 
     [
         cls,
         Object.entries(mode)
