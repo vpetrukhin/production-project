@@ -7,7 +7,8 @@ module.exports = {
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:react/jsx-runtime'
+        'plugin:react/jsx-runtime',
+        'plugin:i18next/recommended'
     ],
     'parser': '@typescript-eslint/parser',
     'parserOptions': {
@@ -15,11 +16,12 @@ module.exports = {
             'jsx': true
         },
         'ecmaVersion': 'latest',
-        'sourceType': 'module'
+        'sourceType': 'module',
     },
     'plugins': [
         'react',
-        '@typescript-eslint'
+        '@typescript-eslint',
+        'i18next'
     ],
     'rules': {
         'indent': [
@@ -38,6 +40,7 @@ module.exports = {
             'error',
             'always'
         ],
-        'no-undef': 'warn'
+        'no-undef': 'warn',
+        'i18next/no-literal-string': ['error', {markupOnly: true}]
     }
 };
