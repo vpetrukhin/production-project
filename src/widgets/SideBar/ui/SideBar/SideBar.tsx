@@ -17,7 +17,7 @@ export const SideBar = (props: SideBarProps) => {
 
     const onToggle = () => {
         setCollapsed(prev => !prev);
-    }
+    };
 
     return (
         <div className={classNames(cls.SideBar, {[cls.collapsed]: collapsed}, [className])}>
@@ -28,5 +28,5 @@ export const SideBar = (props: SideBarProps) => {
                 <LangSwitcher />
             </div>
         </div>
-    )
-}
+    );
+};

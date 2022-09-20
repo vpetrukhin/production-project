@@ -11,9 +11,9 @@ export const useTheme = (): UseThemeResult => {
     
     const toggleTheme = () => {
         setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
-    }
+    };
 
     return {
         theme, toggleTheme
-    }
+    };
 };

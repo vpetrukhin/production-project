@@ -20,5 +20,5 @@ export function buildPlugins({ paths, isDev }: buildOptions): webpack.WebpackPlu
         }),
         new ReactRefreshWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-    ]
+    ];
 }

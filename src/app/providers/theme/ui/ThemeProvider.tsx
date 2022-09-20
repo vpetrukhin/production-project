@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useState } from 'react';
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/themeContext';
 
 export const ThemeProvider: FC = ({ children }) => {
@@ -13,5 +13,5 @@ export const ThemeProvider: FC = ({ children }) => {
         }}>
             {children}
         </ThemeContext.Provider>
-    )
-}
+    );
+};

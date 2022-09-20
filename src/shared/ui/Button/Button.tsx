@@ -23,5 +23,5 @@ export const Button = (props: ButtonProps) => {
         >
             {children}
         </button>
-    )
-}
+    );
+};

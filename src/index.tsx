@@ -9,4 +9,4 @@ render(
             <App />
         </ThemeProvider>
     </BrowserRouter>
-, document.getElementById('root'));
+    , document.getElementById('root'));

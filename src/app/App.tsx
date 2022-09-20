@@ -6,7 +6,7 @@ import { AppRouter } from 'app/providers/router';
 import { NavBar } from 'widgets/NavBar/NavBar';
 import { SideBar } from 'widgets/SideBar';
 
-import "shared/lib/i18n/i18n";
+import 'shared/lib/i18n/i18n';
 
 
 export const App = () => {
@@ -22,5 +22,5 @@ export const App = () => {
                 </div>
             </Suspense>
         </div>
-    )
-}
+    );
+};

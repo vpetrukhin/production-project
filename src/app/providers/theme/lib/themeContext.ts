@@ -5,11 +5,11 @@ export enum Theme {
     DARK = 'dark'
 }
 
-export const LOCAL_STORAGE_THEME_KEY: string = 'theme';
+export const LOCAL_STORAGE_THEME_KEY = 'theme';
 
 export interface IThemeContext {
     theme: Theme;
     setTheme: Dispatch<SetStateAction<Theme>>;
 }
 
-export const ThemeContext = createContext<Partial<IThemeContext>>({})
+export const ThemeContext = createContext<Partial<IThemeContext>>({});
