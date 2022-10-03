@@ -41,6 +41,10 @@ module.exports = {
             'always'
         ],
         'no-undef': 'warn',
-        'i18next/no-literal-string': ['error', {markupOnly: true}]
+        'i18next/no-literal-string': ['error', {
+            markupOnly: true,
+            ignoreCallee: ['TEST', 'test'],
+            ignoreAttribute: ['to']
+        }]
     }
 };
