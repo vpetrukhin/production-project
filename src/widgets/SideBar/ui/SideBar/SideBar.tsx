@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher';
+import MainIcon from 'shared/assets/icons/main.svg';
+import AboutIcon from 'shared/assets/icons/about.svg';
 import cls from './SideBar.module.scss';
 
 
@@ -23,11 +27,31 @@ export const SideBar = (props: SideBarProps) => {
 
     return (
         <div data-testid="sidebar" className={classNames(cls.SideBar, {[cls.collapsed]: collapsed}, [className])}>
-            <button data-testid="sidebar-btn" onClick={onToggle}>{t('Переключить')}</button>
+            <Button
+                className={cls.toggle_btn}
+                theme={ButtonTheme.INVERTED_BACKGROUND}
+                square
+                size={ButtonSize.L}
+                data-testid="sidebar-btn"
+                onClick={onToggle}
+            >
+                {collapsed ? '>' : '<'}
+            </Button>
+
+            <div className={cls.items}>
+                <AppLink to="/" className={cls.item}>
+                    <MainIcon />
+                    <span>{t('Главная')}</span>
+                </AppLink>
+                <AppLink to="/about" className={cls.item}>
+                    <AboutIcon />
+                    <span>{t('О сайте')}</span>
+                </AppLink>
+            </div>
 
             <div className={cls.switchers}>
                 <ThemeSwitcher />
-                <LangSwitcher />
+                <LangSwitcher short={collapsed} />
             </div>
         </div>
     );

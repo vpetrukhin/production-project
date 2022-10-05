@@ -23,7 +23,7 @@ module.exports = {
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
             ignoreCallee: ['TEST', 'test'],
-            ignoreAttribute: ['to']
+            ignoreAttribute: ['to', 'data-testid']
         }]
     }
 };

@@ -1,8 +1,6 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button, ButtonTheme } from './Button';
-import 'app/styles/index.scss';
+import { Button, ButtonSize, ButtonTheme } from './Button';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/theme';
 
@@ -41,3 +39,40 @@ OutlineDark.args = {
 OutlineDark.decorators = [
     ThemeDecorator(Theme.DARK)
 ];
+
+export const OutlineM = Template.bind({});
+OutlineM.args = {
+    children: 'test',
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.M
+};
+export const OutlineL = Template.bind({});
+OutlineL.args = {
+    children: 'test',
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.L
+};
+export const OutlineXL = Template.bind({});
+OutlineXL.args = {
+    children: 'test',
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.XL
+};
+export const SquareL = Template.bind({});
+SquareL.args = {
+    children: '>',
+    theme: ButtonTheme.BACKGROUND,
+    size: ButtonSize.L
+};
+export const Background = Template.bind({});
+Background.args = {
+    children: 'test',
+    theme: ButtonTheme.BACKGROUND,
+    size: ButtonSize.M
+};
+export const InvertedBackground = Template.bind({});
+InvertedBackground.args = {
+    children: 'test',
+    theme: ButtonTheme.INVERTED_BACKGROUND,
+    size: ButtonSize.M
+};

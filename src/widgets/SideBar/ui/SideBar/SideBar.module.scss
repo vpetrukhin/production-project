@@ -5,8 +5,10 @@
     position: relative;
 }
 
-.collapsed {
-    width: var(--sidebar-width-collapsed);
+.toggle_btn {
+    position: absolute;
+    bottom: 32px;
+    right: -32px;
 }
 
 .switchers {
@@ -17,4 +19,31 @@
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+.items {
+    margin-top: 20px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.item {
+    display: flex;
+    gap: 5px;
+
+    svg {
+        fill: var(--inverted-primary-color);
+    }
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .link {
+        width: 0;
+        opacity: 0;
+        transition: opacity 0.2;
+    }
 }
