@@ -41,11 +41,11 @@ export const SideBar = (props: SideBarProps) => {
             <div className={cls.items}>
                 <AppLink to="/" className={cls.item}>
                     <MainIcon />
-                    <span>{t('Главная')}</span>
+                    <span className={cls.link}>{t('Главная')}</span>
                 </AppLink>
                 <AppLink to="/about" className={cls.item}>
                     <AboutIcon />
-                    <span>{t('О сайте')}</span>
+                    <span className={cls.link}>{t('О сайте')}</span>
                 </AppLink>
             </div>
 
