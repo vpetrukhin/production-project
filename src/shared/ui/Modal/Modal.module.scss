@@ -1,0 +1,37 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--modal-zindex);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    max-width: 60%;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #fff;
+    transition: transform 0.2;
+    transform: scale(0.6);
+}
+
+.is_open {
+    opacity: 1;
+
+    .content {
+        pointer-events: auto;
+        transform: scale(1);
+    }
+}
