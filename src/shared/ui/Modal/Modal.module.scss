@@ -16,13 +16,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .content {
     max-width: 60%;
     padding: 20px;
     border-radius: 30px;
-    background-color: #fff;
+    background-color: var(--inverted-main-bg);
     transition: transform 0.2;
     transform: scale(0.6);
 }
@@ -30,8 +32,12 @@
 .is_open {
     opacity: 1;
 
-    .content {
+    .overlay {
+        opacity: 1;
         pointer-events: auto;
+    }
+
+    .content {
         transform: scale(1);
     }
 }

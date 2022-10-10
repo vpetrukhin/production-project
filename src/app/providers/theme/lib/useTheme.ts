@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Theme, ThemeContext } from './themeContext';
 
 interface UseThemeResult {
@@ -12,6 +12,10 @@ export const useTheme = (): UseThemeResult => {
     const toggleTheme = () => {
         setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
     };
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
 
     return {
         theme, toggleTheme
