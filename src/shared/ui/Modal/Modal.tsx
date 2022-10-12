@@ -9,14 +9,15 @@ interface ModalProps {
     isOpen: boolean;
     onClose?: () => void;
     children: ReactNode;
+    lazy?: boolean;
 }
 export const Modal = (props: ModalProps) => {
-    const { className, isOpen, onClose, children } = props;
+    const { className, isOpen, onClose, children, lazy } = props;
 
     const [isMounted, setIsMounted] = useState<boolean>(false);
 
     useEffect(() => {
-        if (isOpen && !isMounted) setIsMounted(true);
+        if (isOpen) setIsMounted(true);
     }, [isOpen]);
 
     const onKeyDown = useCallback((event: KeyboardEvent) => {
@@ -49,7 +50,7 @@ export const Modal = (props: ModalProps) => {
         [cls.is_open]: isOpen,
     };
 
-    if (!isOpen && !isMounted) {
+    if (lazy && !isMounted) {
         return null;
     }
 

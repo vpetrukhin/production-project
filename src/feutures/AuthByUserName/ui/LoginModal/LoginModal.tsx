@@ -10,7 +10,7 @@ export const LoginModal = (props: LoginModalProps) => {
     const { isOpen, onClose } = props;
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal lazy isOpen={isOpen} onClose={onClose}>
             <LoginForm />
         </Modal>
     );
