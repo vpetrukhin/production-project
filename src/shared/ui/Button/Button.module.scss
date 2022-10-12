@@ -3,6 +3,10 @@
     cursor: pointer;
     color: var(--inverted-primary-color);
     border: none;
+    &:focus {
+        outline: none;
+        text-decoration: underline;
+    }
 }
 
 .clear {

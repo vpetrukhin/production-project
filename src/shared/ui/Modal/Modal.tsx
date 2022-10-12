@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect } from 'react';
+import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/Portal';
 import cls from './Modal.module.scss';
@@ -12,6 +12,12 @@ interface ModalProps {
 }
 export const Modal = (props: ModalProps) => {
     const { className, isOpen, onClose, children } = props;
+
+    const [isMounted, setIsMounted] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (isOpen && !isMounted) setIsMounted(true);
+    }, [isOpen]);
 
     const onKeyDown = useCallback((event: KeyboardEvent) => {
         if (event.code === 'Escape' && onClose) {
@@ -42,6 +48,10 @@ export const Modal = (props: ModalProps) => {
     const mods: Record<string, boolean | string> = {
         [cls.is_open]: isOpen,
     };
+
+    if (!isOpen && !isMounted) {
+        return null;
+    }
 
     return (
         <Portal>
