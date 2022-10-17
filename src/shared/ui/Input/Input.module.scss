@@ -6,9 +6,11 @@
     border: none;
     border-bottom: 1px solid var(--disabled-color);
     font: var(--font-m);
+
     &::placeholder {
         color: var(--disabled-color);
     }
+
     &:focus {
         outline: none;
         border-bottom: 1px solid var(--inverted-primary-color);

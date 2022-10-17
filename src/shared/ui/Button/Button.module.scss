@@ -3,9 +3,16 @@
     cursor: pointer;
     color: var(--inverted-primary-color);
     border: none;
+
     &:focus {
         outline: none;
         text-decoration: underline;
+    }
+
+    &:disabled {
+        color: var(--disabled-color);
+        border-color: var(--disabled-color);
+        cursor: not-allowed;
     }
 }
 

@@ -12,7 +12,7 @@ module.exports = {
         'ecmaVersion': 'latest',
         'sourceType': 'module'
     },
-    'plugins': ['react', '@typescript-eslint', 'i18next'],
+    'plugins': ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
     'rules': {
         'indent': ['error', 4],
         'linebreak-style': ['error', 'unix'],
@@ -20,6 +20,8 @@ module.exports = {
         'semi': ['error', 'always'],
         'no-undef': 'warn',
         'react/display-name': 'off',
+        'react-hooks/rules-of-hooks': 'error', 
+        'react-hooks/exhaustive-deps': 'warn',
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
             ignoreCallee: ['TEST', 'test'],

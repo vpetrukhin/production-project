@@ -76,3 +76,17 @@ InvertedBackground.args = {
     theme: ButtonTheme.INVERTED_BACKGROUND,
     size: ButtonSize.M
 };
+export const Loading = Template.bind({});
+Loading.args = {
+    children: 'test',
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.M,
+    loading: true
+};
+export const Disabled = Template.bind({});
+Disabled.args = {
+    children: 'test',
+    theme: ButtonTheme.OUTLINE,
+    size: ButtonSize.M,
+    disabled: true,
+};

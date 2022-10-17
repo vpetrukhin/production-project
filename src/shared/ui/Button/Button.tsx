@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { ButtonHTMLAttributes } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+
 import cls from './Button.module.scss';
 
 
@@ -21,11 +23,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: ButtonTheme;
     square?: boolean;
     size?: ButtonSize;
+    loading?: boolean;
 }
 
 export const Button = (props: ButtonProps) => {
-    const { className, children, theme = ButtonTheme.CLEAR, square, size = ButtonSize.M, ...otherProps } = props;
-
+    const { className, children, theme = ButtonTheme.CLEAR, square, size = ButtonSize.M, loading, ...otherProps } = props;
+    const { t } = useTranslation();
 
     return (
         <button
@@ -36,7 +39,7 @@ export const Button = (props: ButtonProps) => {
             )}
             {...otherProps}
         >
-            {children}
+            {loading ? `${t('Загрузка')}...` : children}
         </button>
     );
 };

@@ -5,5 +5,5 @@ export interface User {
 
 export interface UserSchema {
     authKey?: string;
-    useInfo?: User
+    userInfo?: User
 }
