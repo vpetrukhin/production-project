@@ -4,10 +4,11 @@ import { UserReducer } from 'entity/User';
 import { StateSchema, StateWithReducerManager } from '../types/StateSchema';
 import { createReducerManager } from './createReducerManager';
 
-export function createReduxStore(initialState: Partial<StateSchema>) {
+export function createReduxStore(initialState: Partial<StateSchema>, asyncReducers?: ReducersMapObject<Partial<StateSchema>>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         counter: counterReducer,
         user: UserReducer,
+        ...asyncReducers
     };
 
     const reducerManager = createReducerManager(rootReducer);
@@ -26,13 +27,3 @@ export function createReduxStore(initialState: Partial<StateSchema>) {
 const store = createReduxStore({});
 
 export type AppDispatch = typeof store.dispatch
-
-// export function configureStore(initialState) {
-//     const reducerManager = createReducerManager(staticReducers)
-
-//     // Create a store with the root reducer function being the one exposed by the manager.
-//     const store = createStore(reducerManager.reduce, initialState)
-
-//     // Optional: Put the reducer manager on the store so it is easily accessible
-//     store.reducerManager = reducerManager
-// }
