@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import LoginForm from './LoginForm';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/theme';
-import { StoreDecorator } from 'shared/config/storybook/decorators';
 
 export default {
     title: 'feutures/LoginForm',
