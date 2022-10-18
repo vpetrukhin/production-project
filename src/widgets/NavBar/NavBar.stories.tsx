@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NavBar } from './NavBar';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/theme';
-import { StoreDecorator } from 'shared/config/storybook/decorators';
+import { StoreDecorator } from 'shared/config/storybook/decorators/StoreDecorator';
 
 export default {
     title: 'widgets/NavBar',
