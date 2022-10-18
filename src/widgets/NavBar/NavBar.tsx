@@ -57,7 +57,7 @@ export const NavBar = (props: NavbarProps) => {
                 <Button theme={ButtonTheme.OUTLINE} onClick={handleOpenModal}>
                     {t('Войти')}
                 </Button>
-                <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />
+                {isModalOpen && <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />}
             </div>
         </div>
     );
