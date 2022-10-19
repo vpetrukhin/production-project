@@ -4,7 +4,7 @@ import { UserReducer } from 'entity/User';
 import { StateSchema, StateWithReducerManager } from '../types/StateSchema';
 import { createReducerManager } from './createReducerManager';
 
-export function createReduxStore(initialState: Partial<StateSchema>, asyncReducers?: ReducersMapObject<Partial<StateSchema>>) {
+export function createReduxStore(initialState: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         counter: counterReducer,
         user: UserReducer,
@@ -24,6 +24,4 @@ export function createReduxStore(initialState: Partial<StateSchema>, asyncReduce
     return store;
 }
 
-const store = createReduxStore({});
-
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

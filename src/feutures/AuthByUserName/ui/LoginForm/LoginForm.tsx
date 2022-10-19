@@ -1,19 +1,20 @@
 import { LoginActions, LoginReducer } from '../../model/slices/LoginSlice';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import cls from './LoginForm.module.scss';
 import { loginByUsername } from '../../model/services/LoginByUsername/LoginByUsername';
-import { AppDispatch } from 'app/providers/Redux';
 import { Text } from 'shared/ui/Text/Text';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { AnyAction } from '@reduxjs/toolkit';
 
 interface LoginFormProps {
     className?: string;
@@ -22,7 +23,7 @@ interface LoginFormProps {
 const LoginForm = memo((props: LoginFormProps) => {
     const { className } = props;
     const {t} = useTranslation();
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
@@ -36,10 +37,8 @@ const LoginForm = memo((props: LoginFormProps) => {
         dispatch(LoginActions.setPassword(value));
     }, [dispatch]);
 
-    const onLoginClick = useCallback(async () => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        dispatch(loginByUsername({ username, password }));
+    const onLoginClick = useCallback(() => {
+        dispatch(loginByUsername({ username, password }) as unknown as AnyAction);
     }, [dispatch, password, username]);
 
     return (
