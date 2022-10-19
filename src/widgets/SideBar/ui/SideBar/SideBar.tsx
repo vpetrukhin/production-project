@@ -1,25 +1,21 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher';
+import { sidebarItems } from '../../model/items';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher';
-import MainIcon from 'shared/assets/icons/main.svg';
-import AboutIcon from 'shared/assets/icons/about.svg';
 import cls from './SideBar.module.scss';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 
 interface SideBarProps {
     className?: string;
 }
 
-
 export const SideBar = (props: SideBarProps) => {
     const { className } = props;
 
     const [collapsed, setCollapsed] = useState<boolean>(false);
-    const {t} = useTranslation();
 
     const onToggle = () => {
         setCollapsed(prev => !prev);
@@ -39,14 +35,9 @@ export const SideBar = (props: SideBarProps) => {
             </Button>
 
             <div className={cls.items}>
-                <AppLink to="/" className={cls.item}>
-                    <MainIcon />
-                    <span className={cls.link}>{t('Главная')}</span>
-                </AppLink>
-                <AppLink to="/about" className={cls.item}>
-                    <AboutIcon />
-                    <span className={cls.link}>{t('О сайте')}</span>
-                </AppLink>
+                {sidebarItems.map(item => (
+                    <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+                ))}
             </div>
 
             <div className={cls.switchers}>

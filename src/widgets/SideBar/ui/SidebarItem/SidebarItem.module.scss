@@ -1,0 +1,17 @@
+.item {
+    display: flex;
+    gap: 5px;
+
+    svg {
+        fill: var(--inverted-primary-color);
+    }
+}
+
+.collapsed {
+    .link {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transition: opacity 0.2;
+    }
+}

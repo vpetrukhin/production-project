@@ -11,5 +11,8 @@
     "Имя пользователя": "User name",
     "Пароль": "Password",
     "Форма авторизации": "Authorization form",
-    "Загрузка": "Loading"
+    "Загрузка": "Loading",
+    "Профиль": "Profile",
+    "Главная страница": "Main page",
+    "О сайте": "About us"
 }
