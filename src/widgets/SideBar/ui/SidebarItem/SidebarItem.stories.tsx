@@ -12,7 +12,13 @@ export default {
 const Template: ComponentStory<typeof SidebarItem> = (args) => <SidebarItem {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    item: {
+        path: '/',
+        text: 'MenuItem',
+    },
+    
+};
 
 export const DefaultDark = Template.bind({});
 DefaultDark.decorators = [ThemeDecorator(Theme.DARK)];

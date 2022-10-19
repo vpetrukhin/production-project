@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import cls from './Button.module.scss';
@@ -26,7 +26,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     loading?: boolean;
 }
 
-export const Button = (props: ButtonProps) => {
+export const Button = memo((props: ButtonProps) => {
     const { className, children, theme = ButtonTheme.CLEAR, square, size = ButtonSize.M, loading, ...otherProps } = props;
     const { t } = useTranslation();
 
@@ -42,4 +42,4 @@ export const Button = (props: ButtonProps) => {
             {loading ? `${t('Загрузка')}...` : children}
         </button>
     );
-};
+});
