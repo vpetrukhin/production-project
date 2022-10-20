@@ -19,15 +19,15 @@ export const DynamicModule: FC<DynamicModuleProps> = (props) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducerListEntries) => {
+        Object.entries(reducers).forEach(([name, reducer]) => {
             dispatch({ type: `@${name}/init` });
-            store.reducerManager.add(`${name}`, reducer);
+            store.reducerManager.add(`${name}` as StateSchemaKeys, reducer);
         });
 
         return () => {
-            Object.entries(reducers).forEach(([name, reducer]: ReducerListEntries) => {
+            Object.entries(reducers).forEach(([name, reducer]) => {
                 dispatch({ type: `@${name}/remove` });
-                store.reducerManager.remove(`${name}`);
+                store.reducerManager.remove(`${name}` as StateSchemaKeys);
             });
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps

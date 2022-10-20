@@ -1,16 +1,16 @@
-import { LoginSchema } from './../../../../feutures/AuthByUserName';
-import { CounterSchema } from 'entity/Counter';
+import { LoginSchema } from 'feutures/AuthByUserName';
 import { UserSchema } from 'entity/User';
-import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { Action, AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ProfileSchema } from 'entity/Profile';
 import { AxiosInstance } from 'axios';
 import { To, NavigateOptions } from 'react-router-dom';
 
-export interface StateSchema {
-    counter: CounterSchema,
+export interface AsyncStateSchema {
+    login?: LoginSchema | undefined,
+    profile?: ProfileSchema | undefined
+}
+export interface StateSchema extends AsyncStateSchema {
     user: UserSchema,
-    login?: LoginSchema,
-    profile?: ProfileSchema
 }
 
 export type StateSchemaKeys = keyof StateSchema;
@@ -22,7 +22,7 @@ export interface ReducerManager {
     remove: (key: StateSchemaKeys) => void;
 }
 
-export interface StateWithReducerManager extends EnhancedStore {
+export interface StateWithReducerManager extends EnhancedStore<StateSchema, Action> {
     reducerManager: ReducerManager;
 }
 
@@ -30,7 +30,7 @@ export type NavigatorType = (to: To, options?: NavigateOptions) => void;
 
 export interface ThunkExtraArg {
     api: AxiosInstance;
-    navigator: NavigatorType
+    navigator?: NavigatorType
 }
 
 export interface ThunkConfig<ErrorType> {

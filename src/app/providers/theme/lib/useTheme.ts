@@ -8,16 +8,17 @@ interface UseThemeResult {
 
 export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext(ThemeContext);
-    
+
     const toggleTheme = () => {
-        setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
+        setTheme?.(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
     };
 
     useEffect(() => {
-        document.body.className = theme;
+        document.body.className = theme as string;
     }, [theme]);
 
     return {
-        theme, toggleTheme
+        theme: theme || Theme.LIGHT,
+        toggleTheme
     };
 };

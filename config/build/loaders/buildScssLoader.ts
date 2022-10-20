@@ -1,6 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export const buildScssLoader = (isDev: boolean) => ({
+export const buildScssLoader = (isDev: boolean | undefined) => ({
     test: /\.s[ac]ss$/i,
     use: [
         // Creates `style` nodes from JS strings

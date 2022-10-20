@@ -12,10 +12,12 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
 
-    config.resolve.modules.push(paths.src);
-    config.resolve.extensions.push('.ts', '.tsx');
+    config?.resolve?.modules?.push(paths.src);
+    config?.resolve?.extensions?.push('.ts', '.tsx');
 
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    config!.module!.rules = config?.module?.rules?.map((rule: RuleSetRule) => {
         if (/svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg$/i };
         }
@@ -23,12 +25,12 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
         return rule;
     });
 
-    config.module.rules.push(buildSVGLoader());
-    config.module.rules.push(buildScssLoader(true));
+    config!.module!.rules!.push(buildSVGLoader());
+    config!.module!.rules!.push(buildScssLoader(true));
 
-    config.plugins.push(new webpack.DefinePlugin({
+    config!.plugins!.push(new webpack.DefinePlugin({
         __IS_DEV__: true,
-        __API_URL__: '',
+        __API_URL__: undefined,
     }));
 
     return config;

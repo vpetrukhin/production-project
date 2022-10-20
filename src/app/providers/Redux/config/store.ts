@@ -1,37 +1,40 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
-import { counterReducer } from 'entity/Counter/model/slices/CounterSlice/CounterSlice';
+import { CombinedState, configureStore, Reducer, ReducersMapObject, AnyAction, ThunkMiddleware, MiddlewareArray } from '@reduxjs/toolkit';
 import { UserReducer } from 'entity/User';
 import { $api } from 'shared/api/API';
-import { NavigatorType, StateSchema, StateWithReducerManager } from '../types/StateSchema';
+import { AsyncStateSchema, NavigatorType, StateSchema, StateWithReducerManager, ThunkExtraArg } from '../types/StateSchema';
 import { createReducerManager } from './createReducerManager';
 
 export function createReduxStore(
-    initialState: Partial<StateSchema>,
-    asyncReducers?: ReducersMapObject<Partial<StateSchema>>,
+    initialState: StateSchema,
+    asyncReducers?: ReducersMapObject<AsyncStateSchema | undefined>,
     navigator?: NavigatorType
 ) {
     const rootReducer: ReducersMapObject<StateSchema> = {
-        counter: counterReducer,
         user: UserReducer,
         ...asyncReducers
     };
 
     const reducerManager = createReducerManager(rootReducer);
 
-    const store = configureStore<StateSchema>({
-        reducer: reducerManager.reduce,
-        preloadedState: initialState,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+
+    const extraArgs: ThunkExtraArg = {
+        api: $api,
+        navigator
+    };
+
+    const store = configureStore<StateSchema, AnyAction, MiddlewareArray<[ThunkMiddleware<StateSchema, AnyAction, ThunkExtraArg>]>>({
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
+        preloadedState: initialState as StateSchema,
         devTools: __IS_DEV__,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-            thunk: {
-                extraArgument: {
-                    api: $api,
-                    navigator
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware(
+            {
+                thunk: {
+                    extraArgument: extraArgs
                 }
             }
-        })
+        ),
     }) as StateWithReducerManager;
 
     store.reducerManager = reducerManager;

@@ -18,7 +18,7 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         'quotes': ['error', 'single'],
         'semi': ['error', 'always'],
-        'no-undef': 'warn',
+        'no-undef': 'off',
         'react/display-name': 'off',
         'react-hooks/rules-of-hooks': 'error', 
         'react-hooks/exhaustive-deps': 'warn',
@@ -26,6 +26,7 @@ module.exports = {
             markupOnly: true,
             ignoreCallee: ['TEST', 'test'],
             ignoreAttribute: ['to', 'data-testid', 'name']
-        }]
+        }],
+        '@typescript-eslint/no-non-null-assertion': 'off'
     }
 };
