@@ -16,9 +16,6 @@ export function createReduxStore(
 
     const reducerManager = createReducerManager(rootReducer);
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-
     const extraArgs: ThunkExtraArg = {
         api: $api,
         navigator
