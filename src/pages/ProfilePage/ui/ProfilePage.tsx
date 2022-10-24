@@ -31,8 +31,7 @@ const ProfilePage = (props: ProfilePageProps) => {
 
 
     useEffect(() => {
-        // TODO: fix types
-        dispatch(fetchProfileData() as unknown as AnyAction);
+        dispatch(fetchProfileData());
     }, [dispatch]);
 
     return (

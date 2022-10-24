@@ -1,4 +1,4 @@
-import { CombinedState, configureStore, Reducer, ReducersMapObject, AnyAction, ThunkMiddleware, MiddlewareArray } from '@reduxjs/toolkit';
+import { CombinedState, configureStore, Reducer, ReducersMapObject, AnyAction, ThunkMiddleware, MiddlewareArray, Action } from '@reduxjs/toolkit';
 import { UserReducer } from 'entity/User';
 import { $api } from 'shared/api/API';
 import { AsyncStateSchema, NavigatorType, StateSchema, StateWithReducerManager, ThunkExtraArg } from '../types/StateSchema';
@@ -21,7 +21,7 @@ export function createReduxStore(
         navigator
     };
 
-    const store = configureStore<StateSchema, AnyAction, MiddlewareArray<[ThunkMiddleware<StateSchema, AnyAction, ThunkExtraArg>]>>({
+    const store = configureStore<StateSchema, Action, MiddlewareArray<[ThunkMiddleware<StateSchema, Action, ThunkExtraArg>]>>({
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         preloadedState: initialState as StateSchema,
         devTools: __IS_DEV__,
@@ -38,5 +38,3 @@ export function createReduxStore(
 
     return store;
 }
-
-export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
