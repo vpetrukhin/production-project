@@ -1,6 +1,6 @@
 import { Country } from 'entity/Country';
 import { Currency } from 'entity/Currency';
-import { getProfileData, getProfileError, getProfileIsLoading, getProfileReadonly, ProfileActions, ProfileCard } from 'entity/Profile';
+import { getProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, ProfileActions, ProfileCard } from 'entity/Profile';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -12,7 +12,7 @@ interface EditableProfileCardProps {
 export const EditableProfileCard = (props: EditableProfileCardProps) => {
     const { className } = props;
     const dispatch = useAppDispatch();
-    const data = useSelector(getProfileData);
+    const form = useSelector(getProfileForm);
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsLoading);
     const readonly = useSelector(getProfileReadonly);
@@ -55,7 +55,7 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
     return (
         <ProfileCard
             className={className}
-            data={data}
+            data={form}
             error={error}
             isLoading={isLoading}
             readonly={readonly}
