@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ProfileActions, getProfileReadonly, getProfileErrors, ValidateErrors } from 'entity/Profile';
+import { ProfileActions, getProfileReadonly, ValidateErrors, getProfileValidateError } from 'entity/Profile';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -18,7 +18,7 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
     const {t} = useTranslation('profile');
     const dispatch = useAppDispatch();
     const readonly = useSelector(getProfileReadonly);
-    const errors = useSelector(getProfileErrors);
+    const validateErrors = useSelector(getProfileValidateError);
 
     const validateMessages = {
         [ValidateErrors.INCORRECT_AGE]: t('Некорректный возраст'),
@@ -64,7 +64,7 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                     )
                 }
             </div>
-            {errors && errors.length > 0 && errors?.map(err => (
+            {validateErrors && validateErrors.length > 0 && validateErrors?.map(err => (
                 <Text key={err} error text={validateMessages[err]} />
             ))}
         </>
