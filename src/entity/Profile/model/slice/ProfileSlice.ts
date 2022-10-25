@@ -5,12 +5,17 @@ import { Profile, ProfileSchema } from '../types/ProfileSchema';
 
 const initialState: ProfileSchema = {
     isLoading: false,
+    readonly: true,
 };
 
 export const ProfileSlice = createSlice({
     name: 'profile',
     initialState,
-    reducers: {},
+    reducers: {
+        setReadonly: (state, action: PayloadAction<boolean>) => {
+            state.readonly = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchProfileData.pending, (state) => {
             state.error = undefined;

@@ -29,6 +29,12 @@
     background-color: transparent;
 }
 
+.outline_red {
+    border: 1px solid var(--color-red-light);
+    color: var(--color-red-light);
+    background-color: transparent;
+}
+
 .size_m {
     font: var(--font-m);
 }

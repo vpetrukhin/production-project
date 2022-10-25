@@ -1,6 +1,6 @@
 import { LoginSchema } from 'feutures/AuthByUserName';
 import { UserSchema } from 'entity/User';
-import { Action, AnyAction, AsyncThunkAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { Action, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ProfileSchema } from 'entity/Profile';
 import { AxiosInstance } from 'axios';
 import { To, NavigateOptions } from 'react-router-dom';

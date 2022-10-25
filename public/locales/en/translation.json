@@ -14,5 +14,10 @@
     "Загрузка": "Loading",
     "Профиль": "Profile",
     "Главная страница": "Main page",
-    "О сайте": "About us"
+    "О сайте": "About us",
+    "Произошла ошибка": "An error has occurred",
+    "Попробуйте обновить страницу": "Try refreshing the page",
+    "Редактировать": "Edit",
+    "Сохранить": "Save",
+    "Отменить": "Reset"
 }
