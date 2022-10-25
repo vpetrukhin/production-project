@@ -1,6 +1,6 @@
 import { Country } from 'entity/Country';
 import { Currency } from 'entity/Currency';
-import { getProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, ProfileActions, ProfileCard } from 'entity/Profile';
+import {  getProfileErrors, getProfileForm, getProfileIsLoading, getProfileReadonly, ProfileActions, ProfileCard } from 'entity/Profile';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -13,7 +13,7 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
     const { className } = props;
     const dispatch = useAppDispatch();
     const form = useSelector(getProfileForm);
-    const error = useSelector(getProfileError);
+    const errors = useSelector(getProfileErrors);
     const isLoading = useSelector(getProfileIsLoading);
     const readonly = useSelector(getProfileReadonly);
 
@@ -27,8 +27,8 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
 
     const onAgeChange = useCallback((value: string) => {
         const numberRegex = /^\d+$/i;
-        if (numberRegex.test(value)) {
-            dispatch(ProfileActions.updateProfile({ age: Number(value || 0) }));
+        if (numberRegex.test(value) || value === '') {
+            dispatch(ProfileActions.updateProfile({ age: Number(value) }));
         }
     }, [dispatch]);
 
@@ -56,7 +56,7 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
         <ProfileCard
             className={className}
             data={form}
-            error={error}
+            errors={errors}
             isLoading={isLoading}
             readonly={readonly}
             onFirstnameChange={onFirstnameChange}

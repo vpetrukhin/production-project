@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Country } from 'entity/Country';
-import { Currency } from 'entity/Currency';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { Profile, ProfileSchema } from '../types/ProfileSchema';
@@ -34,7 +32,7 @@ export const ProfileSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchProfileData.pending, (state) => {
-            state.error = undefined;
+            state.errors = undefined;
             state.isLoading = true;
         });
         builder.addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
@@ -43,11 +41,11 @@ export const ProfileSlice = createSlice({
             state.form = action.payload;
         });
         builder.addCase(fetchProfileData.rejected, (state, action) => {
-            state.error = action.payload;
+            state.errors = action.payload;
             state.isLoading = false;
         });
         builder.addCase(updateProfileData.pending, (state) => {
-            state.error = undefined;
+            state.errors = undefined;
             state.isLoading = true;
         });
         builder.addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
@@ -57,7 +55,7 @@ export const ProfileSlice = createSlice({
             state.readonly = true;
         });
         builder.addCase(updateProfileData.rejected, (state, action) => {
-            state.error = action.payload;
+            state.errors = action.payload;
             state.isLoading = false;
         });
     },

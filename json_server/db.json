@@ -26,9 +26,9 @@
     }
   ],
   "profile": {
-    "first": "Админ",
+    "first": "Вася",
     "lastname": "Админович",
-    "age": "42",
+    "age": 29,
     "currency": "RUB",
     "country": "Росси]",
     "city": "Москва",

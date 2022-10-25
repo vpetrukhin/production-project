@@ -1,6 +1,11 @@
 .Header {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     gap: 10px;
     margin-bottom: 15px;
+}
+
+.wrapper {
+    display: flex;
+    gap: 10px;
 }

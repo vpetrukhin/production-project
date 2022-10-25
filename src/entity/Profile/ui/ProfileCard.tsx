@@ -5,7 +5,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
-import { Profile } from '../model/types/ProfileSchema';
+import { Profile, ValidateErrors } from '../model/types/ProfileSchema';
 import cls from './ProfileCard.module.scss';
 import { CountrySelect } from 'entity/Country';
 import { Country } from 'entity/Country/model/types/Countries';
@@ -15,7 +15,7 @@ interface ProfileCardProps {
     className?: string;
     data?: Profile;
     isLoading?: boolean;
-    error?: string;
+    errors?: ValidateErrors[];
     readonly?: boolean;
     onFirstnameChange?: (value: string) => void;
     onLastnameChange?: (value: string) => void;
@@ -32,7 +32,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
         className,
         data,
         isLoading,
-        error,
+        errors,
         readonly,
         onFirstnameChange,
         onLastnameChange,
@@ -53,7 +53,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
         );
     }
 
-    if (error) {
+    if (errors && errors[0] === ValidateErrors.SERVER_ERROR) {
         return (
             <div className={cls.error}>
                 <Text 

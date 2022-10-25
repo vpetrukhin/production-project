@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/Redux/types/StateSchema';
-import { Profile } from '../../types/ProfileSchema';
+import { Profile, ValidateErrors } from '../../types/ProfileSchema';
 
-export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValidateErrors[]>>(
     'profile/fetchProfileData',
     async (_, thunkAPI) => {
         const { rejectWithValue, extra } = thunkAPI;
@@ -17,7 +17,7 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<stri
             return response.data;
         } catch (e) {
             console.log(e);
-            return rejectWithValue('error');
+            return rejectWithValue([ValidateErrors.SERVER_ERROR]);
         }
     }
 );
