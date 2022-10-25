@@ -1,7 +1,11 @@
 .ProfileCard {
-    border: 1px solid var(--inverted-main-bg);
+    border: 1px solid var(--primary-color);
     padding: 10px;
     border-radius: var(--size-radius);
+}
+
+.editableForm {
+    border-color: var(--inverted-primary-color);
 }
 
 .avatarWrapper {

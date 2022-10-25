@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Currency, CurrencySelect } from 'entity/Currency';
+import { classNames, Mode } from 'shared/lib/classNames/classNames';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
@@ -19,6 +20,7 @@ interface ProfileCardProps {
     onCityChange?: (value?: string) => void;
     onUsernameChange?: (value?: string) => void;
     onAvatarChange?: (value?: string) => void;
+    onCurrencyChange?: (value?: Currency) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -33,7 +35,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onAgeChange,
         onCityChange,
         onUsernameChange,
-        onAvatarChange
+        onAvatarChange,
+        onCurrencyChange
     } = props;
     const {t} = useTranslation();
 
@@ -58,11 +61,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
         );
     }
 
-    // currency?: Currency;
     // country?: Country;
 
+    const mods: Mode = {
+        [cls.editableForm]: !readonly,
+    };
+
     return (
-        <div className={classNames(cls.ProfileCard, {}, [className])}>
+        <div className={classNames(cls.ProfileCard, mods, [className])}>
             <div className={cls.avatarWrapper}>
                 <Avatar src={data?.avatar} />
             </div>
@@ -83,6 +89,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 onChange={onAgeChange}
                 placeholder={t('Возраст')}
                 readonly={readonly}
+            />
+            <CurrencySelect
+                value={data?.currency}
+                onChange={onCurrencyChange}
             />
             <Input
                 value={data?.city}
