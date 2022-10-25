@@ -1,6 +1,6 @@
 import { LoginSchema } from 'feutures/AuthByUserName';
 import { UserSchema } from 'entity/User';
-import { Action, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { Action, CombinedState, Dispatch, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ProfileSchema } from 'entity/Profile';
 import { AxiosInstance } from 'axios';
 import { To, NavigateOptions } from 'react-router-dom';
@@ -38,4 +38,5 @@ export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
 export interface ThunkConfig<ErrorType> {
     rejectValue: ErrorType;
     extra: ThunkExtraArg;
+    state: StateSchema;
 }

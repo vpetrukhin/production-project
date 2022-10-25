@@ -17,14 +17,14 @@ interface ProfileCardProps {
     isLoading?: boolean;
     error?: string;
     readonly?: boolean;
-    onFirstnameChange?: (value?: string) => void;
-    onLastnameChange?: (value?: string) => void;
-    onAgeChange?: (value?: string) => void;
-    onCityChange?: (value?: string) => void;
-    onUsernameChange?: (value?: string) => void;
-    onAvatarChange?: (value?: string) => void;
-    onCurrencyChange?: (value?: Currency) => void;
-    onCountryChange?: (value?: Country) => void;
+    onFirstnameChange?: (value: string) => void;
+    onLastnameChange?: (value: string) => void;
+    onAgeChange?: (value: string) => void;
+    onCityChange?: (value: string) => void;
+    onUsernameChange?: (value: string) => void;
+    onAvatarChange?: (value: string) => void;
+    onCurrencyChange?: (value: Currency) => void;
+    onCountryChange?: (value: Country) => void;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {

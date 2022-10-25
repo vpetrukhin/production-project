@@ -6,6 +6,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './EditableProfileCardHeader.module.scss';
+import { updateProfileData } from 'entity/Profile/model/services/updateProfileData/updateProfileData';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
@@ -18,16 +19,16 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
     const readonly = useSelector(getProfileReadonly);
 
     const onEdit = useCallback(() => {
-        dispatch(ProfileActions.setReadonly(false));
+        dispatch(ProfileActions.onStartEdit());
     }, [dispatch]);
 
     const onCancel = useCallback(() => {
-        dispatch(ProfileActions.setReadonly(true));
+        dispatch(ProfileActions.onCancelEdit());
     }, [dispatch]);
 
-    // const onSave = useCallback(() => {
-    //     // save
-    // }, [dispatch]);
+    const onSave = useCallback(() => {
+        dispatch(updateProfileData());
+    }, [dispatch]);
 
     return (
         <div className={classNames(cls.Header, {}, [className])}>
@@ -42,7 +43,7 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                 )
                 : (
                     <>
-                        <Button theme={ButtonTheme.OUTLINE}>{t('Сохранить')}</Button>
+                        <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>{t('Сохранить')}</Button>
                         <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancel}>{t('Отменить')}</Button>
                     </>
                 )
