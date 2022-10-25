@@ -6,6 +6,7 @@ import { Select, SelectItem } from 'shared/ui/Select/Select';
 interface CurrencySelectProps {
     className?: string;
     value?: Currency;
+    readonly?: boolean;
     onChange?: (value: Currency) => void
 }
 
@@ -29,7 +30,7 @@ const CurrencyItems: Array<SelectItem> = [
 ];
 
 export const CurrencySelect = (props: CurrencySelectProps) => {
-    const { className, value, onChange } = props;
+    const { className, value, onChange, readonly } = props;
     const {t} = useTranslation();
 
     const handleChange = (value: string) => {
@@ -43,6 +44,7 @@ export const CurrencySelect = (props: CurrencySelectProps) => {
             items={CurrencyItems}
             value={value}
             onChange={handleChange}
+            readonly={readonly}
         />
     );
 };

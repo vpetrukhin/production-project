@@ -7,6 +7,7 @@ interface CountryProps {
     className?: string;
     value?: Country;
     onChange?: (value: Country) => void;
+    readonly?: boolean;
 }
 
 const countryItems: Array<SelectItem> = [
@@ -25,7 +26,7 @@ const countryItems: Array<SelectItem> = [
 ];
 
 export const CountrySelect = (props: CountryProps) => {
-    const { className, onChange, value } = props;
+    const { className, onChange, value, readonly } = props;
     const {t} = useTranslation();
 
     const handleChange = useCallback((value: string) => {
@@ -39,6 +40,7 @@ export const CountrySelect = (props: CountryProps) => {
             items={countryItems}
             onChange={handleChange}
             value={value}
+            readonly={readonly}
         />
     );
 };

@@ -66,8 +66,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         );
     }
 
-    // country?: Country;
-
     const mods: Mode = {
         [cls.editableForm]: !readonly,
     };
@@ -98,10 +96,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
             <CurrencySelect
                 value={data?.currency}
                 onChange={onCurrencyChange}
+                readonly={readonly}
             />
             <CountrySelect
                 value={data?.country}
                 onChange={onCountryChange}
+                readonly={readonly}
             />
             <Input
                 value={data?.city}
