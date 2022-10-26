@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { EditableProfileCard, EditableProfileCardHeader } from 'feutures/EditableProfileCard';
 import { ProfileReducer } from 'entity/Profile';
 import { fetchProfileData } from 'entity/Profile/model/services/fetchProfileData/fetchProfileData';
@@ -18,11 +18,10 @@ interface ProfilePageProps {
 
 const ProfilePage = (props: ProfilePageProps) => {
     const { className } = props;
-    const {t} = useTranslation('profile');
+    // const {t} = useTranslation('profile');
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        console.log(__PROJECT__);
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchProfileData());
         }

@@ -17,7 +17,7 @@ export default {
     // A set of global variables that need to be available in all test environments
     globals: {
         __IS_DEV__: true,
-        __API_URL__: 'http://localhost:8000',
+        __API_URL__: '',
         __PROJECT__: 'jest',
     },
 
