@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { EditableProfileCard, EditableProfileCardHeader } from 'feutures/EditableProfileCard';
 import { ProfileReducer } from 'entity/Profile';
 import { fetchProfileData } from 'entity/Profile/model/services/fetchProfileData/fetchProfileData';
@@ -23,7 +22,10 @@ const ProfilePage = (props: ProfilePageProps) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        console.log(__PROJECT__);
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     return (
