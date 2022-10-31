@@ -4,6 +4,11 @@ import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
 
+export interface IRoute extends Omit<RouteProps, 'element'> {
+    onlyAuthorized: boolean;
+    element: JSX.Element
+}
+
 export enum Routes {
     MAIN = 'main',
     ABOUT = 'about',
@@ -22,21 +27,25 @@ export const routesPaths: Record<Routes, string> = {
     [Routes.NOTFOUND]: '*'
 };
 
-export const routesConfig: Record<Routes, RouteProps> = {
+export const routesConfig: Record<Routes, IRoute> = {
     [Routes.MAIN]: {
         path: routesPaths.main,
-        element: <MainPage />
+        element: <MainPage />,
+        onlyAuthorized: false
     },
     [Routes.ABOUT]: {
         path: routesPaths.about,
-        element: <AboutPage />
+        element: <AboutPage />,
+        onlyAuthorized: false
     },
     [Routes.PROFILE]: {
         path: routesPaths.profile,
-        element: <ProfilePage />
+        element: <ProfilePage />,
+        onlyAuthorized: true
     },
     [Routes.NOTFOUND]: {
         path: routesPaths.notfound,
-        element: <NotFoundPage />
+        element: <NotFoundPage />,
+        onlyAuthorized: false
     },
 };

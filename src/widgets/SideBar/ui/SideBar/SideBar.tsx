@@ -6,6 +6,8 @@ import { sidebarItems } from '../../model/items';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher';
 import cls from './SideBar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { getUserInfo } from 'entity/User';
+import { useSelector } from 'react-redux';
 
 
 interface SideBarProps {
@@ -16,6 +18,7 @@ export const SideBar = (props: SideBarProps) => {
     const { className } = props;
 
     const [collapsed, setCollapsed] = useState<boolean>(false);
+    const user = useSelector(getUserInfo);
 
     const onToggle = () => {
         setCollapsed(prev => !prev);
@@ -35,9 +38,19 @@ export const SideBar = (props: SideBarProps) => {
             </Button>
 
             <div className={cls.items}>
-                {sidebarItems.map(item => (
-                    <SidebarItem key={item.path} item={item} collapsed={collapsed} />
-                ))}
+                {user 
+                    ? (
+                        sidebarItems.map(item => (
+                            <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+                        ))
+                    )
+                    : (
+                        sidebarItems.filter(item => !item.onlyAuthorized).map(item => (
+                            <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+                        ))
+                    )
+                }
+                {}
             </div>
 
             <div className={cls.switchers}>

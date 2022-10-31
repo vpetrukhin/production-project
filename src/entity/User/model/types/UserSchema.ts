@@ -6,4 +6,6 @@ export interface User {
 export interface UserSchema {
     authKey?: string;
     userInfo?: User
+
+    _inited: boolean;
 }

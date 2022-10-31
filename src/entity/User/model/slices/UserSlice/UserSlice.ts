@@ -3,7 +3,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User, UserSchema } from '../../types/UserSchema';
 
 
-const initialState: UserSchema = {};
+const initialState: UserSchema = {
+    _inited: false,
+};
 
 export const UserSlice = createSlice({
     name: 'user',
@@ -15,9 +17,11 @@ export const UserSlice = createSlice({
             state.userInfo = action.payload;
         },
         initAuth: (state) => {
-            const user: User = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY) || '') || {};
+            const user: User = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY) as string);
             state.authKey = user?.id;
             state.userInfo = user;
+
+            state._inited = true;
         },
         logout: (state) => {
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
