@@ -4,7 +4,7 @@ export interface User {
 }
 
 export interface UserSchema {
-    authKey?: string;
+    isAuth: boolean;
     userInfo?: User
 
     _inited: boolean;

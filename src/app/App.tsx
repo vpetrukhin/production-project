@@ -7,12 +7,14 @@ import { SideBar } from 'widgets/SideBar';
 
 import 'shared/lib/i18n/i18n';
 import { UserActions } from 'entity/User';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInited } from 'entity/User';
 
 
 export const App = () => {
     const { theme } = useTheme();
     const dispatch = useDispatch();
+    const inited = useSelector(getInited);
 
     useEffect(() => {
         dispatch(UserActions.initAuth());
@@ -24,7 +26,7 @@ export const App = () => {
                 <NavBar />
                 <div className='page-content'>
                     <SideBar />
-                    <AppRouter />
+                    {inited && <AppRouter />}
                 </div>
             </Suspense>
         </div>

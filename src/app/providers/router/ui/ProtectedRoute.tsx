@@ -1,12 +1,14 @@
-import { getUserInfo } from 'entity/User';
+import { getIsAuth } from 'entity/User/model/selectors/getIsAuth/getIsAuth';
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { routesPaths } from 'shared/config/router/routerConfig';
 
 export const ProtectedRoute = ({ children }: { children: JSX.Element}) => {
-    const user = useSelector(getUserInfo);
+    const isAuth = useSelector(getIsAuth);
+    const location = useLocation();
 
-    if (!user) {
-        return <Navigate to="/" />;
+    if (!isAuth) {
+        return <Navigate to={routesPaths.main} state={{ from: location }} replace={true} />;
     }
     return children;
 };
