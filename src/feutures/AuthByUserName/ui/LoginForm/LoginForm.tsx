@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Input } from 'shared/ui/Input/Input';
-import { Text } from 'shared/ui/Text/Text';
+import { Input, InputTheme } from 'shared/ui/Input/Input';
+import { Text, TextColor } from 'shared/ui/Text/Text';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { LoginActions, LoginReducer } from '../../model/slices/LoginSlice';
@@ -43,18 +43,20 @@ const LoginForm = memo((props: LoginFormProps) => {
     return (
         <DynamicModule reducers={{ login: LoginReducer }}>
             <div className={classNames(cls.LoginForm, {}, [className])}>
-                <Text title={t('Форма авторизации')} />
+                <Text color={TextColor.SECONDARY} title={t('Форма авторизации')} />
                 {error && <Text text={t('Неправильный логин или пароль')} error />}
                 <Input 
                     autoFocus
-                    placeholder={t('Имя пользователя')}
+                    placeholder={t('Логин')}
                     value={username}
                     onChange={onUsernameChange}
+                    theme={InputTheme.SECONDARY}
                 />
                 <Input
                     placeholder={t('Пароль')}
                     value={password}
                     onChange={onPasswordChange}
+                    theme={InputTheme.SECONDARY}
                 />
                 <Button
                     loading={isLoading}

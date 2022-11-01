@@ -4,14 +4,14 @@
     gap: 10px;
 }
 
-.label {
-    color: var(--inverted-primary-color);
-}
+// .label {
+//     color: var(--inverted-primary-color);
+// }
 
 .input {
     flex-grow: 1;
     padding: 0;
-    color: var(--inverted-primary-color);
+    // color: var(--inverted-primary-color);
     background-color: transparent;
     border: none;
     font: var(--font-m);
@@ -22,12 +22,37 @@
 
     &:focus {
         outline: none;
-        border-bottom: 1px solid var(--inverted-primary-color);
+        // border-bottom: 1px solid var(--inverted-primary-color);
     }
 }
 
 .readonly .input {
     &:focus {
         border-bottom: none;
+    }
+}
+
+.primary {
+    .label {
+        color: var(--inverted-primary-color);
+    }
+    .input {
+        color: var(--inverted-primary-color);
+
+        &:focus {
+            border-bottom: 1px solid var(--inverted-primary-color);
+        }
+    }
+}
+.secondary {
+    .label {
+        color: var(--secondary-color);
+    }
+    .input {
+        color: var(--secondary-color);
+
+        &:focus {
+            border-bottom: 1px solid var(--secondary-color);
+        }
     }
 }

@@ -1,22 +1,11 @@
 .title {
     font: var(--font-l);
-    color: var(--inverted-primary-color);
+    // color: var(--inverted-primary-color);
 }
 
 .text {
     font: var(--font-m);
-    color: var(--secondary-color);
-}
-
-.error {
-    .title {
-        color: var(--color-red-dark);
-    }
-
-    .text {
-        font: var(--font-m);
-        color: var(--color-red-light);
-    }
+    // color: var(--secondary-color);
 }
 
 .left {
@@ -29,4 +18,23 @@
 
 .center {
     text-align: center;
+}
+
+.primary {
+    color: var(--inverted-primary-color);
+}
+
+.secondary {
+    color: var(--secondary-color);
+}
+
+.error {
+    .title {
+        color: var(--color-red-dark);
+    }
+
+    .text {
+        font: var(--font-m);
+        color: var(--color-red-light);
+    }
 }

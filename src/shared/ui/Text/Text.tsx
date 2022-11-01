@@ -8,12 +8,18 @@ export enum TextAlign {
     CENTER = 'center',
 }
 
+export enum TextColor {
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary',
+}
+
 interface TextProps {
     className?: string;
     title?: string;
     text?: string;
     error?: boolean;
-    align?: TextAlign
+    align?: TextAlign;
+    color?: TextColor;
 }
 
 export const Text = memo((props: TextProps) => {
@@ -22,13 +28,14 @@ export const Text = memo((props: TextProps) => {
         title,
         text,
         error,
-        align = TextAlign.LEFT
+        align = TextAlign.LEFT,
+        color = TextColor.PRIMARY,
     } = props;
 
     return (
         <div className={classNames(cls.Text, {
             [cls.error]: error,
-        }, [className, align])}>
+        }, [className, cls[align], cls[color]])}>
             {title && <div className={cls.title}>{title}</div>}
             {text && <div className={cls.text}>{text}</div>}
         </div>

@@ -7,9 +7,15 @@ type HTMLInputProps = Omit<
     'value' | 'onChange'
 >
 
+export enum InputTheme {
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary'
+}
+
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
+    theme?: InputTheme;
     onChange?: (value: string) => void;
     autofocus?: boolean;
     readonly?: boolean;
@@ -24,6 +30,7 @@ export const Input = memo((props: InputProps) => {
         onChange,
         autoFocus,
         readonly,
+        theme = InputTheme.PRIMARY,
         ...otherProps
     } = props;
 
@@ -45,7 +52,7 @@ export const Input = memo((props: InputProps) => {
 
 
     return (
-        <div className={classNames(cls.wrapper, mods, [className])}>
+        <div className={classNames(cls.wrapper, mods, [className, cls[theme]])}>
             <span className={cls.label}>{placeholder}:</span>
             <input
                 ref={ref}
