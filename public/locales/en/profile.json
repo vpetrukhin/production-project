@@ -12,5 +12,7 @@
     "Некорректный объект профиля": "Incorrect profile",
     "Некорректная фамилия": "Incorrect lastname",
     "Некорректное имя пользователя": "Incorrect username",
-    "Ошибка сервера": "Server error"
+    "Ошибка сервера": "Server error",
+    "Редактировать": "Edit",
+    "Аватар": "Avatar"
 }
