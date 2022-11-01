@@ -5,13 +5,13 @@
 }
 
 .label {
-    color: var(--secondary-color);
+    color: var(--inverted-primary-color);
 }
 
 .input {
     flex-grow: 1;
     padding: 0;
-    color: var(--secondary-color);
+    color: var(--inverted-primary-color);
     background-color: transparent;
     border: none;
     font: var(--font-m);
