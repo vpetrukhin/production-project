@@ -1,4 +1,6 @@
 import { AboutPage } from 'pages/AboutPage';
+import { ArticlesDetailsPage } from 'pages/ArticlesDetailsPage';
+import { ArticlesPage } from 'pages/ArticlesPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
@@ -13,6 +15,8 @@ export enum Routes {
     MAIN = 'main',
     ABOUT = 'about',
     PROFILE = 'profile',
+    ARTICLES = 'articles',
+    ARTICLESDETAILS = 'articles_details',
 
     // last
     NOTFOUND = 'notfound'
@@ -22,6 +26,8 @@ export const routesPaths: Record<Routes, string> = {
     [Routes.MAIN]: '/',
     [Routes.ABOUT]: '/about',
     [Routes.PROFILE]: '/profile',
+    [Routes.ARTICLES]: '/articles',
+    [Routes.ARTICLESDETAILS]: '/articles/',
 
     // last
     [Routes.NOTFOUND]: '*'
@@ -41,6 +47,16 @@ export const routesConfig: Record<Routes, IRoute> = {
     [Routes.PROFILE]: {
         path: routesPaths.profile,
         element: <ProfilePage />,
+        onlyAuthorized: true
+    },
+    [Routes.ARTICLES]: {
+        path: routesPaths.articles,
+        element: <ArticlesPage />,
+        onlyAuthorized: true
+    },
+    [Routes.ARTICLESDETAILS]: {
+        path: routesPaths.articles_details + ':id',
+        element: <ArticlesDetailsPage />,
         onlyAuthorized: true
     },
     [Routes.NOTFOUND]: {
