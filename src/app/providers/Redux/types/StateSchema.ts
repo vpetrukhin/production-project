@@ -5,10 +5,12 @@ import { ProfileSchema } from 'entity/Profile';
 import { AxiosInstance } from 'axios';
 import { To, NavigateOptions } from 'react-router-dom';
 import { createReduxStore } from '..';
+import { ArticleSchema } from 'entity/Article';
 
 export interface AsyncStateSchema {
     login?: LoginSchema | undefined,
-    profile?: ProfileSchema | undefined
+    profile?: ProfileSchema | undefined,
+    article?: ArticleSchema | undefined
 }
 export interface StateSchema extends AsyncStateSchema {
     user: UserSchema,
