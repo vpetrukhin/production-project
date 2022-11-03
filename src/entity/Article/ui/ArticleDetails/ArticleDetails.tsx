@@ -5,7 +5,7 @@ import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import cls from './ArticleDetails.module.scss';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { fetchArticleById } from '../../model/services/fetchArticleById';
+import { fetchArticleById } from '../../model/services/fethcArticleById';
 import { useSelector } from 'react-redux';
 import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticle';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
