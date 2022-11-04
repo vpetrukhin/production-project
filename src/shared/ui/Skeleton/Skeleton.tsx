@@ -9,8 +9,8 @@ interface SceletonProps {
     border?: number | string;
 }
 
-export const Sceleton = memo((props: SceletonProps) => {
-    const { className, border, height = 100, width = 100 } = props;
+export const Skeleton = memo((props: SceletonProps) => {
+    const { className, border, height = 100, width = '100%' } = props;
 
     const styles: CSSProperties = {
         width,

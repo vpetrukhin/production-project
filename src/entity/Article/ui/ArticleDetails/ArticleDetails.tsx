@@ -1,14 +1,15 @@
-import { ArticleReducer } from '../../model/slice/ArticleSlice';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
-import cls from './ArticleDetails.module.scss';
-import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { fetchArticleById } from '../../model/services/fethcArticleById';
-import { useSelector } from 'react-redux';
-import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticle';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
+import { fetchArticleById } from '../../model/services/fethcArticleById';
+import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticle';
+import { ArticleReducer } from '../../model/slice/ArticleSlice';
+import cls from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -32,7 +33,11 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     if (isLoading) {
         content = 
             <div className={classNames(cls.ArticleDetails, {}, [className])}>
-                Loading...
+                <Skeleton className={cls.circle} width={200} height={200} border={'50%'} />
+                <Skeleton className={cls.title} width={'55%'} height={30} />
+                <Skeleton className={cls.subtitle} width={'30%'} height={30} />
+                <Skeleton className={cls.rect} height={230} />
+                <Skeleton height={230} />
             </div>;
     } else if (error) {
         content = 
