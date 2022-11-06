@@ -6,7 +6,7 @@ import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
-import { fetchArticleById } from '../../model/services/fethcArticleById';
+import { fetchArticleById } from '../../model/services/fetchArticleById';
 import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticle';
 import { ArticleReducer } from '../../model/slice/ArticleSlice';
 import { ArticleBlock, BlockType } from '../../model/types/article';
