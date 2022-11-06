@@ -4,7 +4,7 @@ import { ValidateErrors } from 'entity/Profile';
 import { Article } from '../types/article';
 
 export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<string>>(
-    'profile/fetchProfileData',
+    'article/fetchArticleById',
     async (id, thunkAPI) => {
         const { rejectWithValue, extra } = thunkAPI;
 

@@ -8,7 +8,7 @@ type AsyncAction<Return, Arg, RejectedValue> = (arg: Arg) => AsyncThunkAction<Re
 
 jest.mock('axios');
 
-const mockedAxios = jest.mocked(axios);
+const mockedAxios = jest.mocked(axios, true);
 
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
     dispatch: jest.MockedFn<any>;
@@ -21,13 +21,14 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
         this.action = action;
         this.dispatch = jest.fn();
         this.getState = jest.fn(() => state as StateSchema);
+
         this.api = mockedAxios;
         this.navigate = jest.fn();
     }
 
     async callThunk(arg: Arg) {
         const action = this.action(arg);
-        const result = action(this.dispatch, this.getState, true);
+        const result = await action(this.dispatch, this.getState, { api: this.api });
 
         return result;
     }
