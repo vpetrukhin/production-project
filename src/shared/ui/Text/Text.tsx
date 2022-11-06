@@ -13,6 +13,11 @@ export enum TextColor {
     SECONDARY = 'secondary',
 }
 
+export enum TextSize {
+    M = 'size_m',
+    L = 'size_l'
+}
+
 interface TextProps {
     className?: string;
     title?: string;
@@ -20,6 +25,7 @@ interface TextProps {
     error?: boolean;
     align?: TextAlign;
     color?: TextColor;
+    size?: TextSize;
 }
 
 export const Text = memo((props: TextProps) => {
@@ -30,12 +36,13 @@ export const Text = memo((props: TextProps) => {
         error,
         align = TextAlign.LEFT,
         color = TextColor.PRIMARY,
+        size = TextSize.M
     } = props;
 
     return (
         <div className={classNames(cls.Text, {
             [cls.error]: error,
-        }, [className, cls[align], cls[color]])}>
+        }, [className, cls[align], cls[color], cls[size]])}>
             {title && <div className={cls.title}>{title}</div>}
             {text && <div className={cls.text}>{text}</div>}
         </div>

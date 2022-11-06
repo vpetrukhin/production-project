@@ -20,6 +20,9 @@
 }
 
 .page {
-    padding: 20px;
+    padding: 20px 20px 20px 40px;
     flex-grow: 1;
+    overflow-y: scroll;
+    max-height: calc(100vh - 50px);
+    width: 100%;
 }

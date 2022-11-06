@@ -12,3 +12,29 @@
 .rect {
     margin-bottom: 28px;
 }
+
+
+.avatarWrapper {
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon {
+    fill: var(--primary-color);
+}
+
+.block {
+    margin-top: 20px;
+}
