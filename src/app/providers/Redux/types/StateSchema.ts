@@ -6,11 +6,13 @@ import { AxiosInstance } from 'axios';
 import { To, NavigateOptions } from 'react-router-dom';
 import { createReduxStore } from '..';
 import { ArticleSchema } from 'entity/Article';
+import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailsPage';
 
 export interface AsyncStateSchema {
     login?: LoginSchema | undefined,
     profile?: ProfileSchema | undefined,
-    article?: ArticleSchema | undefined
+    article?: ArticleSchema | undefined,
+    articleDetailsComments?: ArticleDetailsCommentsSchema | undefined,
 }
 export interface StateSchema extends AsyncStateSchema {
     user: UserSchema,
