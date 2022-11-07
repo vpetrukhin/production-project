@@ -9,6 +9,9 @@ import { CommentsReducer, getAllComments } from '../model/slices/CommentsSlice/C
 import cls from './ArticlesDetailsPage.module.scss';
 import { useSelector } from 'react-redux';
 import { getArticleDetailsCommentsLoading } from '../model/selectors/comments';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { fetchCommentsList } from '../model/services/fetchCommentsLIst';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -19,8 +22,13 @@ const ArticlesDetailsPage = (props: ArticlesDetailsPageProps) => {
     const {t} = useTranslation('article');
     const { id } = useParams<{ id: string }>();
 
+    const dispatch = useAppDispatch();
     const comments = useSelector(getAllComments.selectAll);
     const commentsIsLoading = useSelector(getArticleDetailsCommentsLoading);
+
+    useInitialEffect(() => {
+        dispatch(fetchCommentsList(id));
+    });
 
     return (
         <DynamicModule reducers={{
