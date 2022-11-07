@@ -11,6 +11,7 @@
 .input {
     flex-grow: 1;
     padding: 0;
+
     // color: var(--inverted-primary-color);
     background-color: transparent;
     border: none;
@@ -22,13 +23,14 @@
 
     &:focus {
         outline: none;
+
         // border-bottom: 1px solid var(--inverted-primary-color);
     }
-}
 
-.readonly .input {
-    &:focus {
-        border-bottom: none;
+    &.readonly {
+        &:focus {
+            border-bottom: none;
+        }
     }
 }
 
@@ -36,6 +38,7 @@
     .label {
         color: var(--inverted-primary-color);
     }
+
     .input {
         color: var(--inverted-primary-color);
 
@@ -44,10 +47,12 @@
         }
     }
 }
+
 .secondary {
     .label {
         color: var(--secondary-color);
     }
+
     .input {
         color: var(--secondary-color);
 
@@ -56,3 +61,5 @@
         }
     }
 }
+
+
