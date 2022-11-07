@@ -5,9 +5,10 @@ import { ArticleDetails } from 'entity/Article';
 import { CommentList } from 'entity/Comment';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
-import { CommentsReducer, getAllComments } from '../model/CommentsSlice/CommentsSlice';
+import { CommentsReducer, getAllComments } from '../model/slices/CommentsSlice/CommentsSlice';
 import cls from './ArticlesDetailsPage.module.scss';
 import { useSelector } from 'react-redux';
+import { getArticleDetailsCommentsLoading } from '../model/selectors/comments';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -19,6 +20,7 @@ const ArticlesDetailsPage = (props: ArticlesDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
 
     const comments = useSelector(getAllComments.selectAll);
+    const commentsIsLoading = useSelector(getArticleDetailsCommentsLoading);
 
     return (
         <DynamicModule reducers={{
@@ -26,7 +28,7 @@ const ArticlesDetailsPage = (props: ArticlesDetailsPageProps) => {
         }}>
             <div className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
                 <ArticleDetails articleId={id || ''} />
-                <CommentList comments={comments} />
+                <CommentList isLoading={commentsIsLoading} comments={comments} />
                 {/* <CommentList comments={[
                     {
                         id: '1',

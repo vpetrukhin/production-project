@@ -2,3 +2,17 @@
 .comment {
     margin-top: 15px;
 }
+
+
+.loadingComment {
+    border: 1px solid var(--primary-color);
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}

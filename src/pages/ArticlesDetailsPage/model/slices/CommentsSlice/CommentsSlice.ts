@@ -1,4 +1,4 @@
-import { ArticleDetailsCommentsSchema } from './../types/ArticleDetailsCommentsSchema';
+import { ArticleDetailsCommentsSchema } from '../../types/ArticleDetailsCommentsSchema';
 import { StateSchema } from 'app/providers/Redux';
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { IComment } from 'entity/Comment';
