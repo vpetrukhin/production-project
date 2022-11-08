@@ -25,9 +25,9 @@ export enum Routes {
 export const routesPaths: Record<Routes, string> = {
     [Routes.MAIN]: '/',
     [Routes.ABOUT]: '/about',
-    [Routes.PROFILE]: '/profile',
+    [Routes.PROFILE]: '/profile/', // + id
     [Routes.ARTICLES]: '/articles',
-    [Routes.ARTICLESDETAILS]: '/articles/',
+    [Routes.ARTICLESDETAILS]: '/articles/', // + id
 
     // last
     [Routes.NOTFOUND]: '*'
@@ -45,7 +45,7 @@ export const routesConfig: Record<Routes, IRoute> = {
         onlyAuthorized: false
     },
     [Routes.PROFILE]: {
-        path: routesPaths.profile,
+        path: routesPaths.profile + ':id' ,
         element: <ProfilePage />,
         onlyAuthorized: true
     },

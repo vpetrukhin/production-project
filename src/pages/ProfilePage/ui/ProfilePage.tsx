@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 // import { useTranslation } from 'react-i18next';
 import { EditableProfileCard, EditableProfileCardHeader } from 'feutures/EditableProfileCard';
 import { ProfileReducer } from 'entity/Profile';
@@ -6,6 +5,8 @@ import { fetchProfileData } from 'entity/Profile/model/services/fetchProfileData
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule, ReducerList } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useParams } from 'react-router-dom';
 // import cls from './ProfilePage.module.scss';
 
 
@@ -20,12 +21,11 @@ const ProfilePage = (props: ProfilePageProps) => {
     const { className } = props;
     // const {t} = useTranslation('profile');
     const dispatch = useAppDispatch();
+    const { id } = useParams<{ id: string }>();
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
-    }, [dispatch]);
+    useInitialEffect(() => {
+        if (id) dispatch(fetchProfileData(id));
+    });
 
     return (
         <DynamicModule reducers={reducers}>
@@ -38,3 +38,4 @@ const ProfilePage = (props: ProfilePageProps) => {
 };
 
 export default ProfilePage;
+

@@ -1,13 +1,14 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ProfileActions, getProfileReadonly, ValidateErrors, getProfileValidateError } from 'entity/Profile';
+import { ProfileActions, getProfileReadonly, ValidateErrors, getProfileValidateError, getProfileForm } from 'entity/Profile';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './EditableProfileCardHeader.module.scss';
 import { updateProfileData } from 'entity/Profile/model/services/updateProfileData/updateProfileData';
 import { Text } from 'shared/ui/Text/Text';
+import { getUserInfo } from 'entity/User';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
@@ -18,6 +19,9 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
     const {t} = useTranslation('profile');
     const dispatch = useAppDispatch();
     const readonly = useSelector(getProfileReadonly);
+    const authData = useSelector(getUserInfo);
+    const formData = useSelector(getProfileForm);
+    const canEdit = authData?.id === formData?.id;
     const validateErrors = useSelector(getProfileValidateError);
 
     const validateMessages = {
@@ -47,22 +51,27 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
         <>
             <div className={classNames(cls.Header, {}, [className])}>
                 <Text title={t('Профиль')} />
-                {readonly
-                    ? (
-                        <Button
-                            theme={ButtonTheme.OUTLINE}
-                            onClick={onEdit}
-                        >
-                            {t('Редактировать')}
-                        </Button>
-                    )
-                    : (
-                        <div className={cls.wrapper}>
-                            <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>{t('Сохранить')}</Button>
-                            <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancel}>{t('Отменить')}</Button>
-                        </div>
-                    )
-                }
+                {canEdit && (
+                    <>
+                        {readonly
+                            ? (
+                                <Button
+                                    theme={ButtonTheme.OUTLINE}
+                                    onClick={onEdit}
+                                >
+                                    {t('Редактировать')}
+                                </Button>
+                            )
+                            : (
+                                <div className={cls.wrapper}>
+                                    <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>{t('Сохранить')}</Button>
+                                    <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancel}>{t('Отменить')}</Button>
+                                </div>
+                            )
+                        }
+                    </>
+                )}
+                
             </div>
             {validateErrors && validateErrors.length > 0 && validateErrors?.map(err => (
                 <Text key={err} error text={validateMessages[err]} />
