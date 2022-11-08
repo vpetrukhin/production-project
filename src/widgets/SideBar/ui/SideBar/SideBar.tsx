@@ -1,13 +1,13 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher';
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher';
+import { getUserInfo } from 'entity/User';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
-import { LangSwitcher } from 'widgets/LangSwitcher/LangSwitcher';
-import { sidebarItems } from '../../model/items';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher/ThemeSwitcher';
-import cls from './SideBar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
-import { getUserInfo } from 'entity/User';
-import { useSelector } from 'react-redux';
+import { getSideBarItems } from '../../model/selectors/getSidebarItems';
+import cls from './SideBar.module.scss';
 
 
 interface SideBarProps {
@@ -19,6 +19,7 @@ export const SideBar = (props: SideBarProps) => {
 
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const user = useSelector(getUserInfo);
+    const sidebarItems = useSelector(getSideBarItems);
 
     const onToggle = () => {
         setCollapsed(prev => !prev);
