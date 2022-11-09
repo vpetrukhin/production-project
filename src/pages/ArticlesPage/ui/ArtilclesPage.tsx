@@ -1,4 +1,4 @@
-import { ArticleList } from 'entity/Article';
+import { ArticleList, ArticlesViewSelector } from 'entity/Article';
 import { ArticleView } from 'entity/Article/model/types/article';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors';
 import { fetchArticles } from '../model/services/fetchArticles';
-import { ArticlesReducer, getArticles } from '../model/slices/ArticlesSlice';
+import { ArticlesActions, ArticlesReducer, getArticles } from '../model/slices/ArticlesSlice';
 import cls from './ArticlesPage.module.scss';
 
 interface ArtilclesPageProps {
@@ -25,16 +25,25 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchArticles());
+        dispatch(ArticlesActions.inited);
     });
+
+    const onChangeView = (newView: ArticleView) => {
+        dispatch(ArticlesActions.setView(newView));
+    };
 
     return (
         <DynamicModule reducers={{
             articlesPage: ArticlesReducer
         }}>
             <div className={classNames(cls.ArtilclesPage, {}, [className])}>
+                <ArticlesViewSelector
+                    view={view}
+                    onViewChange={onChangeView}
+                />
                 <ArticleList
                     articles={articles}
-                    view={ArticleView.SMALL}
+                    view={view}
                     isLoading={isLoading}
                 />
             </div>

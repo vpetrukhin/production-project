@@ -1,0 +1,18 @@
+.ArticlesViewSelector {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.button {
+    height: 20px;
+
+    & svg {
+        fill: var(--primary-color);
+    }
+}
+
+.notSelected {
+    fill-opacity: 0.3;
+}

@@ -7,7 +7,7 @@ import { ArticleSkeletonItem } from '../ArticleItem/ArticleSkeletonItem/ArticleS
 interface ArticleListProps {
     className?: string;
     articles: Article[];
-    view: ArticleView;
+    view?: ArticleView;
     isLoading?: boolean;
 }
 
@@ -17,7 +17,7 @@ const loadingArticles = new Array(8).fill(0).map((item, index) => ({
 }));
 
 export const ArticleList = (props: ArticleListProps) => {
-    const { className, articles, view, isLoading } = props;
+    const { className, articles, view = ArticleView.SMALL, isLoading } = props;
 
     if (isLoading) {
         

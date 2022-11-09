@@ -36,6 +36,11 @@
         width: 200px;
         position: relative;
     }
+
+    .img {
+        min-height: 230px;
+        object-fit: contain;
+    }
     
     .info {
         display: flex;
