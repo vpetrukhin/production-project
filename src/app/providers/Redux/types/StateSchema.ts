@@ -8,13 +8,15 @@ import { createReduxStore } from '..';
 import { ArticleSchema } from 'entity/Article';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailsPage';
 import { AddCommentFormSchema } from 'feutures/addComment';
+import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface AsyncStateSchema {
     login?: LoginSchema | undefined,
     profile?: ProfileSchema | undefined,
     article?: ArticleSchema | undefined,
     articleDetailsComments?: ArticleDetailsCommentsSchema | undefined,
-    addCommentFrom?: AddCommentFormSchema
+    addCommentFrom?: AddCommentFormSchema,
+    articlesPage?: ArticlesPageSchema,
 }
 export interface StateSchema extends AsyncStateSchema {
     user: UserSchema,
