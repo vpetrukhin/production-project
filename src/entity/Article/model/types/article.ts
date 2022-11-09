@@ -1,13 +1,4 @@
-
-
-// export interface Block {
-//     id: string;
-//     type: string;
-//     title: string;
-//     paragraphs: string[];
-//     code: string;
-//     src: string;
-// }
+import { User } from 'entity/User';
 
 export enum BlockType {
     CODE = 'CODE',
@@ -45,6 +36,11 @@ export enum ArticleType {
     ECONOMY = 'ECONOMY',
 }
 
+export enum ArticleView {
+    SMALL = 'SMALL',
+    BIG = 'BIG'
+}
+
 export interface Article {
     id: string;
     title: string;
@@ -54,4 +50,5 @@ export interface Article {
     createdAt: string;
     type: ArticleType[];
     blocks: ArticleBlock[];
+    user: User;
 }

@@ -1,0 +1,100 @@
+// .ArticleItem {}
+
+.img {
+    width: 100%;
+}
+
+.viewsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.SMALL {
+    .date {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .card {
+        width: 230px;
+
+        &:hover {
+            opacity: 0.8;
+            transform: scale(1.01);
+            cursor: pointer;;
+
+            .date {
+                display: block;
+            }
+        }
+    }
+
+    .imgWrapper {
+        width: 200px;
+        position: relative;
+    }
+    
+    .info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+
+        & svg {
+            fill: var(--primary-color);
+        }
+    }
+
+    .type {
+        width: 45%;
+
+        & p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .title {
+        margin-top: 8px;
+
+        & p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+}
+
+.BIG {
+    .card {
+        margin-top: 24px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .userWrapper {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    .img {
+        max-height: 178px;
+        object-fit: cover;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+}

@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -16,6 +16,10 @@ import { ArticalTextBlockComponent } from '../ArticalTextBlockComponent/ArticalT
 import cls from './ArticleDetails.module.scss';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { Button } from 'shared/ui/Button/Button';
+import { useNavigate } from 'react-router-dom';
+import { routesPaths } from 'shared/config/router/routerConfig';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -29,14 +33,19 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     const isLoading = useSelector(getArticleIsLoading);
     const error = useSelector(getArticleError);
     const article = useSelector(getArticleData);
+    const navigate = useNavigate();
 
     let content;
 
-    useEffect(() => {
+    useInitialEffect(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchArticleById(articleId));
         }
-    }, [articleId, dispatch]);
+    });
+
+    const navigateToArticleList = useCallback(() => {
+        navigate(routesPaths.articles);
+    }, [navigate]);
 
     const renderBlocks = useCallback((block: ArticleBlock) => {
         switch (block.type) {
@@ -64,26 +73,26 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
 
     if (isLoading) {
         content = 
-            <div className={classNames(cls.ArticleDetails, {}, [className])}>
+            <>
                 <Skeleton className={cls.circle} width={200} height={200} border={'50%'} />
                 <Skeleton className={cls.title} width={'55%'} height={30} />
                 <Skeleton className={cls.subtitle} width={'30%'} height={30} />
                 <Skeleton className={cls.rect} height={230} />
                 <Skeleton height={230} />
-            </div>;
+            </>;
     } else if (error) {
         content = 
-        <div className={classNames(cls.ArticleDetails, {}, [className])}>
+        <>
             <Text
                 title={t('Ошибка загрузки статьи')}
                 text={t('Попробуйте обновить страницу')}
                 align={TextAlign.CENTER}
                 error
             />
-        </div>;
+        </>;
     } else {
         content = 
-            <div className={classNames(cls.ArticleDetails, {}, [className])}>
+            <>
                 <div className={cls.avatarWrapper}>
                     <img
                         className={cls.avatar}
@@ -105,12 +114,17 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                     <Text text={String(article?.createdAt)} />
                 </div>
                 {article?.blocks.map(renderBlocks)}
-            </div>;
+            </>;
     }
 
     return (
         <DynamicModule reducers={{article: ArticleReducer}}>
             <div className={classNames(cls.ArticleDetails, {}, [className])}>
+                <Button
+                    onClick={navigateToArticleList}
+                >
+                    {'<- ' + t('К списку статей')}
+                </Button>
                 {content}
             </div>
         </DynamicModule>

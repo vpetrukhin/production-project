@@ -1,0 +1,41 @@
+// .ArticleSkeletonItem {}
+
+.SMALL {
+    .info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+    }
+
+    .title {
+        margin-top: 8px;
+    }
+}
+
+.BIG {
+    .card {
+        margin-top: 20px;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .userWrapper {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    .title, .types, .img, .text {
+        margin-top: 8px;
+    }
+
+    .footer {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
