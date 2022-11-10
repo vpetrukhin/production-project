@@ -13,6 +13,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { fetchCommentsList } from '../model/services/fetchCommentsLIst';
 import { AddCommentForm } from 'feutures/addComment';
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
+import { Page } from 'shared/ui/Page/Page';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -38,11 +39,11 @@ const ArticlesDetailsPage = (props: ArticlesDetailsPageProps) => {
         <DynamicModule reducers={{
             articleDetailsComments: CommentsReducer
         }}>
-            <div className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+            <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
                 <ArticleDetails articleId={id || ''} />
                 <AddCommentForm onSendComment={onSendComment} />
                 <CommentList isLoading={commentsIsLoading} comments={comments} />
-            </div>
+            </Page>
         </DynamicModule>
     );
 };

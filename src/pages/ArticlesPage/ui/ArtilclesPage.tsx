@@ -6,6 +6,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { Page } from 'shared/ui/Page/Page';
 import { getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors';
 import { fetchArticles } from '../model/services/fetchArticles';
 import { ArticlesActions, ArticlesReducer, getArticles } from '../model/slices/ArticlesSlice';
@@ -36,7 +37,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
         <DynamicModule reducers={{
             articlesPage: ArticlesReducer
         }}>
-            <div className={classNames(cls.ArtilclesPage, {}, [className])}>
+            <Page className={classNames(cls.ArtilclesPage, {}, [className])}>
                 <ArticlesViewSelector
                     view={view}
                     onViewChange={onChangeView}
@@ -46,7 +47,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
                     view={view}
                     isLoading={isLoading}
                 />
-            </div>
+            </Page>
         </DynamicModule>
     );
 };

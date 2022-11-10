@@ -7,17 +7,12 @@ import { ProtectedRoute } from './ProtectedRoute';
 
 export const AppRouter = () => {
     const renderWithWrapper = useCallback(({ element, onlyAuthorized, path }: IRoute) => {
-        const elem = 
-        (
-            <div className='page'>
-                {element}
-            </div>
-        );
+        
 
         return <Route
             key={path}
             path={path}
-            element={onlyAuthorized ? <ProtectedRoute>{elem}</ProtectedRoute> : elem}
+            element={onlyAuthorized ? <ProtectedRoute>{element}</ProtectedRoute> : element}
         />;
     }, []);
 
