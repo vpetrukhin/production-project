@@ -37,7 +37,7 @@ export const ArticleSkeletonItem = (props: ArticleSkeletonItemProps) => {
     return (
         <div className={classNames(cls.ArticleSkeletonItem, {}, [className, cls[view]])}>
             <Card className={cls.card}>
-                <Skeleton width={198} height={200} />
+                <Skeleton height={200} />
                 <div className={cls.info}>
                     <Skeleton width={'25%'} height={18} />
                     <Skeleton width={75} height={18} />

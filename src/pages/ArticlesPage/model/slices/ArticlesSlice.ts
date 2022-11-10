@@ -4,6 +4,7 @@ import { Article, ArticleView } from 'entity/Article';
 import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/config/const/localStorage';
 import { fetchArticles } from '../services/fetchArticles';
+import { fetchMoreArticles } from '../services/fetchMoreArticles';
 
 
 export const articlesAdapter = createEntityAdapter<Article>({
@@ -19,6 +20,8 @@ const initialState: ArticlesPageSchema = {
     view: ArticleView.SMALL,
     entities: {},
     ids: [],
+    page: 1,
+    has: true,
 };
 
 export const ArticlesSlice = createSlice({
@@ -30,7 +33,13 @@ export const ArticlesSlice = createSlice({
             localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload);
         },
         inited: state => {
-            state.view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView;
+            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView;
+
+            state.view = view;
+            state.limit = view === ArticleView.SMALL ? 9 : 4;
+        },
+        setPage: state => {
+            state.page = state.page + 1;
         }
     },
     extraReducers: (builder) => {
@@ -43,6 +52,19 @@ export const ArticlesSlice = createSlice({
             articlesAdapter.setAll(state, action);
         });
         builder.addCase(fetchArticles.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false;
+        });
+        builder.addCase(fetchMoreArticles.pending, (state) => {
+            state.error = undefined;
+            state.isLoading = true;
+        });
+        builder.addCase(fetchMoreArticles.fulfilled, (state, action: PayloadAction<Article[]>) => {
+            state.isLoading = false;
+            articlesAdapter.addMany(state, action);
+            state.has = action.payload.length > 0;
+        });
+        builder.addCase(fetchMoreArticles.rejected, (state, action) => {
             state.error = action.payload;
             state.isLoading = false;
         });

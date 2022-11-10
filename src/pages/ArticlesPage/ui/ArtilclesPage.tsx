@@ -1,14 +1,15 @@
 import { ArticleList, ArticlesViewSelector } from 'entity/Article';
 import { ArticleView } from 'entity/Article/model/types/article';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Page } from 'shared/ui/Page/Page';
-import { getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors';
+import { getArticlesHas, getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors';
 import { fetchArticles } from '../model/services/fetchArticles';
+import { fetchMoreArticles } from '../model/services/fetchMoreArticles';
 import { ArticlesActions, ArticlesReducer, getArticles } from '../model/slices/ArticlesSlice';
 import cls from './ArticlesPage.module.scss';
 
@@ -23,21 +24,32 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
     const isLoading = useSelector(getArticlesLoading);
     // const error = useSelector(getArticlesError);
     const view = useSelector(getArticlesView);
+    const hasMoreArticles = useSelector(getArticlesHas);
 
     useInitialEffect(() => {
-        dispatch(fetchArticles());
         dispatch(ArticlesActions.inited);
+        dispatch(fetchArticles());
     });
 
-    const onChangeView = (newView: ArticleView) => {
+    const onChangeView = useCallback((newView: ArticleView) => {
         dispatch(ArticlesActions.setView(newView));
-    };
+    }, [dispatch]);
+
+    const onFetchMoreArticles = useCallback(() => {
+        if (hasMoreArticles) {
+            dispatch(ArticlesActions.setPage());
+            dispatch(fetchMoreArticles());
+        }
+    }, [dispatch, hasMoreArticles]);
 
     return (
         <DynamicModule reducers={{
             articlesPage: ArticlesReducer
         }}>
-            <Page className={classNames(cls.ArtilclesPage, {}, [className])}>
+            <Page
+                className={classNames(cls.ArtilclesPage, {}, [className])}
+                onScrollEndCallback={onFetchMoreArticles}
+            >
                 <ArticlesViewSelector
                     view={view}
                     onViewChange={onChangeView}

@@ -1,6 +1,9 @@
 // .ArticleSkeletonItem {}
 
 .SMALL {
+    .card {
+        min-width: 230px;
+    }
     .info {
         display: flex;
         justify-content: space-between;
