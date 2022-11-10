@@ -43,7 +43,7 @@ export const NavBar = (props: NavbarProps) => {
             <div className={classNames(cls.NavBar, {}, [className])}>
                 <div className={cls.links}>
                     <Text color={TextColor.PRIMARY} text={userInfo.username} />
-                    <Button theme={ButtonTheme.OUTLINE} onClick={handleLogout}>
+                    <Button theme={ButtonTheme.INVERTED_OUTLINE} onClick={handleLogout}>
                         {t('Выйти')}
                     </Button>
                 </div>

@@ -52,15 +52,15 @@ export const Input = memo((props: InputProps) => {
 
 
     return (
-        <div className={classNames(cls.wrapper, mods, [className, cls[theme]])}>
-            <span className={cls.label}>{placeholder}:</span>
+        <div className={classNames(cls.wrapper, {}, [className])}>
+            <span className={classNames(cls.label, mods, [cls[theme]])}>{placeholder}:</span>
             <input
                 ref={ref}
                 placeholder={placeholder || ''}
                 type={type}
                 value={value}
                 onChange={handleChange}
-                className={cls.input}
+                className={classNames(cls.input, {}, [cls[theme]])}
                 readOnly={readonly}
                 {...otherProps}
             />
