@@ -4,6 +4,7 @@
     .card {
         min-width: 230px;
     }
+
     .info {
         display: flex;
         justify-content: space-between;
@@ -19,6 +20,7 @@
     .card {
         margin-top: 20px;
     }
+
     .header {
         display: flex;
         align-items: center;
@@ -31,7 +33,10 @@
         gap: 11px;
     }
 
-    .title, .types, .img, .text {
+    .title,
+    .types,
+    .img,
+    .text {
         margin-top: 8px;
     }
 

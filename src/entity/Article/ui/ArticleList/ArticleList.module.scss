@@ -1,11 +1,13 @@
 .ArticleList {
     display: flex;
+
     // justify-content: center;
     gap: 20px;
 
     &.SMALL {
         flex-wrap: wrap;
     }
+
     &.BIG {
         flex-direction: column;
     }
