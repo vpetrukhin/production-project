@@ -35,7 +35,7 @@ export const Text = memo((props: TextProps) => {
         text,
         error,
         align = TextAlign.LEFT,
-        color = TextColor.PRIMARY,
+        color = TextColor.SECONDARY,
         size = TextSize.M
     } = props;
 

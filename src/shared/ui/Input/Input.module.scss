@@ -36,14 +36,14 @@
 
 .primary {
     .label {
-        color: var(--inverted-primary-color);
+        color: var(--primary-color);
     }
 
     .input {
-        color: var(--inverted-primary-color);
+        color: var(--primary-color);
 
         &:focus {
-            border-bottom: 1px solid var(--inverted-primary-color);
+            border-bottom: 1px solid var(--primary-color);
         }
     }
 }

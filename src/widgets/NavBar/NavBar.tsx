@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, TextColor } from 'shared/ui/Text/Text';
 import cls from './NavBar.module.scss';
 
 
@@ -42,7 +42,7 @@ export const NavBar = (props: NavbarProps) => {
         return (
             <div className={classNames(cls.NavBar, {}, [className])}>
                 <div className={cls.links}>
-                    <Text text={userInfo.username} />
+                    <Text color={TextColor.PRIMARY} text={userInfo.username} />
                     <Button theme={ButtonTheme.OUTLINE} onClick={handleLogout}>
                         {t('Выйти')}
                     </Button>
