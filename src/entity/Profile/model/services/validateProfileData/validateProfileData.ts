@@ -32,7 +32,5 @@ export const validateProfileData = (profile?: Profile): Array<ValidateErrors> =>
         errors.push(ValidateErrors.INCORRECT_USERNAME);
     }
 
-    console.log(first);
-
     return errors;
 }; 
