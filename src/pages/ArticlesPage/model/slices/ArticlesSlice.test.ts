@@ -164,6 +164,7 @@ const initialState: ArticlesPageSchema = {
     ids: [],
     page: 1,
     has: true,
+    _inited: false,
 };
 
 describe('tests for ArticlesSlice', () => {

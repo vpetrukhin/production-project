@@ -10,10 +10,11 @@ export type ReducerListEntries = [StateSchemaKeys, Reducer]
 
 export interface DynamicModuleProps {
     reducers: ReducerList;
+    removeAfterUnmount?: boolean;
 }
 
 export const DynamicModule: FC<DynamicModuleProps> = (props) => {
-    const { children, reducers } = props;
+    const { children, reducers, removeAfterUnmount = true } = props;
 
     const store = useStore() as StateWithReducerManager;
     const dispatch = useDispatch();
@@ -26,8 +27,10 @@ export const DynamicModule: FC<DynamicModuleProps> = (props) => {
 
         return () => {
             Object.entries(reducers).forEach(([name, reducer]) => {
-                dispatch({ type: `@${name}/remove` });
-                store.reducerManager.remove(`${name}` as StateSchemaKeys);
+                if (removeAfterUnmount) {
+                    dispatch({ type: `@${name}/remove` });
+                    store.reducerManager.remove(`${name}` as StateSchemaKeys);
+                }
             });
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps

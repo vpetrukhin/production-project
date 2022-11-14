@@ -22,6 +22,7 @@ const initialState: ArticlesPageSchema = {
     ids: [],
     page: 1,
     has: true,
+    _inited: false,
 };
 
 export const ArticlesSlice = createSlice({
@@ -37,6 +38,8 @@ export const ArticlesSlice = createSlice({
 
             state.view = view;
             state.limit = view === ArticleView.SMALL ? 9 : 4;
+
+            state._inited = true;
         },
         setPage: state => {
             state.page = state.page + 1;

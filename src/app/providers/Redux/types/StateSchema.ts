@@ -3,12 +3,12 @@ import { UserSchema } from 'entity/User';
 import { Action, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ProfileSchema } from 'entity/Profile';
 import { AxiosInstance } from 'axios';
-import { To, NavigateOptions } from 'react-router-dom';
 import { createReduxStore } from '..';
 import { ArticleSchema } from 'entity/Article';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailsPage';
 import { AddCommentFormSchema } from 'feutures/addComment';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ScrollStorageSchema } from 'feutures/scrollStorage';
 
 export interface AsyncStateSchema {
     login?: LoginSchema | undefined,
@@ -20,6 +20,7 @@ export interface AsyncStateSchema {
 }
 export interface StateSchema extends AsyncStateSchema {
     user: UserSchema,
+    scrollStorage: ScrollStorageSchema
 }
 
 export type StateSchemaKeys = keyof StateSchema;

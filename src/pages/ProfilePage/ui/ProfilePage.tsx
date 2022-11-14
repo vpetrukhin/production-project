@@ -7,7 +7,7 @@ import { DynamicModule, ReducerList } from 'shared/lib/DynamicModule/DynamicModu
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useParams } from 'react-router-dom';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 // import cls from './ProfilePage.module.scss';
 
 
