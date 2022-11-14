@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/Redux';
 import { ArticleView, getArticleError } from 'entity/Article';
-import { getArticlesError, getArticlesHas, getArticlesLimit, getArticlesLoading, getArticlesPage, getArticlesView } from './ArticlesPageSelectors';
+import { getArticlesError, getArticlesHas, getArticlesInited, getArticlesLimit, getArticlesLoading, getArticlesPage, getArticlesView } from './ArticlesPageSelectors';
 
 describe('tests for ArticlesPageSelectors', () => {
     test('test for getArticlesLoading', () => {
@@ -98,5 +98,21 @@ describe('tests for ArticlesPageSelectors', () => {
         };
 
         expect(getArticlesHas(state as StateSchema)).toBe(undefined);
+    });
+    test('test for getArticlesInited', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {
+                _inited: true
+            }
+        };
+
+        expect(getArticlesInited(state as StateSchema)).toBe(true);
+    });
+    test('test for getArticlesInited with empty state', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {}
+        };
+
+        expect(getArticlesInited(state as StateSchema)).toBe(undefined);
     });
 });
