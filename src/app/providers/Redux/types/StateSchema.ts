@@ -34,11 +34,10 @@ export interface StateWithReducerManager extends EnhancedStore<StateSchema, any>
     reducerManager: ReducerManager;
 }
 
-export type NavigatorType = (to: To, options?: NavigateOptions) => void;
+// export type NavigatorType = (to: To, options?: NavigateOptions) => void;
 
 export interface ThunkExtraArg {
     api: AxiosInstance;
-    navigator?: NavigatorType
 }
 
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
