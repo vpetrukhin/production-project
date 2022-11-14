@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { getArticleDetailsCommentsLoading } from '../model/selectors/comments';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { fetchCommentsList } from '../model/services/fetchCommentsLIst';
+import { fetchCommentsList } from '../model/services/fetchCommentsList/fetchCommentsLIst';
 import { AddCommentForm } from 'feutures/addComment';
 import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
 import { Page } from 'shared/ui/Page/Page';

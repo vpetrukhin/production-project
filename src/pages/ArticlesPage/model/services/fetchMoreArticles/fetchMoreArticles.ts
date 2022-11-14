@@ -1,4 +1,4 @@
-import { getArticlesLimit, getArticlesPage } from './../selectors/ArticlesPageSelectors';
+import { getArticlesLimit, getArticlesPage } from '../../selectors/ArticlesPageSelectors';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/Redux';
 import { Article } from 'entity/Article';

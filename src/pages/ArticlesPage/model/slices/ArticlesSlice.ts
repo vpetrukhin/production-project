@@ -3,8 +3,8 @@ import { createSlice, createEntityAdapter, PayloadAction } from '@reduxjs/toolki
 import { Article, ArticleView } from 'entity/Article';
 import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/config/const/localStorage';
-import { fetchArticles } from '../services/fetchArticles';
-import { fetchMoreArticles } from '../services/fetchMoreArticles';
+import { fetchArticles } from '../services/fetchArticles/fetchArticles';
+import { fetchMoreArticles } from '../services/fetchMoreArticles/fetchMoreArticles';
 
 
 export const articlesAdapter = createEntityAdapter<Article>({
@@ -33,7 +33,7 @@ export const ArticlesSlice = createSlice({
             localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload);
         },
         inited: state => {
-            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView;
+            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView || ArticleView.SMALL;
 
             state.view = view;
             state.limit = view === ArticleView.SMALL ? 9 : 4;

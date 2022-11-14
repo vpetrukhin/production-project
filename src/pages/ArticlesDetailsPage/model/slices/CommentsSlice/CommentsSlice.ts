@@ -2,7 +2,7 @@ import { ArticleDetailsCommentsSchema } from '../../types/ArticleDetailsComments
 import { StateSchema } from 'app/providers/Redux';
 import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IComment } from 'entity/Comment';
-import { fetchCommentsList } from '../../services/fetchCommentsLIst';
+import { fetchCommentsList } from '../../services/fetchCommentsList/fetchCommentsLIst';
 
 const commentAdapter = createEntityAdapter<IComment>({
     selectId: (comment) => comment.id,

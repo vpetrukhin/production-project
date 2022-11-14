@@ -8,8 +8,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { Page } from 'shared/ui/Page/Page';
 import { getArticlesHas, getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors';
-import { fetchArticles } from '../model/services/fetchArticles';
-import { fetchMoreArticles } from '../model/services/fetchMoreArticles';
+import { fetchArticles } from '../model/services/fetchArticles/fetchArticles';
+import { fetchMoreArticles } from '../model/services/fetchMoreArticles/fetchMoreArticles';
 import { ArticlesActions, ArticlesReducer, getArticles } from '../model/slices/ArticlesSlice';
 import cls from './ArticlesPage.module.scss';
 

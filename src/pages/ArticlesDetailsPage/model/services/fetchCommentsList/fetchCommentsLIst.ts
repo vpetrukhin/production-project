@@ -26,7 +26,6 @@ export const fetchCommentsList = createAsyncThunk<IComment[], string | undefined
 
             return response.data;
         } catch (e) {
-            console.log(e);
             return rejectWithValue(ValidateErrors.SERVER_ERROR);
         }
     }
