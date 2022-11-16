@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/Redux';
-import { ArticleView, getArticleError } from 'entity/Article';
+import { ArticleView } from 'entity/Article';
 import { getArticlesError, getArticlesHas, getArticlesInited, getArticlesLimit, getArticlesLoading, getArticlesPage, getArticlesView } from './ArticlesPageSelectors';
 
 describe('tests for ArticlesPageSelectors', () => {

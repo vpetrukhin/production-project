@@ -7,7 +7,7 @@ import { StoreDecorator } from 'shared/config/storybook/decorators';
 import { ArticleType, BlockType } from '../../model/types/article';
 
 export default {
-    title: 'entity/ArticleDetails',
+    title: 'entity/article/ArticleDetails',
     component: ArticleDetails,
 } as ComponentMeta<typeof ArticleDetails>;
 

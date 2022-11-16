@@ -7,7 +7,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { getAddCommentFormText } from '../../model/selectors/getAddCommentFormText';
 import { AddCommentFormActions, AddCommentFormReducer } from '../../model/slices/AddCommentFormSlice';
-import cls from './addCommentForm.module.scss';
+import cls from './AddCommentForm.module.scss';
 
 interface addCommentFormProps {
     className?: string;
