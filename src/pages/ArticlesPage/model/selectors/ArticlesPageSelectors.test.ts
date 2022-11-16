@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/Redux';
-import { ArticleView } from 'entity/Article';
-import { getArticlesError, getArticlesHas, getArticlesInited, getArticlesLimit, getArticlesLoading, getArticlesPage, getArticlesView } from './ArticlesPageSelectors';
+import { ArticleSortTypes, ArticleType, ArticleView } from 'entity/Article';
+import { getArticlesError, getArticlesHas, getArticlesInited, getArticlesLimit, getArticlesLoading, getArticlesOrder, getArticlesPage, getArticlesSearch, getArticlesSort, getArticlesType, getArticlesView } from './ArticlesPageSelectors';
 
 describe('tests for ArticlesPageSelectors', () => {
     test('test for getArticlesLoading', () => {
@@ -114,5 +114,69 @@ describe('tests for ArticlesPageSelectors', () => {
         };
 
         expect(getArticlesInited(state as StateSchema)).toBe(undefined);
+    });
+    test('test for getArticlesType', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {
+                type: ArticleType.ECONOMY
+            }
+        };
+
+        expect(getArticlesType(state as StateSchema)).toBe(ArticleType.ECONOMY);
+    });
+    test('test for getArticlesType with empty state', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {}
+        };
+
+        expect(getArticlesType(state as StateSchema)).toBe(ArticleType.All);
+    });
+    test('test for getArticlesOrder', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {
+                order: 'asc'
+            }
+        };
+
+        expect(getArticlesOrder(state as StateSchema)).toBe('asc');
+    });
+    test('test for getArticlesOrder with empty state', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {}
+        };
+
+        expect(getArticlesOrder(state as StateSchema)).toBe('asc');
+    });
+    test('test for getArticlesSearch', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {
+                search: 'search'
+            }
+        };
+
+        expect(getArticlesSearch(state as StateSchema)).toBe('search');
+    });
+    test('test for getArticlesSearch with empty state', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {}
+        };
+
+        expect(getArticlesSearch(state as StateSchema)).toBe('');
+    });
+    test('test for getArticlesSort', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {
+                sort: ArticleSortTypes.CREATED
+            }
+        };
+
+        expect(getArticlesSort(state as StateSchema)).toBe(ArticleSortTypes.CREATED);
+    });
+    test('test for getArticlesSort with empty state', () => {
+        const state: DeepPartial<StateSchema> = {
+            articlesPage: {}
+        };
+
+        expect(getArticlesSort(state as StateSchema)).toBe(ArticleSortTypes.VIEWS);
     });
 });
