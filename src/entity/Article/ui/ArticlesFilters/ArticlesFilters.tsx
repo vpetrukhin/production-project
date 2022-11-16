@@ -13,6 +13,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { Card, CardTheme } from 'shared/ui/Card/Card';
 import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
+import { useDebounce } from 'shared/lib/hooks/useDebouce';
 
 interface ArticlesFiltersProps {
     className?: string;
@@ -70,15 +71,21 @@ export const ArticlesFilters = (props: ArticlesFiltersProps) => {
         },
     ], [t]);
 
-    const onSortTypeSort = useCallback((newSortType: ArticleSortTypes) => {
-        dispatch(ArticlesActions.setSort(newSortType));
+    const fetchData = useCallback(() => {
         dispatch(fetchArticles());
     }, [dispatch]);
 
+    const debouncedFetchData = useDebounce(fetchData, 500);
+
+    const onSortTypeSort = useCallback((newSortType: ArticleSortTypes) => {
+        dispatch(ArticlesActions.setSort(newSortType));
+        fetchData();
+    }, [dispatch, fetchData]);
+
     const onOrderSort = useCallback((newOrder: OrderType) => {
         dispatch(ArticlesActions.setOrder(newOrder));
-        dispatch(fetchArticles());
-    }, [dispatch]);
+        fetchData();
+    }, [dispatch, fetchData]);
 
     const onChangeView = useCallback((newView: ArticleView) => {
         dispatch(ArticlesActions.setView(newView));
@@ -86,13 +93,13 @@ export const ArticlesFilters = (props: ArticlesFiltersProps) => {
 
     const onSearchChange = useCallback((newSearch: string) => {
         dispatch(ArticlesActions.setSearch(newSearch));
-        dispatch(fetchArticles());
-    }, [dispatch]);
+        debouncedFetchData();
+    }, [dispatch, debouncedFetchData]);
 
     const onTypeChange = useCallback((newType: ArticleType) => {
         dispatch(ArticlesActions.setType(newType));
-        dispatch(fetchArticles());
-    }, [dispatch]);
+        fetchData();
+    }, [dispatch, fetchData]);
 
 
     return (
