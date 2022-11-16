@@ -10,7 +10,7 @@ interface CurrencySelectProps {
     onChange?: (value: Currency) => void
 }
 
-const CurrencyItems: Array<SelectItem> = [
+const CurrencyItems: Array<SelectItem<Currency>> = [
     {
         value: Currency.EUR,
         content: Currency.EUR

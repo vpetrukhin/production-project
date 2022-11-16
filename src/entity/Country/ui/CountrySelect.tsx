@@ -10,7 +10,7 @@ interface CountryProps {
     readonly?: boolean;
 }
 
-const countryItems: Array<SelectItem> = [
+const countryItems: Array<SelectItem<Country>> = [
     {
         value: Country.Germany,
         content: Country.Germany
