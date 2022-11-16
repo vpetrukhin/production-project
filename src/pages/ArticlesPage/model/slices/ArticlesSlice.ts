@@ -1,6 +1,6 @@
 import { StateSchema } from 'app/providers/Redux';
 import { createSlice, createEntityAdapter, PayloadAction } from '@reduxjs/toolkit';
-import { Article, ArticleView } from 'entity/Article';
+import { Article, ArticleSortTypes, ArticleType, ArticleView } from 'entity/Article';
 import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/config/const/localStorage';
 import { fetchArticles } from '../services/fetchArticles/fetchArticles';
@@ -21,8 +21,12 @@ const initialState: ArticlesPageSchema = {
     entities: {},
     ids: [],
     page: 1,
+    limit: 9,
     has: true,
     _inited: false,
+    order: 'asc',
+    search: '',
+    sort: ArticleSortTypes.CREATED,
 };
 
 export const ArticlesSlice = createSlice({
@@ -43,7 +47,19 @@ export const ArticlesSlice = createSlice({
         },
         setPage: state => {
             state.page = state.page + 1;
-        }
+        },
+        setOrder: (state, action: PayloadAction<'asc' | 'desc'>) => {
+            state.order = action.payload;
+        },
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search = action.payload;
+        },
+        setSort: (state, action: PayloadAction<ArticleSortTypes>) => {
+            state.sort = action.payload;
+        },
+        setType: (state, action: PayloadAction<ArticleType>) => {
+            state.type = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchArticles.pending, (state) => {
@@ -61,11 +77,12 @@ export const ArticlesSlice = createSlice({
         builder.addCase(fetchMoreArticles.pending, (state) => {
             state.error = undefined;
             state.isLoading = true;
+            articlesAdapter.removeAll(state);
         });
         builder.addCase(fetchMoreArticles.fulfilled, (state, action: PayloadAction<Article[]>) => {
             state.isLoading = false;
             articlesAdapter.addMany(state, action);
-            state.has = action.payload.length > 0;
+            state.has = action.payload.length >= state.limit;
         });
         builder.addCase(fetchMoreArticles.rejected, (state, action) => {
             state.error = action.payload;

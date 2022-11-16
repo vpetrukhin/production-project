@@ -1,5 +1,4 @@
-import { ArticleList, ArticlesViewSelector } from 'entity/Article';
-import { ArticleView } from 'entity/Article/model/types/article';
+import { ArticleList, ArticlesFilters } from 'entity/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Page } from 'widgets/Page/Page';
@@ -33,10 +32,6 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
         }
     });
 
-    const onChangeView = useCallback((newView: ArticleView) => {
-        dispatch(ArticlesActions.setView(newView));
-    }, [dispatch]);
-
     const onFetchMoreArticles = useCallback(() => {
         if (hasMoreArticles) {
             dispatch(ArticlesActions.setPage());
@@ -55,10 +50,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
                 className={classNames(cls.ArtilclesPage, {}, [className])}
                 onScrollEndCallback={onFetchMoreArticles}
             >
-                <ArticlesViewSelector
-                    view={view}
-                    onViewChange={onChangeView}
-                />
+                <ArticlesFilters />
                 <ArticleList
                     articles={articles}
                     view={view}

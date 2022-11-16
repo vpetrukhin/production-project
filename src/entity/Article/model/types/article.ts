@@ -1,5 +1,12 @@
 import { User } from 'entity/User';
 
+export enum ArticleSortTypes {
+    VIEWS = 'views',
+    CREATED = 'createdAt'
+}
+
+export type OrderType = 'asc' | 'desc';
+
 export enum BlockType {
     CODE = 'CODE',
     TEXT = 'TEXT',
@@ -31,6 +38,7 @@ export interface ArticleTextBlock extends Block {
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock
 
 export enum ArticleType {
+    All = 'ALL',
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMY = 'ECONOMY',

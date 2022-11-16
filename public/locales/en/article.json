@@ -1,4 +1,15 @@
 {
   "К списку статей": "Back to articles",
-  "sait-so-statyami": "Site with articles"
+  "sait-so-statyami": "Site with articles",
+  "sortirovat-po": "Sort by",
+  "prosmotram": "Views",
+  "data-sozdaniya": "Created date",
+  "po": "By",
+  "vozrastaniyu": "Asc",
+  "ubyvaniyu": "Descending",
+  "vvedite-zapros": "Enter a request",
+  "poisk": "Search",
+  "all": "All",
+  "it": "IT",
+  "sciense": "Science"
 }

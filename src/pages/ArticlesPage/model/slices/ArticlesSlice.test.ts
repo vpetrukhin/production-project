@@ -1,4 +1,4 @@
-import { Article, ArticleType, ArticleView, BlockType } from 'entity/Article';
+import { Article, ArticleSortTypes, ArticleType, ArticleView, BlockType } from 'entity/Article';
 import { fetchArticles } from '../services/fetchArticles/fetchArticles';
 import { fetchMoreArticles } from '../services/fetchMoreArticles/fetchMoreArticles';
 import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
@@ -163,8 +163,12 @@ const initialState: ArticlesPageSchema = {
     entities: {},
     ids: [],
     page: 1,
+    limit: 9,
     has: true,
     _inited: false,
+    order: 'asc',
+    search: '',
+    sort: ArticleSortTypes.CREATED,
 };
 
 describe('tests for ArticlesSlice', () => {

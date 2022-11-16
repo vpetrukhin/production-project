@@ -1,7 +1,7 @@
-import { getArticlesLimit, getArticlesPage } from '../../selectors/ArticlesPageSelectors';
+import { getArticlesLimit, getArticlesOrder, getArticlesPage, getArticlesSearch, getArticlesSort, getArticlesType } from '../../selectors/ArticlesPageSelectors';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/Redux';
-import { Article } from 'entity/Article';
+import { Article, ArticleType } from 'entity/Article';
 import { ValidateErrors } from 'entity/Profile';
 
 export const fetchMoreArticles = createAsyncThunk<Article[], void, ThunkConfig<string>>(
@@ -11,13 +11,21 @@ export const fetchMoreArticles = createAsyncThunk<Article[], void, ThunkConfig<s
 
         const pageNum = getArticlesPage(getState());
         const limit = getArticlesLimit(getState());
+        const sort = getArticlesSort(getState());
+        const order = getArticlesOrder(getState());
+        const search = getArticlesSearch(getState());
+        const type = getArticlesType(getState());
 
         try {
             const response = await extra.api.get<Article[]>('articles/', {
                 params: {
                     _expand: 'user',
                     _page: pageNum,
+                    _sort: sort,
+                    _order: order,
+                    q: search,
                     _limit: limit,
+                    type: type === ArticleType.All ? undefined : type,
                 }
             });
 

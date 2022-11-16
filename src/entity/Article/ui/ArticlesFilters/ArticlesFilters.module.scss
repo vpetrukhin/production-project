@@ -1,0 +1,13 @@
+.ArticlesFilters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.input {
+    flex-basis: 100%;
+}
+
+.selector {
+    margin-left: auto;
+}
