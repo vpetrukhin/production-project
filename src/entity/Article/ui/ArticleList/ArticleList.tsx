@@ -3,12 +3,14 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleList.module.scss';
 import { ArticleItem } from '../ArticleItem/ArticleItem';
 import { ArticleSkeletonItem } from '../ArticleItem/ArticleSkeletonItem/ArticleSkeletonItem';
+import { HTMLAttributeAnchorTarget } from 'react';
 
 interface ArticleListProps {
     className?: string;
     articles: Article[];
     view?: ArticleView;
     isLoading?: boolean;
+    target?: HTMLAttributeAnchorTarget
 }
 
 const getLoadingArticles = (view: ArticleView) => {
@@ -23,7 +25,7 @@ const getLoadingArticles = (view: ArticleView) => {
 };
 
 export const ArticleList = (props: ArticleListProps) => {
-    const { className, articles, view = ArticleView.SMALL, isLoading } = props;
+    const { className, articles, view = ArticleView.SMALL, isLoading, target } = props;
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
@@ -33,6 +35,7 @@ export const ArticleList = (props: ArticleListProps) => {
                         article={article}
                         key={article.id}
                         view={view}
+                        target={target}
                     />)
                 ))
                 : null

@@ -5,7 +5,7 @@ import { ProfileSchema } from 'entity/Profile';
 import { AxiosInstance } from 'axios';
 import { createReduxStore } from '..';
 import { ArticleSchema } from 'entity/Article';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailsPage';
+import { ArticleDetailsCommentsSchema, ArticleDetailsRecomenationSchema } from 'pages/ArticlesDetailsPage';
 import { AddCommentFormSchema } from 'feutures/addComment';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { ScrollStorageSchema } from 'feutures/scrollStorage';
@@ -15,6 +15,7 @@ export interface AsyncStateSchema {
     profile?: ProfileSchema | undefined,
     article?: ArticleSchema | undefined,
     articleDetailsComments?: ArticleDetailsCommentsSchema | undefined,
+    articleDetailsRecomendation?: ArticleDetailsRecomenationSchema | undefined,
     addCommentFrom?: AddCommentFormSchema,
     articlesPage?: ArticlesPageSchema,
 }

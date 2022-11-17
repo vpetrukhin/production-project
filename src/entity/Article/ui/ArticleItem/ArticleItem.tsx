@@ -11,16 +11,19 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPaths } from 'shared/config/router/routerConfig';
 import { ArticleSkeletonItem } from './ArticleSkeletonItem/ArticleSkeletonItem';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { HTMLAttributeAnchorTarget } from 'react';
 
 interface ArticleItemProps {
     className?: string;
     article: Article;
     view?: ArticleView;
     isLoading?: boolean;
+    target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleItem = (props: ArticleItemProps) => {
-    const { className, article, view = ArticleView.SMALL, isLoading } = props;
+    const { className, article, view = ArticleView.SMALL, isLoading, target } = props;
     const {t} = useTranslation();
     const navigate = useNavigate();
 
@@ -57,12 +60,17 @@ export const ArticleItem = (props: ArticleItemProps) => {
                     <img className={cls.img} src={article.img} alt={article.title} />
                     <ArticalTextBlockComponent className={cls.text} block={textBlock} />
                     <div className={cls.footer}>
-                        <Button 
-                            onClick={onNavigateToArticle}
-                            theme={ButtonTheme.OUTLINE}
+                        <AppLink
+                            to={routesPaths.articles_details + article.id}
+                            target={target}
                         >
-                            {t('Читать далее')}...
-                        </Button>
+                            <Button 
+                                onClick={onNavigateToArticle}
+                                theme={ButtonTheme.OUTLINE}
+                            >
+                                {t('Читать далее')}...
+                            </Button>
+                        </AppLink>
                         {views}
                     </div>
                 </Card>
@@ -71,8 +79,12 @@ export const ArticleItem = (props: ArticleItemProps) => {
     }
 
     return (
-        <div className={classNames(cls.ArticleItem, {}, [className, cls[view]])}>
-            <Card className={cls.card} onClick={onNavigateToArticle}>
+        <AppLink
+            to={routesPaths.articles_details + article.id}
+            className={classNames(cls.ArticleItem, {}, [className, cls[view]])}
+            target={target}
+        >
+            <Card className={cls.card}>
                 <div className={cls.imgWrapper}>
                     <img className={cls.img} src={article.img} alt={article.title} />
                     <Text className={cls.date} text={article.createdAt} />
@@ -83,6 +95,6 @@ export const ArticleItem = (props: ArticleItemProps) => {
                 </div>
                 <Text className={cls.title} text={article.title} />
             </Card>
-        </div>
+        </AppLink>
     );
 };

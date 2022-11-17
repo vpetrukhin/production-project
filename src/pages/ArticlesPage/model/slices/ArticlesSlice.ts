@@ -77,7 +77,7 @@ export const ArticlesSlice = createSlice({
         builder.addCase(fetchMoreArticles.pending, (state) => {
             state.error = undefined;
             state.isLoading = true;
-            articlesAdapter.removeAll(state);
+            // articlesAdapter.removeAll(state);
         });
         builder.addCase(fetchMoreArticles.fulfilled, (state, action: PayloadAction<Article[]>) => {
             state.isLoading = false;
