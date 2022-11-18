@@ -17,9 +17,6 @@ import cls from './ArticleDetails.module.scss';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { Button } from 'shared/ui/Button/Button';
-import { useNavigate } from 'react-router-dom';
-import { routesPaths } from 'shared/config/router/routerConfig';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -33,7 +30,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     const isLoading = useSelector(getArticleIsLoading);
     const error = useSelector(getArticleError);
     const article = useSelector(getArticleData);
-    const navigate = useNavigate();
+    
 
     let content;
 
@@ -42,10 +39,6 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
             dispatch(fetchArticleById(articleId));
         }
     });
-
-    const navigateToArticleList = useCallback(() => {
-        navigate(routesPaths.articles);
-    }, [navigate]);
 
     const renderBlocks = useCallback((block: ArticleBlock) => {
         switch (block.type) {
@@ -120,11 +113,6 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     return (
         <DynamicModule reducers={{article: ArticleReducer}}>
             <div className={classNames(cls.ArticleDetails, {}, [className])}>
-                <Button
-                    onClick={navigateToArticleList}
-                >
-                    {'<- ' + t('К списку статей')}
-                </Button>
                 {content}
             </div>
         </DynamicModule>

@@ -6,7 +6,7 @@ import { Theme } from 'app/providers/theme';
 import { StoreDecorator } from 'shared/config/storybook/decorators';
 
 export default {
-    title: 'pages/ArticlesDetailsPage',
+    title: 'pages/ArticlesDetails/ArticlesDetailsPage',
     component: ArticlesDetailsPage,
     argTypes: {
         backgroundColor: { control: 'color' },

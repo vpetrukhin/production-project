@@ -19,6 +19,7 @@ import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { fetchRecomendationList } from '../model/services/fetchRecomendationList/fetchRecomendationList';
 import { getArticleDetailsRecomendationsLoading } from '../model/selectors/recomendations/recomendation';
+import { ArticleDetailsHeader } from './ArticleDetailsHeader/ArticleDetailsHeader';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -50,10 +51,11 @@ const ArticlesDetailsPage = (props: ArticlesDetailsPageProps) => {
             articleDetailsRecomendation: RecomendationReducer
         }}>
             <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+                <ArticleDetailsHeader id={id} />
                 <ArticleDetails articleId={id || ''} />
                 <Text title={t('rekomendacii')} />
                 <ArticleList 
-                    articles={recommendations} 
+                    articles={recommendations}
                     isLoading={recommendationsIsLoading}
                     className={cls.recommendation}
                     target={'_blank'}

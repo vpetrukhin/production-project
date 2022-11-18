@@ -1,3 +1,4 @@
+export { getCanEdit } from './model/selectors/getCanEdit/getCanEdit';
 export { ArticlesFilters } from './ui/ArticlesFilters/ArticlesFilters';
 export { ArticleView, Article, BlockType, ArticleType, ArticleSortTypes } from './model/types/article';
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
