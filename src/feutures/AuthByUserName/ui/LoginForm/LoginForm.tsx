@@ -43,25 +43,25 @@ const LoginForm = memo((props: LoginFormProps) => {
     return (
         <DynamicModule reducers={{ login: LoginReducer }}>
             <div className={classNames(cls.LoginForm, {}, [className])}>
-                <Text color={TextColor.SECONDARY} title={t('Форма авторизации')} />
+                <Text color={TextColor.PRIMARY} title={t('Форма авторизации')} />
                 {error && <Text text={t('Неправильный логин или пароль')} error />}
                 <Input 
                     autoFocus
                     placeholder={t('Логин')}
                     value={username}
                     onChange={onUsernameChange}
-                    theme={InputTheme.SECONDARY}
+                    theme={InputTheme.INVERTED}
                 />
                 <Input
                     placeholder={t('Пароль')}
                     value={password}
                     onChange={onPasswordChange}
-                    theme={InputTheme.SECONDARY}
+                    theme={InputTheme.INVERTED}
                 />
                 <Button
                     loading={isLoading}
                     disabled={isLoading}
-                    theme={ButtonTheme.OUTLINE}
+                    theme={ButtonTheme.INVERTED_OUTLINE}
                     className={cls.btn}
                     onClick={onLoginClick}
                 >

@@ -42,7 +42,6 @@ export const NavBar = (props: NavbarProps) => {
         return (
             <div className={classNames(cls.NavBar, {}, [className])}>
                 <div className={cls.links}>
-                    <Text color={TextColor.PRIMARY} text={userInfo.username} />
                     <Button theme={ButtonTheme.INVERTED_OUTLINE} onClick={handleLogout}>
                         {t('Выйти')}
                     </Button>
@@ -54,7 +53,7 @@ export const NavBar = (props: NavbarProps) => {
     return (
         <div className={classNames(cls.NavBar, {}, [className])}>
             <div className={cls.links}>
-                <Button theme={ButtonTheme.OUTLINE} onClick={handleOpenModal}>
+                <Button theme={ButtonTheme.INVERTED_OUTLINE} onClick={handleOpenModal}>
                     {t('Войти')}
                 </Button>
                 {isModalOpen && <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />}

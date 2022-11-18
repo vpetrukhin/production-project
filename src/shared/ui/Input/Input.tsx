@@ -9,7 +9,7 @@ type HTMLInputProps = Omit<
 
 export enum InputTheme {
     PRIMARY = 'primary',
-    SECONDARY = 'secondary'
+    INVERTED = 'inverted'
 }
 
 interface InputProps extends HTMLInputProps {

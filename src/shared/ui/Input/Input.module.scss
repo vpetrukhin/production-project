@@ -33,37 +33,21 @@
         }
     }
 
-    &.secondary {
-        color: var(--secondary-color);
+    &.inverted {
+        color: var(--inverted-primary-color);
 
         &:focus {
-            border-bottom: 1px solid var(--secondary-color);
+            border-bottom: 1px solid var(--inverted-primary-color);
         }
     }
 }
 
 .label {
-    .primary {
+    &.primary {
         color: var(--primary-color);
     }
 
-    .secondary {
-        color: var(--secondary-color);
+    &.inverted {
+        color: var(--inverted-primary-color);
     }
 }
-
-// .primary {
-//     .label {
-
-//     }
-// }
-
-// .secondary {
-//     .label {
-//         color: var(--secondary-color);
-//     }
-
-//     .input {
-
-//     }
-// }

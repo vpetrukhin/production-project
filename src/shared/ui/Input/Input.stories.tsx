@@ -37,14 +37,14 @@ PrimaryDark.args = {
     theme: InputTheme.PRIMARY
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
+export const Inverted = Template.bind({});
+Inverted.args = {
     placeholder: 'Text',
-    theme: InputTheme.SECONDARY
+    theme: InputTheme.INVERTED
 };
-export const SecondaryDark = Template.bind({});
-SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
-SecondaryDark.args = {
+export const InvertedDark = Template.bind({});
+InvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
+InvertedDark.args = {
     placeholder: 'Text',
-    theme: InputTheme.SECONDARY
+    theme: InputTheme.INVERTED
 };
