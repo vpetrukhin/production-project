@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { FormEvent, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -36,38 +36,39 @@ const LoginForm = memo((props: LoginFormProps) => {
         dispatch(LoginActions.setPassword(value));
     }, [dispatch]);
 
-    const onLoginClick = useCallback(() => {
+    const onLoginClick = useCallback((e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         dispatch(loginByUsername({ username, password }));
     }, [dispatch, password, username]);
 
     return (
         <DynamicModule reducers={{ login: LoginReducer }}>
-            <div className={classNames(cls.LoginForm, {}, [className])}>
+            <form onSubmit={onLoginClick} className={classNames(cls.LoginForm, {}, [className])}>
                 <Text color={TextColor.PRIMARY} title={t('Форма авторизации')} />
                 {error && <Text text={t('Неправильный логин или пароль')} error />}
                 <Input 
                     autoFocus
-                    placeholder={t('Логин')}
+                    label={t('Логин')}
                     value={username}
                     onChange={onUsernameChange}
                     theme={InputTheme.INVERTED}
                 />
                 <Input
-                    placeholder={t('Пароль')}
+                    label={t('Пароль')}
                     value={password}
                     onChange={onPasswordChange}
                     theme={InputTheme.INVERTED}
                 />
                 <Button
+                    type='submit'
                     loading={isLoading}
                     disabled={isLoading}
                     theme={ButtonTheme.INVERTED_OUTLINE}
                     className={cls.btn}
-                    onClick={onLoginClick}
                 >
                     {t('Войти')}
                 </Button> 
-            </div>
+            </form>
         </DynamicModule>
     );
 });

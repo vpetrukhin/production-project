@@ -9,6 +9,7 @@
     padding: 0;
     background-color: transparent;
     border: none;
+    border-bottom: 1px solid var(--disabled-color);
     font: var(--font-m);
 
     &::placeholder {

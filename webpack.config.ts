@@ -9,6 +9,8 @@ const paths: Paths = {
     html: path.resolve(__dirname, 'public', 'index.html'),
     build: path.resolve(__dirname, 'build'),
     src: path.resolve(__dirname, 'src'),
+    buildLocales: path.resolve(__dirname, 'build', 'locales'),
+    locales: path.resolve(__dirname, 'public', 'locales'),
 };
 
 export default (env: buildEnv) => {
