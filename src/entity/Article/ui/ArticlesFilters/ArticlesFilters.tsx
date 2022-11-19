@@ -7,13 +7,15 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ArticlesActions } from 'pages/ArticlesPage';
 import { ArticlesViewSelector } from '../ArticlesViewSelector/ArticlesViewSelector';
 import { useSelector } from 'react-redux';
-import { getArticlesOrder, getArticlesSearch, getArticlesSort, getArticlesType, getArticlesView } from 'pages/ArticlesPage/model/selectors/ArticlesPageSelectors';
+import { getArticlesOrder, getArticlesSearch, getArticlesSort, getArticlesType, getArticlesView } from 'pages/ArticlesPage/model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
 import cls from './ArticlesFilters.module.scss';
 import { Input } from 'shared/ui/Input/Input';
 import { Card, CardTheme } from 'shared/ui/Card/Card';
 import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
 import { useDebounce } from 'shared/lib/hooks/useDebouce';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { addQueryParams } from 'shared/lib/url/url';
 
 interface ArticlesFiltersProps {
     className?: string;

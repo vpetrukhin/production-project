@@ -6,11 +6,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { getArticlesHas, getArticlesInited, getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors';
-import { fetchArticles } from '../model/services/fetchArticles/fetchArticles';
+import { getArticlesHas, getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
 import { fetchMoreArticles } from '../model/services/fetchMoreArticles/fetchMoreArticles';
 import { ArticlesActions, ArticlesReducer, getArticles } from '../model/slices/ArticlesSlice';
 import cls from './ArticlesPage.module.scss';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
+import { useSearchParams } from 'react-router-dom';
 
 interface ArtilclesPageProps {
     className?: string;
@@ -23,13 +24,10 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
     const isLoading = useSelector(getArticlesLoading);
     const view = useSelector(getArticlesView);
     const hasMoreArticles = useSelector(getArticlesHas);
-    const articlesInited = useSelector(getArticlesInited);
+    const [searchParams] = useSearchParams();
 
     useInitialEffect(() => {
-        if (!articlesInited) {
-            dispatch(ArticlesActions.inited());
-            dispatch(fetchArticles());
-        }
+        dispatch(initArticlesPage(searchParams));
     });
 
     const onFetchMoreArticles = useCallback(() => {
