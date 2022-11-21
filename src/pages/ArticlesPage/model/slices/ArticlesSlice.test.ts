@@ -188,7 +188,8 @@ describe('tests for ArticlesSlice', () => {
         )).toEqual({
             ...initialState,
             view: ArticleView.BIG,
-            limit: 4
+            limit: 4,
+            _inited: true
         });
     });
     test('test for setPage', () => {
@@ -219,7 +220,7 @@ describe('tests for ArticlesSlice', () => {
             ids: ['1'],
             entities: {
                 '1': articles[0],
-            }
+            },
         });
     });
     test('test for fetchMoreArticles.pending', () => {
@@ -241,7 +242,8 @@ describe('tests for ArticlesSlice', () => {
             ids: ['2'],
             entities: {
                 '2': articlesMore[0]
-            }
+            },
+            has: false
         });
     });
 });

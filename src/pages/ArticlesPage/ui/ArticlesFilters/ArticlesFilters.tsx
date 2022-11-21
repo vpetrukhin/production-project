@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArticleSortTypes, ArticleType, ArticleView, OrderType } from '../../model/types/article';
+import { ArticleSortTypes, ArticleType, ArticleView, OrderType } from 'entity/Article';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectItem } from 'shared/ui/Select/Select';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ArticlesActions } from 'pages/ArticlesPage';
-import { ArticlesViewSelector } from '../ArticlesViewSelector/ArticlesViewSelector';
+import { ArticlesViewSelector } from '../../../../entity/Article/ui/ArticlesViewSelector/ArticlesViewSelector';
 import { useSelector } from 'react-redux';
 import { getArticlesOrder, getArticlesSearch, getArticlesSort, getArticlesType, getArticlesView } from 'pages/ArticlesPage/model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
 import cls from './ArticlesFilters.module.scss';
@@ -14,8 +14,6 @@ import { Card, CardTheme } from 'shared/ui/Card/Card';
 import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
 import { useDebounce } from 'shared/lib/hooks/useDebouce';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { addQueryParams } from 'shared/lib/url/url';
 
 interface ArticlesFiltersProps {
     className?: string;

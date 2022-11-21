@@ -1,4 +1,4 @@
-import { ArticleList, ArticlesFilters } from 'entity/Article';
+import { ArticleList } from 'entity/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Page } from 'widgets/Page/Page';
@@ -12,6 +12,7 @@ import { ArticlesActions, ArticlesReducer, getArticles } from '../model/slices/A
 import cls from './ArticlesPage.module.scss';
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import { useSearchParams } from 'react-router-dom';
+import { ArticlesFilters } from './ArticlesFilters/ArticlesFilters';
 
 interface ArtilclesPageProps {
     className?: string;

@@ -1,4 +1,4 @@
-import { ArticleView } from 'entity/Article/model/types/article';
+import { ArticleView } from 'entity/Article';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticlesViewSelector.module.scss';
 import BlockIcon from 'shared/assets/icons/blocks.svg';
