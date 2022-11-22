@@ -12,7 +12,7 @@ module.exports = {
         'ecmaVersion': 'latest',
         'sourceType': 'module'
     },
-    'plugins': ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+    'plugins': ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'carav-plugin'],
     'rules': {
         'indent': ['error', 4],
         'linebreak-style': ['error', 'unix'],
@@ -27,6 +27,7 @@ module.exports = {
             ignoreCallee: ['TEST', 'test'],
             ignoreAttribute: ['to', 'data-testid', 'name', 'target']
         }],
-        '@typescript-eslint/no-non-null-assertion': 'off'
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        'carav-plugin/path-checker': 'error',
     }
 };

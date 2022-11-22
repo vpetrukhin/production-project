@@ -1,9 +1,9 @@
-import { ArticleView } from 'entity/Article';
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ArticlesViewSelector.module.scss';
 import BlockIcon from 'shared/assets/icons/blocks.svg';
 import ListIcon from 'shared/assets/icons/list.svg';
 import { Button } from 'shared/ui/Button/Button';
+import { ArticleView } from '../../model/types/article';
+import cls from './ArticlesViewSelector.module.scss';
 
 interface ArticlesViewSelectorProps {
     className?: string;

@@ -1,19 +1,25 @@
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { ArticleSortTypes, ArticleType, ArticleView, OrderType } from 'entity/Article';
+import { ArticlesViewSelector } from 'entity/Article/ui/ArticlesViewSelector/ArticlesViewSelector';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectItem } from 'shared/ui/Select/Select';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { ArticlesActions } from 'pages/ArticlesPage';
-import { ArticlesViewSelector } from '../../../../entity/Article/ui/ArticlesViewSelector/ArticlesViewSelector';
-import { useSelector } from 'react-redux';
-import { getArticlesOrder, getArticlesSearch, getArticlesSort, getArticlesType, getArticlesView } from 'pages/ArticlesPage/model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
-import cls from './ArticlesFilters.module.scss';
 import { Input } from 'shared/ui/Input/Input';
 import { Card, CardTheme } from 'shared/ui/Card/Card';
-import { fetchArticles } from 'pages/ArticlesPage/model/services/fetchArticles/fetchArticles';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
 import { useDebounce } from 'shared/lib/hooks/useDebouce';
+import {
+    getArticlesOrder,
+    getArticlesSearch,
+    getArticlesSort,
+    getArticlesType,
+    getArticlesView
+} from '../../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
+import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
+import { ArticlesActions } from '../../model/slices/ArticlesSlice';
+import cls from './ArticlesFilters.module.scss';
 
 interface ArticlesFiltersProps {
     className?: string;

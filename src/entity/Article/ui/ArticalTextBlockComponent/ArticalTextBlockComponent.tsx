@@ -1,6 +1,6 @@
-import { ArticleTextBlock } from 'entity/Article/model/types/article';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
+import { ArticleTextBlock } from '../../model/types/article';
 import cls from './ArticalTextBlockComponent.module.scss';
 
 interface ArticalTextBlockComponentProps {
