@@ -1,13 +1,9 @@
-// .ArticleSkeletonItem {}
-
 .SMALL {
     .card {
-        min-width: 230px;
+        width: 230px;
     }
 
     .info {
-        display: flex;
-        justify-content: space-between;
         margin-top: 8px;
     }
 
@@ -17,20 +13,10 @@
 }
 
 .BIG {
+    width: 100%;
+
     .card {
         margin-top: 20px;
-    }
-
-    .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .userWrapper {
-        display: flex;
-        align-items: center;
-        gap: 11px;
     }
 
     .title,
@@ -42,8 +28,5 @@
 
     .footer {
         margin-top: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 }

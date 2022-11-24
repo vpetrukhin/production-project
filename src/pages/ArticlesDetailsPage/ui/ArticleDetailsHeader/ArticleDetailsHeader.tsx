@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPaths } from 'shared/config/router/routerConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button/Button';
-import cls from './ArticleDetailsHeader.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticleDetailsHeaderProps {
     className?: string;
@@ -29,7 +29,7 @@ export const ArticleDetailsHeader = (props: ArticleDetailsHeaderProps) => {
     }, [id, navigate]);
 
     return (
-        <div className={classNames(cls.ArticleDetailsHeader, {}, [className])}>
+        <HStack justify='between' className={classNames('', {}, [className])}>
             <Button
                 onClick={navigateToArticleList}
             >
@@ -42,6 +42,6 @@ export const ArticleDetailsHeader = (props: ArticleDetailsHeaderProps) => {
                     {t('Редактировать')}
                 </Button>
             )}
-        </div>
+        </HStack>
     );
 };

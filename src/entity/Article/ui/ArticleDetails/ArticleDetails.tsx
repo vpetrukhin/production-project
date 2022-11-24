@@ -6,17 +6,18 @@ import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { fetchArticleById } from '../../model/services/fetchArticleById';
 import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticle';
-import { ArticleReducer } from '../../model/slice/ArticleSlice';
 import { ArticleBlock, BlockType } from '../../model/types/article';
+import { ArticleReducer } from '../../model/slice/ArticleSlice';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticalTextBlockComponent } from '../ArticalTextBlockComponent/ArticalTextBlockComponent';
 import cls from './ArticleDetails.module.scss';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import CalendarIcon from 'shared/assets/icons/calendar.svg';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticleDetailsProps {
     className?: string;
@@ -86,26 +87,26 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
     } else {
         content = 
             <>
-                <div className={cls.avatarWrapper}>
+                <HStack justify='center' className={cls.avatarWrapper}>
                     <img
                         className={cls.avatar}
                         src={article?.img}
                         alt={article?.title}
                     />
-                </div>
+                </HStack>
                 <Text
                     title={article?.title}
                     text={article?.subtitle}
                     size={TextSize.L}
                 />
-                <div className={cls.info}>
+                <HStack gap='4'>
                     <EyeIcon className={cls.icon} />
                     <Text text={String(article?.views)} />
-                </div>
-                <div className={cls.info}>
+                </HStack>
+                <HStack gap='4'>
                     <CalendarIcon className={cls.icon} />
                     <Text text={String(article?.createdAt)} />
-                </div>
+                </HStack>
                 {article?.blocks.map(renderBlocks)}
             </>;
     }

@@ -4,6 +4,7 @@ import ListIcon from 'shared/assets/icons/list.svg';
 import { Button } from 'shared/ui/Button/Button';
 import { ArticleView } from '../../model/types/article';
 import cls from './ArticlesViewSelector.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticlesViewSelectorProps {
     className?: string;
@@ -30,7 +31,7 @@ export const ArticlesViewSelector = (props: ArticlesViewSelectorProps) => {
     };
 
     return (
-        <div className={classNames(cls.ArticlesViewSelector, {}, [className])}>
+        <HStack gap='4' className={classNames(cls.ArticlesViewSelector, {}, [className])}>
             {viewTypes.map((viewType) => (
                 <Button
                     key={viewType.view}
@@ -40,6 +41,6 @@ export const ArticlesViewSelector = (props: ArticlesViewSelectorProps) => {
                     {<viewType.icon />}
                 </Button>
             ))}
-        </div>
+        </HStack>
     );
 };

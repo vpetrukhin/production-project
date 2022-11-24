@@ -8,6 +8,7 @@ import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSideBarItems } from '../../model/selectors/getSidebarItems';
 import cls from './SideBar.module.scss';
+import { HStack, VStack } from 'shared/ui/Stack';
 
 
 interface SideBarProps {
@@ -38,7 +39,7 @@ export const SideBar = (props: SideBarProps) => {
                 {collapsed ? '>' : '<'}
             </Button>
 
-            <div className={cls.items}>
+            <VStack align='start' gap='16' className={cls.items}>
                 {user 
                     ? (
                         sidebarItems.map(item => (
@@ -52,12 +53,18 @@ export const SideBar = (props: SideBarProps) => {
                     )
                 }
                 {}
-            </div>
+            </VStack>
 
-            <div className={cls.switchers}>
+            <HStack
+                gap='16'
+                justify='center'
+                wrap='wrap'
+                max
+                className={cls.switchers}
+            >
                 <ThemeSwitcher />
                 <LangSwitcher short={collapsed} />
-            </div>
+            </HStack>
         </div>
     );
 };

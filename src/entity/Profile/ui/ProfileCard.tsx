@@ -9,6 +9,7 @@ import { Profile } from '../model/types/ProfileSchema';
 import cls from './ProfileCard.module.scss';
 import { CountrySelect } from 'entity/Country';
 import { Country } from 'entity/Country/model/types/Countries';
+import { HStack } from 'shared/ui/Stack';
 
 
 interface ProfileCardProps {
@@ -47,22 +48,22 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <div className={cls.loading}>
+            <HStack justify='center'>
                 <Loader />
-            </div>
+            </HStack>
         );
     }
 
     if (error) {
         return (
-            <div className={cls.error}>
+            <HStack justify='center'>
                 <Text 
                     error
                     title={t('Произошла ошибка')}
                     text={t('Попробуйте обновить страницу')}
                     align={TextAlign.CENTER}
                 />
-            </div>
+            </HStack>
         );
     }
 
@@ -72,9 +73,9 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     return (
         <div className={classNames(cls.ProfileCard, mods, [className])}>
-            <div className={cls.avatarWrapper}>
+            <HStack justify='center'>
                 <Avatar src={data?.avatar} />
-            </div>
+            </HStack>
             <Input
                 value={data?.first}
                 onChange={onFirstnameChange}

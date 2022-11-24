@@ -20,6 +20,7 @@ import {
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { ArticlesActions } from '../../model/slices/ArticlesSlice';
 import cls from './ArticlesFilters.module.scss';
+import { HStack, VStack } from 'shared/ui/Stack';
 
 interface ArticlesFiltersProps {
     className?: string;
@@ -110,34 +111,36 @@ export const ArticlesFilters = (props: ArticlesFiltersProps) => {
 
     return (
         <Card theme={CardTheme.OUTLINE} className={classNames(cls.ArticlesFilters, {}, [className])}>
-            <Select
-                items={sortTypes}
-                label={t('sortirovat-po')}
-                value={sortType}
-                onChange={onSortTypeSort}
-            />
-            <Select
-                items={orderOptions}
-                label={t('po')}
-                value={order}
-                onChange={onOrderSort}
-            />
-            <ArticlesViewSelector
-                view={view}
-                onViewChange={onChangeView}
-                className={cls.selector}
-            />
-            <Input
-                value={search}
-                placeholder={t('poisk')}
-                onChange={onSearchChange}
-                className={cls.input}
-            />
-            <Tabs
-                value={type}
-                tabs={types}
-                onTabClick={onTypeChange}
-            />
+            <HStack gap='16' wrap='wrap'>
+                <Select
+                    items={sortTypes}
+                    label={t('sortirovat-po')}
+                    value={sortType}
+                    onChange={onSortTypeSort}
+                />
+                <Select
+                    items={orderOptions}
+                    label={t('po')}
+                    value={order}
+                    onChange={onOrderSort}
+                />
+                <ArticlesViewSelector
+                    view={view}
+                    onViewChange={onChangeView}
+                    className={cls.selector}
+                />
+                <Input
+                    value={search}
+                    placeholder={t('poisk')}
+                    onChange={onSearchChange}
+                    className={cls.input}
+                />
+                <Tabs
+                    value={type}
+                    tabs={types}
+                    onTabClick={onTypeChange}
+                />
+            </HStack>
         </Card>
     );
 };

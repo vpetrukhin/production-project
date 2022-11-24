@@ -1,13 +1,5 @@
-// .ArticleItem {}
-
 .img {
     width: 100%;
-}
-
-.viewsWrapper {
-    display: flex;
-    align-items: center;
-    gap: 5px;
 }
 
 .SMALL {
@@ -28,13 +20,11 @@
     }
 
     .img {
-        min-height: 230px;
+        height: 230px;
         object-fit: contain;
     }
 
     .info {
-        display: flex;
-        justify-content: space-between;
         margin-top: 8px;
 
         & svg {
@@ -64,27 +54,9 @@
 }
 
 .BIG {
-    .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .userWrapper {
-        display: flex;
-        align-items: center;
-        gap: 11px;
-    }
-
     .img {
         max-height: 178px;
         object-fit: cover;
-    }
-
-    .footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 }
 

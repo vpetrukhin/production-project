@@ -4,6 +4,7 @@ import cls from './ArticleList.module.scss';
 import { ArticleItem } from '../ArticleItem/ArticleItem';
 import { ArticleSkeletonItem } from '../ArticleItem/ArticleSkeletonItem/ArticleSkeletonItem';
 import { HTMLAttributeAnchorTarget } from 'react';
+import { HStack, VStack } from 'shared/ui/Stack';
 
 interface ArticleListProps {
     className?: string;
@@ -28,7 +29,7 @@ export const ArticleList = (props: ArticleListProps) => {
     const { className, articles, view = ArticleView.SMALL, isLoading, target } = props;
 
     return (
-        <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+        <HStack gap='16' wrap='wrap' className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
             {articles.length > 0 
                 ? (articles.map(article => (
                     <ArticleItem
@@ -41,6 +42,6 @@ export const ArticleList = (props: ArticleListProps) => {
                 : null
             }
             {isLoading && getLoadingArticles(view)}
-        </div>
+        </HStack>
     );
 };

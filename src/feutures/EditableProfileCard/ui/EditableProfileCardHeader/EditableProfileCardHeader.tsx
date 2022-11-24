@@ -9,6 +9,7 @@ import cls from './EditableProfileCardHeader.module.scss';
 import { updateProfileData } from 'entity/Profile/model/services/updateProfileData/updateProfileData';
 import { Text } from 'shared/ui/Text/Text';
 import { getUserInfo } from 'entity/User';
+import { HStack } from 'shared/ui/Stack';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
@@ -49,7 +50,7 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
 
     return (
         <>
-            <div className={classNames(cls.Header, {}, [className])}>
+            <HStack justify='between' gap='8' className={classNames(cls.Header, {}, [className])}>
                 <Text title={t('Профиль')} />
                 {canEdit && (
                     <>
@@ -63,16 +64,16 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                                 </Button>
                             )
                             : (
-                                <div className={cls.wrapper}>
+                                <HStack gap='8'>
                                     <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>{t('Сохранить')}</Button>
                                     <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancel}>{t('Отменить')}</Button>
-                                </div>
+                                </HStack>
                             )
                         }
                     </>
                 )}
                 
-            </div>
+            </HStack>
             {validateErrors && validateErrors.length > 0 && validateErrors?.map(err => (
                 <Text key={err} error text={validateMessages[err]} />
             ))}

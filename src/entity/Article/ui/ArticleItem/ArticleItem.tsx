@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, TextColor } from 'shared/ui/Text/Text';
 import { Article, ArticleTextBlock, ArticleView, BlockType } from '../../model/types/article';
 import cls from './ArticleItem.module.scss';
 import EyeIcon from 'shared/assets/icons/eye.svg';
@@ -13,6 +13,7 @@ import { routesPaths } from 'shared/config/router/routerConfig';
 import { ArticleSkeletonItem } from './ArticleSkeletonItem/ArticleSkeletonItem';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { HTMLAttributeAnchorTarget } from 'react';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticleItemProps {
     className?: string;
@@ -33,10 +34,10 @@ export const ArticleItem = (props: ArticleItemProps) => {
 
     const types = <Text className={cls.type} text={article.type.join(', ')} />;
     const views = 
-        <div className={cls.viewsWrapper}>
+        <HStack gap='4' className={cls.viewsWrapper}>
             <Text text={String(article.views)} />
             <EyeIcon />
-        </div>;
+        </HStack>;
 
     if (isLoading) {
         <ArticleSkeletonItem view={view} />;
@@ -48,18 +49,18 @@ export const ArticleItem = (props: ArticleItemProps) => {
         return (
             <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
-                    <div className={cls.header}>
-                        <div className={cls.userWrapper}>
+                    <HStack justify='between' className={cls.header}>
+                        <HStack gap='16' className={cls.userWrapper}>
                             <Avatar size={33} src={article.user.avatar} />
                             <Text text={article.user.username} />
-                        </div>
+                        </HStack>
                         <Text text={article.createdAt} />
-                    </div>
+                    </HStack>
                     <Text title={article.title} />
                     {types}
                     <img className={cls.img} src={article.img} alt={article.title} />
                     <ArticalTextBlockComponent className={cls.text} block={textBlock} />
-                    <div className={cls.footer}>
+                    <HStack justify='between' className={cls.footer}>
                         <AppLink
                             to={routesPaths.articles_details + article.id}
                             target={target}
@@ -72,7 +73,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
                             </Button>
                         </AppLink>
                         {views}
-                    </div>
+                    </HStack>
                 </Card>
             </div>
         );
@@ -89,10 +90,10 @@ export const ArticleItem = (props: ArticleItemProps) => {
                     <img className={cls.img} src={article.img} alt={article.title} />
                     <Text className={cls.date} text={article.createdAt} />
                 </div>
-                <div className={cls.info}>
+                <HStack justify='between' className={cls.info}>
                     {types}
                     {views}
-                </div>
+                </HStack>
                 <Text className={cls.title} text={article.title} />
             </Card>
         </AppLink>

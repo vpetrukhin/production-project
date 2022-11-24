@@ -25,7 +25,16 @@ module.exports = {
         'i18next/no-literal-string': ['error', {
             markupOnly: true,
             ignoreCallee: ['TEST', 'test'],
-            ignoreAttribute: ['to', 'data-testid', 'name', 'target']
+            ignoreAttribute: [
+                'to',
+                'data-testid',
+                'name',
+                'target',
+                'direction',
+                'align',
+                'justify',
+                'wrap',
+            ]
         }],
         '@typescript-eslint/no-non-null-assertion': 'off',
         'carav-plugin/path-checker': 'error',

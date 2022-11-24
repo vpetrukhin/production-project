@@ -14,25 +14,13 @@
 .switchers {
     position: absolute;
     bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
 }
 
 .items {
     margin-top: 20px;
     margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
-
-    .items {
-        gap: 20px;
-    }
 }
