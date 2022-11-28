@@ -1,0 +1,31 @@
+.CustomListbox {
+    width: -moz-fit-content;
+    width: fit-content;
+    position: relative;
+}
+
+.button {
+    padding: 0;
+    border: none;
+    margin: 0;
+    background: none;
+}
+
+.list {
+    background-color: var(--primary-color);
+    position: absolute;
+    min-width: 100%;
+    top: calc(100% + 2px);
+    border-radius: 8px;
+    z-index: 10000000;
+}
+
+.item {
+    padding: 5px 10px;
+    color: var(--inverted-primary-color);
+    cursor: pointer;
+}
+
+.active {
+    background-color: var(--accent-color);
+}

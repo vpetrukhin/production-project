@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useCallback } from 'react';
 import { Select, SelectItem } from 'shared/ui/Select/Select';
 import { Country } from '../model/types/Countries';
+import { Listbox } from 'shared/ui/Listbox/Listbox';
 
 interface CountryProps {
     className?: string;
@@ -29,18 +30,29 @@ export const CountrySelect = (props: CountryProps) => {
     const { className, onChange, value, readonly } = props;
     const {t} = useTranslation();
 
-    const handleChange = useCallback((value: string) => {
-        if (onChange) onChange(value as Country);
+    const handleChange = useCallback((value: Country) => {
+        if (onChange) onChange(value);
     }, [onChange]);
 
+    // return (
+    //     <Select
+    //         className={className}
+    //         label={t('Страна')}
+    //         items={countryItems}
+    //         onChange={handleChange}
+    //         value={value}
+    //         readonly={readonly}
+    //     />
+    // );
+
     return (
-        <Select
+        <Listbox
             className={className}
-            label={t('Страна')}
             items={countryItems}
-            onChange={handleChange}
-            value={value}
             readonly={readonly}
+            label={t('Страна')}
+            value={value}
+            onChange={handleChange}
         />
     );
 };

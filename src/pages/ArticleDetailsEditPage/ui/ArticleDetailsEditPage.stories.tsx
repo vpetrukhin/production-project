@@ -5,7 +5,7 @@ import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorato
 import { Theme } from 'app/providers/theme';
 
 export default {
-    title: '/ArticleDetailsEditPage',
+    title: 'pages/ArticleDetailsEditPage',
     component: ArticleDetailsEditPage,
 } as ComponentMeta<typeof ArticleDetailsEditPage>;
 

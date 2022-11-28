@@ -20,7 +20,7 @@ import {
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { ArticlesActions } from '../../model/slices/ArticlesSlice';
 import cls from './ArticlesFilters.module.scss';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticlesFiltersProps {
     className?: string;

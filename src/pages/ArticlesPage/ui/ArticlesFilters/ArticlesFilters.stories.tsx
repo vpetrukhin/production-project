@@ -5,7 +5,7 @@ import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorato
 import { Theme } from 'app/providers/theme';
 
 export default {
-    title: '/ArticlesFilters',
+    title: 'pages/ArticlesPage/ArticlesFilters',
     component: ArticlesFilters,
 } as ComponentMeta<typeof ArticlesFilters>;
 

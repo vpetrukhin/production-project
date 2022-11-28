@@ -6,7 +6,6 @@
 
     &:focus {
         outline: none;
-        text-decoration: underline;
     }
 
     &:disabled {
@@ -35,6 +34,7 @@
     margin: 0;
     border: 1px solid var(--primary-color);
     background-color: transparent;
+    border-radius: var(--border-radius-m);
 }
 
 .inverted_outline {
@@ -42,12 +42,14 @@
     border: 1px solid var(--inverted-primary-color);
     color: var(--inverted-primary-color);
     background-color: transparent;
+    border-radius: var(--border-radius-m);
 }
 
 .outline_red {
     border: 1px solid var(--color-red-light);
     color: var(--color-red-light);
     background-color: transparent;
+    border-radius: var(--border-radius-m);
 }
 
 .size_m {

@@ -34,6 +34,7 @@ module.exports = {
                 'align',
                 'justify',
                 'wrap',
+                'as'
             ]
         }],
         '@typescript-eslint/no-non-null-assertion': 'off',

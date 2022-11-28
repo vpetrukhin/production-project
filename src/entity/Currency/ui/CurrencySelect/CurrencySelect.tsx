@@ -1,6 +1,7 @@
 import { Currency } from '../../model/types/Currency';
 import { useTranslation } from 'react-i18next';
 import { Select, SelectItem } from 'shared/ui/Select/Select';
+import { Listbox } from 'shared/ui/Listbox/Listbox';
 // import cls from './CurrencySelect.module.scss';
 
 interface CurrencySelectProps {
@@ -37,8 +38,18 @@ export const CurrencySelect = (props: CurrencySelectProps) => {
         if (onChange) onChange(value as Currency);
     };
 
+    // return (
+    //     <Select
+    //         className={className}
+    //         label={t('Валюта')}
+    //         items={CurrencyItems}
+    //         value={value}
+    //         onChange={handleChange}
+    //         readonly={readonly}
+    //     />
+    // );
     return (
-        <Select
+        <Listbox 
             className={className}
             label={t('Валюта')}
             items={CurrencyItems}
