@@ -1,8 +1,8 @@
-import { useTranslation } from 'react-i18next';
 import { useCallback } from 'react';
-import { Select, SelectItem } from 'shared/ui/Select/Select';
-import { Country } from '../model/types/Countries';
+import { useTranslation } from 'react-i18next';
+import { SelectItem } from 'shared/ui/Select/Select';
 import { Listbox } from 'shared/ui/Listbox/Listbox';
+import { Country } from '../model/types/Countries';
 
 interface CountryProps {
     className?: string;
@@ -34,17 +34,6 @@ export const CountrySelect = (props: CountryProps) => {
         if (onChange) onChange(value);
     }, [onChange]);
 
-    // return (
-    //     <Select
-    //         className={className}
-    //         label={t('Страна')}
-    //         items={countryItems}
-    //         onChange={handleChange}
-    //         value={value}
-    //         readonly={readonly}
-    //     />
-    // );
-
     return (
         <Listbox
             className={className}
@@ -53,6 +42,7 @@ export const CountrySelect = (props: CountryProps) => {
             label={t('Страна')}
             value={value}
             onChange={handleChange}
+            direction='topLeft'
         />
     );
 };
