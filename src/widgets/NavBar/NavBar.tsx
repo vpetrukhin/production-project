@@ -1,10 +1,13 @@
-import { getUser, UserActions } from 'entity/User';
-import { LoginModal } from 'feutures/AuthByUserName';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { LoginModal } from 'feutures/AuthByUserName';
+import { getUser, UserActions } from 'entity/User';
+import { routesPaths } from 'shared/config/router/routerConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { HStack } from 'shared/ui/Stack';
 import { Text, TextColor } from 'shared/ui/Text/Text';
 import cls from './NavBar.module.scss';
@@ -44,9 +47,20 @@ export const NavBar = (props: NavbarProps) => {
             <HStack className={classNames(cls.NavBar, {}, [className])}>
                 <Text title={t('ProdApp')} color={TextColor.PRIMARY} />
                 <HStack gap='16' className={cls.links}>
-                    <Button theme={ButtonTheme.INVERTED_OUTLINE} onClick={handleLogout}>
-                        {t('Выйти')}
-                    </Button>
+                    <Dropdown
+                        trigger={<Avatar size={30} src={userInfo.avatar} />}
+                        items={[
+                            {
+                                content: t('Профиль'),
+                                href: routesPaths.profile + userInfo.id
+                            },
+                            {
+                                content: t('Выйти'),
+                                onClick: handleLogout
+                            }
+                        ]}
+                    />
+                    
                 </HStack>
             </HStack>
         );
