@@ -1,7 +1,7 @@
 import { Country } from 'entity/Country';
 import { Currency } from 'entity/Currency';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { Profile } from '../../types/ProfileSchema';
+import { Profile } from '../../../../../entity/Profile/model/types/profile';
 import { fetchProfileData } from './fetchProfileData';
 
 const mockProfileData: Profile = {

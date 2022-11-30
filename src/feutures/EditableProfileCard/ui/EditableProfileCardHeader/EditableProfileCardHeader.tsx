@@ -1,15 +1,19 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ProfileActions, getProfileReadonly, ValidateErrors, getProfileValidateError, getProfileForm } from 'entity/Profile';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './EditableProfileCardHeader.module.scss';
-import { updateProfileData } from 'entity/Profile/model/services/updateProfileData/updateProfileData';
 import { Text } from 'shared/ui/Text/Text';
 import { getUserInfo } from 'entity/User';
 import { HStack } from 'shared/ui/Stack';
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileValidateError } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import { ProfileActions } from '../../model/slice/ProfileSlice';
+import { ValidateErrors } from '../../model/types/ProfileSchema';
 
 interface EditableProfileCardHeaderProps {
     className?: string;

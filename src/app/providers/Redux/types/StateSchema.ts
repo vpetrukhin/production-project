@@ -1,14 +1,19 @@
-import { LoginSchema } from 'feutures/AuthByUserName';
-import { UserSchema } from 'entity/User';
-import { Action, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { ProfileSchema } from 'entity/Profile';
 import { AxiosInstance } from 'axios';
-import { createReduxStore } from '..';
-import { ArticleSchema } from 'entity/Article';
-import { ArticleDetailsCommentsSchema, ArticleDetailsRecomenationSchema } from 'pages/ArticlesDetailsPage';
-import { AddCommentFormSchema } from 'feutures/addComment';
+import {
+    Action, CombinedState, EnhancedStore, Middleware, MiddlewareArray, Reducer, ReducersMapObject, ThunkMiddleware
+} from '@reduxjs/toolkit';
+import {
+    ArticleDetailsCommentsSchema, ArticleDetailsRecomenationSchema
+} from 'pages/ArticlesDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ProfileSchema } from 'feutures/EditableProfileCard';
+import { LoginSchema } from 'feutures/AuthByUserName';
+import { AddCommentFormSchema } from 'feutures/addComment';
 import { ScrollStorageSchema } from 'feutures/scrollStorage';
+import { UserSchema } from 'entity/User';
+import { ArticleSchema } from 'entity/Article';
+import { rtkApi } from 'shared/api/rtkAPi';
+import { createReduxStore } from '..';
 
 export interface AsyncStateSchema {
     login?: LoginSchema | undefined,
@@ -21,7 +26,8 @@ export interface AsyncStateSchema {
 }
 export interface StateSchema extends AsyncStateSchema {
     user: UserSchema,
-    scrollStorage: ScrollStorageSchema
+    scrollStorage: ScrollStorageSchema,
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 }
 
 export type StateSchemaKeys = keyof StateSchema;
@@ -32,11 +38,9 @@ export interface ReducerManager {
     remove: (key: StateSchemaKeys) => void;
 }
 
-export interface StateWithReducerManager extends EnhancedStore<StateSchema, any> {
+export interface StateWithReducerManager extends EnhancedStore<StateSchema, Action, MiddlewaresType> {
     reducerManager: ReducerManager;
 }
-
-// export type NavigatorType = (to: To, options?: NavigateOptions) => void;
 
 export interface ThunkExtraArg {
     api: AxiosInstance;
@@ -49,3 +53,8 @@ export interface ThunkConfig<ErrorType> {
     extra: ThunkExtraArg;
     state: StateSchema;
 }
+
+export type MiddlewaresType = MiddlewareArray<[
+    ThunkMiddleware<StateSchema, Action, ThunkExtraArg>,
+    Middleware<ReturnType<typeof rtkApi.middleware>>
+]>

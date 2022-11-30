@@ -1,18 +1,16 @@
-import { ArticleList } from 'entity/Article';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { Page } from 'widgets/Page/Page';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { getArticlesHas, getArticlesLoading, getArticlesView } from '../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
+import { getArticlesHas } from '../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
 import { fetchMoreArticles } from '../model/services/fetchMoreArticles/fetchMoreArticles';
-import { ArticlesActions, ArticlesReducer, getArticles } from '../model/slices/ArticlesSlice';
-import cls from './ArticlesPage.module.scss';
+import { ArticlesActions, ArticlesReducer } from '../model/slices/ArticlesSlice';
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
-import { useSearchParams } from 'react-router-dom';
 import { ArticlesFilters } from './ArticlesFilters/ArticlesFilters';
+import { ArticleInfinityList } from './ArticleInfinityList/ArticleInfinityList';
 
 interface ArtilclesPageProps {
     className?: string;
@@ -21,9 +19,6 @@ interface ArtilclesPageProps {
 const ArtilclesPage = (props: ArtilclesPageProps) => {
     const { className } = props;
     const dispatch = useAppDispatch();
-    const articles = useSelector(getArticles.selectAll);
-    const isLoading = useSelector(getArticlesLoading);
-    const view = useSelector(getArticlesView);
     const hasMoreArticles = useSelector(getArticlesHas);
     const [searchParams] = useSearchParams();
 
@@ -46,15 +41,11 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
             removeAfterUnmount={false}
         >
             <Page
-                className={classNames(cls.ArtilclesPage, {}, [className])}
+                className={className}
                 onScrollEndCallback={onFetchMoreArticles}
             >
                 <ArticlesFilters />
-                <ArticleList
-                    articles={articles}
-                    view={view}
-                    isLoading={isLoading}
-                />
+                <ArticleInfinityList />
             </Page>
         </DynamicModule>
     );

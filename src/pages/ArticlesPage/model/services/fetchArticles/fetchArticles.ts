@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/Redux';
 import { Article, ArticleType } from 'entity/Article';
-import { ValidateErrors } from 'entity/Profile';
+import { ValidateErrors } from 'feutures/EditableProfileCard';
 import { addQueryParams } from 'shared/lib/url/url';
 import { getArticlesLimit } from '../../selectors/ArticlesPageSelectors/ArticlesPageSelectors';
 import { getArticlesFilters } from '../../selectors/getArticlesFilters/getArticlesFilters';

@@ -1,14 +1,12 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { fetchArticleById } from '../../model/services/fetchArticleById';
 import { getArticleData, getArticleError, getArticleIsLoading } from '../../model/selectors/getArticle';
 import { ArticleBlock, BlockType } from '../../model/types/article';
@@ -17,7 +15,9 @@ import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleC
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticalTextBlockComponent } from '../ArticalTextBlockComponent/ArticalTextBlockComponent';
 import cls from './ArticleDetails.module.scss';
-import { HStack } from 'shared/ui/Stack';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import EyeIcon from 'shared/assets/icons/eye.svg';
+
 
 interface ArticleDetailsProps {
     className?: string;
@@ -25,13 +25,12 @@ interface ArticleDetailsProps {
 }
 
 export const ArticleDetails = (props: ArticleDetailsProps) => {
-    const { className, articleId } = props;
+    const { articleId } = props;
     const {t} = useTranslation('article');
     const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleIsLoading);
     const error = useSelector(getArticleError);
     const article = useSelector(getArticleData);
-    
 
     let content;
 
@@ -86,8 +85,8 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         </>;
     } else {
         content = 
-            <>
-                <HStack justify='center' className={cls.avatarWrapper}>
+            <VStack gap='16' align='start'>
+                <HStack justify='center' max className={cls.avatarWrapper}>
                     <img
                         className={cls.avatar}
                         src={article?.img}
@@ -99,23 +98,23 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                     text={article?.subtitle}
                     size={TextSize.L}
                 />
-                <HStack gap='4'>
-                    <EyeIcon className={cls.icon} />
-                    <Text text={String(article?.views)} />
-                </HStack>
-                <HStack gap='4'>
-                    <CalendarIcon className={cls.icon} />
-                    <Text text={String(article?.createdAt)} />
-                </HStack>
+                <VStack gap='8' align='start'>
+                    <HStack gap='4'>
+                        <EyeIcon className={cls.icon} />
+                        <Text text={String(article?.views)} />
+                    </HStack>
+                    <HStack gap='4'>
+                        <CalendarIcon className={cls.icon} />
+                        <Text text={String(article?.createdAt)} />
+                    </HStack>
+                </VStack>
                 {article?.blocks.map(renderBlocks)}
-            </>;
+            </VStack>;
     }
 
     return (
         <DynamicModule reducers={{article: ArticleReducer}}>
-            <div className={classNames(cls.ArticleDetails, {}, [className])}>
-                {content}
-            </div>
+            {content}
         </DynamicModule>
     );
 };

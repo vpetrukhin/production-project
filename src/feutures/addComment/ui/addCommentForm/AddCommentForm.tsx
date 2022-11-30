@@ -5,6 +5,7 @@ import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { HStack } from 'shared/ui/Stack';
 import { getAddCommentFormText } from '../../model/selectors/getAddCommentFormText';
 import { AddCommentFormActions, AddCommentFormReducer } from '../../model/slices/AddCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
@@ -35,7 +36,12 @@ export const AddCommentForm = (props: addCommentFormProps) => {
         <DynamicModule reducers={{
             addCommentFrom: AddCommentFormReducer
         }}>
-            <div className={classNames(cls.AddCommentForm, {}, [className])}>
+            <HStack
+                justify='between'
+                max
+                gap='8'
+                className={classNames(cls.AddCommentForm, {}, [className])}
+            >
                 <Input
                     className={cls.input}
                     placeholder={t('Введите текст комментария')}
@@ -43,7 +49,7 @@ export const AddCommentForm = (props: addCommentFormProps) => {
                     onChange={onCommentTextChange}
                 />
                 <Button theme={ButtonTheme.OUTLINE} onClick={onSendCommentHandler}>{t('Отправить')}</Button>
-            </div>
+            </HStack>
         </DynamicModule>
     );
 };

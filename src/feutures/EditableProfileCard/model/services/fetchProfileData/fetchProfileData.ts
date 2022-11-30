@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/Redux/types/StateSchema';
-import { Profile, ValidateErrors } from '../../types/ProfileSchema';
+import { Profile } from 'entity/Profile/model/types/profile';
+import { ValidateErrors } from '../../types/ProfileSchema';
 
 export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<string>>(
     'profile/fetchProfileData',

@@ -29,7 +29,7 @@ export const ArticleDetailsHeader = (props: ArticleDetailsHeaderProps) => {
     }, [id, navigate]);
 
     return (
-        <HStack justify='between' className={classNames('', {}, [className])}>
+        <HStack justify='between' max className={classNames('', {}, [className])}>
             <Button
                 onClick={navigateToArticleList}
             >

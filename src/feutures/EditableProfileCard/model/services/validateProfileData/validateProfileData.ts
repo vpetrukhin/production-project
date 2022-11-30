@@ -1,4 +1,5 @@
-import { Profile, ValidateErrors } from '../../types/ProfileSchema';
+import { Profile } from 'entity/Profile';
+import { ValidateErrors } from '../../types/ProfileSchema';
 
 export const validateProfileData = (profile?: Profile): Array<ValidateErrors> => {
     if (!profile) return [ValidateErrors.INCORRECT_DATA];

@@ -1,6 +1,7 @@
 import { Country } from 'entity/Country';
 import { Currency } from 'entity/Currency';
-import { Profile, ProfileSchema } from '../types/ProfileSchema';
+import { Profile } from 'entity/Profile';
+import { ProfileSchema } from '../types/ProfileSchema';
 import { ProfileActions, ProfileReducer } from './ProfileSlice';
 
 const mockProfileData: Profile = {

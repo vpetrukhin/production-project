@@ -2,7 +2,7 @@ import { getArticlesLimit, getArticlesOrder, getArticlesPage, getArticlesSearch,
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/Redux';
 import { Article, ArticleType } from 'entity/Article';
-import { ValidateErrors } from 'entity/Profile';
+import { ValidateErrors } from 'feutures/EditableProfileCard';
 
 export const fetchMoreArticles = createAsyncThunk<Article[], void, ThunkConfig<string>>(
     'articles/fetchMoreArticles',

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/Redux';
-import { ValidateErrors } from 'entity/Profile';
+import { ValidateErrors } from 'feutures/EditableProfileCard';
 import { Article } from '../types/article';
 
 export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<string>>(

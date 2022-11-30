@@ -2,6 +2,7 @@ import { routesPaths } from 'shared/config/router/routerConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import { IComment } from '../../model/types/comment';
 import cls from './Comment.module.scss';
@@ -16,9 +17,11 @@ export const Comment = (props: CommentProps) => {
 
     return (
         <div className={classNames(cls.Comment, {}, [className])}>
-            <AppLink to={routesPaths.profile + comment.user.id} className={cls.userInfo}>
-                <Avatar size={30} src={comment.user.avatar} />
-                <Text title={comment.user.username} />
+            <AppLink to={routesPaths.profile + comment.user.id}>
+                <HStack gap='8'>
+                    <Avatar size={30} src={comment.user.avatar} />
+                    <Text title={comment.user.username} />
+                </HStack>
             </AppLink>
             <Text text={comment.text} />
         </div>

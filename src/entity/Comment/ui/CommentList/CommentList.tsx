@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { Text } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui/Stack';
+import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { IComment } from '../../model/types/comment';
 import { Comment } from '../Comment/Comment';
 import cls from './CommentList.module.scss';
@@ -18,7 +18,7 @@ export const CommentList = (props: CommentListProps) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.CommentList, {}, [className])}>
+            <>
                 <Text title={t('Комментарии')} />
                 <div className={cls.loadingComment}>
                     <div className={cls.userInfo}>
@@ -34,21 +34,21 @@ export const CommentList = (props: CommentListProps) => {
                     </div>
                     <Skeleton height={40} />
                 </div>
-            </div>
+            </>
         );
     }
 
     return (
-        <div className={classNames(cls.CommentList, {}, [className])}>
-            <Text title={t('Комментарии')} />
+        <VStack gap='16' max className={className}>
+            <Text align={TextAlign.LEFT} title={t('Комментарии')} />
             {comments.length > 0
                 ? (
                     comments.map(comment => (
-                        <Comment className={cls.comment} key={comment.id} comment={comment} />
+                        <Comment key={comment.id} comment={comment} />
                     ))
                 )
                 : <Text text={t('Комментарии отсутствуют')} />
             }
-        </div>
+        </VStack>
     );
 };

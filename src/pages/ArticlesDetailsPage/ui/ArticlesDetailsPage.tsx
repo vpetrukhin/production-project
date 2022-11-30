@@ -1,25 +1,15 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { ArticleDetails, ArticleList } from 'entity/Article';
-import { CommentList } from 'entity/Comment';
-import { AddCommentForm } from 'feutures/addComment';
-import { Page } from 'widgets/Page/Page';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { getArticleDetailsCommentsLoading } from '../model/selectors/comments/comments';
-import { CommentsReducer, getAllComments } from '../model/slices/CommentsSlice/CommentsSlice';
-import { fetchCommentsList } from '../model/services/fetchCommentsList/fetchCommentsLIst';
-import { addArticleComment } from '../model/services/addArticleComment/addArticleComment';
-import cls from './ArticlesDetailsPage.module.scss';
-import { getAllRecomendation, RecomendationReducer } from '../model/slices/RecomendationSlice/RecomendationSlice';
-import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
-import { fetchRecomendationList } from '../model/services/fetchRecomendationList/fetchRecomendationList';
-import { getArticleDetailsRecomendationsLoading } from '../model/selectors/recomendations/recomendation';
+import { Page } from 'widgets/Page/Page';
+import { ArticleDetails } from 'entity/Article';
+import { ArticleRecomendationList } from 'feutures/ArticleRecomendationList';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleDetailsHeader } from './ArticleDetailsHeader/ArticleDetailsHeader';
+import cls from './ArticlesDetailsPage.module.scss';
+import { VStack } from 'shared/ui/Stack';
+import { Text } from 'shared/ui/Text/Text';
+import { ArticleDetailsComments } from './ArticleDetilsComments/ArticleDetailsComments';
 
 interface ArticlesDetailsPageProps {
     className?: string;
@@ -30,40 +20,19 @@ const ArticlesDetailsPage = (props: ArticlesDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
     const {t} = useTranslation('article');
 
-    const dispatch = useAppDispatch();
-    const comments = useSelector(getAllComments.selectAll);
-    const commentsIsLoading = useSelector(getArticleDetailsCommentsLoading);
-    const recommendations = useSelector(getAllRecomendation.selectAll);
-    const recommendationsIsLoading = useSelector(getArticleDetailsRecomendationsLoading);
-
-    useInitialEffect(() => {
-        dispatch(fetchCommentsList(id));
-        dispatch(fetchRecomendationList());
-    });
-
-    const onSendComment = (value: string) => {
-        dispatch(addArticleComment(value));
-    };
+    if (!id) {
+        return <Text title={t('nekorrektnyi-id-stati')} />;
+    }
 
     return (
-        <DynamicModule reducers={{
-            articleDetailsComments: CommentsReducer,
-            articleDetailsRecomendation: RecomendationReducer
-        }}>
-            <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+        <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+            <VStack gap='16' max align='start'>
                 <ArticleDetailsHeader id={id} />
-                <ArticleDetails articleId={id || ''} />
-                <Text title={t('rekomendacii')} />
-                <ArticleList 
-                    articles={recommendations}
-                    isLoading={recommendationsIsLoading}
-                    className={cls.recommendation}
-                    target={'_blank'}
-                />
-                <AddCommentForm onSendComment={onSendComment} />
-                <CommentList isLoading={commentsIsLoading} comments={comments} />
-            </Page>
-        </DynamicModule>
+                <ArticleDetails articleId={id} />
+                <ArticleRecomendationList className={cls.recomendations} />
+                <ArticleDetailsComments id={id} />
+            </VStack>
+        </Page>
     );
 };
 
