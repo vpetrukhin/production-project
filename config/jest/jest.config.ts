@@ -6,6 +6,16 @@
 import path from 'path';
 
 export default {
+    reporters: [
+        'default',
+        ['jest-html-reporters', {
+            'publicPath': '<rootDir>/reports/unit',
+            'filename': 'report.html',
+            'openReport': true,
+            'inlineSource': true,
+        }]
+    ],
+
     // Automatically clear mock calls, instances and results before every test
     clearMocks: true,
 
