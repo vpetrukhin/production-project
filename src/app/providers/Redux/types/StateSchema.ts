@@ -17,7 +17,7 @@ import { createReduxStore } from '..';
 
 export interface AsyncStateSchema {
     login?: LoginSchema | undefined,
-    profile?: ProfileSchema | undefined,
+    profile?: ProfileSchema,
     article?: ArticleSchema | undefined,
     articleDetailsComments?: ArticleDetailsCommentsSchema | undefined,
     articleDetailsRecomendation?: ArticleDetailsRecomenationSchema | undefined,

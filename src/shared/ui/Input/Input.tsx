@@ -20,6 +20,7 @@ interface InputProps extends HTMLInputProps {
     autofocus?: boolean;
     readonly?: boolean;
     label?: string;
+    'data-testid'?: string;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -33,6 +34,7 @@ export const Input = memo((props: InputProps) => {
         readonly,
         theme = InputTheme.PRIMARY,
         label,
+        'data-testid': dataTestId = 'Input',
         ...otherProps
     } = props;
 
@@ -64,6 +66,7 @@ export const Input = memo((props: InputProps) => {
                 onChange={handleChange}
                 className={classNames(cls.input, {}, [cls[theme]])}
                 readOnly={readonly}
+                data-testid={dataTestId}
                 {...otherProps}
             />
         </div>

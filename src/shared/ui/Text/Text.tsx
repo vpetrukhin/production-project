@@ -26,6 +26,8 @@ interface TextProps {
     align?: TextAlign;
     color?: TextColor;
     size?: TextSize;
+
+    'data-testid'?: string
 }
 
 export const Text = memo((props: TextProps) => {
@@ -36,15 +38,30 @@ export const Text = memo((props: TextProps) => {
         error,
         align = TextAlign.LEFT,
         color = TextColor.SECONDARY,
-        size = TextSize.M
+        size = TextSize.M,
+        'data-testid': dataTestID = 'Text'
     } = props;
 
     return (
         <div className={classNames(cls.Text, {
             [cls.error]: error,
         }, [className, cls[align], cls[color], cls[size]])}>
-            {title && <div className={cls.title}>{title}</div>}
-            {text && <p className={cls.text}>{text}</p>}
+            {title && 
+                <div
+                    className={cls.title}
+                    data-testid={`${dataTestID}.Header`}
+                >
+                    {title}
+                </div>
+            }
+            {text && 
+                <p
+                    className={cls.text}
+                    data-testid={`${dataTestID}.Paragraph`}
+                >
+                    {text}
+                </p>
+            }
         </div>
     );
 });

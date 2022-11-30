@@ -63,14 +63,27 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                                 <Button
                                     theme={ButtonTheme.OUTLINE}
                                     onClick={onEdit}
+                                    data-testid='EditableProfileCardHeader.editButton'
                                 >
                                     {t('Редактировать')}
                                 </Button>
                             )
                             : (
                                 <HStack gap='8'>
-                                    <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>{t('Сохранить')}</Button>
-                                    <Button theme={ButtonTheme.OUTLINE_RED} onClick={onCancel}>{t('Отменить')}</Button>
+                                    <Button
+                                        theme={ButtonTheme.OUTLINE}
+                                        onClick={onSave}
+                                        data-testid='EditableProfileCardHeader.saveButton'
+                                    >
+                                        {t('Сохранить')}
+                                    </Button>
+                                    <Button
+                                        theme={ButtonTheme.OUTLINE_RED}
+                                        onClick={onCancel}
+                                        data-testid='EditableProfileCardHeader.cancelButton'
+                                    >
+                                        {t('Отменить')}
+                                    </Button>
                                 </HStack>
                             )
                         }
@@ -79,7 +92,7 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                 
             </HStack>
             {validateErrors && validateErrors.length > 0 && validateErrors?.map(err => (
-                <Text key={err} error text={validateMessages[err]} />
+                <Text data-testid='EditableProfileCardHeader.Error' key={err} error text={validateMessages[err]} />
             ))}
         </>
     );
