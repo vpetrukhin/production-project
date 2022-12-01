@@ -10,7 +10,7 @@ export const fetchCommentsList = createAsyncThunk<IComment[], string | undefined
 
         try {
             if (!id) {
-                return rejectWithValue('некорректный id');
+                return rejectWithValue('Некорректный id');
             }
 
             const response = await extra.api.get<IComment[]>('/comments/', {

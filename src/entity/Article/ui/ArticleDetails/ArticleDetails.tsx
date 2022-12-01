@@ -21,7 +21,7 @@ import EyeIcon from 'shared/assets/icons/eye.svg';
 
 interface ArticleDetailsProps {
     className?: string;
-    articleId: string;
+    articleId?: string;
 }
 
 export const ArticleDetails = (props: ArticleDetailsProps) => {

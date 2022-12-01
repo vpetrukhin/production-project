@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { useEffect, PropsWithChildren } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { StateWithReducerManager } from 'app/providers/Redux';
 import { StateSchemaKeys } from 'app/providers/Redux';
@@ -8,12 +8,12 @@ export type ReducerList = Partial<Record<StateSchemaKeys, Reducer>>
 
 export type ReducerListEntries = [StateSchemaKeys, Reducer]
 
-export interface DynamicModuleProps {
+export interface DynamicModuleProps extends PropsWithChildren {
     reducers: ReducerList;
     removeAfterUnmount?: boolean;
 }
 
-export const DynamicModule: FC<DynamicModuleProps> = (props) => {
+export const DynamicModule = (props: DynamicModuleProps) => {
     const { children, reducers, removeAfterUnmount = true } = props;
 
     const store = useStore() as StateWithReducerManager;
