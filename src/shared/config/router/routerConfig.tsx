@@ -1,4 +1,6 @@
+import { RouteProps } from 'react-router-dom';
 import { AboutPage } from 'pages/AboutPage';
+import { AdminPanelPage } from 'pages/AdminPanelPage';
 import { ArticleDetailsEditPage } from 'pages/ArticleDetailsEditPage';
 import { ArticlesDetailsCreatePage } from 'pages/ArticlesDetailsCreatePage';
 import { ArticlesDetailsPage } from 'pages/ArticlesDetailsPage';
@@ -6,11 +8,13 @@ import { ArticlesPage } from 'pages/ArticlesPage';
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
-import { RouteProps } from 'react-router-dom';
+import { UserRoles } from 'entity/User';
+import { ForbiddenPage } from 'pages/ForbiddenPage';
 
 export interface IRoute extends Omit<RouteProps, 'element'> {
     onlyAuthorized: boolean;
     element: JSX.Element
+    roles?: UserRoles[];
 }
 
 export enum Routes {
@@ -21,9 +25,11 @@ export enum Routes {
     ARTICLESDETAILS = 'articles_details',
     ARTICLESCREATE = 'articles_create',
     ARTICLESEDIT = 'articles_edit',
+    ADMINPANEL = 'admin',
 
     // last
-    NOTFOUND = 'notfound'
+    NOTFOUND = 'notfound',
+    FORBIDDEN = 'forbidden'
 }
 
 export const routesPaths: Record<Routes, string> = {
@@ -34,9 +40,11 @@ export const routesPaths: Record<Routes, string> = {
     [Routes.ARTICLESDETAILS]: '/article/', // + id
     [Routes.ARTICLESCREATE]: '/article/create',
     [Routes.ARTICLESEDIT]: '/article/:id/edit',
+    [Routes.ADMINPANEL]: '/admin',
 
+    [Routes.FORBIDDEN]: '/forbidden',
     // last
-    [Routes.NOTFOUND]: '*'
+    [Routes.NOTFOUND]: '*',
 };
 
 export const routesConfig: Record<Routes, IRoute> = {
@@ -74,6 +82,17 @@ export const routesConfig: Record<Routes, IRoute> = {
         path: routesPaths.articles_edit,
         element: <ArticleDetailsEditPage />,
         onlyAuthorized: true
+    },
+    [Routes.ADMINPANEL]: {
+        path: routesPaths.admin,
+        element: <AdminPanelPage />,
+        onlyAuthorized: true,
+        roles: [UserRoles.ADMIN, UserRoles.MANAGER]
+    },
+    [Routes.FORBIDDEN]: {
+        path: routesPaths.forbidden,
+        element: <ForbiddenPage />,
+        onlyAuthorized: true,
     },
     [Routes.NOTFOUND]: {
         path: routesPaths.notfound,

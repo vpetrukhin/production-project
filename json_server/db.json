@@ -504,14 +504,21 @@
       "id": "1",
       "username": "admin",
       "password": "admin",
-      "role": "ADMIN",
+      "roles": ["ADMIN"],
       "avatar": "https://images.unsplash.com/photo-1665856314098-4aa9ff7a3d76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER",
+      "roles": ["USER", "MANAGER"],
+      "avatar": "https://images.unsplash.com/photo-1637779692999-26cdadc69c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "2",
+      "username": "user1",
+      "password": "123",
+      "roles": ["USER"],
       "avatar": "https://images.unsplash.com/photo-1637779692999-26cdadc69c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     }
   ],

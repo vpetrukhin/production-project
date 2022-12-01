@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginModal } from 'feutures/AuthByUserName';
-import { getUser, UserActions } from 'entity/User';
+import { getIsAdmin, getIsManager, getUser, getUserInfo, UserActions } from 'entity/User';
 import { routesPaths } from 'shared/config/router/routerConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
@@ -20,8 +20,13 @@ export interface NavbarProps {
 export const NavBar = (props: NavbarProps) => {
     const { className } = props;
     const {t} = useTranslation();
+
     const dispatch = useDispatch();
-    const { userInfo } = useSelector(getUser);
+    const userInfo = useSelector(getUserInfo);
+    const isAdmin = useSelector(getIsAdmin);
+    const isManager = useSelector(getIsManager);
+
+    const isAvailableToAdminPanel = isAdmin || isManager;
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -50,6 +55,10 @@ export const NavBar = (props: NavbarProps) => {
                     <Dropdown
                         trigger={<Avatar size={30} src={userInfo.avatar} />}
                         items={[
+                            ...(isAvailableToAdminPanel ? [{
+                                content: t('adminka'),
+                                href: routesPaths.admin
+                            }] : []),
                             {
                                 content: t('Профиль'),
                                 href: routesPaths.profile + userInfo.id
