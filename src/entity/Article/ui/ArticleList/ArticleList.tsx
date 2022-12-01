@@ -1,10 +1,11 @@
-import { Article, ArticleView } from '../../model/types/article';
-import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ArticleList.module.scss';
-import { ArticleItem } from '../ArticleItem/ArticleItem';
-import { ArticleSkeletonItem } from '../ArticleItem/ArticleSkeletonItem/ArticleSkeletonItem';
 import { HTMLAttributeAnchorTarget } from 'react';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { HStack } from 'shared/ui/Stack';
+import { Article } from '../../model/types/article';
+import { ArticleSkeletonItem } from '../ArticleItem/ArticleSkeletonItem/ArticleSkeletonItem';
+import { ArticleItem } from '../ArticleItem/ArticleItem';
+import cls from './ArticleList.module.scss';
+import { ArticleView } from '../../model/const/articleConsts';
 
 interface ArticleListProps {
     className?: string;

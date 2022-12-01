@@ -15,7 +15,8 @@
             "*": [
                 "./src/*"
             ]
-        }
+        },
+        "isolatedModules": true
     },
     "ts-node": {
         "compilerOptions": {
@@ -29,5 +30,5 @@
     ],
     "exclude": [
         "./scripts/**/*.js",
-    ]
+    ],
 }

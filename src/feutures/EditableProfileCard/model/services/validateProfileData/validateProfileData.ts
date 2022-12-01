@@ -1,5 +1,5 @@
 import { Profile } from 'entity/Profile';
-import { ValidateErrors } from '../../types/ProfileSchema';
+import { ValidateErrors } from '../../const/editableProfileCardConsts';
 
 export const validateProfileData = (profile?: Profile): Array<ValidateErrors> => {
     if (!profile) return [ValidateErrors.INCORRECT_DATA];

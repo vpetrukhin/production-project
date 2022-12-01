@@ -3,7 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticalTextBlockComponent } from './ArticalTextBlockComponent';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/theme';
-import { ArticleTextBlock, BlockType } from '../../model/types/article';
+import { ArticleTextBlock } from '../../model/types/article';
+import { BlockType } from '../../model/const/articleConsts';
 
 const textBlock = {
     id: '34',

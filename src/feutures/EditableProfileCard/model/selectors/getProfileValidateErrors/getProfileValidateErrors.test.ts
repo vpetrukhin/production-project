@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/Redux';
-import { ValidateErrors } from '../../types/ProfileSchema';
+import { ValidateErrors } from '../../const/editableProfileCardConsts';
 import { getProfileValidateError } from './getProfileValidateErrors';
 
 describe('tests for getProfileIsLoading.test', () => {

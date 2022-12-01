@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/Redux';
-import { UserRoles } from '../../types/UserSchema';
+import { UserRoles } from '../../const/userConsts';
 import { getIsAdmin, getIsManager, getUserRoles } from './roles';
 
 describe('tests for roles.test', () => {

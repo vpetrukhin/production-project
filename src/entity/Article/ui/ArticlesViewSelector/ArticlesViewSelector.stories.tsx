@@ -3,7 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticlesViewSelector } from './ArticlesViewSelector';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/theme';
-import { ArticleView } from '../../model/types/article';
+import { ArticleView } from '../../model/const/articleConsts';
+
 
 export default {
     title: 'entity/Article/ArticlesViewSelector',

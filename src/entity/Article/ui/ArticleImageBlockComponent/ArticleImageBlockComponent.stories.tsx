@@ -3,7 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleImageBlockComponent } from './ArticleImageBlockComponent';
 import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/theme';
-import { BlockType } from '../../model/types/article';
+import { BlockType } from '../../model/const/articleConsts';
+
 
 export default {
     title: 'entity/Article/ArticleImageBlockComponent',

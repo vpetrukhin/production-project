@@ -2,9 +2,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import BlockIcon from 'shared/assets/icons/blocks.svg';
 import ListIcon from 'shared/assets/icons/list.svg';
 import { Button } from 'shared/ui/Button/Button';
-import { ArticleView } from '../../model/types/article';
-import cls from './ArticlesViewSelector.module.scss';
 import { HStack } from 'shared/ui/Stack';
+import { ArticleView } from '../../model/const/articleConsts';
+import cls from './ArticlesViewSelector.module.scss';
 
 interface ArticlesViewSelectorProps {
     className?: string;

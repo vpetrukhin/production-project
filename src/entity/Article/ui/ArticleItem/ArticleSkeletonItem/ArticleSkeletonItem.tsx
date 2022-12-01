@@ -1,9 +1,9 @@
-import { ArticleView } from '../../../model/types/article';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import cls from './ArticleSkeletonItem.module.scss';
 import { HStack } from 'shared/ui/Stack';
+import { ArticleView } from '../../../model/const/articleConsts';
+import cls from './ArticleSkeletonItem.module.scss';
 
 interface ArticleSkeletonItemProps {
     className?: string;

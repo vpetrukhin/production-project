@@ -13,7 +13,8 @@ import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileF
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileValidateError } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { ProfileActions } from '../../model/slice/ProfileSlice';
-import { ValidateErrors } from '../../model/types/ProfileSchema';
+import { ValidateErrors } from '../../model/const/editableProfileCardConsts';
+
 
 interface EditableProfileCardHeaderProps {
     className?: string;
