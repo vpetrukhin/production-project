@@ -2,7 +2,6 @@ import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { ArticleSortTypes, ArticleType, ArticleView, OrderType } from 'entity/Article';
-import { ArticlesViewSelector } from 'entity/Article/ui/ArticlesViewSelector/ArticlesViewSelector';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Select, SelectItem } from 'shared/ui/Select/Select';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -17,6 +16,7 @@ import {
     getArticlesType,
     getArticlesView
 } from '../../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
+import { ArticlesViewSelector } from '../../ui/ArticlesViewSelector/ArticlesViewSelector';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { ArticlesActions } from '../../model/slices/ArticlesSlice';
 import cls from './ArticlesFilters.module.scss';

@@ -1,11 +1,9 @@
 import { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Card } from 'shared/ui/Card/Card';
 import { Text } from 'shared/ui/Text/Text';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { routesPaths } from 'shared/config/router/routerConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { HStack } from 'shared/ui/Stack';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -27,11 +25,6 @@ interface ArticleItemProps {
 export const ArticleItem = (props: ArticleItemProps) => {
     const { className, article, view = ArticleView.SMALL, isLoading, target } = props;
     const {t} = useTranslation();
-    const navigate = useNavigate();
-
-    const onNavigateToArticle = () => {
-        navigate(routesPaths.articles_details + article.id);
-    };
 
     const types = <Text className={cls.type} text={article.type.join(', ')} />;
     const views = 
@@ -63,11 +56,10 @@ export const ArticleItem = (props: ArticleItemProps) => {
                     <ArticalTextBlockComponent className={cls.text} block={textBlock} />
                     <HStack justify='between' className={cls.footer}>
                         <AppLink
-                            to={routesPaths.articles_details + article.id}
+                            to={'/article/' + article.id}
                             target={target}
                         >
                             <Button 
-                                onClick={onNavigateToArticle}
                                 theme={ButtonTheme.OUTLINE}
                             >
                                 {t('Читать далее')}...
@@ -82,7 +74,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
 
     return (
         <AppLink
-            to={routesPaths.articles_details + article.id}
+            to={'/article/' + article.id}
             className={classNames(cls.ArticleItem, {}, [className, cls[view]])}
             target={target}
         >

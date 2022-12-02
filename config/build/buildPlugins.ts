@@ -1,10 +1,11 @@
-import webpack from 'webpack';
+import webpack, { WebpackError } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { buildOptions } from './types/config';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 export function buildPlugins({ paths, isDev, ApiUrl, project }: buildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
@@ -27,6 +28,10 @@ export function buildPlugins({ paths, isDev, ApiUrl, project }: buildOptions): w
                 { from: paths.locales, to: paths.buildLocales },
             ],
         }),
+        new CircularDependencyPlugin({
+            exclude: /node_modules/,
+            failOnError: true,
+        })
     ];
 
     if (isDev) {

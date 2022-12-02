@@ -3,7 +3,7 @@ import BlockIcon from 'shared/assets/icons/blocks.svg';
 import ListIcon from 'shared/assets/icons/list.svg';
 import { Button } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
-import { ArticleView } from '../../model/const/articleConsts';
+import { ArticleView } from 'entity/Article';
 import cls from './ArticlesViewSelector.module.scss';
 
 interface ArticlesViewSelectorProps {
