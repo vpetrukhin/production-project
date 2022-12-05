@@ -1,3 +1,5 @@
+import babelRemoveAttributesPlugin from '../../babel/babelRemoveAttributesPlugin';
+
 interface buildBabelLoaderProps {
     isTsx: boolean;
 }
@@ -17,7 +19,10 @@ export const buildBabelLoader = ({ isTsx }: buildBabelLoaderProps) => ({
                         isTsx
                     }
                 ],
-            ]
+                (isTsx && [
+                    babelRemoveAttributesPlugin, { props: ['data-testid'] }
+                ])
+            ].filter(Boolean),
         }
     }
 });
