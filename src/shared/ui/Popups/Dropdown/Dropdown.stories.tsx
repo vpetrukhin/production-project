@@ -6,16 +6,13 @@ import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorato
 import { Theme } from 'app/providers/theme';
 
 export default {
-    title: 'shared/Dropdown',
+    title: 'shared/Popups/Dropdown',
     component: Dropdown,
     decorators: [
         (Story) => 
             <div
                 style={{
-                    height: '100vh',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    padding: 150
                 }}
             >
                 <Story />

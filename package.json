@@ -118,5 +118,8 @@
         "preset": "iPhone 7"
       }
     }
+  },
+  "browser": {
+    "[module-name]": false   
   }
 }

@@ -15,7 +15,7 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
     };
 
     config?.resolve?.modules?.push(paths.src);
-    config?.resolve?.extensions?.push('.ts', '.tsx');
+    config?.resolve?.extensions?.push('.ts', '.tsx', '.scss');
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

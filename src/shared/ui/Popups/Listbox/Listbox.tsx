@@ -2,11 +2,13 @@ import { Fragment, ReactNode } from 'react';
 import { Listbox as HListbox } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DropdownDirection } from 'shared/types/ui';
-import { Button, ButtonTheme } from '../Button/Button';
-import { HStack } from '../Stack';
-import { Text } from '../Text/Text';
+import { Button, ButtonTheme } from '../../Button/Button';
+import { HStack } from '../../Stack';
+import { Text } from '../../Text/Text';
 import cls from './Listbox.module.scss';
-import CheckIcon from '../../assets/icons/check.svg';
+import popupCls from '../styles/popup.module.scss';
+import { mappedDropdownDirectionsClasses } from '../styles/consts';
+import CheckIcon from '../../../assets/icons/check.svg';
 
 export interface ListBoxItem<T> {
     value: T;
@@ -25,15 +27,17 @@ export interface ListboxProps<T> {
     direction?: DropdownDirection;
 }
 
-const mappedDropdownDirectionsClasses: Record<DropdownDirection, string> = {
-    ['topLeft']: cls.topLeft,
-    ['topRight']: cls.topRight,
-    ['bottomLeft']: cls.bottomLeft,
-    ['bottomRight']: cls.bottomRight,
-};
-
 export const Listbox = <V extends string>(props: ListboxProps<V>) => {
-    const { items, className, readonly, label, value, onChange, defaultValue, direction = 'bottomLeft' } = props;
+    const { 
+        items, 
+        className, 
+        readonly, 
+        label, 
+        value, 
+        onChange, 
+        defaultValue, 
+        direction = 'bottomLeft'
+    } = props;
 
     const listClasses = [
         className,
@@ -47,10 +51,18 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                 as='div'
                 value={value}
                 onChange={onChange}
-                className={classNames(cls.CustomListbox, {}, [])}
+                className={classNames(cls.Listbox, {}, [popupCls.popup])}
             >
-                <HListbox.Button className={classNames(cls.button, {}, [])} as='div'>
-                    <Button disabled={readonly} theme={ButtonTheme.OUTLINE}>{value ?? defaultValue}</Button>
+                <HListbox.Button
+                    className={classNames(cls.button, {}, [popupCls.trigger])}
+                    as='div'
+                >
+                    <Button
+                        disabled={readonly}
+                        theme={ButtonTheme.OUTLINE}
+                    >
+                        {value ?? defaultValue}
+                    </Button>
                 </HListbox.Button>
                 <HListbox.Options className={classNames(cls.list, {}, listClasses)}>
                     {items.map((item, index) => (
@@ -62,8 +74,8 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                         >
                             {( {active, selected} ) => (
                                 <li className={classNames(cls.item, {
-                                    [cls.active]: active,
-                                    [cls.disabled]: item.disabled,
+                                    [popupCls.active]: active,
+                                    [popupCls.disabled]: item.disabled,
                                 }, [])}>
                                     {selected && <CheckIcon />}
                                     {item.content}

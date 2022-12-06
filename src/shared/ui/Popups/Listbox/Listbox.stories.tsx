@@ -11,7 +11,7 @@ const items: ListBoxItem<string>[] = [
 ];
 
 export default {
-    title: 'shared/Listbox',
+    title: 'shared/Popups/Listbox',
     component: Listbox,
     decorators: [
         (Story) => <div style={{ padding: 150 }} ><Story /></div>

@@ -30,5 +30,6 @@
   "Отправить": "Send",
   "Читать далее": "More",
   "ProdApp": "ProdApp",
-  "panel-administratora": "Admin panel"
+  "panel-administratora": "Admin panel",
+  "oshibka-zagruzki-uvedomlenii": "Notification loading error"
 }

@@ -1,0 +1,34 @@
+.Listbox {
+    width: fit-content;
+}
+
+.button:focus {
+    border-color: var(--accent-color);
+}
+
+.list {
+    background-color: var(--primary-color);
+    position: absolute;
+    min-width: 100%;
+    border-radius: 8px;
+    z-index: 10000000;
+    overflow: hidden;
+    outline: none;
+}
+
+.item {
+    padding: 5px 10px;
+    color: var(--inverted-primary-color);
+    cursor: pointer;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+
+    & svg {
+        width: 15px;
+        height: 15px;
+        fill: var(--inverted-primary-color);
+    }
+}
+
+
