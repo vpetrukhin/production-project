@@ -24,9 +24,9 @@ export const NotificationList = (props: NotificationListProps) => {
     if (isLoading) {
         return (
             <VStack gap='16' align='start' className={classNames(cls.NotificationList, {}, [className])}>
-                <Skeleton height={50} border={10} />
-                <Skeleton height={50} border={10} />
-                <Skeleton height={50} border={10} />
+                <Skeleton height={80} border={10} />
+                <Skeleton height={80} border={10} />
+                <Skeleton height={80} border={10} />
             </VStack>
         );
     }

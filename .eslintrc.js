@@ -22,7 +22,7 @@ module.exports = {
         'react/display-name': 'off',
         'react-hooks/rules-of-hooks': 'error', 
         'react-hooks/exhaustive-deps': 'warn',
-        'i18next/no-literal-string': ['error', {
+        'i18next/no-literal-string': ['warn', {
             markupOnly: true,
             ignoreCallee: ['TEST', 'test'],
             ignoreAttribute: [

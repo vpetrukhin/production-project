@@ -2,7 +2,7 @@ import { ReactNode, PropsWithChildren } from 'react';
 import { Popover as HPopover } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DropdownDirection } from 'shared/types/ui';
-import { Card } from '../../Card/Card';
+import cls from './Popover.module.scss';
 import popupCls from '../styles/popup.module.scss';
 import { mappedDropdownDirectionsClasses } from '../styles/consts';
 
@@ -23,8 +23,8 @@ export const Popover = (props: PopoverProps) => {
                 {trigger}
             </HPopover.Button>
 
-            <HPopover.Panel className={classNames('', {}, [popupCls.dropdownContent ,mappedDropdownDirectionsClasses[direction]])}>
-                <Card>{children}</Card>
+            <HPopover.Panel className={classNames(cls.panel, {}, [popupCls.dropdownContent ,mappedDropdownDirectionsClasses[direction]])}>
+                {children}
             </HPopover.Panel>
         </HPopover>
     );

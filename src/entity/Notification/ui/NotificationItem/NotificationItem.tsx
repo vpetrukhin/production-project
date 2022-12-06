@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, TextColor } from 'shared/ui/Text/Text';
 import { Notification } from '../../model/types/notification';
 import cls from './NotificationItem.module.scss';
 
@@ -16,6 +16,7 @@ export const NotificationItem = (props: NotificationItemProps) => {
             <Text 
                 title={item.title}
                 text={item.description}
+                color={TextColor.PRIMARY}
             />
         </div>;
 
@@ -25,6 +26,7 @@ export const NotificationItem = (props: NotificationItemProps) => {
             <Text 
                 title={item.title}
                 text={item.description}
+                color={TextColor.PRIMARY}
             />
         </a>;
     }
