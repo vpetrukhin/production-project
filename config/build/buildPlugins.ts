@@ -21,7 +21,7 @@ export function buildPlugins({ paths, isDev, ApiUrl, project }: buildOptions): w
         }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-            __API_URL__: JSON.stringify(ApiUrl) || 'http://localhost:8000',
+            __API_URL__: JSON.stringify(ApiUrl),
             __PROJECT__: JSON.stringify(project),
         }),
         new CopyPlugin({
