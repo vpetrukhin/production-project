@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Country } from 'entity/Country';
-import { Currency } from 'entity/Currency';
-import { Profile } from 'entity/Profile';
+import { Country } from '@/entity/Country';
+import { Currency } from '@/entity/Currency';
+import { Profile } from '@/entity/Profile';
 import { ProfileReducer } from '../../model/slice/ProfileSlice';
-import { ComponentRender, ComponentRenderOptions } from 'shared/config/tests/ComponentRender';
+import { ComponentRender, ComponentRenderOptions } from '@/shared/config/tests/ComponentRender';
 import { EditableProfileCard } from './EditableProfileCard';
 
 const mockProfile: Profile = {

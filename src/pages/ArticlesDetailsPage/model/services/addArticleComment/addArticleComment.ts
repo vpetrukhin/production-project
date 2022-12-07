@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/Redux';
-import { getArticleData } from 'entity/Article';
-import { IComment } from 'entity/Comment';
-import { getUserInfo } from 'entity/User';
-import { ValidateErrors } from 'feutures/EditableProfileCard';
+import { ThunkConfig } from '@/app/providers/Redux';
+import { getArticleData } from '@/entity/Article';
+import { IComment } from '@/entity/Comment';
+import { getUserInfo } from '@/entity/User';
+import { ValidateErrors } from '@/feutures/EditableProfileCard';
 import { fetchCommentsList } from '../fetchCommentsList/fetchCommentsLIst';
 
 export const addArticleComment = createAsyncThunk<IComment, string, ThunkConfig<string>>(

@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, memo, useEffect, useMemo, useRef } from 'react';
-import { classNames, Mode } from 'shared/lib/classNames/classNames';
+import { classNames, Mode } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<

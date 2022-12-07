@@ -1,14 +1,14 @@
 import { MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
-import { getScrollStorageScrollByPath, ScrollStorageActions } from 'feutures/scrollStorage';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useScroll } from 'shared/lib/hooks/useScroll';
+import { getScrollStorageScrollByPath, ScrollStorageActions } from '@/feutures/scrollStorage';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useScroll } from '@/shared/lib/hooks/useScroll';
 import cls from './Page.module.scss';
 import { useLocation } from 'react-router-dom';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useSelector } from 'react-redux';
-import { StateSchema } from 'app/providers/Redux';
-import { useThrottle } from 'shared/lib/hooks/useThrottle';
+import { StateSchema } from '@/app/providers/Redux';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle';
 
 interface PageProps {
     className?: string;

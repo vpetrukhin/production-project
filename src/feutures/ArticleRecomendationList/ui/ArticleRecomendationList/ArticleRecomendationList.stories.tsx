@@ -2,10 +2,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ArticleRecomendationList } from './ArticleRecomendationList';
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from 'app/providers/theme';
-import { StoreDecorator } from 'shared/config/storybook/decorators';
-import { ArticleType, BlockType } from 'entity/Article';
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
+import { Theme } from '@/app/providers/theme';
+import { StoreDecorator } from '@/shared/config/storybook/decorators';
+import { ArticleType, BlockType } from '@/entity/Article';
 
 const article = {
     id: '1',

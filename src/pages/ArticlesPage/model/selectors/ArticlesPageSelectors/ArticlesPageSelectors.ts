@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/Redux';
-import { ArticleSortTypes, ArticleType, ArticleView } from 'entity/Article';
+import { StateSchema } from '@/app/providers/Redux';
+import { ArticleSortTypes, ArticleType, ArticleView } from '@/entity/Article';
 
 export const getArticlesLoading = (state: StateSchema) => state.articlesPage?.isLoading || false;
 export const getArticlesError = (state: StateSchema) => state.articlesPage?.error;

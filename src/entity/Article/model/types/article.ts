@@ -1,4 +1,4 @@
-import { User } from 'entity/User';
+import { User } from '@/entity/User';
 import { ArticleType, BlockType } from '../const/articleConsts';
 
 export type OrderType = 'asc' | 'desc';

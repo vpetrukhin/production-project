@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { UserRoles } from '../../const/userConsts';
 import { getIsAdmin, getIsManager, getUserRoles } from './roles';
 

@@ -1,8 +1,8 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { UserReducer } from 'entity/User';
-import { ScrollStorageReducer } from 'feutures/scrollStorage';
-import { $api } from 'shared/api/API';
-import { rtkApi } from 'shared/api/rtkAPi';
+import { UserReducer } from '@/entity/User';
+import { ScrollStorageReducer } from '@/feutures/scrollStorage';
+import { $api } from '@/shared/api/API';
+import { rtkApi } from '@/shared/api/rtkAPi';
 import { AsyncStateSchema, StateSchema, StateWithReducerManager, ThunkExtraArg } from '../types/StateSchema';
 import { createReducerManager } from './createReducerManager';
 

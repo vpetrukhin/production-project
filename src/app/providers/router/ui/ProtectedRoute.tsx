@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
-import { getIsAuth } from 'entity/User/model/selectors/getIsAuth/getIsAuth';
-import { getUserRoles, UserRoles } from 'entity/User';
-import { routesPaths } from 'shared/config/router/routerConfig';
+import { getIsAuth } from '@/entity/User/model/selectors/getIsAuth/getIsAuth';
+import { getUserRoles, UserRoles } from '@/entity/User';
+import { routesPaths } from '@/shared/config/router/routerConfig';
 import { useMemo } from 'react';
 
 interface ProtectedRouteProps {

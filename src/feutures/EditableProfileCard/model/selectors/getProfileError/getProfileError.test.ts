@@ -1,5 +1,5 @@
 import { getProfileError } from './getProfileError';
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 
 
 describe('tests for getProfileError.test', () => {

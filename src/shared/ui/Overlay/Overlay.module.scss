@@ -4,7 +4,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: var(--overlay-z-index);
 
     background-color: var(--overlay-color);
 }

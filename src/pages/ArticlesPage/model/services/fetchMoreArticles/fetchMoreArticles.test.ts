@@ -1,5 +1,5 @@
-import { Article, ArticleType, BlockType } from 'entity/Article';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { Article, ArticleType, BlockType } from '@/entity/Article';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { fetchMoreArticles } from './fetchMoreArticles';
 
 const articles: Article[] = [

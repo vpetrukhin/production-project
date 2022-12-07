@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/Redux';
-import { IComment } from 'entity/Comment';
+import { StateSchema } from '@/app/providers/Redux';
+import { IComment } from '@/entity/Comment';
 import { fetchCommentsList } from '../../services/fetchCommentsList/fetchCommentsLIst';
 import { ArticleDetailsCommentsSchema } from '../../types/ArticleDetailsCommentsSchema';
 import { CommentsReducer } from './CommentsSlice';

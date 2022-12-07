@@ -1,8 +1,8 @@
 import { memo, PropsWithChildren, useCallback, useEffect } from 'react';
-import { useTheme } from 'app/providers/theme/lib/useTheme';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useModal } from 'shared/lib/hooks/useModal';
-import { useAnimationContext } from 'shared/lib/ui/AnimationProvider';
+import { useTheme } from '@/app/providers/theme/lib/useTheme';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useModal } from '@/shared/lib/hooks/useModal';
+import { useAnimationContext } from '@/shared/lib/ui/AnimationProvider';
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import cls from './Drawer.module.scss';

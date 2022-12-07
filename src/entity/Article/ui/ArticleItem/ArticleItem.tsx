@@ -1,18 +1,18 @@
 import { HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card/Card';
-import { Text } from 'shared/ui/Text/Text';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { HStack } from 'shared/ui/Stack';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card/Card';
+import { Text } from '@/shared/ui/Text/Text';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { HStack } from '@/shared/ui/Stack';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { ArticalTextBlockComponent } from '../ArticalTextBlockComponent/ArticalTextBlockComponent';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleSkeletonItem } from './ArticleSkeletonItem/ArticleSkeletonItem';
 import { ArticleView, BlockType } from '../../model/const/articleConsts';
 import cls from './ArticleItem.module.scss';
-import EyeIcon from 'shared/assets/icons/eye.svg';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
 
 interface ArticleItemProps {
     className?: string;

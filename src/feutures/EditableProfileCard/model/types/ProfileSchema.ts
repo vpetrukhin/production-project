@@ -1,4 +1,4 @@
-import { Profile } from 'entity/Profile';
+import { Profile } from '@/entity/Profile';
 import { ValidateErrors } from '../const/editableProfileCardConsts';
 
 export interface ProfileSchema {

@@ -1,6 +1,6 @@
-import { StateSchema } from 'app/providers/Redux/types/StateSchema';
+import { StateSchema } from '@/app/providers/Redux/types/StateSchema';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { LoginSchema } from 'feutures/AuthByUserName/index';
+import { LoginSchema } from '@/feutures/AuthByUserName/index';
 import { getLoginState } from './getLoginState';
 
 describe('tests for getLoginState.test', () => {

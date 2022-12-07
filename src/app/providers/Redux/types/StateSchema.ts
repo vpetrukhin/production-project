@@ -4,15 +4,15 @@ import {
 } from '@reduxjs/toolkit';
 import {
     ArticleDetailsCommentsSchema, ArticleDetailsRecomenationSchema
-} from 'pages/ArticlesDetailsPage';
-import { ArticlesPageSchema } from 'pages/ArticlesPage';
-import { ProfileSchema } from 'feutures/EditableProfileCard';
-import { LoginSchema } from 'feutures/AuthByUserName';
-import { AddCommentFormSchema } from 'feutures/addComment';
-import { ScrollStorageSchema } from 'feutures/scrollStorage';
-import { UserSchema } from 'entity/User';
-import { ArticleSchema } from 'entity/Article';
-import { rtkApi } from 'shared/api/rtkAPi';
+} from '@/pages/ArticlesDetailsPage';
+import { ArticlesPageSchema } from '@/pages/ArticlesPage';
+import { ProfileSchema } from '@/feutures/EditableProfileCard';
+import { LoginSchema } from '@/feutures/AuthByUserName';
+import { AddCommentFormSchema } from '@/feutures/addComment';
+import { ScrollStorageSchema } from '@/feutures/scrollStorage';
+import { UserSchema } from '@/entity/User';
+import { ArticleSchema } from '@/entity/Article';
+import { rtkApi } from '@/shared/api/rtkAPi';
 import { createReduxStore } from '..';
 
 export interface AsyncStateSchema {

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { classNames, Mode } from 'shared/lib/classNames/classNames';
+import { classNames, Mode } from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
 type FlexAlign = 'start' | 'center' | 'end';

@@ -1,5 +1,5 @@
-import { User } from 'entity/User';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { User } from '@/entity/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUsername } from './LoginByUsername';
 
 const mockAuthData = {

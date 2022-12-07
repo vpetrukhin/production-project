@@ -1,7 +1,7 @@
 import { useEffect, PropsWithChildren } from 'react';
 import { useDispatch, useStore } from 'react-redux';
-import { StateWithReducerManager } from 'app/providers/Redux';
-import { StateSchemaKeys } from 'app/providers/Redux';
+import { StateWithReducerManager } from '@/app/providers/Redux';
+import { StateSchemaKeys } from '@/app/providers/Redux';
 import { Reducer } from '@reduxjs/toolkit';
 
 export type ReducerList = Partial<Record<StateSchemaKeys, Reducer>>

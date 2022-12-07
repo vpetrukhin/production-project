@@ -1,14 +1,14 @@
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ArticleSortTypes, ArticleType, ArticleView, OrderType } from 'entity/Article';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Select, SelectItem } from 'shared/ui/Select/Select';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { Input } from 'shared/ui/Input/Input';
-import { Card, CardTheme } from 'shared/ui/Card/Card';
-import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
-import { useDebounce } from 'shared/lib/hooks/useDebouce';
+import { ArticleSortTypes, ArticleType, ArticleView, OrderType } from '@/entity/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Select, SelectItem } from '@/shared/ui/Select/Select';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { Input } from '@/shared/ui/Input/Input';
+import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
+import { useDebounce } from '@/shared/lib/hooks/useDebouce';
 import {
     getArticlesOrder,
     getArticlesSearch,
@@ -20,7 +20,7 @@ import { ArticlesViewSelector } from '../../ui/ArticlesViewSelector/ArticlesView
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { ArticlesActions } from '../../model/slices/ArticlesSlice';
 import cls from './ArticlesFilters.module.scss';
-import { HStack } from 'shared/ui/Stack';
+import { HStack } from '@/shared/ui/Stack';
 
 interface ArticlesFiltersProps {
     className?: string;

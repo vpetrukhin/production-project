@@ -28,5 +28,6 @@
     --color-red-light: rgb(196 42 42);
 
     // z-Индексы
-    --modal-zindex: 10000000;
+    --overlay-z-index: 99;
+    --modal-z-index: 100;
 }

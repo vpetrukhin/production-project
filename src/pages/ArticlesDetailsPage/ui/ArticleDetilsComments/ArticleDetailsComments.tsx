@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { AddCommentForm } from 'feutures/addComment';
-import { CommentList } from 'entity/Comment';
-import { VStack } from 'shared/ui/Stack';
-import { DynamicModule } from 'shared/lib/ui/DynamicModule/DynamicModule';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { AddCommentForm } from '@/feutures/addComment';
+import { CommentList } from '@/entity/Comment';
+import { VStack } from '@/shared/ui/Stack';
+import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { getArticleDetailsCommentsLoading } from '../../model/selectors/comments/comments';
 import { addArticleComment } from '../../model/services/addArticleComment/addArticleComment';
 import { fetchCommentsList } from '../../model/services/fetchCommentsList/fetchCommentsLIst';

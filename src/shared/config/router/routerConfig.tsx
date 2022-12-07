@@ -1,15 +1,15 @@
 import { RouteProps } from 'react-router-dom';
-import { AboutPage } from 'pages/AboutPage';
-import { AdminPanelPage } from 'pages/AdminPanelPage';
-import { ArticleDetailsEditPage } from 'pages/ArticleDetailsEditPage';
-import { ArticlesDetailsCreatePage } from 'pages/ArticlesDetailsCreatePage';
-import { ArticlesDetailsPage } from 'pages/ArticlesDetailsPage';
-import { ArticlesPage } from 'pages/ArticlesPage';
-import { MainPage } from 'pages/MainPage';
-import { NotFoundPage } from 'pages/NotFoundPage/NotFoundPage';
-import { ProfilePage } from 'pages/ProfilePage';
-import { UserRoles } from 'entity/User';
-import { ForbiddenPage } from 'pages/ForbiddenPage';
+import { AboutPage } from '@/pages/AboutPage';
+import { AdminPanelPage } from '@/pages/AdminPanelPage';
+import { ArticleDetailsEditPage } from '@/pages/ArticleDetailsEditPage';
+import { ArticlesDetailsCreatePage } from '@/pages/ArticlesDetailsCreatePage';
+import { ArticlesDetailsPage } from '@/pages/ArticlesDetailsPage';
+import { ArticlesPage } from '@/pages/ArticlesPage';
+import { MainPage } from '@/pages/MainPage';
+import { NotFoundPage } from '@/pages/NotFoundPage/NotFoundPage';
+import { ProfilePage } from '@/pages/ProfilePage';
+import { UserRoles } from '@/entity/User';
+import { ForbiddenPage } from '@/pages/ForbiddenPage';
 
 export interface IRoute extends Omit<RouteProps, 'element'> {
     onlyAuthorized: boolean;

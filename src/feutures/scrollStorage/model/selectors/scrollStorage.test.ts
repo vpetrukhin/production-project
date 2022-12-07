@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { getScrollStorageScrollByPath } from './scrollStorage';
 
 describe('tests for scrollStorage', () => {

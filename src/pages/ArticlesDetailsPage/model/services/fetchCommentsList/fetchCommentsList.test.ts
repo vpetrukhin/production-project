@@ -1,5 +1,5 @@
-import { IComment } from 'entity/Comment';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { IComment } from '@/entity/Comment';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { fetchCommentsList } from './fetchCommentsLIst';
 
 const mockComments: IComment[] = [

@@ -8,13 +8,6 @@
     pointer-events: none;
 }
 
-.overlay {
-    width: 100%;
-    height: 100%;
-    background-color: var(--overlay-color);
-    pointer-events: none;
-}
-
 .content {
     max-width: 60%;
     padding: 20px;
@@ -22,7 +15,7 @@
     background-color: var(--inverted-main-bg);
     transition: transform 0.2;
     transform: scale(0.6);
-    z-index: var(--modal-zindex);
+    z-index: var(--modal-z-index);
 }
 
 .is_open {

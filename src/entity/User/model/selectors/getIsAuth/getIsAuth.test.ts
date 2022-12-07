@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { getIsAuth } from './getIsAuth';
 
 describe('tests for getIsAuth.test', () => {

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { VStack } from 'shared/ui/Stack';
-import { Text, TextAlign } from 'shared/ui/Text/Text';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { VStack } from '@/shared/ui/Stack';
+import { Text, TextAlign } from '@/shared/ui/Text/Text';
 import { IComment } from '../../model/types/comment';
 import { Comment } from '../Comment/Comment';
 import cls from './CommentList.module.scss';

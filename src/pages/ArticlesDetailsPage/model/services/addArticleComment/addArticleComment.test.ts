@@ -1,7 +1,7 @@
-import { StateSchema } from 'app/providers/Redux';
-import { ArticleType, BlockType } from 'entity/Article';
-import { IComment } from 'entity/Comment';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { StateSchema } from '@/app/providers/Redux';
+import { ArticleType, BlockType } from '@/entity/Article';
+import { IComment } from '@/entity/Comment';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { addArticleComment } from './addArticleComment';
 
 const article = {

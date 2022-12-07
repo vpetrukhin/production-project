@@ -1,6 +1,6 @@
-import { Country } from 'entity/Country';
-import { Currency } from 'entity/Currency';
-import { Profile } from 'entity/Profile';
+import { Country } from '@/entity/Country';
+import { Currency } from '@/entity/Currency';
+import { Profile } from '@/entity/Profile';
 import { ProfileSchema } from '../types/ProfileSchema';
 import { ProfileActions, ProfileReducer } from './ProfileSlice';
 

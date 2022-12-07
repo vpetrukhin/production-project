@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { getLoginError } from './getLoginError';
 
 describe('tests for getLoginError.test', () => {

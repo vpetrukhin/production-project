@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { getAddCommentFormText } from './getAddCommentFormText';
 
 describe('tests for getAddCommentFormText.test', () => {

@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 // import { useTranslation } from 'react-i18next';
-import { Page } from 'widgets/Page/Page';
-import { ArticleDetails } from 'entity/Article';
-import { ArticleRecomendationList } from 'feutures/ArticleRecomendationList';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Page } from '@/widgets/Page/Page';
+import { ArticleDetails } from '@/entity/Article';
+import { ArticleRecomendationList } from '@/feutures/ArticleRecomendationList';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleDetailsHeader } from './ArticleDetailsHeader/ArticleDetailsHeader';
 import cls from './ArticlesDetailsPage.module.scss';
-import { VStack } from 'shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 // import { Text } from 'shared/ui/Text/Text';
 import { ArticleDetailsComments } from './ArticleDetilsComments/ArticleDetailsComments';
 

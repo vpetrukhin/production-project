@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { LoginModal } from 'feutures/AuthByUserName';
-import { NotificationButton } from 'feutures/NotificationButton';
-import { AvatarDropdown } from 'feutures/AvatarDropdown';
-import { getUserInfo } from 'entity/User';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { HStack } from 'shared/ui/Stack';
-import { Text, TextColor } from 'shared/ui/Text/Text';
+import { LoginModal } from '@/feutures/AuthByUserName';
+import { NotificationButton } from '@/feutures/NotificationButton';
+import { AvatarDropdown } from '@/feutures/AvatarDropdown';
+import { getUserInfo } from '@/entity/User';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { HStack } from '@/shared/ui/Stack';
+import { Text, TextColor } from '@/shared/ui/Text/Text';
 import cls from './NavBar.module.scss';
 
 

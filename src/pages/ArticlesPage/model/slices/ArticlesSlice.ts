@@ -1,8 +1,8 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { createSlice, createEntityAdapter, PayloadAction } from '@reduxjs/toolkit';
-import { Article, ArticleSortTypes, ArticleType, ArticleView } from 'entity/Article';
+import { Article, ArticleSortTypes, ArticleType, ArticleView } from '@/entity/Article';
 import { ArticlesPageSchema } from '../types/ArticlesPageSchema';
-import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/config/const/localStorage';
+import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from '@/shared/config/const/localStorage';
 import { fetchArticles } from '../services/fetchArticles/fetchArticles';
 import { fetchMoreArticles } from '../services/fetchMoreArticles/fetchMoreArticles';
 

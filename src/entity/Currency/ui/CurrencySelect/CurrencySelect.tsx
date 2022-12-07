@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { SelectItem } from 'shared/ui/Select/Select';
-import { Listbox } from 'shared/ui/Popups';
+import { SelectItem } from '@/shared/ui/Select/Select';
+import { Listbox } from '@/shared/ui/Popups';
 import { Currency } from '../../model/types/Currency';
 
 interface CurrencySelectProps {

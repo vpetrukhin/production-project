@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { getProfileReadonly } from './getProfileReadonly';
 
 describe('tests for getProfileIsLoading.test', () => {

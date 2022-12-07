@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { AddCommentForm } from './AddCommentForm';
-import { Theme } from 'app/providers/theme';
-import { StoreDecorator, ThemeDecorator } from 'shared/config/storybook/decorators';
+import { Theme } from '@/app/providers/theme';
+import { StoreDecorator, ThemeDecorator } from '@/shared/config/storybook/decorators';
 
 export default {
     title: 'feutures/addCommentForm',

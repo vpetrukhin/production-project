@@ -1,18 +1,18 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Country } from 'entity/Country';
-import { Currency } from 'entity/Currency';
-import { ProfileCard } from 'entity/Profile';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { Country } from '@/entity/Country';
+import { Currency } from '@/entity/Currency';
+import { ProfileCard } from '@/entity/Profile';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { ProfileActions, ProfileReducer } from '../../model/slice/ProfileSlice';
-import { DynamicModule, ReducerList } from 'shared/lib/ui/DynamicModule/DynamicModule';
+import { DynamicModule, ReducerList } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 
 const reducers: ReducerList = {
     'profile': ProfileReducer

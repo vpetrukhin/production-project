@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { getArticleDetailsCommentsError, getArticleDetailsCommentsLoading } from './comments';
 
 describe('tests for comments selectors', () => {

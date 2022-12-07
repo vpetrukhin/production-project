@@ -1,6 +1,6 @@
 import { HTMLAttributeAnchorTarget } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { HStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { HStack } from '@/shared/ui/Stack';
 import { Article } from '../../model/types/article';
 import { ArticleSkeletonItem } from '../ArticleItem/ArticleSkeletonItem/ArticleSkeletonItem';
 import { ArticleItem } from '../ArticleItem/ArticleItem';

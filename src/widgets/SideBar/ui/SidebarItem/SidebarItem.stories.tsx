@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { SidebarItem } from './SidebarItem';
-import { ThemeDecorator } from 'shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from 'app/providers/theme';
-import MainIcon from 'shared/assets/icons/main.svg';
+import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
+import { Theme } from '@/app/providers/theme';
+import MainIcon from '@/shared/assets/icons/main.svg';
 import { VFC, SVGProps } from 'react';
 
 export default {

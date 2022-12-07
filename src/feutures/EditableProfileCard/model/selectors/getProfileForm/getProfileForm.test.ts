@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/Redux';
+import { StateSchema } from '@/app/providers/Redux';
 import { getProfileForm } from './getProfileForm';
 
 describe('tests for getProfileForm.test', () => {

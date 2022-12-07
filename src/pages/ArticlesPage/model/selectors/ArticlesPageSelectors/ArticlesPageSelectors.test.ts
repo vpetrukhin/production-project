@@ -1,5 +1,5 @@
-import { StateSchema } from 'app/providers/Redux';
-import { ArticleSortTypes, ArticleType, ArticleView } from 'entity/Article';
+import { StateSchema } from '@/app/providers/Redux';
+import { ArticleSortTypes, ArticleType, ArticleView } from '@/entity/Article';
 import { getArticlesError, getArticlesHas, getArticlesInited, getArticlesLimit, getArticlesLoading, getArticlesOrder, getArticlesPage, getArticlesSearch, getArticlesSort, getArticlesType, getArticlesView } from './ArticlesPageSelectors';
 
 describe('tests for ArticlesPageSelectors', () => {
