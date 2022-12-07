@@ -9,7 +9,7 @@ import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileF
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { ProfileActions, ProfileReducer } from '../../model/slice/ProfileSlice';
-import { DynamicModule, ReducerList } from 'shared/lib/DynamicModule/DynamicModule';
+import { DynamicModule, ReducerList } from 'shared/lib/ui/DynamicModule/DynamicModule';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';

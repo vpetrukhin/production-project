@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
+import { DynamicModule } from 'shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';

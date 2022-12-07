@@ -2,7 +2,7 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { Page } from 'widgets/Page/Page';
-import { DynamicModule } from 'shared/lib/DynamicModule/DynamicModule';
+import { DynamicModule } from 'shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect';
 import { getArticlesHas } from '../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';

@@ -10,16 +10,15 @@
 }
 
 .content {
-    width: 100%;
-    height: 60%;
-    padding: 15px;
-    position: absolute;
-    bottom: 0;
     z-index: 10000;
-    overflow-y: auto;
-
-    background-color: var(--inverted-main-bg);
-    transform: translateY(100%);
+    position: fixed;
+    left: 2vw;
+    height: calc(100vh + 100px);
+    width: 96vw;
+    border-radius: 12px 12px 0;
+    background: var(--inverted-main-bg);
+    touch-action: none;
+    padding: 15px;
 }
 
 .open {
