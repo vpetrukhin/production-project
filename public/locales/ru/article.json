@@ -16,5 +16,8 @@
   "rekomendacii": "Рекомендации",
   "create-article": "Создать статью",
   "edit-article": "Редактировать статью",
-  "nekorrektnyi-id-stati": "Некорректный id статьи"
+  "nekorrektnyi-id-stati": "Некорректный id статьи",
+  "tekst-otzyva": "Текст отзыва",
+  "nekorrektnyi-url-stati": "Некорректный url статьи",
+  "kak-vam-statya": "Как вам статья?"
 }

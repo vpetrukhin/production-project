@@ -14,17 +14,19 @@ import cls from './RatingCard.module.scss';
 
 interface RatingCardProps {
     className?: string;
+    rate?: number;
+    title?: string;
     feedbackTitle?: string;
     hasFeedback?: boolean;
     onAccept?: (rating: number, feedback?: string) => void;
-    onCancel?: () => void
+    onCancel?: (rating: number) => void
 }
 
 export const RatingCard = (props: RatingCardProps) => {
-    const { className, feedbackTitle, hasFeedback, onAccept, onCancel } = props;
+    const { className, feedbackTitle, hasFeedback, rate = 0, title, onAccept, onCancel } = props;
     const {t} = useTranslation();
 
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(rate);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [feedback, setFeedback] = useState('');
 
@@ -52,7 +54,7 @@ export const RatingCard = (props: RatingCardProps) => {
     const handleCancel = () => {
         setRating(0);
 
-        onCancel?.();
+        onCancel?.(rating);
         
         handleClose();
     };
@@ -84,9 +86,9 @@ export const RatingCard = (props: RatingCardProps) => {
 
     return (
         <>
-            <Card className={classNames(cls.RatingCard, {}, [className])}>
+            <Card className={classNames(cls.RatingCard, {}, [className])} max>
                 <VStack align='center' justify='center' max gap='16'>
-                    <Text title={feedbackTitle} />
+                    <Text title={title} />
                     <StarRating
                         onSelect={handleSetRating}
                         selectedStars={rating}
