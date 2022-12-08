@@ -2,7 +2,7 @@ import { SVGProps, FC } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Icon.module.scss';
 
-type IconColor = 'primary' | 'inverted';
+type IconColor = 'primary' | 'inverted' | 'clear';
 
 interface IconProps extends SVGProps<SVGSVGElement> {
     className?: string;
