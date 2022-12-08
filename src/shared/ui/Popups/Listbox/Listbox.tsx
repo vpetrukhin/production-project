@@ -9,6 +9,7 @@ import cls from './Listbox.module.scss';
 import popupCls from '../styles/popup.module.scss';
 import { mappedDropdownDirectionsClasses } from '../styles/consts';
 import CheckIcon from '../../../assets/icons/check.svg';
+import { Icon } from '../../Icon/Icon';
 
 export interface ListBoxItem<T> {
     value: T;
@@ -77,7 +78,7 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                                     [popupCls.active]: active,
                                     [popupCls.disabled]: item.disabled,
                                 }, [])}>
-                                    {selected && <CheckIcon />}
+                                    {selected && <Icon Svg={CheckIcon} />}
                                     {item.content}
                                 </li>
                             )}

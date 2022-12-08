@@ -18,6 +18,7 @@ import { BlockType } from '../../model/const/articleConsts';
 import cls from './ArticleDetails.module.scss';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { Icon } from '@/shared/ui/Icon/Icon';
 
 
 interface ArticleDetailsProps {
@@ -101,11 +102,11 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                 />
                 <VStack gap='8' align='start'>
                     <HStack gap='4'>
-                        <EyeIcon className={cls.icon} />
+                        <Icon Svg={EyeIcon} />
                         <Text text={String(article?.views)} />
                     </HStack>
                     <HStack gap='4'>
-                        <CalendarIcon className={cls.icon} />
+                        <Icon Svg={CalendarIcon} />
                         <Text text={String(article?.createdAt)} />
                     </HStack>
                 </VStack>

@@ -3,6 +3,7 @@ import { Button, ButtonTheme } from '../Button/Button';
 import cls from './Code.module.scss';
 import CopyIcon from '@/shared/assets/icons/copy.svg';
 import { useCallback } from 'react';
+import { Icon } from '../Icon/Icon';
 
 interface CodeProps {
     className?: string;
@@ -19,7 +20,7 @@ export const Code = (props: CodeProps) => {
     return (
         <pre className={classNames(cls.Code, {}, [className])}>
             <Button className={cls.copyBtn} theme={ButtonTheme.CLEAR} onClick={onCopy}>
-                <CopyIcon />
+                <Icon Svg={CopyIcon} />
             </Button>
             <code>
                 {text}

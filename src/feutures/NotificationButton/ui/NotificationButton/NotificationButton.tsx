@@ -1,13 +1,13 @@
-
+import { useState, useCallback } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { NotificationList } from '@/entity/Notification';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { Popover } from '@/shared/ui/Popups';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { Icon } from '@/shared/ui/Icon/Icon';
 import cls from './NotificationButton.module.scss';
 import NotificationsIcon from '@/shared/assets/icons/notifications.svg';
-import { useState, useCallback } from 'react';
-import { BrowserView, MobileView } from 'react-device-detect';
-import { Drawer } from '@/shared/ui/Drawer/Drawer';
 
 interface NotificationButtonProps {
     className?: string;
@@ -32,7 +32,10 @@ export const NotificationButton = (props: NotificationButtonProps) => {
             theme={ButtonTheme.CLEAR}
             onClick={handleOpenDrawer}
         >
-            <NotificationsIcon />
+            <Icon
+                Svg={NotificationsIcon}
+                color='inverted'
+            />
         </Button>
     );
 

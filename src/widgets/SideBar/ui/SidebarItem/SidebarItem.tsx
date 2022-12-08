@@ -5,6 +5,7 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { HStack } from '@/shared/ui/Stack';
 import { SidebarItemType } from '../../model/types/SidebarItem';
 import cls from './SidebarItem.module.scss';
+import { Icon } from '@/shared/ui/Icon/Icon';
 
 interface SidebarItemProps {
     item: SidebarItemType;
@@ -14,12 +15,12 @@ interface SidebarItemProps {
 export const SidebarItem = memo((props: SidebarItemProps) => {
     const { item, collapsed } = props;
     const {t} = useTranslation();
-    const { Icon } = item;
+    const { Icon: icon } = item;
 
     return (
         <AppLink theme={AppLinkTheme.INVERTED} to={item.path} className={classNames(cls.item, {[cls.collapsed]: collapsed})}>
             <HStack gap='8' justify='between'>
-                <Icon className={cls.icon} />
+                <Icon Svg={icon} />
                 <span className={cls.link}>{t(item.text)}</span>
             </HStack>
         </AppLink>

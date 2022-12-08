@@ -1,9 +1,10 @@
+import { ArticleView } from '@/entity/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import BlockIcon from '@/shared/assets/icons/blocks.svg';
 import ListIcon from '@/shared/assets/icons/list.svg';
 import { Button } from '@/shared/ui/Button/Button';
 import { HStack } from '@/shared/ui/Stack';
-import { ArticleView } from '@/entity/Article';
+import { Icon } from '@/shared/ui/Icon/Icon';
 import cls from './ArticlesViewSelector.module.scss';
 
 interface ArticlesViewSelectorProps {
@@ -38,7 +39,7 @@ export const ArticlesViewSelector = (props: ArticlesViewSelectorProps) => {
                     onClick={onClick(viewType.view)}
                     className={classNames(cls.button, { [cls.notSelected]: view !== viewType.view })}
                 >
-                    {<viewType.icon />}
+                    {<Icon Svg={viewType.icon} />}
                 </Button>
             ))}
         </HStack>

@@ -7,6 +7,7 @@ import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { HStack } from '@/shared/ui/Stack';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Icon } from '@/shared/ui/Icon/Icon';
 import { ArticalTextBlockComponent } from '../ArticalTextBlockComponent/ArticalTextBlockComponent';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleSkeletonItem } from './ArticleSkeletonItem/ArticleSkeletonItem';
@@ -30,7 +31,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
     const views = 
         <HStack gap='4' className={cls.viewsWrapper}>
             <Text text={String(article.views)} />
-            <EyeIcon />
+            <Icon Svg={EyeIcon} />
         </HStack>;
 
     if (isLoading) {
