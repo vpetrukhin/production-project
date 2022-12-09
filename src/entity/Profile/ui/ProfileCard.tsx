@@ -6,7 +6,7 @@ import { classNames, Mode } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Input } from '@/shared/ui/Input/Input';
 import { Loader } from '@/shared/ui/Loader/Loader';
-import { Text, TextAlign } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Profile } from '../model/types/profile';
 import cls from './ProfileCard.module.scss';
@@ -61,7 +61,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     error
                     title={t('Произошла ошибка')}
                     text={t('Попробуйте обновить страницу')}
-                    align={TextAlign.CENTER}
+                    align={'center'}
                 />
             </HStack>
         );

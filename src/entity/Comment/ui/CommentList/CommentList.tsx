@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { VStack } from '@/shared/ui/Stack';
-import { Text, TextAlign } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 import { IComment } from '../../model/types/comment';
 import { Comment } from '../Comment/Comment';
 import cls from './CommentList.module.scss';
@@ -40,7 +40,7 @@ export const CommentList = (props: CommentListProps) => {
 
     return (
         <VStack gap='16' max className={className}>
-            <Text align={TextAlign.LEFT} title={t('Комментарии')} />
+            <Text title={t('Комментарии')} />
             {comments.length > 0
                 ? (
                     comments.map(comment => (

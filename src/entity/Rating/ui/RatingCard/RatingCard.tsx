@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextColor } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 import { Card } from '@/shared/ui/Card/Card';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Modal } from '@/shared/ui/Modal/Modal';
@@ -62,7 +62,7 @@ export const RatingCard = (props: RatingCardProps) => {
     const getFeedBackForm = (type: 'desktop' | 'mobile') => (
         <form onSubmit={handleFeedbackFormSubmit}>
             <VStack gap='16' max>
-                <Text color={TextColor.SECONDARY} title={feedbackTitle} />
+                <Text color='inverted' title={feedbackTitle} />
                 <Input
                     value={feedback}
                     onChange={setFeedback}
@@ -88,7 +88,7 @@ export const RatingCard = (props: RatingCardProps) => {
         <>
             <Card className={classNames(cls.RatingCard, {}, [className])} max>
                 <VStack align='center' justify='center' max gap='16'>
-                    <Text title={title} />
+                    <Text title={title} color='inverted' />
                     <StarRating
                         onSelect={handleSetRating}
                         selectedStars={rating}

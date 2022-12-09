@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
-import { Text, TextColor } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { LoginActions, LoginReducer } from '../../model/slices/LoginSlice';
@@ -44,7 +44,7 @@ const LoginForm = memo((props: LoginFormProps) => {
     return (
         <DynamicModule reducers={{ login: LoginReducer }}>
             <form onSubmit={onLoginClick} className={classNames(cls.LoginForm, {}, [className])}>
-                <Text color={TextColor.PRIMARY} title={t('Форма авторизации')} />
+                <Text title={t('Форма авторизации')} />
                 {error && <Text text={t('Неправильный логин или пароль')} error />}
                 <Input 
                     autoFocus

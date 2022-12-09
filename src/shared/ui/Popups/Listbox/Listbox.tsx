@@ -47,7 +47,7 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
 
     return (
         <HStack gap='4'>
-            {label && <Text text={label} />}
+            {label && <Text text={label} color='inverted' />}
             <HListbox
                 as='div'
                 value={value}

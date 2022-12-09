@@ -20,10 +20,10 @@ export const Comment = (props: CommentProps) => {
             <AppLink to={routesPaths.profile + comment.user.id}>
                 <HStack gap='8'>
                     <Avatar size={30} src={comment.user.avatar} />
-                    <Text title={comment.user.username} />
+                    <Text title={comment.user.username} color='inverted' />
                 </HStack>
             </AppLink>
-            <Text text={comment.text} />
+            <Text text={comment.text} color='inverted' />
         </div>
     );
 };

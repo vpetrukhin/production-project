@@ -2,22 +2,11 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
-export enum TextAlign {
-    LEFT = 'left',
-    RIGHT = 'right',
-    CENTER = 'center',
-}
+type TextAlign = 'left' | 'right' | 'center';
 
-export enum TextColor {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
-}
+type TextColor = 'primary' | 'inverted';
 
-export enum TextSize {
-    M = 'size_m',
-    L = 'size_l'
-}
-
+type TextSize = 'medium' | 'large'; 
 interface TextProps {
     className?: string;
     title?: string;
@@ -36,9 +25,9 @@ export const Text = memo((props: TextProps) => {
         title,
         text,
         error,
-        align = TextAlign.LEFT,
-        color = TextColor.SECONDARY,
-        size = TextSize.M,
+        align = 'left',
+        color = 'primary',
+        size = 'medium',
         'data-testid': dataTestID = 'Text'
     } = props;
 

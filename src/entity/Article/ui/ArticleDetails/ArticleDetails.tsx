@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
-import { Text, TextAlign, TextSize } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text/Text';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { fetchArticleById } from '../../model/services/fetchArticleById';
@@ -81,7 +81,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
             <Text
                 title={t('Ошибка загрузки статьи')}
                 text={t('Попробуйте обновить страницу')}
-                align={TextAlign.CENTER}
+                align={'center'}
                 error
             />
         </>;
@@ -98,16 +98,17 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                 <Text
                     title={article?.title}
                     text={article?.subtitle}
-                    size={TextSize.L}
+                    size={'large'}
+                    color='inverted'
                 />
                 <VStack gap='8' align='start'>
                     <HStack gap='4'>
                         <Icon Svg={EyeIcon} />
-                        <Text text={String(article?.views)} />
+                        <Text text={String(article?.views)} color='inverted' />
                     </HStack>
                     <HStack gap='4'>
                         <Icon Svg={CalendarIcon} />
-                        <Text text={String(article?.createdAt)} />
+                        <Text text={String(article?.createdAt)} color='inverted' />
                     </HStack>
                 </VStack>
                 {article?.blocks.map(renderBlocks)}

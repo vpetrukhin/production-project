@@ -20,7 +20,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
     return (
         <AppLink theme={AppLinkTheme.INVERTED} to={item.path} className={classNames(cls.item, {[cls.collapsed]: collapsed})}>
             <HStack gap='8' justify='between'>
-                <Icon Svg={icon} />
+                <Icon Svg={icon} color='inverted' />
                 <span className={cls.link}>{t(item.text)}</span>
             </HStack>
         </AppLink>

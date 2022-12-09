@@ -27,10 +27,10 @@ export const ArticleItem = (props: ArticleItemProps) => {
     const { className, article, view = ArticleView.SMALL, isLoading, target } = props;
     const {t} = useTranslation();
 
-    const types = <Text className={cls.type} text={article.type.join(', ')} />;
+    const types = <Text className={cls.type} text={article.type.join(', ')} color='inverted' />;
     const views = 
         <HStack gap='4' className={cls.viewsWrapper}>
-            <Text text={String(article.views)} />
+            <Text text={String(article.views)} color='inverted' />
             <Icon Svg={EyeIcon} />
         </HStack>;
 
@@ -47,11 +47,11 @@ export const ArticleItem = (props: ArticleItemProps) => {
                     <HStack justify='between' className={cls.header}>
                         <HStack gap='16' className={cls.userWrapper}>
                             <Avatar size={33} src={article.user.avatar} />
-                            <Text text={article.user.username} />
+                            <Text text={article.user.username} color='inverted' />
                         </HStack>
-                        <Text text={article.createdAt} />
+                        <Text text={article.createdAt} color='inverted' />
                     </HStack>
-                    <Text title={article.title} />
+                    <Text title={article.title} color='inverted' />
                     {types}
                     <img className={cls.img} src={article.img} alt={article.title} />
                     <ArticalTextBlockComponent className={cls.text} block={textBlock} />
@@ -82,13 +82,13 @@ export const ArticleItem = (props: ArticleItemProps) => {
             <Card className={cls.card}>
                 <div className={cls.imgWrapper}>
                     <img className={cls.img} src={article.img} alt={article.title} />
-                    <Text className={cls.date} text={article.createdAt} />
+                    <Text className={cls.date} text={article.createdAt} color='inverted' />
                 </div>
                 <HStack justify='between' className={cls.info}>
                     {types}
                     {views}
                 </HStack>
-                <Text className={cls.title} text={article.title} />
+                <Text className={cls.title} text={article.title} color='inverted' />
             </Card>
         </AppLink>
     );

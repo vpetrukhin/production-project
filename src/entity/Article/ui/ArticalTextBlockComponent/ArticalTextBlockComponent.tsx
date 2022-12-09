@@ -13,9 +13,9 @@ export const ArticalTextBlockComponent = (props: ArticalTextBlockComponentProps)
 
     return (
         <div className={classNames(cls.ArticalTextBlockComponent, {}, [className])}>
-            {block.title && <Text title={block.title} />}
+            {block.title && <Text title={block.title} color='inverted' />}
             {block.paragraphs.map(paragraph => (
-                <Text className={cls.paragraph} key={paragraph} text={paragraph} />
+                <Text className={cls.paragraph} key={paragraph} text={paragraph} color='inverted' />
             ))}
         </div>
     );
