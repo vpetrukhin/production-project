@@ -6,7 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Select, SelectItem } from '@/shared/ui/Select/Select';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Input } from '@/shared/ui/Input/Input';
-import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/Card/Card';
 import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
 import { useDebounce } from '@/shared/lib/hooks/useDebouce';
 import {
@@ -110,7 +110,7 @@ export const ArticlesFilters = (props: ArticlesFiltersProps) => {
 
 
     return (
-        <Card theme={CardTheme.OUTLINE} className={classNames(cls.ArticlesFilters, {}, [className])}>
+        <Card theme={'outline'} className={classNames(cls.ArticlesFilters, {}, [className])}>
             <HStack gap='16' wrap='wrap'>
                 <Select
                     items={sortTypes}

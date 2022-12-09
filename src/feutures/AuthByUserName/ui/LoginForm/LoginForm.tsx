@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
-import { Input, InputTheme } from '@/shared/ui/Input/Input';
+import { Input } from '@/shared/ui/Input/Input';
 import { Text } from '@/shared/ui/Text/Text';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
@@ -51,13 +51,13 @@ const LoginForm = memo((props: LoginFormProps) => {
                     label={t('Логин')}
                     value={username}
                     onChange={onUsernameChange}
-                    theme={InputTheme.INVERTED}
+                    theme={'inverted'}
                 />
                 <Input
                     label={t('Пароль')}
                     value={password}
                     onChange={onPasswordChange}
-                    theme={InputTheme.INVERTED}
+                    theme={'inverted'}
                 />
                 <Button
                     type='submit'

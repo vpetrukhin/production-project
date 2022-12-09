@@ -6,7 +6,7 @@ import { Text } from '@/shared/ui/Text/Text';
 import { Card } from '@/shared/ui/Card/Card';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Modal } from '@/shared/ui/Modal/Modal';
-import { Input, InputTheme } from '@/shared/ui/Input/Input';
+import { Input } from '@/shared/ui/Input/Input';
 import { Button } from '@/shared/ui/Button/Button';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
@@ -74,7 +74,7 @@ export const RatingCard = (props: RatingCardProps) => {
                 <Input
                     value={feedback}
                     onChange={setFeedback}
-                    theme={InputTheme.INVERTED}
+                    theme={'inverted'}
                     label={t('vash-otzyv')}
                 />
                 {type === 'desktop'

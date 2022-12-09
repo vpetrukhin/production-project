@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { AppLink, AppLinkTheme } from './AppLink';
+import { AppLink } from './AppLink';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
 import { Theme } from '@/app/providers/theme';
 
@@ -27,12 +27,12 @@ export const Inverted = Template.bind({});
 Inverted.args = {
     to: '/',
     children: 'test',
-    theme: AppLinkTheme.INVERTED,
+    theme: 'inverted',
 };
 export const InvertedDark = Template.bind({});
 InvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
 InvertedDark.args = {
     to: '/',
     children: 'test',
-    theme: AppLinkTheme.INVERTED,
+    theme: 'inverted',
 };

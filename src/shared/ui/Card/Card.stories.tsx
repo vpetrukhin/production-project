@@ -23,3 +23,18 @@ DefaultDark.args = {
     // eslint-disable-next-line i18next/no-literal-string
     children: <Text text={'test'} />
 };
+
+export const Outline = Template.bind({});
+Outline.args = {
+    // eslint-disable-next-line i18next/no-literal-string
+    children: <Text text={'test'} />,
+    theme: 'outline'
+};
+
+export const OutlineDark = Template.bind({});
+OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
+OutlineDark.args = {
+    // eslint-disable-next-line i18next/no-literal-string
+    children: <Text text={'test'} />,
+    theme: 'outline'
+};

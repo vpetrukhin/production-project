@@ -1,17 +1,14 @@
 import React, { InputHTMLAttributes, memo, useEffect, useMemo, useRef } from 'react';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
-import cls from './Input.module.scss';
 import { HStack } from '../Stack';
+import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>, 
     'value' | 'onChange'
 >
 
-export enum InputTheme {
-    PRIMARY = 'primary',
-    INVERTED = 'inverted'
-}
+type InputTheme = 'primary' | 'inverted';
 
 interface InputProps extends HTMLInputProps {
     className?: string;
@@ -33,7 +30,7 @@ export const Input = memo((props: InputProps) => {
         onChange,
         autoFocus,
         readonly,
-        theme = InputTheme.PRIMARY,
+        theme = 'primary',
         label,
         'data-testid': dataTestId = 'Input',
         ...otherProps
