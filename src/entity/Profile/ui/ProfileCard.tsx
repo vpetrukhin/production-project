@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { Currency, CurrencySelect } from '@/entity/Currency';
+import { CountrySelect } from '@/entity/Country';
+import { Country } from '@/entity/Country/model/types/Countries';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Input } from '@/shared/ui/Input/Input';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { Text, TextAlign } from '@/shared/ui/Text/Text';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { Profile } from '../model/types/profile';
 import cls from './ProfileCard.module.scss';
-import { CountrySelect } from '@/entity/Country';
-import { Country } from '@/entity/Country/model/types/Countries';
-import { HStack } from '@/shared/ui/Stack';
 
 
 interface ProfileCardProps {
@@ -72,8 +72,13 @@ export const ProfileCard = (props: ProfileCardProps) => {
     };
 
     return (
-        <div className={classNames(cls.ProfileCard, mods, [className])}>
-            <HStack justify='center'>
+        <VStack 
+            gap='8' 
+            max
+            align='start'
+            className={classNames(cls.ProfileCard, mods, [className])}
+        >
+            <HStack justify='center' max>
                 <Avatar src={data?.avatar} />
             </HStack>
             <Input
@@ -124,6 +129,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 label={t('Аватар')}
                 readonly={readonly}
             />
-        </div>
+        </VStack>
     );
 };

@@ -601,31 +601,33 @@
       "userId": "1"
     },
     {
-      "id": "I3lvm6G"
-    },
-    {
-      "id": "qcB-Dxg"
-    },
-    {
-      "id": "nZ6RcYe"
-    },
-    {
-      "id": "l72cght"
+      "articleId": "5",
+      "userId": "1",
+      "rate": 3,
+      "feedback": "good",
+      "id": "r_rLJnd"
     }
   ],
-  "profil-ratings": [
+  "profile-ratings": [
     {
       "id": "1",
       "rate": 4,
       "profileId": "1",
       "userId": "1",
-      "feedback": "Хорошая профиль!"
+      "feedback": "Хороший профиль!"
     },
     {
       "id": "2",
       "rate": 3,
       "profileId": "2",
       "userId": "1"
+    },
+    {
+      "profileId": "2",
+      "userId": "1",
+      "rate": 3,
+      "feedback": "123",
+      "id": "GwVV9Fl"
     }
   ]
 }

@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page/Page';
 import { EditableProfileCard } from '@/feutures/EditableProfileCard';
 import { Text } from '@/shared/ui/Text/Text';
+import { ProfileRating } from '@/feutures/ProfileRating';
+import { VStack } from '@/shared/ui/Stack';
 
 
 interface ProfilePageProps {
@@ -18,7 +20,10 @@ const ProfilePage = (props: ProfilePageProps) => {
 
     return (
         <Page className={className}>
-            <EditableProfileCard id={id} />
+            <VStack gap='16'>
+                <EditableProfileCard id={id} />
+                <ProfileRating profileId={id} />
+            </VStack>
         </Page>
     );
 };

@@ -1,6 +1,7 @@
 import React, { InputHTMLAttributes, memo, useEffect, useMemo, useRef } from 'react';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { HStack } from '../Stack';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>, 
@@ -56,7 +57,7 @@ export const Input = memo((props: InputProps) => {
 
 
     return (
-        <div className={classNames(cls.wrapper, {}, [className])}>
+        <HStack gap='8' max className={className}>
             {label && <span className={classNames(cls.label, mods, [cls[theme]])}>{label}:</span>}
             <input
                 ref={ref}
@@ -69,6 +70,6 @@ export const Input = memo((props: InputProps) => {
                 data-testid={dataTestId}
                 {...otherProps}
             />
-        </div>
+        </HStack>
     );
 });
