@@ -2,7 +2,7 @@ import { Fragment, ReactNode } from 'react';
 import { Listbox as HListbox } from '@headlessui/react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
-import { Button, ButtonTheme } from '../../Button/Button';
+import { Button } from '../../Button/Button';
 import { HStack } from '../../Stack';
 import { Text } from '../../Text/Text';
 import cls from './Listbox.module.scss';
@@ -60,7 +60,7 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                 >
                     <Button
                         disabled={readonly}
-                        theme={ButtonTheme.OUTLINE}
+                        theme={'outline'}
                     >
                         {value ?? defaultValue}
                     </Button>

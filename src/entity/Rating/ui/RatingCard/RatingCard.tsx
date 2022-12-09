@@ -7,7 +7,7 @@ import { Card } from '@/shared/ui/Card/Card';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Modal } from '@/shared/ui/Modal/Modal';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button/Button';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
 import cls from './RatingCard.module.scss';
@@ -23,7 +23,15 @@ interface RatingCardProps {
 }
 
 export const RatingCard = (props: RatingCardProps) => {
-    const { className, feedbackTitle, hasFeedback, rate = 0, title, onAccept, onCancel } = props;
+    const {
+        className,
+        feedbackTitle,
+        hasFeedback,
+        rate = 0,
+        title,
+        onAccept,
+        onCancel
+    } = props;
     const {t} = useTranslation();
 
     const [rating, setRating] = useState(rate);
@@ -72,12 +80,12 @@ export const RatingCard = (props: RatingCardProps) => {
                 {type === 'desktop'
                     ? (
                         <HStack gap='8' max justify='end'>
-                            <Button onClick={handleCancel} theme={ButtonTheme.OUTLINE_RED} >{t('Отменить')}</Button>
-                            <Button type='submit' theme={ButtonTheme.INVERTED_OUTLINE}>{t('Отправить')}</Button>
+                            <Button onClick={handleCancel} theme={'outline_red'} >{t('Отменить')}</Button>
+                            <Button type='submit' theme={'inverted_outline'}>{t('Отправить')}</Button>
                         </HStack >
                     )
                     : (
-                        <Button type='submit' theme={ButtonTheme.INVERTED_OUTLINE}>{t('Отправить')}</Button>
+                        <Button type='submit' theme={'inverted_outline'}>{t('Отправить')}</Button>
                     )
                 }
             </VStack>

@@ -6,7 +6,7 @@ import { Text } from '@/shared/ui/Text/Text';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { HStack } from '@/shared/ui/Stack';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button/Button';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { ArticalTextBlockComponent } from '../ArticalTextBlockComponent/ArticalTextBlockComponent';
 import { Article, ArticleTextBlock } from '../../model/types/article';
@@ -61,7 +61,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
                             target={target}
                         >
                             <Button 
-                                theme={ButtonTheme.OUTLINE}
+                                theme={'outline'}
                             >
                                 {t('Читать далее')}...
                             </Button>

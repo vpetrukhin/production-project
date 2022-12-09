@@ -6,7 +6,7 @@ import { NotificationButton } from '@/feutures/NotificationButton';
 import { AvatarDropdown } from '@/feutures/AvatarDropdown';
 import { getUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text/Text';
 import cls from './NavBar.module.scss';
@@ -52,7 +52,7 @@ export const NavBar = (props: NavbarProps) => {
         <HStack className={classNames(cls.NavBar, {}, [className])}>
             <Text title={t('ProdApp')} />
             <HStack gap='16' className={cls.links}>
-                <Button theme={ButtonTheme.INVERTED_OUTLINE} onClick={handleOpenModal}>
+                <Button theme={'inverted_outline'} onClick={handleOpenModal}>
                     {t('Войти')}
                 </Button>
                 {isModalOpen && <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />}

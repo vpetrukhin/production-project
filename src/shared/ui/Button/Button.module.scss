@@ -66,15 +66,15 @@
     border-radius: var(--border-radius-m);
 }
 
-.size_m {
+.medium {
     font: var(--font-m);
 }
 
-.size_l {
+.large {
     font: var(--font-l);
 }
 
-.size_xl {
+.extralarge {
     font: var(--font-xl);
 }
 
@@ -82,17 +82,17 @@
     padding: 0;
 }
 
-.square.size_m {
+.square.medium {
     width: var(--font-line-m);
     height: var(--font-line-m);
 }
 
-.square.size_l {
+.square.large {
     width: var(--font-line-l);
     height: var(--font-line-l);
 }
 
-.square.size_xl {
+.square.extralarge {
     width: var(--font-line-xl);
     height: var(--font-line-xl);
 }

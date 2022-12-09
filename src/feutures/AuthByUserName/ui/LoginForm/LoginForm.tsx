@@ -2,7 +2,7 @@ import { FormEvent, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button/Button';
 import { Input, InputTheme } from '@/shared/ui/Input/Input';
 import { Text } from '@/shared/ui/Text/Text';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
@@ -63,7 +63,7 @@ const LoginForm = memo((props: LoginFormProps) => {
                     type='submit'
                     loading={isLoading}
                     disabled={isLoading}
-                    theme={ButtonTheme.INVERTED_OUTLINE}
+                    theme={'inverted_outline'}
                     className={cls.btn}
                 >
                     {t('Войти')}

@@ -4,7 +4,7 @@ import { LangSwitcher } from '@/widgets/LangSwitcher/LangSwitcher';
 import { ThemeSwitcher } from '@/widgets/ThemeSwitcher/ThemeSwitcher';
 import { getUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button/Button';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSideBarItems } from '../../model/selectors/getSidebarItems';
 import cls from './SideBar.module.scss';
@@ -30,9 +30,9 @@ export const SideBar = (props: SideBarProps) => {
         <div data-testid="sidebar" className={classNames(cls.SideBar, {[cls.collapsed]: collapsed}, [className])}>
             <Button
                 className={cls.toggle_btn}
-                theme={ButtonTheme.INVERTED_BACKGROUND}
+                theme={'inverted_background'}
                 square
-                size={ButtonSize.L}
+                size={'large'}
                 data-testid="sidebar-btn"
                 onClick={onToggle}
             >

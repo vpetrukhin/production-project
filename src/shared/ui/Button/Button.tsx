@@ -1,25 +1,18 @@
 import { useTranslation } from 'react-i18next';
 import { ButtonHTMLAttributes, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-
 import cls from './Button.module.scss';
 
+type ButtonTheme = 
+| 'clear'
+| 'inverted_clear'
+| 'outline'
+| 'inverted_outline'
+| 'outline_red'
+| 'background'
+| 'inverted_background';
 
-export enum ButtonTheme {
-    CLEAR = 'clear',
-    INVERTED_CLEAR = 'inverted_clear',
-    OUTLINE = 'outline',
-    INVERTED_OUTLINE = 'inverted_outline',
-    OUTLINE_RED = 'outline_red',
-    BACKGROUND = 'background',
-    INVERTED_BACKGROUND = 'inverted_background',
-}
-
-export enum ButtonSize {
-    M = 'size_m',
-    L = 'size_l',
-    XL = 'size_xl',
-}
+type ButtonSize = 'medium' | 'large' | 'extralarge';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -30,7 +23,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = memo((props: ButtonProps) => {
-    const { className, children, theme = ButtonTheme.CLEAR, square, size = ButtonSize.M, loading, ...otherProps } = props;
+    const {
+        className,
+        children,
+        theme = 'clear',
+        square,
+        size = 'medium',
+        loading,
+        ...otherProps
+    } = props;
     const { t } = useTranslation();
 
     return (

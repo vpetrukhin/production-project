@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button/Button';
 import { Input } from '@/shared/ui/Input/Input';
 import { HStack } from '@/shared/ui/Stack';
 import { getAddCommentFormText } from '../../model/selectors/getAddCommentFormText';
@@ -48,7 +48,7 @@ export const AddCommentForm = (props: addCommentFormProps) => {
                     value={commentText}
                     onChange={onCommentTextChange}
                 />
-                <Button theme={ButtonTheme.OUTLINE} onClick={onSendCommentHandler}>{t('Отправить')}</Button>
+                <Button theme={'outline'} onClick={onSendCommentHandler}>{t('Отправить')}</Button>
             </HStack>
         </DynamicModule>
     );

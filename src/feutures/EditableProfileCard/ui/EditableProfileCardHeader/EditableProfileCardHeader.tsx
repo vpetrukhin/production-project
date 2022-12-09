@@ -1,10 +1,8 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import cls from './EditableProfileCardHeader.module.scss';
+import { Button } from '@/shared/ui/Button/Button';
 import { Text } from '@/shared/ui/Text/Text';
 import { getUserInfo } from '@/entity/User';
 import { HStack } from '@/shared/ui/Stack';
@@ -55,14 +53,14 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
 
     return (
         <>
-            <HStack justify='between' gap='8' className={classNames(cls.Header, {}, [className])}>
-                <Text title={t('Профиль')} />
+            <HStack max justify='between' gap='8' className={className}>
+                <Text title={t('Профиль')} color='inverted' />
                 {canEdit && (
                     <>
                         {readonly
                             ? (
                                 <Button
-                                    theme={ButtonTheme.OUTLINE}
+                                    theme={'outline'}
                                     onClick={onEdit}
                                     data-testid='EditableProfileCardHeader.editButton'
                                 >
@@ -72,14 +70,14 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
                             : (
                                 <HStack gap='8'>
                                     <Button
-                                        theme={ButtonTheme.OUTLINE}
+                                        theme={'outline'}
                                         onClick={onSave}
                                         data-testid='EditableProfileCardHeader.saveButton'
                                     >
                                         {t('Сохранить')}
                                     </Button>
                                     <Button
-                                        theme={ButtonTheme.OUTLINE_RED}
+                                        theme={'outline_red'}
                                         onClick={onCancel}
                                         data-testid='EditableProfileCardHeader.cancelButton'
                                     >
