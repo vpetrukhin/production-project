@@ -606,6 +606,19 @@
       "rate": 3,
       "feedback": "good",
       "id": "r_rLJnd"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "rate": 4,
+      "id": "eUGih1k"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "rate": 0,
+      "feedback": "Хорошая статья!!!",
+      "id": "fyzinl7"
     }
   ],
   "profile-ratings": [

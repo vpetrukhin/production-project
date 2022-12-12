@@ -1,7 +1,7 @@
-import { RatingCard } from '@/entity/Rating';
-import { getUserInfo } from '@/entity/User';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { RatingCard } from '@/entity/Rating';
+import { getUserInfo } from '@/entity/User';
 import { useGetProfileRatingQuery, useRateProfileMutation } from '../../api/ProfileRaringApi';
 
 interface ProfileRatingProps {

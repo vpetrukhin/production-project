@@ -4,11 +4,9 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { routesPaths } from '@/shared/config/router/routerConfig';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
-import cls from './AvatarDropdown.module.scss';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -30,7 +28,7 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
 
     return (
         <Dropdown
-            className={classNames(cls.AvatarDropdown, {}, [className])}                
+            className={className}                
             trigger={<Avatar size={30} src={userInfo?.avatar} />}
             items={[
                 ...(isAvailableToAdminPanel ? [{
