@@ -34,4 +34,7 @@ Default.args = {
 
 export const DefaultDark = Template.bind({});
 DefaultDark.decorators = [ThemeDecorator(Theme.DARK)];
-DefaultDark.args = {};
+DefaultDark.args = {
+    tabs,
+    value: 'tab1'
+};

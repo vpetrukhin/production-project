@@ -5,7 +5,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecora
 import { Theme } from '@/app/providers/theme';
 
 export default {
-    title: '/StarRating',
+    title: 'shared/StarRating',
     component: StarRating,
 } as ComponentMeta<typeof StarRating>;
 

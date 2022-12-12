@@ -6,6 +6,7 @@ import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecora
 import { Theme } from '@/app/providers/theme';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
 import { ArticleType, BlockType } from '@/entity/Article';
+import withMock from 'storybook-addon-mock';
 
 const article = {
     id: '1',
@@ -80,14 +81,42 @@ const article = {
 export default {
     title: 'feutures/ArticleRecomendationList',
     component: ArticleRecomendationList,
-    decorators: [StoreDecorator({})]
+    decorators: [StoreDecorator({}), withMock]
 } as ComponentMeta<typeof ArticleRecomendationList>;
+
+const mockData = [
+    {
+        url: `${__API_URL__}/articles?_limit=4`,
+        method: 'GET',
+        status: 200,
+        response: [
+            {
+                ...article,
+                id: '1',
+            },
+            {
+                ...article,
+                id: '2',
+            },
+            {
+                ...article,
+                id: '3',
+            },
+            {
+                ...article,
+                id: '4',
+            },
+        ],
+    },
+];
 
 const Template: ComponentStory<typeof ArticleRecomendationList> = (args) => <ArticleRecomendationList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
+Default.parameters = { mockData };
 
 export const DefaultDark = Template.bind({});
 DefaultDark.decorators = [ThemeDecorator(Theme.DARK)];
 DefaultDark.args = {};
+DefaultDark.parameters = { mockData };

@@ -14,6 +14,7 @@ import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLogi
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import cls from './LoginForm.module.scss';
+import { VStack } from '@/shared/ui/Stack';
 
 interface LoginFormProps {
     className?: string;
@@ -44,30 +45,32 @@ const LoginForm = memo((props: LoginFormProps) => {
     return (
         <DynamicModule reducers={{ login: LoginReducer }}>
             <form onSubmit={onLoginClick} className={classNames(cls.LoginForm, {}, [className])}>
-                <Text title={t('Форма авторизации')} />
-                {error && <Text text={t('Неправильный логин или пароль')} error />}
-                <Input 
-                    autoFocus
-                    label={t('Логин')}
-                    value={username}
-                    onChange={onUsernameChange}
-                    theme={'inverted'}
-                />
-                <Input
-                    label={t('Пароль')}
-                    value={password}
-                    onChange={onPasswordChange}
-                    theme={'inverted'}
-                />
-                <Button
-                    type='submit'
-                    loading={isLoading}
-                    disabled={isLoading}
-                    theme={'inverted_outline'}
-                    className={cls.btn}
-                >
-                    {t('Войти')}
-                </Button> 
+                <VStack max gap='16'>
+                    <Text title={t('Форма авторизации')} />
+                    {error && <Text text={t('Неправильный логин или пароль')} error />}
+                    <Input 
+                        autoFocus
+                        label={t('Логин')}
+                        value={username}
+                        onChange={onUsernameChange}
+                        theme={'inverted'}
+                    />
+                    <Input
+                        label={t('Пароль')}
+                        value={password}
+                        onChange={onPasswordChange}
+                        theme={'inverted'}
+                    />
+                    <Button
+                        type='submit'
+                        loading={isLoading}
+                        disabled={isLoading}
+                        theme={'inverted_outline'}
+                        max
+                    >
+                        {t('Войти')}
+                    </Button> 
+                </VStack>
             </form>
         </DynamicModule>
     );

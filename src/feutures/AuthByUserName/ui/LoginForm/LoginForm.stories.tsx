@@ -10,14 +10,22 @@ export default {
     component: LoginForm,
     argTypes: {
         backgroundColor: { control: 'color' },
-    }
+    },
+
 } as ComponentMeta<typeof LoginForm>;
+
+const styles = {
+    backgroundColor: 'var(--inverted-main-bg)',
+    width: 300,
+    margin: 'auto'
+};
 
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
 Default.decorators = [
+    Story => <div style={styles}><Story/></div>,
     StoreDecorator({
         login: {
             username: '123',
@@ -28,6 +36,7 @@ Default.decorators = [
 
 export const DefaultDark = Template.bind({});
 DefaultDark.decorators = [
+    Story => <div style={styles}><Story/></div>,
     ThemeDecorator(Theme.DARK),
     StoreDecorator({
         login: {
@@ -41,6 +50,7 @@ DefaultDark.args = {};
 export const Error = Template.bind({});
 Error.args = {};
 Error.decorators = [
+    Story => <div style={styles}><Story/></div>,
     StoreDecorator({
         login: {
             username: '123',
@@ -52,6 +62,7 @@ Error.decorators = [
 
 export const ErrorDark = Template.bind({});
 ErrorDark.decorators = [
+    Story => <div style={styles}><Story/></div>,
     ThemeDecorator(Theme.DARK),
     StoreDecorator({
         login: {
@@ -66,6 +77,7 @@ ErrorDark.args = {};
 export const Loading = Template.bind({});
 Loading.args = {};
 Loading.decorators = [
+    Story => <div style={styles}><Story/></div>,
     StoreDecorator({
         login: {
             username: '123',
@@ -77,6 +89,7 @@ Loading.decorators = [
 
 export const LoadingDark = Template.bind({});
 LoadingDark.decorators = [
+    Story => <div style={styles}><Story/></div>,
     ThemeDecorator(Theme.DARK),
     StoreDecorator({
         login: {

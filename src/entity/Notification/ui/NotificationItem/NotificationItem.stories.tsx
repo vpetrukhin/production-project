@@ -5,15 +5,36 @@ import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecora
 import { Theme } from '@/app/providers/theme';
 
 export default {
-    title: '/NotificationItem',
+    title: 'entity/Notification/NotificationItem',
     component: NotificationItem,
+    decorators: [
+        (Story => 
+            <div
+                style={{
+                    backgroundColor: 'var(main-bg)'
+                }}
+            >
+                <Story />
+            </div>)
+    ]
 } as ComponentMeta<typeof NotificationItem>;
+
+const mockNotification = {
+    id: '1',
+    title: 'Уведомление 1',
+    description: 'Описание уведомления 1',
+    userId: '1',
+};
 
 const Template: ComponentStory<typeof NotificationItem> = (args) => <NotificationItem {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+    item: mockNotification
+};
 
 export const DefaultDark = Template.bind({});
 DefaultDark.decorators = [ThemeDecorator(Theme.DARK)];
-DefaultDark.args = {};
+DefaultDark.args = {
+    item: mockNotification
+};

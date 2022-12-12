@@ -20,6 +20,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean;
     size?: ButtonSize;
     loading?: boolean;
+    max?: boolean;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -30,6 +31,7 @@ export const Button = memo((props: ButtonProps) => {
         square,
         size = 'medium',
         loading,
+        max,
         ...otherProps
     } = props;
     const { t } = useTranslation();
@@ -38,7 +40,7 @@ export const Button = memo((props: ButtonProps) => {
         <button
             className={classNames(
                 cls.Button,
-                { [cls.square]: square },
+                { [cls.square]: square, [cls.max]: max },
                 [className, cls[theme], cls[size]]
             )}
             {...otherProps}

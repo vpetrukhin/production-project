@@ -16,6 +16,10 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
 
     config?.resolve?.modules?.push(paths.src);
     config?.resolve?.extensions?.push('.ts', '.tsx', '.scss');
+    config!.resolve!.alias = {
+        ...config?.resolve?.alias,
+        '@': paths.src,
+    };
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -32,7 +36,7 @@ export default ({ config }: { config: webpack.Configuration }): webpack.Configur
 
     config!.plugins!.push(new webpack.DefinePlugin({
         __IS_DEV__: true,
-        __API_URL__: undefined,
+        __API_URL__: JSON.stringify('http://localhost:8000'),
         __PROJECT__: JSON.stringify('storybook')
     }));
 
