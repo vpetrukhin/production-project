@@ -3,10 +3,10 @@ import { getIsAdmin, getIsManager, getUserInfo, UserActions } from '@/entity/Use
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { routesPaths } from '@/shared/config/router/routerConfig';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown } from '@/shared/ui/Popups';
+import { routesPaths } from '@/shared/config/const/router';
 
 interface AvatarDropdownProps {
     className?: string;

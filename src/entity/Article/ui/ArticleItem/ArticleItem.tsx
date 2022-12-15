@@ -23,6 +23,8 @@ interface ArticleItemProps {
     target?: HTMLAttributeAnchorTarget
 }
 
+// TODO: Разобраться с кольцевыми зависимостями
+
 export const ArticleItem = (props: ArticleItemProps) => {
     const { className, article, view = ArticleView.SMALL, isLoading, target } = props;
     const {t} = useTranslation();
@@ -57,7 +59,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
                     <ArticalTextBlockComponent className={cls.text} block={textBlock} />
                     <HStack justify='between' className={cls.footer}>
                         <AppLink
-                            to={'/article/' + article.id}
+                            to={'/article/' + article.id} // routesConfig.articles_details
                             target={target}
                         >
                             <Button 
