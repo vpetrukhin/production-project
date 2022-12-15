@@ -2,6 +2,7 @@ import { Action } from '@reduxjs/toolkit';
 import { Story } from '@storybook/react';
 import { createReduxStore, StateSchema } from '@/app/providers/Redux';
 import { ArticleSchema } from '@/entity/Article';
+// eslint-disable-next-line carav-plugin/public-api-imports
 import { ArticleReducer } from '@/entity/Article/model/slice/ArticleSlice';
 import { Reducer } from 'react';
 import { Provider } from 'react-redux';

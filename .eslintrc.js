@@ -42,6 +42,7 @@ module.exports = {
         }],
         '@typescript-eslint/no-non-null-assertion': 'off',
         'carav-plugin/path-checker': ['error', { alias: '@' }],
+        'carav-plugin/public-api-imports': ['error', { alias: '@' }],
         '@typescript-eslint/no-var-requires': 'off'
     },
 };

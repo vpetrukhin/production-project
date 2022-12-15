@@ -1,3 +1,4 @@
+export { getIsAuth } from './model/selectors/getIsAuth/getIsAuth';
 export { getInited } from './model/selectors/getInited/getInited';
 export { getUserInfo } from './model/selectors/getUserInfo/getUserInfo';
 export { getUser } from './model/selectors/getUser/getUser';

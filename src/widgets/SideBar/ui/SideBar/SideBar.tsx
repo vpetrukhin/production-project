@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { LangSwitcher } from '@/widgets/LangSwitcher/LangSwitcher';
-import { ThemeSwitcher } from '@/widgets/ThemeSwitcher/ThemeSwitcher';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
 import { getUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';

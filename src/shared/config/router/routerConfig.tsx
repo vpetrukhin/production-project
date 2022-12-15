@@ -6,7 +6,7 @@ import { ArticlesDetailsCreatePage } from '@/pages/ArticlesDetailsCreatePage';
 import { ArticlesDetailsPage } from '@/pages/ArticlesDetailsPage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
 import { MainPage } from '@/pages/MainPage';
-import { NotFoundPage } from '@/pages/NotFoundPage/NotFoundPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { UserRoles } from '@/entity/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
