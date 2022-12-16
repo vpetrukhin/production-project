@@ -6,9 +6,9 @@ import { NotificationButton } from '@/feutures/NotificationButton';
 import { AvatarDropdown } from '@/feutures/AvatarDropdown';
 import { getUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 import cls from './NavBar.module.scss';
 
 

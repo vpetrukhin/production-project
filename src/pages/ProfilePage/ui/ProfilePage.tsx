@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
 import { EditableProfileCard } from '@/feutures/EditableProfileCard';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 import { ProfileRating } from '@/feutures/ProfileRating';
 import { VStack } from '@/shared/ui/Stack';
 

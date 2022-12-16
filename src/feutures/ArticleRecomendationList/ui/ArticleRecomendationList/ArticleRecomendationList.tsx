@@ -2,7 +2,7 @@
 import { ArticleList } from '@/entity/Article';
 import { useGetArticleRecomendationListQuery } from '../../api/ArticleRecomendationList';
 import { useTranslation } from 'react-i18next';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 
 interface ArticleRecomendationListProps {
     className?: string;

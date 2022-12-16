@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { ArticleSortTypes, ArticleType, ArticleView, OrderType } from '@/entity/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Select, SelectItem } from '@/shared/ui/Select/Select';
+import { Select, SelectItem } from '@/shared/ui/Select';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Input } from '@/shared/ui/Input/Input';
-import { Card } from '@/shared/ui/Card/Card';
-import { TabItem, Tabs } from '@/shared/ui/Tabs/Tabs';
+import { Input } from '@/shared/ui/Input';
+import { Card } from '@/shared/ui/Card';
+import { TabItem, Tabs } from '@/shared/ui/Tabs';
 import { useDebounce } from '@/shared/lib/hooks/useDebouce';
 import {
     getArticlesOrder,

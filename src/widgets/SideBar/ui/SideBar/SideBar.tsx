@@ -4,7 +4,7 @@ import { LangSwitcher } from '@/feutures/LangSwitcher';
 import { ThemeSwitcher } from '@/feutures/ThemeSwitcher';
 import { getUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/Button/Button';
+import { Button } from '@/shared/ui/Button';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSideBarItems } from '../../model/selectors/getSidebarItems';
 import cls from './SideBar.module.scss';

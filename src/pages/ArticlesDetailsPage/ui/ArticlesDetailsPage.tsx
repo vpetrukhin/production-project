@@ -5,7 +5,7 @@ import { Page } from '@/widgets/Page';
 import { ArticleRating } from '@/feutures/ArticleRating';
 import { ArticleRecomendationList } from '@/feutures/ArticleRecomendationList';
 import { ArticleDetails } from '@/entity/Article';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsHeader } from './ArticleDetailsHeader/ArticleDetailsHeader';

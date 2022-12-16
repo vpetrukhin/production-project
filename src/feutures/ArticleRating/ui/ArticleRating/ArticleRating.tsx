@@ -3,7 +3,7 @@ import { RatingCard } from '@/entity/Rating';
 import { useSelector } from 'react-redux';
 import { getUserInfo } from '@/entity/User';
 import { useGetArticleRatingQuery, useRateArticleMutation } from '../../api/ArticleRatingApi';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleRatingProps {
     className?: string;
