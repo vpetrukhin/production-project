@@ -10,8 +10,9 @@ module.exports = {
             'jsx': true
         },
         'ecmaVersion': 'latest',
-        'sourceType': 'module'
+        'sourceType': 'module',
     },
+    'ignorePatterns': ['./config/babel/*.ts'],
     'plugins': ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'carav-plugin'],
     'rules': {
         'indent': ['error', 4],
@@ -49,6 +50,14 @@ module.exports = {
                 testFilesPatterns: ['**/*.test.ts', '**/*.stories.tsx', '**/StoreDecorator.tsx']
             }
         ],
+        'carav-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignorePatterns: ['**/Redux']
+            }
+        ],
         '@typescript-eslint/no-var-requires': 'off'
     },
+    
 };

@@ -1,5 +1,5 @@
 import { PropsWithChildren, useCallback, useEffect } from 'react';
-import { useTheme } from '@/app/providers/theme/lib/useTheme';
+import { useTheme } from '@/shared/lib/hooks/useTheme';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal';
 import { AnimationProvider, useAnimationContext } from '@/shared/lib/ui/AnimationProvider';

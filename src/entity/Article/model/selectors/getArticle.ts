@@ -1,4 +1,4 @@
-import { StateSchema } from '@/app/providers/Redux/types/StateSchema';
+import { StateSchema } from '@/app/providers/Redux';
 
 export const getArticleIsLoading = (state: StateSchema) => state.article?.isLoading;
 export const getArticleError = (state: StateSchema) => state.article?.error;

@@ -2,8 +2,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ArticleInfinityList } from './ArticleInfinityList';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from '@/app/providers/theme';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
+import { Theme } from '@/shared/config/const/theme';
 
 export default {
     title: 'pages/ArticlesPage/ArticleInfinityList',

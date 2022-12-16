@@ -2,9 +2,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Icon } from './Icon';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from '@/app/providers/theme';
 
 import icon from '@/shared/assets/icons/notifications.svg';
+import { Theme } from '@/shared/config/const/theme';
 
 export default {
     title: 'shared/Icon',

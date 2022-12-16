@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import AdminPanelPage from './AdminPanelPage';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from '@/app/providers/theme';
+import { Theme } from '@/shared/config/const/theme';
 
 export default {
     title: 'pages/AdminPanelPage',

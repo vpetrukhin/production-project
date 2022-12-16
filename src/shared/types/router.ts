@@ -1,3 +1,4 @@
+// eslint-disable-next-line carav-plugin/layer-imports
 import { UserRoles } from '@/entity/User';
 import { RouteProps } from 'react-router-dom';
 

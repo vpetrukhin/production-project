@@ -2,9 +2,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { NotificationList } from './NotificationList';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from '@/app/providers/theme';
 import withMock from 'storybook-addon-mock';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
+import { Theme } from '@/shared/config/const/theme';
 
 export default {
     title: 'entity/Notification/NotificationList',
