@@ -3,10 +3,10 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ArticleRecomendationList } from './ArticleRecomendationList';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import { Theme } from '@/app/providers/theme';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
 import { ArticleType, BlockType } from '@/entity/Article';
 import withMock from 'storybook-addon-mock';
+import { Theme } from '@/shared/config/const/theme';
 
 const article = {
     id: '1',
