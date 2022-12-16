@@ -13,7 +13,7 @@ module.exports = {
         'sourceType': 'module',
     },
     'ignorePatterns': ['./config/babel/*.ts'],
-    'plugins': ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'carav-plugin'],
+    'plugins': ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'carav-plugin', 'unused-imports'],
     'rules': {
         'indent': ['error', 4],
         'linebreak-style': ['error', 'unix'],
@@ -57,7 +57,8 @@ module.exports = {
                 ignorePatterns: ['**/Redux']
             }
         ],
-        '@typescript-eslint/no-var-requires': 'off'
+        '@typescript-eslint/no-var-requires': 'off',
+        'unused-imports/no-unused-imports': 'error',
     },
     
 };
