@@ -4,7 +4,7 @@ import { Page } from '@/widgets/Page';
 import { AppLink } from '@/shared/ui/AppLink';
 import { VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
-import { routesPaths } from '@/shared/config/const/router';
+import { getMainPath } from '@/shared/config/const/router';
 
 interface ForbiddenPageProps {
     className?: string;
@@ -18,7 +18,7 @@ const ForbiddenPage = (props: ForbiddenPageProps) => {
         <Page>
             <VStack justify='center' align='center' gap='8' className={className}>
                 <Text title={t('net-dostupa')} />
-                <AppLink to={routesPaths.main}>{t('pereiti-na-glavnuyu-stranicu')}</AppLink>
+                <AppLink to={getMainPath()}>{t('pereiti-na-glavnuyu-stranicu')}</AppLink>
             </VStack>
         </Page>
     );

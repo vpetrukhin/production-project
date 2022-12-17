@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { getIsAuth } from '@/entity/User';
 import { getUserRoles, UserRoles } from '@/entity/User';
 import { useMemo } from 'react';
-import { routesPaths } from '@/shared/config/const/router';
+import { getForbiddenPath, getMainPath } from '@/shared/config/const/router';
 
 interface ProtectedRouteProps {
     children: JSX.Element,
@@ -23,11 +23,11 @@ export const ProtectedRoute = ({ children, roles }: ProtectedRouteProps) => {
     }, [roles, userRoles]);
 
     if (!isAuth) {
-        return <Navigate to={routesPaths.main} state={{ from: location }} replace={true} />;
+        return <Navigate to={getMainPath()} state={{ from: location }} replace={true} />;
     }
 
     if (!hasRequiredRole) {
-        return <Navigate to={routesPaths.forbidden} replace={true} />;
+        return <Navigate to={getForbiddenPath()} replace={true} />;
     }
 
     return children;

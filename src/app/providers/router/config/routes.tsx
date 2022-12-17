@@ -9,58 +9,58 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
-import { routesPaths } from '@/shared/config/const/router';
-import { Routes, IRoute } from '@/shared/types/router';
+import { getAboutPath, getAdminPanelPath, getArticleCreatePath, getArticleDetailsPath, getArticleEditPath, getArticlesPath, getForbiddenPath, getMainPath, getProfilePath, Routes } from '@/shared/config/const/router';
+import { IRoute } from '@/shared/types/router';
 
 export const routesConfig: Record<Routes, IRoute> = {
     [Routes.MAIN]: {
-        path: routesPaths.main,
+        path: getMainPath(),
         element: <MainPage />,
         onlyAuthorized: false
     },
     [Routes.ABOUT]: {
-        path: routesPaths.about,
+        path: getAboutPath(),
         element: <AboutPage />,
         onlyAuthorized: false
     },
     [Routes.PROFILE]: {
-        path: routesPaths.profile + ':id' ,
+        path: getProfilePath(':id'),
         element: <ProfilePage />,
         onlyAuthorized: true
     },
     [Routes.ARTICLES]: {
-        path: routesPaths.articles,
+        path: getArticlesPath(),
         element: <ArticlesPage />,
         onlyAuthorized: true
     },
-    [Routes.ARTICLESDETAILS]: {
-        path: routesPaths.articles_details + ':id',
+    [Routes.ARTICLEDETAILS]: {
+        path: getArticleDetailsPath(':id'),
         element: <ArticlesDetailsPage />,
         onlyAuthorized: true
     },
-    [Routes.ARTICLESCREATE]: {
-        path: routesPaths.articles_create,
+    [Routes.ARTICLECREATE]: {
+        path: getArticleCreatePath(),
         element: <ArticlesDetailsCreatePage />,
         onlyAuthorized: true
     },
-    [Routes.ARTICLESEDIT]: {
-        path: routesPaths.articles_edit,
+    [Routes.ARTICLEEDIT]: {
+        path: getArticleEditPath(':id'),
         element: <ArticleDetailsEditPage />,
         onlyAuthorized: true
     },
     [Routes.ADMINPANEL]: {
-        path: routesPaths.admin,
+        path: getAdminPanelPath(),
         element: <AdminPanelPage />,
         onlyAuthorized: true,
         roles: [UserRoles.ADMIN, UserRoles.MANAGER]
     },
     [Routes.FORBIDDEN]: {
-        path: routesPaths.forbidden,
+        path: getForbiddenPath(),
         element: <ForbiddenPage />,
         onlyAuthorized: true,
     },
     [Routes.NOTFOUND]: {
-        path: routesPaths.notfound,
+        path: '*',
         element: <NotFoundPage />,
         onlyAuthorized: false
     },

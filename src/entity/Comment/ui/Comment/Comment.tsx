@@ -1,4 +1,4 @@
-import { routesPaths } from '@/shared/config/const/router';
+import { getProfilePath } from '@/shared/config/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -17,7 +17,7 @@ export const Comment = (props: CommentProps) => {
 
     return (
         <div className={classNames(cls.Comment, {}, [className])}>
-            <AppLink to={routesPaths.profile + comment.user.id}>
+            <AppLink to={getProfilePath(comment.user.id)}>
                 <HStack gap='8'>
                     <Avatar size={30} src={comment.user.avatar} />
                     <Text title={comment.user.username} color='inverted' />

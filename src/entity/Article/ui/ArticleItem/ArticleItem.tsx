@@ -14,6 +14,7 @@ import { ArticleSkeletonItem } from './ArticleSkeletonItem/ArticleSkeletonItem';
 import { ArticleView, BlockType } from '../../model/const/articleConsts';
 import cls from './ArticleItem.module.scss';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { getArticleDetailsPath } from '@/shared/config/const/router';
 
 interface ArticleItemProps {
     className?: string;
@@ -59,7 +60,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
                     <ArticalTextBlockComponent className={cls.text} block={textBlock} />
                     <HStack justify='between' className={cls.footer}>
                         <AppLink
-                            to={'/article/' + article.id} // routesConfig.articles_details
+                            to={getArticleDetailsPath(article.id)} // routesConfig.articles_details
                             target={target}
                         >
                             <Button 
@@ -77,7 +78,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
 
     return (
         <AppLink
-            to={'/article/' + article.id}
+            to={getArticleDetailsPath(article.id)}
             className={classNames(cls.ArticleItem, {}, [className, cls[view]])}
             target={target}
         >
