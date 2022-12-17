@@ -16,11 +16,11 @@ import {
     getArticlesType,
     getArticlesView
 } from '../../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
-import { ArticlesViewSelector } from '../../ui/ArticlesViewSelector/ArticlesViewSelector';
 import { fetchArticles } from '../../model/services/fetchArticles/fetchArticles';
 import { ArticlesActions } from '../../model/slices/ArticlesSlice';
 import cls from './ArticlesFilters.module.scss';
 import { HStack } from '@/shared/ui/Stack';
+import { ArticlesViewSelector } from '@/feutures/ArticlesViewSelector';
 
 interface ArticlesFiltersProps {
     className?: string;

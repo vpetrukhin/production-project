@@ -1,11 +1,11 @@
 import { ArticleView } from '@/entity/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
+import { HStack } from '@/shared/ui/Stack';
+import cls from './ArticlesViewSelector.module.scss';
 import BlockIcon from '@/shared/assets/icons/blocks.svg';
 import ListIcon from '@/shared/assets/icons/list.svg';
-import { Button } from '@/shared/ui/Button';
-import { HStack } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
-import cls from './ArticlesViewSelector.module.scss';
 
 interface ArticlesViewSelectorProps {
     className?: string;
