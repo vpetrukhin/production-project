@@ -1,10 +1,10 @@
-import { ReducerManager, StateSchema, StateSchemaKeys } from '../types/StateSchema';
-import { Action, combineReducers, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
+import { ReducerList, ReducerManager, StateSchema, StateSchemaKeys } from '../types/StateSchema';
+import { Action, combineReducers, Reducer } from '@reduxjs/toolkit';
 
-export function createReducerManager(initialReducers: ReducersMapObject<StateSchema>): ReducerManager {
+export function createReducerManager(initialReducers: ReducerList): ReducerManager {
     const reducers = { ...initialReducers };
 
-    let combinedReducer = combineReducers(reducers);
+    let combinedReducer = combineReducers(reducers as ReducerList);
 
     let keysToRemove: Array<StateSchemaKeys> = [];
 
@@ -18,6 +18,9 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
                 keysToRemove = [];
             }
 
+            // TODO: Разобраться с типами
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             return combinedReducer(state, action);
         },
 

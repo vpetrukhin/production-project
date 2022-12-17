@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 import {
-    Action, CombinedState, EnhancedStore, Middleware, MiddlewareArray, Reducer, ReducersMapObject, ThunkMiddleware
+    Action, CombinedState, EnhancedStore, Middleware, MiddlewareArray, Reducer, ThunkMiddleware
 } from '@reduxjs/toolkit';
 import {
     ArticleDetailsCommentsSchema, ArticleDetailsRecomenationSchema
@@ -15,25 +15,31 @@ import { ArticleSchema } from '@/entity/Article';
 import { rtkApi } from '@/shared/api/rtkAPi';
 import { createReduxStore } from '..';
 
-export interface AsyncStateSchema {
-    login?: LoginSchema | undefined,
+
+export interface StateSchema {
+    user: UserSchema,
+    scrollStorage: ScrollStorageSchema,
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>,
+
+    // async
     profile?: ProfileSchema,
-    article?: ArticleSchema | undefined,
-    articleDetailsComments?: ArticleDetailsCommentsSchema | undefined,
-    articleDetailsRecomendation?: ArticleDetailsRecomenationSchema | undefined,
+    login?: LoginSchema,
+    article?: ArticleSchema,
+    articleDetailsComments?: ArticleDetailsCommentsSchema,
+    articleDetailsRecomendation?: ArticleDetailsRecomenationSchema,
     addCommentFrom?: AddCommentFormSchema,
     articlesPage?: ArticlesPageSchema,
 }
-export interface StateSchema extends AsyncStateSchema {
-    user: UserSchema,
-    scrollStorage: ScrollStorageSchema,
-    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
-}
 
 export type StateSchemaKeys = keyof StateSchema;
+
+export type ReducerList = {
+    [name in StateSchemaKeys]?: Reducer<NonNullable<StateSchema[name]>>
+}
+
 export interface ReducerManager {
-    getReducerMap: () => ReducersMapObject<StateSchema>,
-    reduce: (state: StateSchema, action: Action) => CombinedState<StateSchema>;
+    getReducerMap: () => ReducerList,
+    reduce: (state: StateSchema, action: Action) => CombinedState<DeepPartial<ReducerList>>;
     add: (key: StateSchemaKeys, reducer: Reducer) => void;
     remove: (key: StateSchemaKeys) => void;
 }
