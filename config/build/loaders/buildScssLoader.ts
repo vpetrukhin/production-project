@@ -8,6 +8,7 @@ export const buildScssLoader = (isDev: boolean | undefined) => ({
         // Translates CSS into CommonJS
         {
             loader: 'css-loader',
+            exclude: /node_modules/,
             options: {
                 modules: {
                     auto: (resPath: string) => Boolean(resPath.includes('.module.')),
