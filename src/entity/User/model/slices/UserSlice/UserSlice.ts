@@ -1,6 +1,7 @@
 import { USER_LOCALSTORAGE_KEY } from './../../../../../shared/config/const/localStorage';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { User, UserSchema } from '../../types/UserSchema';
+import { buildSlice } from '@/shared/lib/store';
 
 
 const initialState: UserSchema = {
@@ -8,7 +9,7 @@ const initialState: UserSchema = {
     _inited: false,
 };
 
-export const UserSlice = createSlice({
+export const UserSlice = buildSlice({
     name: 'user',
     initialState,
     reducers: {
@@ -32,5 +33,8 @@ export const UserSlice = createSlice({
     },
 });
 
-export const { actions: UserActions } = UserSlice;
-export const { reducer: UserReducer } = UserSlice;
+export const {
+    actions: UserActions,
+    reducer: UserReducer,
+    useActions: useUserAction
+} = UserSlice;

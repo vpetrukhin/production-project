@@ -1,3 +1,4 @@
 import { StateSchema } from '@/app/providers/Redux';
+import { buildSelector } from '@/shared/lib/store';
 
-export const getUserInfo = (state: StateSchema) => state.user.userInfo;
+export const [useUserInfo, getUserInfo] = buildSelector((state: StateSchema) => state.user.userInfo);

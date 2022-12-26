@@ -1,10 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { buildSlice } from '@/shared/lib/store';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { AddCommentFormSchema } from '../types/AddCommentFormSchema';
 
 
 const initialState: AddCommentFormSchema = {};
 
-export const AddCommentFormSlice = createSlice({
+export const AddCommentFormSlice = buildSlice({
     name: 'AddCommentForm',
     initialState,
     reducers: {
@@ -14,5 +15,8 @@ export const AddCommentFormSlice = createSlice({
     },
 });
 
-export const { actions: AddCommentFormActions } = AddCommentFormSlice;
-export const { reducer: AddCommentFormReducer } = AddCommentFormSlice;
+export const {
+    actions: AddCommentFormActions,
+    reducer: AddCommentFormReducer,
+    useActions: useAddCommentFormActions
+} = AddCommentFormSlice;

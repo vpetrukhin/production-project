@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { RatingCard } from '@/entity/Rating';
-import { useSelector } from 'react-redux';
-import { getUserInfo } from '@/entity/User';
+import { useUserInfo } from '@/entity/User';
 import { useGetArticleRatingQuery, useRateArticleMutation } from '../../api/ArticleRatingApi';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
@@ -14,7 +13,7 @@ export const ArticleRating = (props: ArticleRatingProps) => {
     const { className, articleId } = props;
     const {t} = useTranslation('article');
 
-    const user = useSelector(getUserInfo);
+    const user = useUserInfo();
 
     const { data, isLoading } = useGetArticleRatingQuery({
         articleId,

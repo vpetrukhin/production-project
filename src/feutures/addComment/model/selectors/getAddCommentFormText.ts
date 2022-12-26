@@ -1,2 +1,4 @@
 import { StateSchema } from '@/app/providers/Redux';
-export const getAddCommentFormText = (state: StateSchema) => state.addCommentFrom?.text;
+import { buildSelector } from '@/shared/lib/store';
+
+export const [useAddCommentFormText, getAddCommentFormText] = buildSelector((state: StateSchema) => state.addCommentFrom?.text);

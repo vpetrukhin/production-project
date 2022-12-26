@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { HStack } from '@/shared/ui/Stack';
-import { getAddCommentFormText } from '../../model/selectors/getAddCommentFormText';
-import { AddCommentFormActions, AddCommentFormReducer } from '../../model/slices/AddCommentFormSlice';
+import { useAddCommentFormText } from '../../model/selectors/getAddCommentFormText';
+import { AddCommentFormReducer, useAddCommentFormActions } from '../../model/slices/AddCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
 
 interface addCommentFormProps {
@@ -18,17 +16,17 @@ interface addCommentFormProps {
 export const AddCommentForm = (props: addCommentFormProps) => {
     const { className, onSendComment } = props;
     const {t} = useTranslation();
-    const dispatch = useAppDispatch();
-    const commentText = useSelector(getAddCommentFormText);
+    const {setText} = useAddCommentFormActions();
+    const commentText = useAddCommentFormText();
 
     const onCommentTextChange = (value: string) => {
-        dispatch(AddCommentFormActions.setText(value));
+        setText(value);
     };
     
     const onSendCommentHandler = () => {
         if (commentText) {
             onSendComment(commentText);
-            dispatch(AddCommentFormActions.setText(''));
+            setText('');
         }
     };
 
@@ -45,7 +43,7 @@ export const AddCommentForm = (props: addCommentFormProps) => {
                 <Input
                     className={cls.input}
                     placeholder={t('Введите текст комментария')}
-                    value={commentText}
+                    value={commentText || ''}
                     onChange={onCommentTextChange}
                 />
                 <Button theme={'outline'} onClick={onSendCommentHandler}>{t('Отправить')}</Button>
