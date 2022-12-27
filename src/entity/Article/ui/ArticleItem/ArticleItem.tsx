@@ -15,6 +15,8 @@ import { ArticleView, BlockType } from '../../model/const/articleConsts';
 import cls from './ArticleItem.module.scss';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { getArticleDetailsPath } from '@/shared/config/const/router';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleItemProps {
     className?: string;
@@ -23,8 +25,6 @@ interface ArticleItemProps {
     isLoading?: boolean;
     target?: HTMLAttributeAnchorTarget
 }
-
-// TODO: Разобраться с кольцевыми зависимостями
 
 export const ArticleItem = (props: ArticleItemProps) => {
     const { className, article, view = ArticleView.SMALL, isLoading, target } = props;
@@ -56,11 +56,11 @@ export const ArticleItem = (props: ArticleItemProps) => {
                     </HStack>
                     <Text title={article.title} color='inverted' />
                     {types}
-                    <img className={cls.img} src={article.img} alt={article.title} />
+                    <AppImage fallback={<Skeleton width={'100%'} height={236} />} className={cls.img} src={article.img} alt={article.title} />
                     <ArticalTextBlockComponent className={cls.text} block={textBlock} />
                     <HStack justify='between' className={cls.footer}>
                         <AppLink
-                            to={getArticleDetailsPath(article.id)} // routesConfig.articles_details
+                            to={getArticleDetailsPath(article.id)}
                             target={target}
                         >
                             <Button 
@@ -84,7 +84,7 @@ export const ArticleItem = (props: ArticleItemProps) => {
         >
             <Card className={cls.card}>
                 <div className={cls.imgWrapper}>
-                    <img className={cls.img} src={article.img} alt={article.title} />
+                    <AppImage fallback={<Skeleton width={200} height={236} />} className={cls.img} src={article.img} alt={article.title} />
                     <Text className={cls.date} text={article.createdAt} color='inverted' />
                 </div>
                 <HStack justify='between' className={cls.info}>

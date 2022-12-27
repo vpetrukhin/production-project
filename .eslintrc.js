@@ -58,7 +58,7 @@ module.exports = {
             }
         ],
         '@typescript-eslint/no-var-requires': 'off',
-        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-imports': 'warn',
     },
     
 };
