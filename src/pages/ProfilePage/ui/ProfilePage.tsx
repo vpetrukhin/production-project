@@ -19,7 +19,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     if (!id) return <Text title={t('nekkorektnyi-id-polzovatelya')} />;
 
     return (
-        <Page className={className}>
+        <Page className={className} data-testid={'ProfilePage'}>
             <VStack gap='16'>
                 <EditableProfileCard id={id} />
                 <ProfileRating profileId={id} />

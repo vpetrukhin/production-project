@@ -9,15 +9,16 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/Redux';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle';
+import { TestProps } from '@/shared/types/tests';
 
-interface PageProps {
+interface PageProps extends TestProps {
     className?: string;
     children: ReactNode;
     onScrollEndCallback?: () => void;
 }
 
 export const Page = (props: PageProps) => {
-    const { className, children, onScrollEndCallback } = props;
+    const { className, children, 'data-testid': dataTestId, onScrollEndCallback } = props;
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const targetRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -51,6 +52,7 @@ export const Page = (props: PageProps) => {
             ref={wrapperRef}
             className={classNames(cls.Page, {}, [className])}
             onScroll={onScroll}
+            data-testid={dataTestId}
         >
             {children}
             <div ref={targetRef} />

@@ -1,6 +1,5 @@
 
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface AdminPanelPageProps {
     className?: string;
@@ -11,7 +10,7 @@ const AdminPanelPage = (props: AdminPanelPageProps) => {
     const {t} = useTranslation();
 
     return (
-        <div className={classNames('', {}, [className])}>
+        <div className={className} data-testid='AdminPanelPage'>
             {t('panel-administratora')}
         </div>
     );

@@ -15,7 +15,7 @@ const ForbiddenPage = (props: ForbiddenPageProps) => {
     const {t} = useTranslation();
 
     return (
-        <Page>
+        <Page data-testid='ForbiddenPage'>
             <VStack justify='center' align='center' gap='8' className={className}>
                 <Text title={t('net-dostupa')} />
                 <AppLink to={getMainPath()}>{t('pereiti-na-glavnuyu-stranicu')}</AppLink>
