@@ -5,7 +5,6 @@ import { ArticleRecomendationList } from './ArticleRecomendationList';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
 import { ArticleType, BlockType } from '@/entity/Article';
-import withMock from 'storybook-addon-mock';
 import { Theme } from '@/shared/config/const/theme';
 
 const article = {
@@ -81,7 +80,7 @@ const article = {
 export default {
     title: 'feutures/ArticleRecomendationList',
     component: ArticleRecomendationList,
-    decorators: [StoreDecorator({}), withMock]
+    decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof ArticleRecomendationList>;
 
 const mockData = [

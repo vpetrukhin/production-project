@@ -3,13 +3,13 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ProfileRating } from './ProfileRating';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
-import withMock from 'storybook-addon-mock';
+// import withMock from 'storybook-addon-mock';
 import { Theme } from '@/shared/config/const/theme';
 
 export default {
     title: 'feutures/ProfileRating',
     component: ProfileRating,
-    decorators: [StoreDecorator({}), withMock]
+    decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof ProfileRating>;
 
 const mockData = [

@@ -4,13 +4,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NotificationButton } from './NotificationButton';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
-import withMock from 'storybook-addon-mock';
 import { Theme } from '@/shared/config/const/theme';
 
 export default {
     title: 'feutures/NotificationButton',
     component: NotificationButton,
-    decorators: [StoreDecorator({}), withMock]
+    decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof NotificationButton>;
 
 const styles = {

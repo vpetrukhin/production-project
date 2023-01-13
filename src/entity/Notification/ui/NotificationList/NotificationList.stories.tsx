@@ -2,7 +2,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { NotificationList } from './NotificationList';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import withMock from 'storybook-addon-mock';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
 import { Theme } from '@/shared/config/const/theme';
 
@@ -11,7 +10,6 @@ export default {
     component: NotificationList,
     decorators: [
         StoreDecorator({}),
-        withMock,
     ]
 } as ComponentMeta<typeof NotificationList>;
 

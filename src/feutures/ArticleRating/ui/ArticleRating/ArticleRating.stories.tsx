@@ -3,13 +3,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleRating } from './ArticleRating';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/decorators';
-import withMock from 'storybook-addon-mock';
 import { Theme } from '@/shared/config/const/theme';
 
 export default {
     title: 'feutures/ArticleRating',
     component: ArticleRating,
-    decorators: [StoreDecorator({}), withMock]
+    decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof ArticleRating>;
 
 const mockData = [
