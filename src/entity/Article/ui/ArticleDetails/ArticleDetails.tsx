@@ -40,7 +40,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchArticleById(articleId));
         }
-    });
+    }, []);
 
     const renderBlocks = useCallback((block: ArticleBlock) => {
         switch (block.type) {
@@ -87,7 +87,7 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
         </>;
     } else {
         content = 
-            <VStack gap='16' align='start'>
+            <VStack gap='16' align='start' data-testid={'ArticleDetails'}>
                 <HStack justify='center' max className={cls.avatarWrapper}>
                     <img
                         className={cls.avatar}

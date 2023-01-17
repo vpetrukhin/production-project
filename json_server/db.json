@@ -553,9 +553,9 @@
       "avatar": "https://images.unsplash.com/photo-1637779692999-26cdadc69c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },
     {
-      "id": "2",
-      "username": "user1",
-      "password": "123",
+      "id": "3",
+      "username": "testuser",
+      "password": "test",
       "roles": [
         "USER"
       ],
@@ -582,7 +582,18 @@
       "currency": "RUB",
       "country": "Россия",
       "city": "Москва",
-      "username": "admin",
+      "username": "user",
+      "avatar": "https://images.unsplash.com/photo-1637779692999-26cdadc69c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": "3",
+      "first": "test",
+      "lastname": "testovich",
+      "age": 23,
+      "currency": "RUB",
+      "country": "Россия",
+      "city": "Москва",
+      "username": "testuser",
       "avatar": "https://images.unsplash.com/photo-1637779692999-26cdadc69c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     }
   ],

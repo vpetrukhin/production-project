@@ -1,34 +1,37 @@
-import { getAdminPanelPath } from './../../../src/shared/config/const/router';
-import { getTestidSelector } from 'cypress/helpers/getTestidSelector';
+import { getAdminPanelPath, getProfilePath } from './../../../src/shared/config/const/router';
+
+let userId = '';
 
 describe('router tests', () => {
     it('page is render', () => {
         cy.visit('/');
-        cy.get(getTestidSelector('MainPage')).should('exist');
+        cy.getByTestid('MainPage').should('exist');
     });
 
     describe('Авторизованный пользователь', () => {
-        it('старница профиля', () => {
-            cy.login('user', '123');
+        beforeEach(() => {
+            cy.login().then((user) => {
+                userId = user.id;
+            });
+        })
 
-            cy.visit('/profile/1');
-            cy.get(getTestidSelector('ProfilePage'))
+        it('старница профиля', () => {
+            cy.visit(getProfilePath(userId));
+            cy.getByTestid('ProfilePage').should('exist');
         })
         it('нет доступа к странице', () => {
-            cy.login('user', '123');
-
             cy.visit(getAdminPanelPath());
-            cy.get(getTestidSelector('ForbiddenPage'))
+            cy.getByTestid('ForbiddenPage').should('exist');
         })
     });
     describe('Не авторизованный пользователь', () => {
         it('редирект на главную страницу', () => {
-            cy.visit('/profile/1');
-            cy.get(getTestidSelector('MainPage'))
+            cy.visit(getProfilePath('1'));
+            cy.getByTestid('MainPage').should('exist');
         })
         it('переход на несуществующий путь', () => {
             cy.visit('/cddvdvdcvc');
-            cy.get(getTestidSelector('NotFoundPage')).should('exist')
+            cy.getByTestid('NotFoundPage').should('exist');
         })
     });
 });

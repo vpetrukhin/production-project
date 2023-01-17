@@ -43,6 +43,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
             <Page
                 className={className}
                 onScrollEndCallback={onFetchMoreArticles}
+                data-testid={'ArtilclesPage'}
             >
                 <ArticlesFilters />
                 <ArticleInfinityList />

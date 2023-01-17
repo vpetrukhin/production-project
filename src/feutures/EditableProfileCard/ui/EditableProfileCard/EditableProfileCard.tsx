@@ -33,7 +33,7 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
 
     useInitialEffect(() => {
         if (id) dispatch(fetchProfileData(id));
-    });
+    }, []);
 
     const onFirstnameChange = useCallback((value: string) => {
         dispatch(ProfileActions.updateProfile({ first: value || '' }));

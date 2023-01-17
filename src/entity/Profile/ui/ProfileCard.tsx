@@ -72,7 +72,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
     };
 
     return (
-        <VStack 
+        <VStack
+            data-testid={'ProfileCard'}
             gap='8' 
             max
             align='start'
