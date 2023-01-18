@@ -12,7 +12,7 @@ export interface Paths {
 export interface buildEnv {
     port: number;
     mode: Mode;
-    ApiUrl: string;
+    apiurl: string;
 }
 
 export interface buildOptions {

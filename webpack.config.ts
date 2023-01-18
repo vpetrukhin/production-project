@@ -14,9 +14,10 @@ const paths: Paths = {
 };
 
 export default (env: buildEnv) => {
+    console.log(env)
     const mode = env.mode || 'development';
     const isDev = mode === 'development';
-    const ApiUrl = env.ApiUrl || 'http://localhost:8000';
+    const ApiUrl = env.apiurl || 'http://localhost:8000';
     const port = env.port || 3000;
     const project = 'frontend';
 
