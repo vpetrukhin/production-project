@@ -30,17 +30,17 @@ export function buildPlugins({ paths, isDev, ApiUrl, project }: buildOptions): w
             exclude: /node_modules/,
             failOnError: true,
         }),
-        new ForkTsCheckerWebpackPlugin({
+    ];
+
+    if (isDev) {
+        plugins.push(new ForkTsCheckerWebpackPlugin({
             typescript: {
                 diagnosticOptions: {
                     semantic: true,
                     syntactic: true,
                 },
             },
-        })
-    ];
-
-    if (isDev) {
+        }))
         plugins.push(new ReactRefreshWebpackPlugin());
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({
