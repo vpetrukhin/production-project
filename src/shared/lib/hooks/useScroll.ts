@@ -1,5 +1,4 @@
-import { MutableRefObject } from 'react';
-import { useInitialEffect } from './useInitialEffect';
+import { MutableRefObject, useEffect } from 'react';
 
 export interface UseScrollProps {
     targetRef: MutableRefObject<HTMLElement>;
@@ -12,7 +11,7 @@ export type UseScrollResult = []
 export const useScroll = (props: UseScrollProps) => {
     const { callback, targetRef, wrapperRef } = props;
 
-    useInitialEffect(() => {
+    useEffect(() => {
         const target = targetRef.current;
 
         // функция обратного вызова

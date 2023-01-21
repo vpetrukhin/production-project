@@ -26,8 +26,10 @@ export const fetchMoreArticles = createAsyncThunk<Article[], void, ThunkConfig<s
                     q: search,
                     _limit: limit,
                     type: type === ArticleType.All ? undefined : type,
-                }
+                },
+
             });
+
 
             if (!response.data) {
                 throw new Error();
@@ -35,7 +37,6 @@ export const fetchMoreArticles = createAsyncThunk<Article[], void, ThunkConfig<s
 
             return response.data;
         } catch (e) {
-            console.log(e);
             return rejectWithValue(ValidateErrors.SERVER_ERROR);
         }
     }

@@ -24,7 +24,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
 
     useInitialEffect(() => {
         dispatch(initArticlesPage(searchParams));
-    });
+    }, []);
 
     const onFetchMoreArticles = useCallback(() => {
         if (hasMoreArticles) {

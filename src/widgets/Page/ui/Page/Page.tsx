@@ -45,7 +45,7 @@ export const Page = (props: PageProps) => {
                 path: pathname,
             }
         ));
-    }, 500);
+    }, 1000);
 
     return (
         <section
