@@ -31,4 +31,4 @@
     npm install
     npm start:dev
 ```
-Ссылка на [проект]("https://prodapp.ru")
+Ссылка на [проект](https://prodapp.ru)
