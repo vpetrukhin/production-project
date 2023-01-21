@@ -18,12 +18,14 @@
 * React Testing Library
 * Storybook
 * Loki
-* Cypress
+* Cypress.
+### Архитектура
+Проект написан с использованием методологии [Feuture Slice Design]("https://feature-sliced.design/ru/").
 ### Бэкенд
-В качестве бэкенда использовался [json-server]("https://github.com/typicode/json-server")
+В качестве бэкенда использовался [json-server]("https://github.com/typicode/json-server").
 ***
 
-## Запукс проекта
+## Запуск проекта
 Для запуска проекта выполнить косанды: <br>
 ```bash
     npm install
