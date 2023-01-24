@@ -23,6 +23,8 @@
 Проект написан с использованием методологии [Feuture Slice Design](https://feature-sliced.design/ru/).
 ### Бэкенд
 В качестве бэкенда использовался [json-server](https://github.com/typicode/json-server).
+### Переводы
+Проект поддерживает русский и английский языки. Это реализовано с помощью [i18next](https://www.i18next.com/)
 ***
 
 ## Запуск проекта
