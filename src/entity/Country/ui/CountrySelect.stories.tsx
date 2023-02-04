@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { CountrySelect } from './CountrySelect';
 import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecorator';
-import { Country } from '../model/types/Countries';
+import { Country } from '../consts/Countries';
 import { Theme } from '@/shared/config/const/theme';
 
 export default {
