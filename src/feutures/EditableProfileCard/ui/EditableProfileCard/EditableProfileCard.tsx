@@ -1,14 +1,13 @@
 import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { Country } from '@/entity/Country';
 import { Currency } from '@/entity/Currency';
 import { ProfileCard } from '@/entity/Profile';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
-import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
-import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
-import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import { ProfileActions, ProfileReducer } from '../../model/slice/ProfileSlice';
+import { useProfileError } from '../../model/selectors/getProfileError/getProfileError';
+import { useProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
+import { useProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { useProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { ProfileReducer, useProfileActions } from '../../model/slice/ProfileSlice';
 import { DynamicModule, ReducerList } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
@@ -26,49 +25,50 @@ interface EditableProfileCardProps {
 export const EditableProfileCard = (props: EditableProfileCardProps) => {
     const { className, id } = props;
     const dispatch = useAppDispatch();
-    const form = useSelector(getProfileForm);
-    const error = useSelector(getProfileError);
-    const isLoading = useSelector(getProfileIsLoading);
-    const readonly = useSelector(getProfileReadonly);
+    const { updateProfile } = useProfileActions();
+    const form = useProfileForm();
+    const error = useProfileError();
+    const isLoading = useProfileIsLoading();
+    const readonly = useProfileReadonly();
 
     useInitialEffect(() => {
         if (id) dispatch(fetchProfileData(id));
     }, []);
 
     const onFirstnameChange = useCallback((value: string) => {
-        dispatch(ProfileActions.updateProfile({ first: value || '' }));
-    }, [dispatch]);
+        updateProfile({ first: value || '' });
+    }, [updateProfile]);
 
     const onLastnameChange = useCallback((value: string) => {
-        dispatch(ProfileActions.updateProfile({ lastname: value || '' }));
-    }, [dispatch]);
+        updateProfile({ lastname: value || '' });
+    }, [updateProfile]);
 
     const onAgeChange = useCallback((value: string) => {
         const numberRegex = /^\d+$/i;
         if (numberRegex.test(value) || value === '') {
-            dispatch(ProfileActions.updateProfile({ age: Number(value) }));
+            updateProfile({ age: Number(value) });
         }
-    }, [dispatch]);
+    }, [updateProfile]);
 
     const onCityChange = useCallback((value: string) => {
-        dispatch(ProfileActions.updateProfile({ city: value || '' }));
-    }, [dispatch]);
+        updateProfile({ city: value || '' });
+    }, [updateProfile]);
 
     const onUsernameChange = useCallback((value: string) => {
-        dispatch(ProfileActions.updateProfile({ username: value || '' }));
-    }, [dispatch]);
+        updateProfile({ username: value || '' });
+    }, [updateProfile]);
 
     const onAvatarChange = useCallback((value: string) => {
-        dispatch(ProfileActions.updateProfile({ avatar: value || '' }));
-    }, [dispatch]);
+        updateProfile({ avatar: value || '' });
+    }, [updateProfile]);
 
     const onCurrencyChange = useCallback((value: Currency) => {
-        dispatch(ProfileActions.updateProfile({ currency: value }));
-    }, [dispatch]);
+        updateProfile({ currency: value });
+    }, [updateProfile]);
 
     const onCountryChange = useCallback((value: Country) => {
-        dispatch(ProfileActions.updateProfile({ country: value }));
-    }, [dispatch]);
+        updateProfile({ country: value });
+    }, [updateProfile]);
 
     return (
         <DynamicModule reducers={reducers}>

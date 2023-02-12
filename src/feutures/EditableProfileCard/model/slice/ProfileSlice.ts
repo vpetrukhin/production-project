@@ -1,8 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { Profile } from '@/entity/Profile';
 import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema } from '../types/ProfileSchema';
+import { buildSlice } from '@/shared/lib/store';
 
 
 const initialState: ProfileSchema = {
@@ -10,7 +11,7 @@ const initialState: ProfileSchema = {
     readonly: true,
 };
 
-export const ProfileSlice = createSlice({
+export const ProfileSlice = buildSlice({
     name: 'profile',
     initialState,
     reducers: {
@@ -68,5 +69,4 @@ export const ProfileSlice = createSlice({
     },
 });
 
-export const { actions: ProfileActions } = ProfileSlice;
-export const { reducer: ProfileReducer } = ProfileSlice;
+export const { actions: ProfileActions, reducer: ProfileReducer, useActions: useProfileActions } = ProfileSlice;

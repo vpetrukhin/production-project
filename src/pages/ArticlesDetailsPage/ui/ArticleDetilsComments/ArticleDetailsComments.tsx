@@ -26,7 +26,7 @@ export const ArticleDetailsComments = (props: ArticleDetailsCommentsProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchCommentsList(id));
-    });
+    }, []);
 
     const onSendComment = (value: string) => {
         dispatch(addArticleComment(value));

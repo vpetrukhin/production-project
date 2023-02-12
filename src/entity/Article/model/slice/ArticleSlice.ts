@@ -1,3 +1,4 @@
+import { buildSlice } from '@/shared/lib/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchArticleById } from '../services/fetchArticleById';
 import { Article } from '../types/article';
@@ -8,7 +9,7 @@ const initialState: ArticleSchema = {
     isLoading: false,
 };
 
-export const ArticleSlice = createSlice({
+export const ArticleSlice = buildSlice({
     name: 'articles',
     initialState,
     reducers: {},
@@ -28,5 +29,4 @@ export const ArticleSlice = createSlice({
     },
 });
 
-export const { actions: ArticleActions } = ArticleSlice;
-export const { reducer: ArticleReducer } = ArticleSlice;
+export const { actions: ArticleActions, reducer: ArticleReducer, useActions: useArticleAction } = ArticleSlice;

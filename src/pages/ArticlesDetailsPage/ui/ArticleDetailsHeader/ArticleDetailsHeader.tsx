@@ -1,7 +1,6 @@
-import { getCanEdit } from '@/entity/Article';
+import { useCanEdit } from '@/entity/Article';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
@@ -18,7 +17,7 @@ export const ArticleDetailsHeader = (props: ArticleDetailsHeaderProps) => {
     const {t} = useTranslation('article');
     const navigate = useNavigate();
 
-    const canEdit = useSelector(getCanEdit);
+    const canEdit = useCanEdit();
     
     const navigateToArticleList = useCallback(() => {
         navigate(getArticlesPath());

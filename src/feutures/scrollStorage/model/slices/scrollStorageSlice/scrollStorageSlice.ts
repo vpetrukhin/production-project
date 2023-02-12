@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { buildSlice } from '@/shared/lib/store';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { ScrollStorageSchema } from '../../types/scrollstorage';
 
 
@@ -6,7 +7,7 @@ const initialState: ScrollStorageSchema = {
     scroll: {}
 };
 
-export const scrollStorageSlice = createSlice({
+export const scrollStorageSlice = buildSlice({
     name: 'scroll',
     initialState,
     reducers: {
@@ -16,5 +17,4 @@ export const scrollStorageSlice = createSlice({
     },
 });
 
-export const { actions: ScrollStorageActions } = scrollStorageSlice;
-export const { reducer: ScrollStorageReducer } = scrollStorageSlice;
+export const { actions: ScrollStorageActions, reducer: ScrollStorageReducer, useActions: useScrollStorageActions } = scrollStorageSlice;

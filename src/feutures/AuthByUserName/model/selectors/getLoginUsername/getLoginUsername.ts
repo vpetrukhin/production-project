@@ -1,3 +1,4 @@
 import { StateSchema } from '@/app/providers/Redux';
+import { buildSelector } from '@/shared/lib/store';
 
-export const getLoginUsername = (state: StateSchema) => state.login?.username || '';
+export const [useLoginUsername, getLoginUsername] = buildSelector((state: StateSchema) => state.login?.username || '');

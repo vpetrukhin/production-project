@@ -1,5 +1,5 @@
 import { StateSchema } from '@/app/providers/Redux';
-import { ArticleType, BlockType } from '../const/articleConsts';
+import { ArticleType, BlockType } from '../../const/articleConsts';
 import { getArticleData, getArticleError, getArticleIsLoading } from './getArticle';
 
 const article = {

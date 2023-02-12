@@ -1,15 +1,14 @@
 import { MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
-import { getScrollStorageScrollByPath, ScrollStorageActions } from '@/feutures/scrollStorage';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { useScroll } from '@/shared/lib/hooks/useScroll';
-import cls from './Page.module.scss';
 import { useLocation } from 'react-router-dom';
-import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/Redux';
+import { getScrollStorageScrollByPath, useScrollStorageActions } from '@/feutures/scrollStorage';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useScroll } from '@/shared/lib/hooks/useScroll';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle';
 import { TestProps } from '@/shared/types/tests';
+import cls from './Page.module.scss';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -25,7 +24,7 @@ export const Page = (props: PageProps) => {
 
     const { pathname } = useLocation();
 
-    const dispatch = useAppDispatch();
+    const { setScroll } = useScrollStorageActions();
     const scroll = useSelector((state: StateSchema) => getScrollStorageScrollByPath(state, pathname));
 
     useScroll({
@@ -39,12 +38,12 @@ export const Page = (props: PageProps) => {
     });
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        dispatch(ScrollStorageActions.setScroll(
+        setScroll(
             {
                 scroll: e.currentTarget.scrollTop,
                 path: pathname,
             }
-        ));
+        );
     }, 1000);
 
     return (

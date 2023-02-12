@@ -1,3 +1,5 @@
 import { StateSchema } from '@/app/providers/Redux';
+import { buildSelector } from '@/shared/lib/store';
 
-export const getProfileValidateError = (state: StateSchema) => state?.profile?.validateErrors;
+
+export const [useProfileValidateErrors, getProfileValidateErrors] = buildSelector((state: StateSchema) => state?.profile?.validateErrors);

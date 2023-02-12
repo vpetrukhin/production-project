@@ -1,6 +1,6 @@
 import { StateSchema } from '@/app/providers/Redux';
 import { ValidateErrors } from '../../const/editableProfileCardConsts';
-import { getProfileValidateError } from './getProfileValidateErrors';
+import { getProfileValidateErrors } from './getProfileValidateErrors';
 
 describe('tests for getProfileIsLoading.test', () => {
     test('test', () => {
@@ -10,6 +10,6 @@ describe('tests for getProfileIsLoading.test', () => {
             }
         };
 
-        expect(getProfileValidateError(state as StateSchema)).toEqual([ValidateErrors.SERVER_ERROR]);
+        expect(getProfileValidateErrors(state as StateSchema)).toEqual([ValidateErrors.SERVER_ERROR]);
     });
 });

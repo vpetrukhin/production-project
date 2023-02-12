@@ -1,20 +1,19 @@
 import { FormEvent, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Text } from '@/shared/ui/Text';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { LoginActions, LoginReducer } from '../../model/slices/LoginSlice';
-import { loginByUsername } from '../../model/services/LoginByUsername/LoginByUsername';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
-import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
-import cls from './LoginForm.module.scss';
 import { VStack } from '@/shared/ui/Stack';
+import { LoginReducer, useLoginAction } from '../../model/slices/LoginSlice';
+import { loginByUsername } from '../../model/services/LoginByUsername/LoginByUsername';
+import { useLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { useLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { useLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
+import { useLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import cls from './LoginForm.module.scss';
 
 interface LoginFormProps {
     className?: string;
@@ -24,18 +23,19 @@ const LoginForm = memo((props: LoginFormProps) => {
     const { className } = props;
     const {t} = useTranslation();
     const dispatch = useAppDispatch();
-    const username = useSelector(getLoginUsername);
-    const password = useSelector(getLoginPassword);
-    const isLoading = useSelector(getLoginIsLoading);
-    const error = useSelector(getLoginError);
+    const { setPassword, setUsername } = useLoginAction();
+    const username = useLoginUsername();
+    const password = useLoginPassword();
+    const isLoading = useLoginIsLoading();
+    const error = useLoginError();
 
     const onUsernameChange = useCallback((value: string) => {
-        dispatch(LoginActions.setUsername(value));
-    }, [dispatch]);
+        setUsername(value);
+    }, [setUsername]);
     
     const onPasswordChange = useCallback((value: string) => {
-        dispatch(LoginActions.setPassword(value));
-    }, [dispatch]);
+        setPassword(value);
+    }, [setPassword]);
 
     const onLoginClick = useCallback((e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

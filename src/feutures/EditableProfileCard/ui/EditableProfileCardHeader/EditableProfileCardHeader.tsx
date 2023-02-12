@@ -1,16 +1,15 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { Button } from '@/shared/ui/Button';
 import { Text } from '@/shared/ui/Text';
-import { getUserInfo } from '@/entity/User';
+import { useUserInfo } from '@/entity/User';
 import { HStack } from '@/shared/ui/Stack';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
-import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
-import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import { getProfileValidateError } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
-import { ProfileActions } from '../../model/slice/ProfileSlice';
+import { useProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
+import { useProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { useProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import { useProfileActions } from '../../model/slice/ProfileSlice';
 import { ValidateErrors } from '../../model/const/editableProfileCardConsts';
 
 
@@ -22,11 +21,12 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
     const { className } = props;
     const {t} = useTranslation('profile');
     const dispatch = useAppDispatch();
-    const readonly = useSelector(getProfileReadonly);
-    const authData = useSelector(getUserInfo);
-    const formData = useSelector(getProfileForm);
+    const { onCancelEdit, onStartEdit } = useProfileActions();
+    const readonly = useProfileReadonly();
+    const authData = useUserInfo();
+    const formData = useProfileForm();
+    const validateErrors = useProfileValidateErrors();
     const canEdit = authData?.id === formData?.id;
-    const validateErrors = useSelector(getProfileValidateError);
 
     const validateMessages = {
         [ValidateErrors.INCORRECT_AGE]: t('Некорректный возраст'),
@@ -40,12 +40,12 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
     };
 
     const onEdit = useCallback(() => {
-        dispatch(ProfileActions.onStartEdit());
-    }, [dispatch]);
+        onStartEdit();
+    }, [onStartEdit]);
 
     const onCancel = useCallback(() => {
-        dispatch(ProfileActions.onCancelEdit());
-    }, [dispatch]);
+        onCancelEdit();
+    }, [onCancelEdit]);
 
     const onSave = useCallback(() => {
         dispatch(updateProfileData());
