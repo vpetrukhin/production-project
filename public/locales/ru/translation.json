@@ -35,5 +35,17 @@
   "net-dostupa": "Нет доступа",
   "pereiti-na-glavnuyu-stranicu": "Перейти на главную страницу",
   "oshibka-zagruzki-uvedomlenii": "Ошибка загрузки уведомлений",
-  "vash-otzyv": "Ваш отзыв"
+  "vash-otzyv": "Ваш отзыв",
+  "forma-registracii": "Форма регистрации",
+  "login": "Логин",
+  "password": "Пароль",
+  "name": "Имя",
+  "lastname": "Фамилия",
+  "age": "Возраст",
+  "city": "Город",
+  "avatar": "Аватарка",
+  "to_reg": "Зарегистрироваться",
+  "oshibka-registracii": "Ошибка регистрации",
+  "vy-zaregistrirovany": "Вы зарегистрированы!!!",
+  "registraciya": "Регистрация"
 }

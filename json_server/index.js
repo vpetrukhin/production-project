@@ -27,6 +27,55 @@ server.use(async (req, res, next) => {
     next();
 });
 
+// Эндпоинт для регистрации
+server.post('/reg', (req, res) => {
+    try {
+        const { username, password, first, lastname, age, currency, country, city, avatar } = req.body;
+
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
+
+        const { users = [], profile = [] } = db;
+        
+        // Проверка на уникальность
+        const candidat = users.find(user => user.username === username);
+
+        if (candidat) {
+            throw new Error('Пользователь с таким логином уже существует');
+        }
+
+        // Добавление в users
+        users.push({
+            id: String(users.length + 1),
+            username,
+            password,
+            roles: [
+                'USER'
+            ],
+            avatar,
+        });
+
+        // Добавление profile
+        profile.push({
+            id: String(profile.length + 1),
+            first,
+            lastname,
+            age,
+            currency,
+            country,
+            city,
+            username,
+            avatar,
+        });
+
+        const newDBJSON = JSON.stringify(db);
+        fs.writeFileSync(path.resolve(__dirname, 'db.json'), newDBJSON, 'UTF-8');
+        res.status(200).json({ message: 'success', json: newDBJSON });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message });
+    }
+});
+
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
     try {

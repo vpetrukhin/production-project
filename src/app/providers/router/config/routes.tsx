@@ -9,7 +9,8 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
-import { getAboutPath, getAdminPanelPath, getArticleCreatePath, getArticleDetailsPath, getArticleEditPath, getArticlesPath, getForbiddenPath, getMainPath, getProfilePath, Routes } from '@/shared/config/const/router';
+import { RegistrationPage } from '@/pages/RegistrationPage';
+import { getAboutPath, getAdminPanelPath, getArticleCreatePath, getArticleDetailsPath, getArticleEditPath, getArticlesPath, getForbiddenPath, getMainPath, getProfilePath, getRegistrationPath, Routes } from '@/shared/config/const/router';
 import { IRoute } from '@/shared/types/router';
 
 export const routesConfig: Record<Routes, IRoute> = {
@@ -53,6 +54,11 @@ export const routesConfig: Record<Routes, IRoute> = {
         element: <AdminPanelPage />,
         onlyAuthorized: true,
         roles: [UserRoles.ADMIN, UserRoles.MANAGER]
+    },
+    [Routes.REGISTRATION]: {
+        path: getRegistrationPath(),
+        element: <RegistrationPage />,
+        onlyAuthorized: false,
     },
     [Routes.FORBIDDEN]: {
         path: getForbiddenPath(),

@@ -14,6 +14,7 @@ import { UserSchema } from '@/entity/User';
 import { ArticleSchema } from '@/entity/Article';
 import { rtkApi } from '@/shared/api/rtkAPi';
 import { createReduxStore } from '..';
+import { RegistrationSliceSchema } from '@/feutures/Registration';
 
 
 export interface StateSchema {
@@ -24,6 +25,7 @@ export interface StateSchema {
     // async
     profile?: ProfileSchema,
     login?: LoginSchema,
+    reg?: RegistrationSliceSchema,
     article?: ArticleSchema,
     articleDetailsComments?: ArticleDetailsCommentsSchema,
     articleDetailsRecomendation?: ArticleDetailsRecomenationSchema,

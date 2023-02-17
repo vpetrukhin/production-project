@@ -7,6 +7,7 @@ export enum Routes {
     ARTICLECREATE = 'articles_create',
     ARTICLEEDIT = 'articles_edit',
     ADMINPANEL = 'admin',
+    REGISTRATION = 'sign_up',
 
     // last
     NOTFOUND = 'notfound',
@@ -22,3 +23,4 @@ export const getArticleCreatePath = () => '/article/create';
 export const getArticleEditPath = (id: string) => `/article/${id}/create`;
 export const getAdminPanelPath = () => '/article/admin';
 export const getForbiddenPath = () => '/forbidden';
+export const getRegistrationPath = () => '/sign_up';

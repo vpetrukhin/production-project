@@ -33,5 +33,16 @@
   "panel-administratora": "Admin panel",
   "oshibka-zagruzki-uvedomlenii": "Notification loading error",
   "kak-vam-statya": "How do you like the article?",
-  "vash-otzyv": "your feedback"
+  "vash-otzyv": "your feedback",
+  "forma-registracii": "Registration form",
+  "login": "Login",
+  "password": "Password",
+  "name": "Name",
+  "lastname": "Surname",
+  "age": "Age",
+  "avatar": "Avatar",
+  "to_reg": "Register",
+  "oshibka-registracii": "Registration error",
+  "vy-zaregistrirovany": "Are you registered!!!",
+  "registraciya": "Registration"
 }

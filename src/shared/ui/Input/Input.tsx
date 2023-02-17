@@ -1,5 +1,6 @@
 import React, { InputHTMLAttributes, memo, useEffect, useMemo, useRef } from 'react';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
+import { Text } from '../Text';
 import { HStack } from '../Stack';
 import cls from './Input.module.scss';
 
@@ -19,6 +20,8 @@ interface InputProps extends HTMLInputProps {
     readonly?: boolean;
     label?: string;
     'data-testid'?: string;
+    isError?: boolean;
+    error?: string;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -32,7 +35,9 @@ export const Input = memo((props: InputProps) => {
         readonly,
         theme = 'primary',
         label,
+        error,
         'data-testid': dataTestId = 'Input',
+        isError,
         ...otherProps
     } = props;
 
@@ -62,11 +67,14 @@ export const Input = memo((props: InputProps) => {
                 type={type}
                 value={value}
                 onChange={handleChange}
-                className={classNames(cls.input, {}, [cls[theme]])}
+                className={classNames(cls.input, {
+                    [cls.error]: !!isError,
+                }, [cls[theme]])}
                 readOnly={readonly}
                 data-testid={dataTestId}
                 {...otherProps}
             />
+            {!!error && <Text error text={error} />}
         </HStack>
     );
 });
