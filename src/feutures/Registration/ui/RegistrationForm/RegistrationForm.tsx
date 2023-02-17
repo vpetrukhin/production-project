@@ -2,13 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 // import cls from './RegistrationForm.module.scss';
 import { useRegMutation } from '../../api/Registration';
-import { FormEvent, FormEventHandler, useEffect, useRef, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Text } from '@/shared/ui/Text';
 import { Input } from '@/shared/ui/Input';
 import { VStack } from '@/shared/ui/Stack';
 import { Card } from '@/shared/ui/Card';
 import { Button } from '@/shared/ui/Button';
-import { useRegErrors, useRegForm } from '../../model/selectors/registration';
+import { useRegForm } from '../../model/selectors/registration';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { RegistrationReducer, useRegistrationActions } from '../../model/slice/RegistrationSlice';
 import { FormFieldsKey } from '../../types/RegistrationSliceSchema';
@@ -21,7 +21,7 @@ interface RegistrationFormProps {
 
 export const RegistrationForm = (props: RegistrationFormProps) => {
     const { className, onSuccess } = props;
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const [onReg, res] = useRegMutation();
     const { isError, isLoading, isSuccess } = res;
@@ -40,7 +40,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
         }
     }, [isSuccess, onSuccess, resetForm]);
 
-    const handleStringInputChange = (field: FormFieldsKey) => (value: string)  => {
+    const handleStringInputChange = (field: FormFieldsKey) => (value: string) => {
         setErrors([]);
         updateForm({ [field]: value });
     };
@@ -72,10 +72,10 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
 
     return (
         <DynamicModule reducers={{ reg: RegistrationReducer }}>
-            <Card theme='outline'>
+            <Card theme="outline">
                 <form onSubmit={handleSubmit}>
-                    <VStack gap='8' className={classNames('cls.RegistrationForm', {}, [className])}>
-                        <Text title={t('forma-registracii')} color='inverted'/>
+                    <VStack gap="8" className={classNames('cls.RegistrationForm', {}, [className])}>
+                        <Text title={t('forma-registracii')} color="inverted" />
                         <Input
                             label={t('login')}
                             value={form?.username}
@@ -119,8 +119,16 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                             isError={getIsInputError('avatar')}
                         />
                         {isError && <Text error text={t('oshibka-registracii')} />}
-                        {isSuccess && <Text text={t('vy-zaregistrirovany')} color='inverted' />}
-                        <Button disabled={errors.length > 0} loading={isLoading} type='submit' theme='background' max>{t('to_reg')}</Button>
+                        {isSuccess && <Text text={t('vy-zaregistrirovany')} color="inverted" />}
+                        <Button
+                            disabled={errors.length > 0}
+                            loading={isLoading}
+                            type="submit"
+                            theme="background"
+                            max
+                        >
+                            {t('to_reg')}
+                        </Button>
                     </VStack>
                 </form>
             </Card>

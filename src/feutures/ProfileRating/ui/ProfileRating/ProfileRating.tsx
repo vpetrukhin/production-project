@@ -11,7 +11,7 @@ interface ProfileRatingProps {
 
 export const ProfileRating = (props: ProfileRatingProps) => {
     const { profileId } = props;
-    const {t} = useTranslation('profile');
+    const { t } = useTranslation('profile');
 
     const user = useSelector(getUserInfo);
 
