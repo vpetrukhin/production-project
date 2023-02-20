@@ -1,18 +1,16 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
 import { classNames } from '@/shared/lib/classNames/classNames';
-// import cls from './RegistrationForm.module.scss';
-import { useRegMutation } from '../../api/Registration';
-import { FormEvent, useEffect, useState } from 'react';
 import { Text } from '@/shared/ui/Text';
-import { Input } from '@/shared/ui/Input';
 import { VStack } from '@/shared/ui/Stack';
 import { Card } from '@/shared/ui/Card';
 import { Button } from '@/shared/ui/Button';
-import { useRegForm } from '../../model/selectors/registration';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
-import { RegistrationReducer, useRegistrationActions } from '../../model/slice/RegistrationSlice';
-import { FormFieldsKey } from '../../types/RegistrationSliceSchema';
-import { useValidateRegistrationForm } from '../../lib/useValidateRegistarationForm';
+import { FormInput } from '@/shared/ui/Input/FormInput';
+import { useRegMutation } from '../../api/Registration';
+import { RegistrationReducer } from '../../model/slice/RegistrationSlice';
+import { FormFields } from '../../types/RegistrationSliceSchema';
 
 interface RegistrationFormProps {
     className?: string;
@@ -23,105 +21,111 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
     const { className, onSuccess } = props;
     const { t } = useTranslation();
 
+    const {
+        register,
+        formState: { errors, isValid },
+        handleSubmit,
+        reset,
+    } = useForm<FormFields>();
+
     const [onReg, res] = useRegMutation();
     const { isError, isLoading, isSuccess } = res;
 
-    const form = useRegForm();
-    const { updateForm, resetForm } = useRegistrationActions();
-
-    const [isSubmitOnePeace, setIsSubmitOnePeace] = useState(false);
-
-    const [errors, setErrors] = useValidateRegistrationForm(form, isSubmitOnePeace);
-
     useEffect(() => {
         if (isSuccess) {
-            resetForm();
             onSuccess();
         }
-    }, [isSuccess, onSuccess, resetForm]);
+    }, [isSuccess, onSuccess]);
 
-    const handleStringInputChange = (field: FormFieldsKey) => (value: string) => {
-        setErrors([]);
-        updateForm({ [field]: value });
-    };
+    const onSubmit = (data: FormFields) => {
+        onReg(data);
 
-    const handleAgeInputChange = (value: string) => {
-        setErrors([]);
-        const age = Number(value);
-        if (!Number.isNaN(age)) {
-            updateForm({ age });
-        }
-    };
-
-    const getIsInputError = (field: FormFieldsKey): boolean => {
-        return Boolean(errors.find((errField) => errField === field));
-    };
-
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!isSubmitOnePeace) {
-            setIsSubmitOnePeace(true);
-        }
-
-        if (form) {
-            if (errors.length === 0) {
-                onReg(form);
-            }
-        }
+        reset();
     };
 
     return (
         <DynamicModule reducers={{ reg: RegistrationReducer }}>
             <Card theme="outline">
-                <form onSubmit={handleSubmit}>
-                    <VStack gap="8" className={classNames('cls.RegistrationForm', {}, [className])}>
-                        <Text title={t('forma-registracii')} color="inverted" />
-                        <Input
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <VStack
+                        gap="8"
+                        className={classNames('cls.RegistrationForm', {}, [
+                            className,
+                        ])}
+                    >
+                        <Text
+                            title={t('forma-registracii')}
+                            color="inverted"
+                        />
+                        <FormInput
                             label={t('login')}
-                            value={form?.username}
-                            onChange={handleStringInputChange('username')}
-                            isError={getIsInputError('username')}
+                            error={errors.username?.message}
+                            {...register('username', {
+                                required: 'Логин нужен обязательно)',
+                            })}
                         />
-                        <Input
+                        <FormInput
                             label={t('password')}
-                            value={form?.password}
-                            onChange={handleStringInputChange('password')}
-                            isError={getIsInputError('password')}
+                            error={errors.password?.message}
+                            {...register('password', {
+                                required: 'Пароль нужен обязательно)',
+                            })}
                         />
-                        <Input
+                        <FormInput
                             label={t('name')}
-                            value={form?.first}
-                            onChange={handleStringInputChange('first')}
-                            isError={getIsInputError('first')}
+                            error={errors.first?.message}
+                            {...register('first', {
+                                required: 'Введите имя, пожалуйста',
+                            })}
                         />
-                        <Input
+                        <FormInput
                             label={t('lastname')}
-                            value={form?.lastname}
-                            onChange={handleStringInputChange('lastname')}
-                            isError={getIsInputError('lastname')}
+                            error={errors.lastname?.message}
+                            {...register('lastname', {
+                                required: 'Введите фамилию, пожалуйста',
+                            })}
                         />
-                        <Input
+                        <FormInput
+                            type="number"
                             label={t('age')}
-                            value={form?.age}
-                            onChange={handleAgeInputChange}
-                            isError={getIsInputError('age')}
+                            error={errors.age?.message}
+                            {...register('age', {
+                                required: 'Введите возраст',
+                                valueAsNumber: true,
+                            })}
                         />
-                        <Input
+                        <FormInput
                             label={t('city')}
-                            value={form?.city}
-                            onChange={handleStringInputChange('city')}
-                            isError={getIsInputError('city')}
+                            error={errors.city?.message}
+                            {...register('city', {
+                                required: 'Введите ваш город',
+                            })}
                         />
-                        <Input
+                        <FormInput
                             label={t('avatar')}
-                            value={form?.avatar}
-                            onChange={handleStringInputChange('avatar')}
-                            isError={getIsInputError('avatar')}
+                            error={errors.avatar?.message}
+                            {...register('avatar', {
+                                pattern: {
+                                    value: /[-a-zA-Z0-9@:%._\\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?/,
+                                    message:
+                                        'Введите URL аватара в формате http...',
+                                },
+                            })}
                         />
-                        {isError && <Text error text={t('oshibka-registracii')} />}
-                        {isSuccess && <Text text={t('vy-zaregistrirovany')} color="inverted" />}
+                        {isError && (
+                            <Text
+                                error
+                                text={t('oshibka-registracii')}
+                            />
+                        )}
+                        {isSuccess && (
+                            <Text
+                                text={t('vy-zaregistrirovany')}
+                                color="inverted"
+                            />
+                        )}
                         <Button
-                            disabled={errors.length > 0}
+                            disabled={!isValid}
                             loading={isLoading}
                             type="submit"
                             theme="background"
