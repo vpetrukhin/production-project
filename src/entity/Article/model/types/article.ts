@@ -3,6 +3,11 @@ import { ArticleType, BlockType } from '../const/articleConsts';
 
 export type OrderType = 'asc' | 'desc';
 
+export interface ArticleTypeItem<T = string> {
+    content: string;
+    value: T;
+}
+
 export interface Block {
     id: string;
     type: string;
@@ -25,7 +30,9 @@ export interface ArticleTextBlock extends Block {
     paragraphs: string[];
 }
 
-export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock
+export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
+
+export type ArticleBlockItem<T> = T extends BlockType.CODE ? ArticleCodeBlock : T extends BlockType.IMAGE ? ArticleImageBlock : ArticleTextBlock;
 
 export interface Article {
     id: string;

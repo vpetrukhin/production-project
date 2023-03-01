@@ -1,0 +1,12 @@
+.ArticleBlockEditorItem {
+    padding: 5px;
+
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius-m);
+}
+
+.close svg {
+    display: block;
+    width: 15px;
+    height: 15px;
+}

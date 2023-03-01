@@ -47,5 +47,22 @@
   "to_reg": "Зарегистрироваться",
   "oshibka-registracii": "Ошибка регистрации",
   "vy-zaregistrirovany": "Вы зарегистрированы!!!",
-  "registraciya": "Регистрация"
+  "registraciya": "Регистрация",
+  "dobavit-blok-koda": "Добавить блок кода",
+  "dobavit-illyustraciyu": "Добавить иллюстрацию",
+  "dobavit-tekstovyi-blok": "Добавить текстовый блок",
+  "zagolovok": "Заголовок",
+  "vvedite-zagolovok": "Введите заголовок",
+  "vvedite-url": "Введите URL",
+  "tekst": "Текст",
+  "vvedite-tekst": "Введите текст",
+  "vvedite-kod": "Введите код",
+  "podzagolovok": "Подзаголовок",
+  "oblozhka-stati": "Обложка статьи",
+  "tip-stati": "Тип статьи",
+  "sokhranit-izmeneniya": "Сохранить изменения",
+  "create-article": "Создать статью",
+  "tip-ne-vybran": "Тип не выбран",
+  "vy-eshe-ne-dobavili-blokov-v-svoyu-statyu": "Вы еще не добавили блоков в свою статью",
+  "fragment-koda": "Фрагмент кода"
 }

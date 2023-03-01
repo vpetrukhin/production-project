@@ -44,5 +44,21 @@
   "to_reg": "Register",
   "oshibka-registracii": "Registration error",
   "vy-zaregistrirovany": "Are you registered!!!",
-  "registraciya": "Registration"
+  "registraciya": "Registration",
+  "dobavit-blok-koda": "Add code block",
+  "dobavit-illyustraciyu": "Add illustration",
+  "dobavit-tekstovyi-blok": "Add text block",
+  "zagolovok": "Header",
+  "vvedite-zagolovok": "Enter title",
+  "vvedite-url": "Enter URL",
+  "tekst": "Text",
+  "vvedite-tekst": "Enter text",
+  "vvedite-kod": "Enter a code",
+  "podzagolovok": "Subtitle",
+  "oblozhka-stati": "Article cover",
+  "tip-stati": "Article type",
+  "sokhranit-izmeneniya": "Save Changes",
+  "create-article": "Create article",
+  "tip-ne-vybran": "Type not selected",
+  "fragment-koda": "Code snippet"
 }

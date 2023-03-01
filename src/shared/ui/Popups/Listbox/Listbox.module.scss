@@ -2,8 +2,12 @@
     width: fit-content;
 }
 
-.button:focus {
-    border-color: var(--accent-color);
+.button {
+    display: flex;
+    align-items: center;
+    &:focus {
+        border-color: var(--accent-color);
+    }
 }
 
 .list {
@@ -14,6 +18,12 @@
     z-index: 10000000;
     overflow: hidden;
     outline: none;
+}
+
+.caret svg {
+    display: block;
+    width: 15px;
+    height: 15px;
 }
 
 .item {

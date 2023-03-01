@@ -63,7 +63,11 @@ module.exports = {
             'error',
             {
                 alias: '@',
-                testFilesPatterns: ['**/*.test.ts', '**/*.stories.tsx', '**/StoreDecorator.tsx'],
+                testFilesPatterns: [
+                    '**/*.test.ts',
+                    '**/*.stories.tsx',
+                    '**/StoreDecorator.tsx',
+                ],
             },
         ],
         'carav-plugin/layer-imports': [

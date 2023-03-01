@@ -1,0 +1,14 @@
+.textarea {
+    width: 100%;
+    resize: vertical;
+    font: var(--font-m);
+    outline: none;
+    padding: 10px;
+    color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius-m);
+    background-color: transparent;
+    &::placeholder {
+        color: var(--disabled-color);
+    }
+}

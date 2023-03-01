@@ -11,6 +11,7 @@ import { FormInput } from '@/shared/ui/Input/FormInput';
 import { useRegMutation } from '../../api/Registration';
 import { RegistrationReducer } from '../../model/slice/RegistrationSlice';
 import { FormFields } from '../../types/RegistrationSliceSchema';
+import { URL_REGEXP } from '@/shared/config/const/RegExps';
 
 interface RegistrationFormProps {
     className?: string;
@@ -106,7 +107,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                             error={errors.avatar?.message}
                             {...register('avatar', {
                                 pattern: {
-                                    value: /[-a-zA-Z0-9@:%._\\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?/,
+                                    value: URL_REGEXP,
                                     message:
                                         'Введите URL аватара в формате http...',
                                 },
