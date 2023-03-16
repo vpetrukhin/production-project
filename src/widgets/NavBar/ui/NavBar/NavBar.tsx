@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { LoginModal } from '@/feutures/AuthByUserName';
 import { NotificationButton } from '@/feutures/NotificationButton';
 import { AvatarDropdown } from '@/feutures/AvatarDropdown';
-import { getUserInfo, useUserInfo } from '@/entity/User';
+import { useUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 import cls from './NavBar.module.scss';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRegistrationPath } from '@/shared/config/const/router';
+import {
+    getArticleCreatePath,
+    getRegistrationPath,
+} from '@/shared/config/const/router';
 import { useLocation } from 'react-router-dom';
-
 
 export interface NavbarProps {
     className?: string;
@@ -21,11 +22,14 @@ export interface NavbarProps {
 
 export const NavBar = (props: NavbarProps) => {
     const { className } = props;
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const { pathname } = useLocation();
 
-    const isRegisrationPage = useMemo(() => pathname === getRegistrationPath(), [pathname]);
+    const isRegisrationPage = useMemo(
+        () => pathname === getRegistrationPath(),
+        [pathname],
+    );
 
     const userInfo = useUserInfo();
 
@@ -47,7 +51,16 @@ export const NavBar = (props: NavbarProps) => {
         return (
             <HStack className={classNames(cls.NavBar, {}, [className])}>
                 <Text title={t('ProdApp')} />
-                <HStack gap='16' className={cls.links}>
+                <HStack
+                    gap="16"
+                    className={cls.links}
+                >
+                    <AppLink
+                        to={getArticleCreatePath()}
+                        theme="inverted"
+                    >
+                        {t('create-article')}
+                    </AppLink>
                     <NotificationButton />
                     <AvatarDropdown />
                 </HStack>
@@ -58,16 +71,30 @@ export const NavBar = (props: NavbarProps) => {
     return (
         <HStack className={classNames(cls.NavBar, {}, [className])}>
             <Text title={t('ProdApp')} />
-            <HStack gap='16' className={cls.links}>
+            <HStack
+                gap="16"
+                className={cls.links}
+            >
                 {!isRegisrationPage && (
-                    <AppLink to={getRegistrationPath()} theme='inverted'>
+                    <AppLink
+                        to={getRegistrationPath()}
+                        theme="inverted"
+                    >
                         {t('registraciya')}
                     </AppLink>
                 )}
-                <Button theme={'inverted_outline'} onClick={handleOpenModal}>
+                <Button
+                    theme={'inverted_outline'}
+                    onClick={handleOpenModal}
+                >
                     {t('Войти')}
                 </Button>
-                {isModalOpen && <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />}
+                {isModalOpen && (
+                    <LoginModal
+                        isOpen={isModalOpen}
+                        onClose={handleCloseModal}
+                    />
+                )}
             </HStack>
         </HStack>
     );

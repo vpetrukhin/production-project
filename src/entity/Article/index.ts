@@ -1,4 +1,5 @@
-export { updateArticle } from './api/updateArticle'
+export { updateArticle } from './api/updateArticle';
+export { createArticle } from './api/createArticle';
 
 export { parseArticleTextBlocksToArray, parseArticleTextBlocksToString } from './model/lib/helpers/parseArticleBlocks'
 

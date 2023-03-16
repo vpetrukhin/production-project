@@ -18,7 +18,10 @@ import { useArticleData } from '../../model/selectors/getArticle/getArticle';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { fetchArticleById } from '../../model/services/fetchArticleById';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
-import { ArticleReducer } from '../../model/slice/ArticleSlice';
+import {
+    ArticleReducer,
+    useArticleAction,
+} from '../../model/slice/ArticleSlice';
 import { parseArticleTextBlocksToString } from '../../model/lib/helpers/parseArticleBlocks';
 import { ArticleTypeSelect } from '../ArticleTypeSelect/ArticleTypeSelect';
 
@@ -38,10 +41,15 @@ export const ArticleForm = (props: ArticleFormProps) => {
 
     const dispatch = useAppDispatch();
     const article = useArticleData();
+    const { resetArticle } = useArticleAction();
 
     useInitialEffect(() => {
         if (mode === 'edit' && articleId && article === undefined) {
             dispatch(fetchArticleById(articleId));
+        }
+
+        if (mode === 'create') {
+            resetArticle();
         }
     }, []);
 
@@ -54,6 +62,7 @@ export const ArticleForm = (props: ArticleFormProps) => {
         control,
         formState: { errors },
         clearErrors,
+        reset,
     } = methods;
 
     const {
@@ -102,10 +111,10 @@ export const ArticleForm = (props: ArticleFormProps) => {
     );
 
     useEffect(() => {
-        if (article) {
+        if (article && mode !== 'create') {
             setDefaultValues(article);
         }
-    }, [article, setDefaultValues]);
+    }, [article, mode, setDefaultValues]);
 
     const handleTypeChange = (value: ArticleType) => {
         field.onChange();
@@ -120,14 +129,21 @@ export const ArticleForm = (props: ArticleFormProps) => {
     return (
         <DynamicModule
             reducers={{ article: ArticleReducer }}
-            removeAfterUnmount={false}
+            removeAfterUnmount={mode === 'create'}
         >
-            <div className={classNames('cls.ArticleForm', {}, [className])}>
+            <VStack
+                max
+                className={className}
+            >
                 <FormProvider {...methods}>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form
+                        style={{ width: '100%' }}
+                        onSubmit={handleSubmit(onSubmit)}
+                    >
                         <VStack
                             gap="8"
                             align="start"
+                            max
                         >
                             <FormInput
                                 label={t('zagolovok')}
@@ -183,7 +199,7 @@ export const ArticleForm = (props: ArticleFormProps) => {
                         </VStack>
                     </form>
                 </FormProvider>
-            </div>
+            </VStack>
         </DynamicModule>
     );
 };

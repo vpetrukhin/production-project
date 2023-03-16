@@ -12,7 +12,11 @@ const initialState: ArticleSchema = {
 export const ArticleSlice = buildSlice({
     name: 'articles',
     initialState,
-    reducers: {},
+    reducers: {
+        resetArticle(state) {
+            state.data = undefined;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchArticleById.pending, (state) => {
             state.error = undefined;

@@ -46,7 +46,16 @@ export interface Article {
     user: User;
 }
 
-export type ArticleBody = Omit<Article, 'id'>;
+export interface ArticleBody {
+    title: string;
+    subtitle: string;
+    img: string;
+    views: number;
+    createdAt: string;
+    type: ArticleType[];
+    blocks: ArticleBlock[];
+    userId: string;
+};
 
 export type ArticleFormBlocks = Array<(ArticleCodeBlock | ArticleImageBlock | {
     paragraphs: string;
