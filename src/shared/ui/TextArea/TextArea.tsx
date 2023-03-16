@@ -16,6 +16,7 @@ export const TextArea = (props: TextAreaProps) => {
             className={classNames(cls.root, {}, [className])}
             align="start"
             gap="4"
+            max
         >
             {label && <span className={cls.label}>{label}</span>}
             <textarea

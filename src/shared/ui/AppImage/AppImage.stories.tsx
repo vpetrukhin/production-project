@@ -5,11 +5,13 @@ import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecora
 import { Theme } from '@/shared/config/const/theme';
 
 export default {
-    title: '/AppImage',
+    title: 'shared/AppImage',
     component: AppImage,
 } as ComponentMeta<typeof AppImage>;
 
-const Template: ComponentStory<typeof AppImage> = (args) => <AppImage {...args} />;
+const Template: ComponentStory<typeof AppImage> = (args) => (
+    <AppImage {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {};

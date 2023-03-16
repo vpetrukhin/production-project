@@ -6,7 +6,7 @@ import {
     useFormContext,
     useWatch,
 } from 'react-hook-form';
-import { ArticleBlockItem } from '../../model/types/article';
+import { ArticleBlockItem, ArticleFormFields } from '../../model/types/article';
 import { Button } from '@/shared/ui/Button';
 import { BlockType } from '../../model/const/articleConsts';
 import { HStack, VStack } from '@/shared/ui/Stack';
@@ -28,19 +28,12 @@ export const ArticlesBlocksEditor = (props: ArticlesBlocksEditorProps) => {
         register,
         control,
         formState: { errors },
-    } = useFormContext();
+    } = useFormContext<ArticleFormFields>();
 
     const { fields, append, remove } = useFieldArray({
         name: 'blocks',
         rules: {
-            required: {
-                value: true,
-                message: 'Добавте хотя бы один блок',
-            },
-            minLength: {
-                value: 1,
-                message: 'Добавте хотя бы один блок',
-            },
+            required: true,
         },
     });
 
@@ -127,10 +120,16 @@ export const ArticlesBlocksEditor = (props: ArticlesBlocksEditorProps) => {
                             label={t('zagolovok')}
                             placeholder={t('vvedite-zagolovok')}
                         />
-                        <FormInput
-                            {...register(`blocks.${index}.paragraphs`)}
-                            label={t('tekst')}
-                            placeholder={t('vvedite-tekst')}
+                        <Controller
+                            name={`blocks.${index}.paragraphs`}
+                            control={control}
+                            render={({ field }) => (
+                                <TextArea
+                                    label={t('tekst')}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                />
+                            )}
                         />
                     </VStack>
                 );
@@ -145,6 +144,32 @@ export const ArticlesBlocksEditor = (props: ArticlesBlocksEditorProps) => {
             max
             className={classNames('cls.ArticlesBlocksEditor', {}, [className])}
         >
+            <VStack
+                className={cls.list}
+                gap="8"
+                max
+            >
+                {fields.length === 0 && (
+                    <Text
+                        error={!!errors.blocks?.root}
+                        text={t('vy-eshe-ne-dobavili-blokov-v-svoyu-statyu')}
+                        color="inverted"
+                    />
+                )}
+                {fields.length > 0 &&
+                    fields.map((block, index) => (
+                        <ArticleBlockEditorItem
+                            onRemove={handleRemove(index)}
+                            key={block.id}
+                        >
+                            {output?.length > 0 &&
+                                renderArticleBlockForm(
+                                    output[index]?.type,
+                                    index,
+                                )}
+                        </ArticleBlockEditorItem>
+                    ))}
+            </VStack>
             <HStack
                 max
                 justify="between"
@@ -172,33 +197,6 @@ export const ArticlesBlocksEditor = (props: ArticlesBlocksEditorProps) => {
                     {t('dobavit-tekstovyi-blok')}
                 </Button>
             </HStack>
-
-            <VStack
-                className={cls.list}
-                gap="8"
-                max
-            >
-                {fields.length === 0 && (
-                    <Text
-                        error={!!errors.blocks?.root}
-                        text={t('vy-eshe-ne-dobavili-blokov-v-svoyu-statyu')}
-                        color="inverted"
-                    />
-                )}
-                {fields.length > 0 &&
-                    fields.map((block, index) => (
-                        <ArticleBlockEditorItem
-                            onRemove={handleRemove(index)}
-                            key={block.id}
-                        >
-                            {output?.length > 0 &&
-                                renderArticleBlockForm(
-                                    output[index]?.type,
-                                    index,
-                                )}
-                        </ArticleBlockEditorItem>
-                    ))}
-            </VStack>
         </VStack>
     );
 };

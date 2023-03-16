@@ -8,7 +8,11 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Icon } from '@/shared/ui/Icon';
 import { fetchArticleById } from '../../model/services/fetchArticleById';
-import { useArticleData, useArticleError, useArticleIsLoading } from '../../model/selectors/getArticle/getArticle';
+import {
+    useArticleData,
+    useArticleError,
+    useArticleIsLoading,
+} from '../../model/selectors/getArticle/getArticle';
 import { ArticleBlock } from '../../model/types/article';
 import { ArticleReducer } from '../../model/slice/ArticleSlice';
 import { BlockType } from '../../model/const/articleConsts';
@@ -19,7 +23,6 @@ import cls from './ArticleDetails.module.scss';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 
-
 interface ArticleDetailsProps {
     className?: string;
     articleId?: string;
@@ -27,7 +30,7 @@ interface ArticleDetailsProps {
 
 export const ArticleDetails = (props: ArticleDetailsProps) => {
     const { articleId } = props;
-    const {t} = useTranslation('article');
+    const { t } = useTranslation('article');
 
     const dispatch = useAppDispatch();
     const isLoading = useArticleIsLoading();
@@ -42,51 +45,84 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
 
     const renderBlocks = useCallback((block: ArticleBlock) => {
         switch (block.type) {
-        case BlockType.CODE:
-            return <ArticleCodeBlockComponent
-                key={block.id}
-                block={block}
-                className={cls.block}
-            />;
-        case BlockType.IMAGE:
-            return <ArticleImageBlockComponent
-                key={block.id}
-                block={block}
-                className={cls.block}
-            />;
-        case BlockType.TEXT:
-            return <ArticalTextBlockComponent
-                key={block.id}
-                block={block}
-                className={cls.block}
-            />;
-        default: return null;
+            case BlockType.CODE:
+                return (
+                    <ArticleCodeBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            case BlockType.IMAGE:
+                return (
+                    <ArticleImageBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            case BlockType.TEXT:
+                return (
+                    <ArticalTextBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            default:
+                return null;
         }
     }, []);
 
     if (isLoading) {
-        content = 
+        content = (
             <>
-                <Skeleton className={cls.circle} width={200} height={200} border={'50%'} />
-                <Skeleton className={cls.title} width={'55%'} height={30} />
-                <Skeleton className={cls.subtitle} width={'30%'} height={30} />
-                <Skeleton className={cls.rect} height={230} />
+                <Skeleton
+                    className={cls.circle}
+                    width={200}
+                    height={200}
+                    border={'50%'}
+                />
+                <Skeleton
+                    className={cls.title}
+                    width={'55%'}
+                    height={30}
+                />
+                <Skeleton
+                    className={cls.subtitle}
+                    width={'30%'}
+                    height={30}
+                />
+                <Skeleton
+                    className={cls.rect}
+                    height={230}
+                />
                 <Skeleton height={230} />
-            </>;
+            </>
+        );
     } else if (error) {
-        content = 
-        <>
-            <Text
-                title={t('Ошибка загрузки статьи')}
-                text={t('Попробуйте обновить страницу')}
-                align={'center'}
-                error
-            />
-        </>;
+        content = (
+            <>
+                <Text
+                    title={t('Ошибка загрузки статьи')}
+                    text={t('Попробуйте обновить страницу')}
+                    align={'center'}
+                    error
+                />
+            </>
+        );
     } else {
-        content = 
-            <VStack gap='16' align='start' data-testid={'ArticleDetails'}>
-                <HStack justify='center' max className={cls.avatarWrapper}>
+        content = (
+            <VStack
+                gap="16"
+                align="start"
+                data-testid={'ArticleDetails'}
+            >
+                <HStack
+                    justify="center"
+                    max
+                    className={cls.avatarWrapper}
+                >
                     <img
                         className={cls.avatar}
                         src={article?.img}
@@ -97,24 +133,37 @@ export const ArticleDetails = (props: ArticleDetailsProps) => {
                     title={article?.title}
                     text={article?.subtitle}
                     size={'large'}
-                    color='inverted'
+                    color="inverted"
                 />
-                <VStack gap='8' align='start'>
-                    <HStack gap='4'>
+                <VStack
+                    gap="8"
+                    align="start"
+                >
+                    <HStack gap="4">
                         <Icon Svg={EyeIcon} />
-                        <Text text={String(article?.views)} color='inverted' />
+                        <Text
+                            text={String(article?.views)}
+                            color="inverted"
+                        />
                     </HStack>
-                    <HStack gap='4'>
+                    <HStack gap="4">
                         <Icon Svg={CalendarIcon} />
-                        <Text text={String(article?.createdAt)} color='inverted' />
+                        <Text
+                            text={String(article?.createdAt)}
+                            color="inverted"
+                        />
                     </HStack>
                 </VStack>
                 {article?.blocks.map(renderBlocks)}
-            </VStack>;
+            </VStack>
+        );
     }
 
     return (
-        <DynamicModule reducers={{article: ArticleReducer}}>
+        <DynamicModule
+            reducers={{ article: ArticleReducer }}
+            removeAfterUnmount={false}
+        >
             {content}
         </DynamicModule>
     );

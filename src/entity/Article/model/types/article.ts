@@ -27,7 +27,7 @@ export interface ArticleImageBlock extends Block {
 export interface ArticleTextBlock extends Block {
     type: BlockType.TEXT;
     title?: string;
-    paragraphs: string[];
+    paragraphs: string[] | string;
 }
 
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
@@ -44,4 +44,21 @@ export interface Article {
     type: ArticleType[];
     blocks: ArticleBlock[];
     user: User;
+}
+
+export type ArticleBody = Omit<Article, 'id'>;
+
+export type ArticleFormBlocks = Array<(ArticleCodeBlock | ArticleImageBlock | {
+    paragraphs: string;
+    type: BlockType.TEXT;
+    title?: string | undefined;
+    id: string;
+})>;
+
+export interface ArticleFormFields {
+    title: string;
+    subtitle: string;
+    img: string;
+    type: ArticleType;
+    blocks: ArticleFormBlocks;
 }

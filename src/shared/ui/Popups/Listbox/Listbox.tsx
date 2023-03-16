@@ -11,12 +11,7 @@ import { mappedDropdownDirectionsClasses } from '../styles/consts';
 import CheckIcon from '../../../assets/icons/check.svg';
 import CaretDownIcon from '../../../assets/icons/caretdown.svg';
 import { Icon } from '../../Icon/Icon';
-
-export interface ListBoxItem<T> {
-    value: T;
-    content: ReactNode;
-    disabled?: boolean;
-}
+import { ListBoxItem } from '../types/listBox';
 
 export interface ListboxProps<T> {
     className?: string;

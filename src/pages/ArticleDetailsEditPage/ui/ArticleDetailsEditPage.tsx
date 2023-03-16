@@ -1,6 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleDetailsEditPage.module.scss';
+import { EditArticleForm } from '@/feutures/EditArticleForm';
+import { useParams } from 'react-router-dom';
+import { Text } from '@/shared/ui/Text';
+import { Page } from '@/widgets/Page';
+import { HStack } from '@/shared/ui/Stack';
+import { AppLink } from '@/shared/ui/AppLink';
+import { getArticleDetailsPath } from '@/shared/config/const/router';
 
 interface ArticleDetailsEditPageProps {
     className?: string;
@@ -8,12 +15,39 @@ interface ArticleDetailsEditPageProps {
 
 const ArticleDetailsEditPage = (props: ArticleDetailsEditPageProps) => {
     const { className } = props;
-    const {t} = useTranslation();
+    const { t } = useTranslation('article');
+
+    const { id } = useParams<{ id: string }>();
+
+    if (!id) {
+        return (
+            <Text
+                error
+                text={t('nekorrektnyi-url-stati')}
+            />
+        );
+    }
 
     return (
-        <div className={classNames(cls.ArticleDetailsEditPage, {}, [className])}>
-            {t('edit-article')}
-        </div>
+        <Page
+            className={classNames(cls.ArticleDetailsEditPage, {}, [className])}
+        >
+            <HStack
+                max
+                align="center"
+                justify="between"
+            >
+                <Text
+                    title={t('edit-article')}
+                    color={'inverted'}
+                    className={cls.title}
+                />
+                <AppLink to={getArticleDetailsPath(id)}>
+                    {t('obratno-k-state')}
+                </AppLink>
+            </HStack>
+            <EditArticleForm articleId={id} />
+        </Page>
     );
 };
 

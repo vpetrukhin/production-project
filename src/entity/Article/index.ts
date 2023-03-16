@@ -1,5 +1,9 @@
+export { updateArticle } from './api/updateArticle'
+
+export { parseArticleTextBlocksToArray, parseArticleTextBlocksToString } from './model/lib/helpers/parseArticleBlocks'
+
 export type { ArticleSchema } from './model/types/ArticleSchema';
-export type { OrderType, Article } from './model/types/article';
+export type { OrderType, Article, ArticleFormFields, ArticleBody } from './model/types/article';
 export {
     ArticleView,
     BlockType,

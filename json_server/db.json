@@ -244,9 +244,8 @@
             ]
         },
         {
-            "id": "9",
-            "title": "Kotlin news",
-            "subtitle": "Что нового в Kotlin за 2022 год?",
+            "title": "Kotlin news2",
+            "subtitle": "Что нового в Kotlin за 2023 год?",
             "img": "https://media.proglib.io/wp-uploads/2017/10/kotlin.jpg",
             "views": 533,
             "createdAt": "26.02.2022",
@@ -262,7 +261,8 @@
                         "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы."
                     ]
                 }
-            ]
+            ],
+            "id": "9"
         },
         {
             "id": "10",
@@ -453,7 +453,12 @@
         }
     ],
     "comments": [
-        { "id": "1", "text": "some comment", "articleId": "1", "userId": "1" },
+        {
+            "id": "1",
+            "text": "some comment",
+            "articleId": "1",
+            "userId": "1"
+        },
         {
             "id": "2",
             "text": "some comment 2",
@@ -466,15 +471,30 @@
             "articleId": "1",
             "userId": "2"
         },
-        { "text": "cdcc", "articleId": "1", "userId": "1", "id": "kt7dLIT" },
-        { "text": "dcdcd", "articleId": "1", "userId": "1", "id": "cQh_IQV" },
+        {
+            "text": "cdcc",
+            "articleId": "1",
+            "userId": "1",
+            "id": "kt7dLIT"
+        },
+        {
+            "text": "dcdcd",
+            "articleId": "1",
+            "userId": "1",
+            "id": "cQh_IQV"
+        },
         {
             "text": "Hello world!!!",
             "articleId": "7",
             "userId": "1",
             "id": "2Z1Hken"
         },
-        { "text": "Hey!", "articleId": "2", "userId": "1", "id": "L4BTrrH" }
+        {
+            "text": "Hey!",
+            "articleId": "2",
+            "userId": "1",
+            "id": "L4BTrrH"
+        }
     ],
     "users": [
         {
@@ -572,7 +592,10 @@
             "username": "serv",
             "avatar": "https://images.unsplash.com/photo-1665856314098-4aa9ff7a3d76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
         },
-        { "id": "5", "username": "user45" },
+        {
+            "id": "5",
+            "username": "user45"
+        },
         {
             "id": "6",
             "first": "vas",
@@ -658,7 +681,12 @@
             "userId": "1",
             "feedback": "Хорошая статья!"
         },
-        { "id": "2", "rate": 3, "articleId": "2", "userId": "1" },
+        {
+            "id": "2",
+            "rate": 3,
+            "articleId": "2",
+            "userId": "1"
+        },
         {
             "articleId": "5",
             "userId": "1",
@@ -666,7 +694,12 @@
             "feedback": "good",
             "id": "r_rLJnd"
         },
-        { "articleId": "3", "userId": "1", "rate": 4, "id": "eUGih1k" },
+        {
+            "articleId": "3",
+            "userId": "1",
+            "rate": 4,
+            "id": "eUGih1k"
+        },
         {
             "articleId": "3",
             "userId": "1",
@@ -683,7 +716,12 @@
             "userId": "1",
             "feedback": "Хороший профиль!"
         },
-        { "id": "2", "rate": 3, "profileId": "2", "userId": "1" },
+        {
+            "id": "2",
+            "rate": 3,
+            "profileId": "2",
+            "userId": "1"
+        },
         {
             "profileId": "2",
             "userId": "1",
