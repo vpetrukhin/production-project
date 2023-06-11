@@ -1,5 +1,6 @@
 import { StateSchema } from '@/app/providers/Redux';
 import { ArticleSortTypes, ArticleType, ArticleView } from '@/entity/Article';
+import { buildSelector } from '@/shared/lib/store';
 
 export const getArticlesLoading = (state: StateSchema) => state.articlesPage?.isLoading || false;
 export const getArticlesError = (state: StateSchema) => state.articlesPage?.error;
@@ -12,3 +13,5 @@ export const getArticlesSort = (state: StateSchema) => state.articlesPage?.sort 
 export const getArticlesSearch = (state: StateSchema) => state.articlesPage?.search || '';
 export const getArticlesOrder = (state: StateSchema) => state.articlesPage?.order ?? 'asc';
 export const getArticlesType = (state: StateSchema) => state.articlesPage?.type ?? ArticleType.All;
+
+export const [useGetArticle] = buildSelector((state: StateSchema, id: string) => state.articlesPage?.entities[id])

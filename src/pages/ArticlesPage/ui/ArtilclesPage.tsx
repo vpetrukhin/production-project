@@ -7,7 +7,10 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { getArticlesHas } from '../model/selectors/ArticlesPageSelectors/ArticlesPageSelectors';
 import { fetchMoreArticles } from '../model/services/fetchMoreArticles/fetchMoreArticles';
-import { ArticlesActions, ArticlesReducer } from '../model/slices/ArticlesSlice';
+import {
+    ArticlesActions,
+    ArticlesReducer,
+} from '../model/slices/ArticlesSlice';
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import { ArticlesFilters } from './ArticlesFilters/ArticlesFilters';
 import { ArticleInfinityList } from './ArticleInfinityList/ArticleInfinityList';
@@ -36,7 +39,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
     return (
         <DynamicModule
             reducers={{
-                articlesPage: ArticlesReducer
+                articlesPage: ArticlesReducer,
             }}
             removeAfterUnmount={false}
         >
