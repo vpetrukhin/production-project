@@ -10,7 +10,7 @@ module.exports = {
         'plugin:react/jsx-runtime',
         'plugin:i18next/recommended',
         'plugin:storybook/recommended',
-        'prettier',
+        'prettier/prettier',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
