@@ -6,25 +6,30 @@ import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
 
 import '@/shared/lib/i18n/i18n';
-import { UserActions } from '@/entity/User';
-import { useDispatch, useSelector } from 'react-redux';
+import { initAuthData } from '@/entity/User';
+import { useSelector } from 'react-redux';
 import { getInited } from '@/entity/User';
-
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
+import { PageLoader } from '@/widgets/PageLoader';
 
 export const App = () => {
     const { theme } = useTheme();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const inited = useSelector(getInited);
 
     useEffect(() => {
-        dispatch(UserActions.initAuth());
+        dispatch(initAuthData());
     }, [dispatch]);
+
+    if (!inited) {
+        return <PageLoader />;
+    }
 
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <NavBar />
-                <div className='page-content'>
+                <div className="page-content">
                     <SideBar />
                     {inited && <AppRouter />}
                 </div>

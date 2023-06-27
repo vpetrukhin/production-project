@@ -1,8 +1,9 @@
-import { USER_LOCALSTORAGE_KEY } from './../../../../../shared/config/const/localStorage';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { User, UserSchema } from '../../types/UserSchema';
 import { buildSlice } from '@/shared/lib/store';
 import { setFeatureFlags } from '@/shared/lib/featureFlags';
+import { initAuthData } from '../../services/initAuthData';
+import { USER_LOCALSTORAGE_KEY } from '@/shared/config/const/localStorage';
 
 const initialState: UserSchema = {
     isAuth: false,
@@ -16,7 +17,7 @@ export const UserSlice = buildSlice({
         setUser: (state, action: PayloadAction<User>) => {
             localStorage.setItem(
                 USER_LOCALSTORAGE_KEY,
-                JSON.stringify(action.payload),
+                JSON.stringify(action.payload.id),
             );
             state.isAuth = true;
             state.userInfo = action.payload;
@@ -24,23 +25,25 @@ export const UserSlice = buildSlice({
                 setFeatureFlags(state.userInfo?.featuresFlags);
             }
         },
-        initAuth: (state) => {
-            const user: User = JSON.parse(
-                localStorage.getItem(USER_LOCALSTORAGE_KEY) as string,
-            );
-            state.userInfo = user;
-            if (state.userInfo?.featuresFlags) {
-                setFeatureFlags(state.userInfo?.featuresFlags);
-            }
-            state.isAuth = Boolean(user);
-
-            state._inited = true;
-        },
         logout: (state) => {
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
             state.isAuth = false;
             state.userInfo = undefined;
         },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(
+            initAuthData.fulfilled,
+            (state, { payload }: PayloadAction<User>) => {
+                state.userInfo = payload;
+                if (payload.featuresFlags) {
+                    setFeatureFlags(payload.featuresFlags);
+                }
+                state.isAuth = Boolean(payload);
+
+                state._inited = true;
+            },
+        );
     },
 });
 
