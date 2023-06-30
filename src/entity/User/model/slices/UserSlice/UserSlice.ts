@@ -4,6 +4,8 @@ import { buildSlice } from '@/shared/lib/store';
 import { setFeatureFlags } from '@/shared/lib/featureFlags';
 import { initAuthData } from '../../services/initAuthData';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/config/const/localStorage';
+import { saveJsonSettings } from '../../services/saveJsonSettings';
+import { JsonSettings } from '../../types/JsonSettings';
 
 const initialState: UserSchema = {
     isAuth: false,
@@ -42,6 +44,14 @@ export const UserSlice = buildSlice({
                 state.isAuth = Boolean(payload);
 
                 state._inited = true;
+            },
+        );
+        builder.addCase(
+            saveJsonSettings.fulfilled,
+            (state, { payload }: PayloadAction<JsonSettings>) => {
+                if (state.userInfo) {
+                    state.userInfo.jsonSettings = payload;
+                }
             },
         );
     },

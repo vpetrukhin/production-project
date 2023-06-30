@@ -1,18 +1,24 @@
-import { useState, PropsWithChildren } from 'react';
+import { useState, PropsWithChildren, useEffect } from 'react';
 import { ThemeContext } from '@/shared/lib/context/themeContext';
 import { Theme } from '@/shared/config/const/theme';
-import { LOCAL_STORAGE_THEME_KEY } from '@/shared/config/const/localStorage';
+import { useGetJsonSettings } from '@/entity/User';
 
-export const ThemeProvider  = ({ children }: PropsWithChildren) => {
-    const defaultThemeValue: Theme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
+export const ThemeProvider = ({ children }: PropsWithChildren) => {
+    const { theme: defaultThemeValue } = useGetJsonSettings();
 
-    const [theme, setTheme] = useState<Theme>(defaultThemeValue);
+    const [theme, setTheme] = useState<Theme>(defaultThemeValue || Theme.LIGHT);
+
+    useEffect(() => {
+        defaultThemeValue && setTheme(defaultThemeValue);
+    }, [defaultThemeValue]);
 
     return (
-        <ThemeContext.Provider value={{
-            theme: theme,
-            setTheme: setTheme
-        }}>
+        <ThemeContext.Provider
+            value={{
+                theme: theme,
+                setTheme: setTheme,
+            }}
+        >
             {children}
         </ThemeContext.Provider>
     );

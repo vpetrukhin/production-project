@@ -1,8 +1,15 @@
 import { rtkApi } from '@/shared/api/rtkAPi';
+import { JsonSettings } from '../model/types/JsonSettings';
 import { User } from '../model/types/UserSchema';
 
+// BUG (Vasya): Исправить запрос
 interface GetUserInfoArgs {
     userId: string;
+}
+
+interface GetJsonSettingsArgs {
+    userId: string;
+    jsonSettings: JsonSettings;
 }
 
 const UserApi = rtkApi.injectEndpoints({
@@ -12,8 +19,18 @@ const UserApi = rtkApi.injectEndpoints({
                 url: `users/${userId}`,
             }),
         }),
+        setJsonSettings: build.mutation<JsonSettings, GetJsonSettingsArgs>({
+            query: ({ userId, jsonSettings }) => ({
+                url: `users/${userId}`,
+                method: 'PATCH',
+                body: {
+                    jsonSettings,
+                },
+            }),
+        }),
     }),
     overrideExisting: false,
 });
 
 export const getUserInfoRequest = UserApi.endpoints.getUserInfo.initiate;
+export const setJsonSettings = UserApi.endpoints.setJsonSettings.initiate;

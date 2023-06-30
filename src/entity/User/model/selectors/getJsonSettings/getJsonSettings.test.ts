@@ -1,20 +1,23 @@
 import { StateSchema } from '@/app/providers/Redux';
-import { getUserInfo } from './getUserInfo';
+import { Theme } from '@/shared/config/const/theme';
+import { getJsonSettings } from './getJsonSettings';
 
-describe('tests for getUserInfo.test', () => {
+describe('tests for getJsonSettings', () => {
     test('default', () => {
         const state: DeepPartial<StateSchema> = {
             user: {
                 userInfo: {
                     id: '1',
                     username: 'admin',
+                    jsonSettings: {
+                        theme: Theme.LIGHT,
+                    },
                 },
             },
         };
 
-        expect(getUserInfo(state as StateSchema)).toEqual({
-            id: '1',
-            username: 'admin',
+        expect(getJsonSettings(state as StateSchema)).toEqual({
+            theme: Theme.LIGHT,
         });
     });
     test('with empty state', () => {
@@ -22,6 +25,6 @@ describe('tests for getUserInfo.test', () => {
             user: {},
         };
 
-        expect(getUserInfo(state as StateSchema)).toBe(undefined);
+        expect(getJsonSettings(state as StateSchema)).toBe(undefined);
     });
 });

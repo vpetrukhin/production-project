@@ -13,10 +13,15 @@ export {
     getIsManager,
     getUserRoles,
 } from './model/selectors/roles/roles';
+export {
+    useGetJsonSettings,
+    getJsonSettings,
+} from './model/selectors/getJsonSettings/getJsonSettings';
 /**
  * Сервисы
  */
 export { initAuthData } from './model/services/initAuthData';
+export { saveJsonSettings } from './model/services/saveJsonSettings';
 /**
  * Slice
  */
