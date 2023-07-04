@@ -14,6 +14,7 @@ import {
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import { ArticlesFilters } from './ArticlesFilters/ArticlesFilters';
 import { ArticleInfinityList } from './ArticleInfinityList/ArticleInfinityList';
+import { ArticlePageGreeting } from '@/feutures/ArticlePageGreeting';
 
 interface ArtilclesPageProps {
     className?: string;
@@ -50,6 +51,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
             >
                 <ArticlesFilters />
                 <ArticleInfinityList />
+                <ArticlePageGreeting />
             </Page>
         </DynamicModule>
     );

@@ -589,7 +589,8 @@
         "isArticleRatingCardEnabled": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme"
+        "isArticleGreeting": true,
+        "theme": "app_light_theme"
       }
     },
     {
@@ -605,7 +606,8 @@
         "isArticleRatingCardEnabled": false
       },
       "jsonSettings": {
-        "theme": "app_dark_theme"
+        "theme": "app_light_theme",
+        "isArticleGreeting": true
       }
     },
     {

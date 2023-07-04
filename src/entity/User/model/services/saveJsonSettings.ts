@@ -30,11 +30,11 @@ export const saveJsonSettings = createAsyncThunk<
             }),
         ).unwrap();
 
-        if (!response) {
+        if (!response.jsonSettings) {
             throw rejectWithValue('');
         }
 
-        return response;
+        return response.jsonSettings;
     } catch (e) {
         console.log(e);
         return rejectWithValue('');
