@@ -11,7 +11,7 @@ import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsHeader } from './ArticleDetailsHeader/ArticleDetailsHeader';
 import cls from './ArticlesDetailsPage.module.scss';
 import { ArticleDetailsComments } from './ArticleDetilsComments/ArticleDetailsComments';
-import { toggleFeature } from '@/shared/lib/featureFlags';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { Card } from '@/shared/ui/Card';
 
 interface ArticlesDetailsPageProps {
@@ -21,22 +21,26 @@ interface ArticlesDetailsPageProps {
 const ArticlesDetailsPage = (props: ArticlesDetailsPageProps) => {
     const { className } = props;
     const { id } = useParams<{ id: string }>();
-    const {t} = useTranslation('article');
+    const { t } = useTranslation('article');
 
-    if (!id) return <Text error text={t('nekorrektnyi-url-stati')} />;
-
-    const rating = toggleFeature({
-        name: 'isArticleRatingCardEnabled',
-        on: () => <ArticleRating articleId={id} />,
-        off: () => <Card><Text text={t('reiting-skoro-budet-dostupen')} /></Card>
-    })
+    if (!id)
+        return (
+            <Text
+                error
+                text={t('nekorrektnyi-url-stati')}
+            />
+        );
 
     return (
         <Page className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
-            <VStack gap='16' max align='start'>
+            <VStack
+                gap="16"
+                max
+                align="start"
+            >
                 <ArticleDetailsHeader id={id} />
                 <ArticleDetails articleId={id} />
-                {rating}
+                <ArticleRating articleId={id} />
                 <ArticleRecomendationList className={cls.recomendations} />
                 <ArticleDetailsComments id={id} />
             </VStack>
