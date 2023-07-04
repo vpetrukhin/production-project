@@ -2,7 +2,6 @@ import { rtkApi } from '@/shared/api/rtkAPi';
 import { JsonSettings } from '../model/types/JsonSettings';
 import { User } from '../model/types/UserSchema';
 
-// BUG (Vasya): Исправить запрос
 interface GetUserInfoArgs {
     userId: string;
 }
