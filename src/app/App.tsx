@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { getInited } from '@/entity/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 
 export const App = () => {
     const { theme } = useTheme();
@@ -24,6 +25,34 @@ export const App = () => {
     if (!inited) {
         return <PageLoader />;
     }
+
+    return (
+        <ToggleFeatureComponent
+            name="isRedesignEnable"
+            on={
+                <div className={classNames('app_redesign', {}, [theme])}>
+                    <Suspense fallback="">
+                        <NavBar />
+                        <div className="page-content">
+                            <SideBar />
+                            {inited && <AppRouter />}
+                        </div>
+                    </Suspense>
+                </div>
+            }
+            off={
+                <div className={classNames('app', {}, [theme])}>
+                    <Suspense fallback="">
+                        <NavBar />
+                        <div className="page-content">
+                            <SideBar />
+                            {inited && <AppRouter />}
+                        </div>
+                    </Suspense>
+                </div>
+            }
+        />
+    );
 
     return (
         <div className={classNames('app', {}, [theme])}>

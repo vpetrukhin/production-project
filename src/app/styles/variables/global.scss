@@ -33,4 +33,14 @@
     // z-Индексы
     --overlay-z-index: 99;
     --modal-z-index: 100;
+
+    // Редизайн
+    --font-family-text: 'Nunito Sans', sans-serif;
+    --font-family-title: 'Roboto', sans-serif;
+
+    --font-text: var(--font-size-m) / var(--font-line-m) var(--font-family-text);
+    --font-subtitle: var(--font-size-l) / var(--font-line-l)
+        var(--font-family-title);
+    --font-title: var(--font-size-xl) / var(--font-line-xl)
+        var(--font-family-title);
 }

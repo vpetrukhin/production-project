@@ -1,8 +1,8 @@
 /* stylelint-disable-next-line ignoreFiles */
-@import "./reset";
-@import "./variables/global";
-@import "./themes/dark";
-@import "./themes/light";
+@import './reset';
+@import './variables/global';
+@import './themes/dark';
+@import './themes/light';
 
 .app,
 .app_modal,
@@ -14,6 +14,17 @@
 .app {
     background-color: var(--main-bg);
     min-height: 100vh;
+}
+.app_redesign {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+.app_redesign,
+.app_modal_redesign,
+.app_drawer_redesign {
+    font: var(--font-text);
+    color: var(--text-color);
 }
 
 .page-content {
