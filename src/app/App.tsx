@@ -12,6 +12,7 @@ import { getInited } from '@/entity/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { MainLayout } from '@/shared/layout';
 
 export const App = () => {
     const { theme } = useTheme();
@@ -31,13 +32,19 @@ export const App = () => {
             name="isRedesignEnable"
             on={
                 <div className={classNames('app_redesign', {}, [theme])}>
-                    <Suspense fallback="">
+                    <MainLayout
+                        content={inited && <AppRouter />}
+                        sidebar={<SideBar />}
+                        header={<NavBar />}
+                        toolbar={<>toolbar</>}
+                    />
+                    {/* <Suspense fallback="">
                         <NavBar />
                         <div className="page-content">
                             <SideBar />
                             {inited && <AppRouter />}
                         </div>
-                    </Suspense>
+                    </Suspense> */}
                 </div>
             }
             off={
@@ -54,15 +61,15 @@ export const App = () => {
         />
     );
 
-    return (
-        <div className={classNames('app', {}, [theme])}>
-            <Suspense fallback="">
-                <NavBar />
-                <div className="page-content">
-                    <SideBar />
-                    {inited && <AppRouter />}
-                </div>
-            </Suspense>
-        </div>
-    );
+    // return (
+    //     <div className={classNames('app', {}, [theme])}>
+    //         <Suspense fallback="">
+    //             <NavBar />
+    //             <div className="page-content">
+    //                 <SideBar />
+    //                 {inited && <AppRouter />}
+    //             </div>
+    //         </Suspense>
+    //     </div>
+    // );
 };

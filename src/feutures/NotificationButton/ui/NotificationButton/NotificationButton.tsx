@@ -8,6 +8,8 @@ import { Drawer } from '@/shared/ui/Drawer';
 import { Icon } from '@/shared/ui/Icon';
 import cls from './NotificationButton.module.scss';
 import NotificationsIcon from '@/shared/assets/icons/notifications.svg';
+import NotificationsIconNew from '@/shared/assets/icons/notificationsNew.svg';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 
 interface NotificationButtonProps {
     className?: string;
@@ -26,30 +28,50 @@ export const NotificationButton = (props: NotificationButtonProps) => {
         setIsDrawerOpen(false);
     }, []);
 
-    const trigger = (
-        <Button
-            className={cls.notificationButton}
-            onClick={handleOpenDrawer}
-        >
-            <Icon
-                Svg={NotificationsIcon}
-                color='inverted'
+    const getTrigger = () => {
+        return (
+            <ToggleFeatureComponent
+                name="isRedesignEnable"
+                on={
+                    <Button
+                        className={cls.notificationButton}
+                        onClick={handleOpenDrawer}
+                    >
+                        <Icon
+                            Svg={NotificationsIconNew}
+                            color="inverted"
+                        />
+                    </Button>
+                }
+                off={
+                    <Button
+                        className={cls.notificationButton}
+                        onClick={handleOpenDrawer}
+                    >
+                        <Icon
+                            Svg={NotificationsIcon}
+                            color="inverted"
+                        />
+                    </Button>
+                }
             />
-        </Button>
-    );
+        );
+    };
 
     return (
         <>
             <BrowserView>
                 <Popover
-                    className={classNames(cls.NotificationButton, {}, [className])}                
-                    trigger={trigger}
+                    className={classNames(cls.NotificationButton, {}, [
+                        className,
+                    ])}
+                    trigger={getTrigger()}
                 >
                     <NotificationList className={cls.list} />
                 </Popover>
             </BrowserView>
             <MobileView>
-                {trigger}
+                {getTrigger()}
                 <Drawer
                     isOpen={isDrawerOpen}
                     onClose={handleCloseDrawer}

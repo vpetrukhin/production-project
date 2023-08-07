@@ -1,15 +1,29 @@
 .MainLayout {
+    height: 100vh;
     display: grid;
     grid-template-areas: 'sidebar content rigthbar';
+    grid-template-columns: 220px 1fr 176px;
+
+    padding-left: 32px;
 }
 
 .sidebar {
+    grid-area: sidebar;
+
+    padding: 32px 0;
 }
 .rightbar {
+    grid-area: rigthbar;
 }
 .header {
+    // grid-area: '';
+    width: 100%;
 }
 .content {
+    grid-area: content;
+    max-width: 1200px;
+    width: 100%;
+    justify-self: center;
 }
 .toolbar {
 }

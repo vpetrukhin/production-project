@@ -15,6 +15,9 @@ import {
     getRegistrationPath,
 } from '@/shared/config/const/router';
 import { useLocation } from 'react-router-dom';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Icon } from '@/shared/ui/Icon';
+import EditIcon from './edit.svg';
 
 export interface NavbarProps {
     className?: string;
@@ -48,6 +51,47 @@ export const NavBar = (props: NavbarProps) => {
     }, [handleCloseModal, userInfo]);
 
     if (userInfo) {
+        return (
+            <ToggleFeatureComponent
+                name="isRedesignEnable"
+                on={
+                    <HStack
+                        gap="16"
+                        justify="end"
+                        className={classNames(cls.NavBar_redesign, {}, [
+                            className,
+                        ])}
+                    >
+                        <AppLink
+                            to={getArticleCreatePath()}
+                            theme="inverted"
+                        >
+                            <Icon Svg={EditIcon} />
+                        </AppLink>
+                        <NotificationButton />
+                        <AvatarDropdown />
+                    </HStack>
+                }
+                off={
+                    <HStack className={classNames(cls.NavBar, {}, [className])}>
+                        <Text title={t('ProdApp')} />
+                        <HStack
+                            gap="16"
+                            className={cls.links}
+                        >
+                            <AppLink
+                                to={getArticleCreatePath()}
+                                theme="inverted"
+                            >
+                                {t('create-article')}
+                            </AppLink>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </HStack>
+                }
+            />
+        );
         return (
             <HStack className={classNames(cls.NavBar, {}, [className])}>
                 <Text title={t('ProdApp')} />

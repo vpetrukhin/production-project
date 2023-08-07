@@ -1,0 +1,41 @@
+.AppLogoWrapper {
+    position: relative;
+}
+
+.AppLogo {
+    z-index: 10;
+}
+
+.gradient {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 60%;
+    pointer-events: none;
+}
+
+.big {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+        57.05% 57.05% at 49.84% 42.95%,
+        rgba(94, 211, 243, 0.2) 0%,
+        rgba(94, 211, 243, 0.13) 7.81%,
+        rgba(94, 211, 243, 0.08) 29.69%,
+        rgba(94, 211, 243, 0.04) 56.77%,
+        rgba(94, 211, 243, 0.02) 77.6%,
+        rgba(94, 211, 243, 0) 100%
+    );
+}
+
+.small {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(
+        30.29% 30.29% at 50% 50%,
+        rgba(94, 211, 243, 0.18) 0%,
+        rgba(94, 211, 243, 0.11) 25.55%,
+        rgba(94, 211, 243, 0.07) 47.27%,
+        rgba(94, 211, 243, 0.04) 69.66%,
+        rgba(94, 211, 243, 0) 100%
+    );
+}
