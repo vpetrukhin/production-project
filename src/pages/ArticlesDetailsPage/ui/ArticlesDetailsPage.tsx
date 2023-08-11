@@ -5,14 +5,12 @@ import { Page } from '@/widgets/Page';
 import { ArticleRating } from '@/feutures/ArticleRating';
 import { ArticleRecomendationList } from '@/feutures/ArticleRecomendationList';
 import { ArticleDetails } from '@/entity/Article';
-import { Text } from '@/shared/ui/Text';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsHeader } from './ArticleDetailsHeader/ArticleDetailsHeader';
 import cls from './ArticlesDetailsPage.module.scss';
 import { ArticleDetailsComments } from './ArticleDetilsComments/ArticleDetailsComments';
-import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
-import { Card } from '@/shared/ui/Card';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticlesDetailsPageProps {
     className?: string;

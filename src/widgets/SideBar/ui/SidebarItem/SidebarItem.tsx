@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink';
-import { HStack } from '@/shared/ui/Stack';
 import { SidebarItemType } from '../../model/types/SidebarItem';
 import cls from './SidebarItem.module.scss';
-import { Icon } from '@/shared/ui/Icon';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 interface SidebarItemProps {
     item: SidebarItemType;

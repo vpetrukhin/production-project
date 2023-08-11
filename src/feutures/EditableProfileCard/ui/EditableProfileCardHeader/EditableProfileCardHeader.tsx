@@ -1,25 +1,26 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Button } from '@/shared/ui/Button';
-import { Text } from '@/shared/ui/Text';
 import { useUserInfo } from '@/entity/User';
-import { HStack } from '@/shared/ui/Stack';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { useProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { useProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { useProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { useProfileActions } from '../../model/slice/ProfileSlice';
 import { ValidateErrors } from '../../model/const/editableProfileCardConsts';
-
+import { Button } from '@/shared/ui/deprecated/Button';
+import { HStack } from '@/shared/ui/deprecated/Stack';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 interface EditableProfileCardHeaderProps {
     className?: string;
 }
 
-export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps) => {
+export const EditableProfileCardHeader = (
+    props: EditableProfileCardHeaderProps,
+) => {
     const { className } = props;
-    const {t} = useTranslation('profile');
+    const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
     const { onCancelEdit, onStartEdit } = useProfileActions();
     const readonly = useProfileReadonly();
@@ -53,46 +54,57 @@ export const EditableProfileCardHeader = (props: EditableProfileCardHeaderProps)
 
     return (
         <>
-            <HStack max justify='between' gap='8' className={className}>
-                <Text title={t('Профиль')} color='inverted' />
+            <HStack
+                max
+                justify="between"
+                gap="8"
+                className={className}
+            >
+                <Text
+                    title={t('Профиль')}
+                    color="inverted"
+                />
                 {canEdit && (
                     <>
-                        {readonly
-                            ? (
+                        {readonly ? (
+                            <Button
+                                theme={'outline'}
+                                onClick={onEdit}
+                                data-testid="EditableProfileCardHeader.editButton"
+                            >
+                                {t('Редактировать')}
+                            </Button>
+                        ) : (
+                            <HStack gap="8">
                                 <Button
                                     theme={'outline'}
-                                    onClick={onEdit}
-                                    data-testid='EditableProfileCardHeader.editButton'
+                                    onClick={onSave}
+                                    data-testid="EditableProfileCardHeader.saveButton"
                                 >
-                                    {t('Редактировать')}
+                                    {t('Сохранить')}
                                 </Button>
-                            )
-                            : (
-                                <HStack gap='8'>
-                                    <Button
-                                        theme={'outline'}
-                                        onClick={onSave}
-                                        data-testid='EditableProfileCardHeader.saveButton'
-                                    >
-                                        {t('Сохранить')}
-                                    </Button>
-                                    <Button
-                                        theme={'outline_red'}
-                                        onClick={onCancel}
-                                        data-testid='EditableProfileCardHeader.cancelButton'
-                                    >
-                                        {t('Отменить')}
-                                    </Button>
-                                </HStack>
-                            )
-                        }
+                                <Button
+                                    theme={'outline_red'}
+                                    onClick={onCancel}
+                                    data-testid="EditableProfileCardHeader.cancelButton"
+                                >
+                                    {t('Отменить')}
+                                </Button>
+                            </HStack>
+                        )}
                     </>
                 )}
-                
             </HStack>
-            {validateErrors && validateErrors.length > 0 && validateErrors?.map(err => (
-                <Text data-testid='EditableProfileCardHeader.Error' key={err} error text={validateMessages[err]} />
-            ))}
+            {validateErrors &&
+                validateErrors.length > 0 &&
+                validateErrors?.map((err) => (
+                    <Text
+                        data-testid="EditableProfileCardHeader.Error"
+                        key={err}
+                        error
+                        text={validateMessages[err]}
+                    />
+                ))}
         </>
     );
 };

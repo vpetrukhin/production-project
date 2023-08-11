@@ -2,11 +2,7 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { Text } from '@/shared/ui/Text';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
 import { fetchArticleById } from '../../model/services/fetchArticleById';
 import {
     useArticleData,
@@ -22,6 +18,10 @@ import { ArticalTextBlockComponent } from '../ArticalTextBlockComponent/ArticalT
 import cls from './ArticleDetails.module.scss';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { VStack, HStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticleDetailsProps {
     className?: string;

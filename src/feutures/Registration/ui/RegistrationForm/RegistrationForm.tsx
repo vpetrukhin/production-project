@@ -2,16 +2,16 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/Text';
-import { VStack } from '@/shared/ui/Stack';
-import { Card } from '@/shared/ui/Card';
-import { Button } from '@/shared/ui/Button';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
-import { FormInput } from '@/shared/ui/Input/FormInput';
 import { useRegMutation } from '../../api/Registration';
 import { RegistrationReducer } from '../../model/slice/RegistrationSlice';
 import { FormFields } from '../../types/RegistrationSliceSchema';
 import { URL_REGEXP } from '@/shared/config/const/RegExps';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { FormInput } from '@/shared/ui/deprecated/Input/FormInput';
+import { VStack } from '@/shared/ui/deprecated/Stack';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 interface RegistrationFormProps {
     className?: string;

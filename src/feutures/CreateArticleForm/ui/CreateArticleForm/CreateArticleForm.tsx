@@ -8,8 +8,6 @@ import {
     parseArticleTextBlocksToArray,
 } from '@/entity/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
 import { useUserInfo } from '@/entity/User';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -17,6 +15,8 @@ import {
     getArticlesPath,
     getMainPath,
 } from '@/shared/config/const/router';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 // import cls from './CreateArticleForm.module.scss';
 
 interface CreateArticleFormProps {

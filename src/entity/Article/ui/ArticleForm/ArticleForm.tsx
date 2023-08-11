@@ -1,17 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { FormProvider, useController, useForm } from 'react-hook-form';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { FormInput } from '@/shared/ui/Input/FormInput';
 import { URL_REGEXP } from '@/shared/config/const/RegExps';
-import { Button } from '@/shared/ui/Button';
-import {
-    ArticleType,
-    ArticleTypeRus,
-    BlockType,
-} from '../../model/const/articleConsts';
+import { ArticleType, ArticleTypeRus } from '../../model/const/articleConsts';
 import { Article, ArticleFormFields } from '../../model/types/article';
 import { ArticlesBlocksEditor } from '../ArticlesBlocksEditor/ArticlesBlocksEditor';
-import { VStack } from '@/shared/ui/Stack';
 import { useCallback, useEffect } from 'react';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useArticleData } from '../../model/selectors/getArticle/getArticle';
@@ -24,6 +16,9 @@ import {
 } from '../../model/slice/ArticleSlice';
 import { parseArticleTextBlocksToString } from '../../model/lib/helpers/parseArticleBlocks';
 import { ArticleTypeSelect } from '../ArticleTypeSelect/ArticleTypeSelect';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { FormInput } from '@/shared/ui/deprecated/Input/FormInput';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticleFormProps {
     className?: string;

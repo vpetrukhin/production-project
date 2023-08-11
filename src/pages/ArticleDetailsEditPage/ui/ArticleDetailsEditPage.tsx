@@ -3,11 +3,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleDetailsEditPage.module.scss';
 import { EditArticleForm } from '@/feutures/EditArticleForm';
 import { useParams } from 'react-router-dom';
-import { Text } from '@/shared/ui/Text';
 import { Page } from '@/widgets/Page';
-import { HStack } from '@/shared/ui/Stack';
-import { AppLink } from '@/shared/ui/AppLink';
 import { getArticleDetailsPath } from '@/shared/config/const/router';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticleDetailsEditPageProps {
     className?: string;

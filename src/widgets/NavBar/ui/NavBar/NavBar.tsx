@@ -5,19 +5,19 @@ import { NotificationButton } from '@/feutures/NotificationButton';
 import { AvatarDropdown } from '@/feutures/AvatarDropdown';
 import { useUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/Button';
-import { HStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
 import cls from './NavBar.module.scss';
-import { AppLink } from '@/shared/ui/AppLink';
 import {
     getArticleCreatePath,
     getRegistrationPath,
 } from '@/shared/config/const/router';
 import { useLocation } from 'react-router-dom';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
-import { Icon } from '@/shared/ui/Icon';
 import EditIcon from './edit.svg';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { HStack } from '@/shared/ui/deprecated/Stack';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 export interface NavbarProps {
     className?: string;

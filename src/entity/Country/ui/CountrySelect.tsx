@@ -1,7 +1,7 @@
+import { Listbox } from '@/shared/ui/deprecated/Popups';
+import { SelectItem } from '@/shared/ui/deprecated/Select';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SelectItem } from '@/shared/ui/Select';
-import { Listbox } from '@/shared/ui/Popups';
 import { Country } from '../consts/Countries';
 
 interface CountryProps {
@@ -14,25 +14,28 @@ interface CountryProps {
 const countryItems: Array<SelectItem<Country>> = [
     {
         value: Country.Germany,
-        content: Country.Germany
+        content: Country.Germany,
     },
     {
         value: Country.Russia,
-        content: Country.Russia
+        content: Country.Russia,
     },
     {
         value: Country.USA,
-        content: Country.USA
+        content: Country.USA,
     },
 ];
 
 export const CountrySelect = (props: CountryProps) => {
     const { className, onChange, value, readonly } = props;
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
-    const handleChange = useCallback((value: Country) => {
-        if (onChange) onChange(value);
-    }, [onChange]);
+    const handleChange = useCallback(
+        (value: Country) => {
+            if (onChange) onChange(value);
+        },
+        [onChange],
+    );
 
     return (
         <Listbox
@@ -42,7 +45,7 @@ export const CountrySelect = (props: CountryProps) => {
             label={t('Страна')}
             value={value}
             onChange={handleChange}
-            direction='topLeft'
+            direction="topLeft"
         />
     );
 };

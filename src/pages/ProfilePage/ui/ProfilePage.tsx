@@ -2,10 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
 import { EditableProfileCard } from '@/feutures/EditableProfileCard';
-import { Text } from '@/shared/ui/Text';
 import { ProfileRating } from '@/feutures/ProfileRating';
-import { VStack } from '@/shared/ui/Stack';
-
+import { Text } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 
 interface ProfilePageProps {
     className?: string;
@@ -13,14 +12,17 @@ interface ProfilePageProps {
 
 const ProfilePage = (props: ProfilePageProps) => {
     const { className } = props;
-    const {t} = useTranslation('profile');
+    const { t } = useTranslation('profile');
     const { id } = useParams<{ id: string }>();
 
     if (!id) return <Text title={t('nekkorektnyi-id-polzovatelya')} />;
 
     return (
-        <Page className={className} data-testid={'ProfilePage'}>
-            <VStack gap='16'>
+        <Page
+            className={className}
+            data-testid={'ProfilePage'}
+        >
+            <VStack gap="16">
                 <EditableProfileCard id={id} />
                 <ProfileRating profileId={id} />
             </VStack>
@@ -29,4 +31,3 @@ const ProfilePage = (props: ProfilePageProps) => {
 };
 
 export default ProfilePage;
-

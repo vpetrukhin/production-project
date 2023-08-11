@@ -3,13 +3,13 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import DarkTheme from '@/shared/assets/icons/theme-dark.svg';
 import LightTheme from '@/shared/assets/icons/theme-light.svg';
 import SwapTheme from './SwapTheme.svg';
-import { Button } from '@/shared/ui/Button';
 import { Theme } from '@/shared/config/const/theme';
 import { useCallback } from 'react';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { saveJsonSettings } from '@/entity/User';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
-import { Icon } from '@/shared/ui/Icon';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 
 interface ThemeSwitcherProps {
     className?: string;

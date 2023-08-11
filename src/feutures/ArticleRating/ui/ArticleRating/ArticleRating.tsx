@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { RatingCard } from '@/entity/Rating';
 import { useUserInfo } from '@/entity/User';
-import { useGetArticleRatingQuery, useRateArticleMutation } from '../../api/ArticleRatingApi';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import {
+    useGetArticleRatingQuery,
+    useRateArticleMutation,
+} from '../../api/ArticleRatingApi';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 
 interface ArticleRatingProps {
     className?: string;
@@ -11,7 +14,7 @@ interface ArticleRatingProps {
 
 export const ArticleRating = (props: ArticleRatingProps) => {
     const { className, articleId } = props;
-    const {t} = useTranslation('article');
+    const { t } = useTranslation('article');
 
     const user = useUserInfo();
 
@@ -19,7 +22,7 @@ export const ArticleRating = (props: ArticleRatingProps) => {
         articleId,
         userId: user?.id || '',
     });
-    const [ rateArticle ] = useRateArticleMutation();
+    const [rateArticle] = useRateArticleMutation();
 
     const rate = data?.[0];
 
@@ -33,7 +36,7 @@ export const ArticleRating = (props: ArticleRatingProps) => {
                 rate: rating,
                 feedback,
                 articleId,
-                userId: user?.id || ''
+                userId: user?.id || '',
             });
         } catch (e) {
             console.log(e);
@@ -45,7 +48,7 @@ export const ArticleRating = (props: ArticleRatingProps) => {
             rateArticle({
                 rate: rating,
                 articleId,
-                userId: user?.id || ''
+                userId: user?.id || '',
             });
         } catch (e) {
             console.log(e);

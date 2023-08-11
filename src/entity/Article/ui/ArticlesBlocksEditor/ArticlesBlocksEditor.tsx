@@ -7,14 +7,14 @@ import {
     useWatch,
 } from 'react-hook-form';
 import { ArticleBlockItem, ArticleFormFields } from '../../model/types/article';
-import { Button } from '@/shared/ui/Button';
 import { BlockType } from '../../model/const/articleConsts';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { FormInput } from '@/shared/ui/Input/FormInput';
 import { ArticleBlockEditorItem } from '../ArticleBlockEditorItem/ArticleBlockEditorItem';
 import cls from './ArticlesBlocksEditor.module.scss';
-import { TextArea } from '@/shared/ui/TextArea/TextArea';
-import { Text } from '@/shared/ui/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { FormInput } from '@/shared/ui/deprecated/Input/FormInput';
+import { VStack, HStack } from '@/shared/ui/deprecated/Stack';
+import { TextArea } from '@/shared/ui/deprecated/TextArea/TextArea';
 
 interface ArticlesBlocksEditorProps {
     className?: string;

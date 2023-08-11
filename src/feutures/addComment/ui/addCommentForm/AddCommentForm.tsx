@@ -1,12 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
-import { Button } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input';
-import { HStack } from '@/shared/ui/Stack';
 import { useAddCommentFormText } from '../../model/selectors/getAddCommentFormText';
-import { AddCommentFormReducer, useAddCommentFormActions } from '../../model/slices/AddCommentFormSlice';
+import {
+    AddCommentFormReducer,
+    useAddCommentFormActions,
+} from '../../model/slices/AddCommentFormSlice';
 import cls from './AddCommentForm.module.scss';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { Input } from '@/shared/ui/deprecated/Input';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 interface addCommentFormProps {
     className?: string;
@@ -15,14 +18,14 @@ interface addCommentFormProps {
 
 export const AddCommentForm = (props: addCommentFormProps) => {
     const { className, onSendComment } = props;
-    const {t} = useTranslation();
-    const {setText} = useAddCommentFormActions();
+    const { t } = useTranslation();
+    const { setText } = useAddCommentFormActions();
     const commentText = useAddCommentFormText();
 
     const onCommentTextChange = (value: string) => {
         setText(value);
     };
-    
+
     const onSendCommentHandler = () => {
         if (commentText) {
             onSendComment(commentText);
@@ -31,13 +34,15 @@ export const AddCommentForm = (props: addCommentFormProps) => {
     };
 
     return (
-        <DynamicModule reducers={{
-            addCommentFrom: AddCommentFormReducer
-        }}>
+        <DynamicModule
+            reducers={{
+                addCommentFrom: AddCommentFormReducer,
+            }}
+        >
             <HStack
-                justify='between'
+                justify="between"
                 max
-                gap='8'
+                gap="8"
                 className={classNames(cls.AddCommentForm, {}, [className])}
             >
                 <Input
@@ -46,7 +51,12 @@ export const AddCommentForm = (props: addCommentFormProps) => {
                     value={commentText || ''}
                     onChange={onCommentTextChange}
                 />
-                <Button theme={'outline'} onClick={onSendCommentHandler}>{t('Отправить')}</Button>
+                <Button
+                    theme={'outline'}
+                    onClick={onSendCommentHandler}
+                >
+                    {t('Отправить')}
+                </Button>
             </HStack>
         </DynamicModule>
     );

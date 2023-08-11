@@ -1,7 +1,7 @@
+import { Listbox } from '@/shared/ui/deprecated/Popups';
+import { ListBoxItem } from '@/shared/ui/deprecated/Popups/types/listBox';
 import { useTranslation } from 'react-i18next';
-import { Listbox } from '@/shared/ui/Popups/Listbox/Listbox';
 import { ArticleType, ArticleTypeRus } from '../../model/const/articleConsts';
-import { ListBoxItem } from '@/shared/ui/Popups/types/listBox';
 
 interface ArticleTypeSelectProps {
     className?: string;

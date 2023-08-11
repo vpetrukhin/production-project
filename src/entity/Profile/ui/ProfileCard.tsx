@@ -3,14 +3,13 @@ import { Currency, CurrencySelect } from '@/entity/Currency';
 import { CountrySelect } from '@/entity/Country';
 import { Country } from '@/entity/Country';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Input } from '@/shared/ui/Input';
-import { Loader } from '@/shared/ui/Loader';
-import { Text } from '@/shared/ui/Text';
-import { HStack, VStack } from '@/shared/ui/Stack';
 import { Profile } from '../model/types/profile';
 import cls from './ProfileCard.module.scss';
-
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { Input } from '@/shared/ui/deprecated/Input';
+import { Loader } from '@/shared/ui/deprecated/Loader';
+import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 interface ProfileCardProps {
     className?: string;
@@ -42,13 +41,13 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onUsernameChange,
         onAvatarChange,
         onCurrencyChange,
-        onCountryChange
+        onCountryChange,
     } = props;
-    const {t} = useTranslation('profile');
+    const { t } = useTranslation('profile');
 
     if (isLoading) {
         return (
-            <HStack justify='center'>
+            <HStack justify="center">
                 <Loader />
             </HStack>
         );
@@ -56,8 +55,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
     if (error) {
         return (
-            <HStack justify='center'>
-                <Text 
+            <HStack justify="center">
+                <Text
                     error
                     title={t('Произошла ошибка')}
                     text={t('Попробуйте обновить страницу')}
@@ -74,12 +73,15 @@ export const ProfileCard = (props: ProfileCardProps) => {
     return (
         <VStack
             data-testid={'ProfileCard'}
-            gap='8' 
+            gap="8"
             max
-            align='start'
+            align="start"
             className={classNames(cls.ProfileCard, mods, [className])}
         >
-            <HStack justify='center' max>
+            <HStack
+                justify="center"
+                max
+            >
                 <Avatar src={data?.avatar} />
             </HStack>
             <Input

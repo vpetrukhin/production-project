@@ -4,16 +4,16 @@ import { LangSwitcher } from '@/feutures/LangSwitcher';
 import { ThemeSwitcher } from '@/feutures/ThemeSwitcher';
 import { getUserInfo } from '@/entity/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/Button';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSideBarItems } from '../../model/selectors/getSidebarItems';
 import cls from './SideBar.module.scss';
-import { HStack, VStack } from '@/shared/ui/Stack';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { AppLogo } from '@/shared/layout';
 
 import Arrow from './arrow.svg';
-import { Icon } from '@/shared/ui/Icon';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { VStack, HStack } from '@/shared/ui/deprecated/Stack';
 
 interface SideBarProps {
     className?: string;

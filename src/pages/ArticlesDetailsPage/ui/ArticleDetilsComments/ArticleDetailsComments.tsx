@@ -1,20 +1,21 @@
 import { useSelector } from 'react-redux';
 import { AddCommentForm } from '@/feutures/addComment';
 import { CommentList } from '@/entity/Comment';
-import { VStack } from '@/shared/ui/Stack';
 import { DynamicModule } from '@/shared/lib/ui/DynamicModule/DynamicModule';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { getArticleDetailsCommentsLoading } from '../../model/selectors/comments/comments';
 import { addArticleComment } from '../../model/services/addArticleComment/addArticleComment';
 import { fetchCommentsList } from '../../model/services/fetchCommentsList/fetchCommentsLIst';
-import { CommentsReducer, getAllComments } from '../../model/slices/CommentsSlice/CommentsSlice';
-
-
+import {
+    CommentsReducer,
+    getAllComments,
+} from '../../model/slices/CommentsSlice/CommentsSlice';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticleDetailsCommentsProps {
     className?: string;
-    id?: string
+    id?: string;
 }
 
 export const ArticleDetailsComments = (props: ArticleDetailsCommentsProps) => {
@@ -33,12 +34,21 @@ export const ArticleDetailsComments = (props: ArticleDetailsCommentsProps) => {
     };
 
     return (
-        <DynamicModule reducers={{
-            articleDetailsComments: CommentsReducer,
-        }}>
-            <VStack max gap='16' className={className}>
+        <DynamicModule
+            reducers={{
+                articleDetailsComments: CommentsReducer,
+            }}
+        >
+            <VStack
+                max
+                gap="16"
+                className={className}
+            >
                 <AddCommentForm onSendComment={onSendComment} />
-                <CommentList isLoading={commentsIsLoading} comments={comments} />
+                <CommentList
+                    isLoading={commentsIsLoading}
+                    comments={comments}
+                />
             </VStack>
         </DynamicModule>
     );
