@@ -9,6 +9,7 @@ import { useCallback } from 'react';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { saveJsonSettings } from '@/entity/User';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Icon } from '@/shared/ui/Icon';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -43,7 +44,12 @@ export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
                     className={classNames('', {}, [className])}
                     onClick={handleToggleTheme}
                 >
-                    {theme === Theme.DARK ? <DarkTheme /> : <LightTheme />}
+                    <Icon
+                        Svg={theme === Theme.DARK ? DarkTheme : LightTheme}
+                        color="inverted"
+                        width={40}
+                        height={40}
+                    />
                 </Button>
             }
         />

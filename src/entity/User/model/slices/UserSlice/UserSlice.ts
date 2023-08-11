@@ -31,6 +31,7 @@ export const UserSlice = buildSlice({
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
             state.isAuth = false;
             state.userInfo = undefined;
+            setFeatureFlags({})
         },
     },
     extraReducers: (builder) => {
@@ -46,6 +47,11 @@ export const UserSlice = buildSlice({
                 state._inited = true;
             },
         );
+        builder.addCase(initAuthData.rejected, (state, {payload}) => {
+            console.log('rej')
+            state.isAuth = false
+            state._inited = true;
+        })
         builder.addCase(
             saveJsonSettings.fulfilled,
             (state, { payload }: PayloadAction<JsonSettings>) => {

@@ -21,7 +21,7 @@ const viewTypes = [
     {
         view: ArticleView.BIG,
         icon: ListIcon,
-    }
+    },
 ];
 
 export const ArticlesViewSelector = (props: ArticlesViewSelectorProps) => {
@@ -32,14 +32,25 @@ export const ArticlesViewSelector = (props: ArticlesViewSelectorProps) => {
     };
 
     return (
-        <HStack gap='4' className={classNames(cls.ArticlesViewSelector, {}, [className])}>
+        <HStack
+            gap="4"
+            className={classNames(cls.ArticlesViewSelector, {}, [className])}
+        >
             {viewTypes.map((viewType) => (
                 <Button
                     key={viewType.view}
                     onClick={onClick(viewType.view)}
-                    className={classNames(cls.button, { [cls.notSelected]: view !== viewType.view })}
+                    className={classNames(cls.button, {
+                        [cls.notSelected]: view !== viewType.view,
+                    })}
                 >
-                    {<Icon Svg={viewType.icon} />}
+                    {
+                        <Icon
+                            Svg={viewType.icon}
+                            width={24}
+                            height={24}
+                        />
+                    }
                 </Button>
             ))}
         </HStack>
