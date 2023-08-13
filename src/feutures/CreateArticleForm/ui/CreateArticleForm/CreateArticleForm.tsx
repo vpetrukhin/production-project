@@ -16,7 +16,7 @@ import {
     getMainPath,
 } from '@/shared/config/const/router';
 import { Text } from '@/shared/ui/deprecated/Text';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 // import cls from './CreateArticleForm.module.scss';
 
 interface CreateArticleFormProps {

@@ -1,6 +1,6 @@
 import { forwardRef, InputHTMLAttributes, LegacyRef, useMemo } from 'react';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
-import { HStack, VStack } from '../Stack';
+import { HStack, VStack } from '../../Stack';
 import { Text } from '../Text';
 import cls from './Input.module.scss';
 

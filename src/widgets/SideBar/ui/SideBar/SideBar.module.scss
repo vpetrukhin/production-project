@@ -3,26 +3,26 @@
     background-color: var(--inverted-main-bg);
     width: var(--sidebar-width);
     position: relative;
-}
 
-.toggle_btn {
-    position: absolute;
-    bottom: 32px;
-    right: -32px;
-}
+    .toggle_btn {
+        position: absolute;
+        bottom: 32px;
+        right: -32px;
+    }
 
-.switchers {
-    position: absolute;
-    bottom: 20px;
-}
+    .switchers {
+        position: absolute;
+        bottom: 20px;
+    }
 
-.items {
-    margin-top: 20px;
-    margin-left: 10px;
-}
+    .items {
+        margin-top: 20px;
+        margin-left: 10px;
+    }
 
-.collapsed {
-    width: var(--sidebar-width-collapsed);
+    .collapsed {
+        width: var(--sidebar-width-collapsed);
+    }
 }
 
 // redesign
@@ -33,36 +33,32 @@
     max-height: 873px;
     height: 100%;
     border-radius: 32px;
-}
 
-.appLogo {
-    padding-top: 20px;
-    padding-bottom: 42px;
-}
+    .appLogo {
+        padding-top: 20px;
+        padding-bottom: 42px;
+    }
 
-.items_redesigned {
-    padding-left: 16px;
-    flex: 1 1 100%;
-}
+    .items_redesigned {
+        flex: 1 1 100%;
+    }
 
-.switchers_redesign {
-    align-self: center;
-    padding-bottom: 40px;
-}
+    .switchers_redesign {
+        align-self: center;
+        padding-bottom: 40px;
+    }
 
-.arrow {
-    transform: rotate(90deg);
-}
+    .arrow {
+        position: absolute;
+        top: calc(50% - 3px);
+        right: 18px;
+        transform: rotate(90deg);
+    }
 
-.SideBar_redesigned.collapsed .arrow {
-    transform: rotate(270deg);
-}
-
-.toggle_btn_redesigned {
-    position: absolute;
-    top: calc(50% - 3px);
-    right: 0;
-}
-
-.SideBar_redesigned.collapsed {
+    &.collapsed {
+        width: 50px;
+        & .arrow {
+            transform: rotate(270deg);
+        }
+    }
 }

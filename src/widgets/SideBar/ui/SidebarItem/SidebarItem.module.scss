@@ -1,3 +1,17 @@
+.active {
+    width: 100%;
+    border-left: 2px solid var(--accent-color);
+    background: linear-gradient(
+        88deg,
+        rgba(94, 211, 243, 0.3) 0%,
+        rgba(94, 211, 243, 0) 100%
+    );
+}
+
+.wrapper {
+    padding-left: 16px;
+}
+
 .collapsed {
     .link {
         width: 0;

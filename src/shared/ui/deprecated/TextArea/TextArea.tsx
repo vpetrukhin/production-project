@@ -1,6 +1,6 @@
 import { TextareaHTMLAttributes } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '../Stack';
+import { VStack } from '../../Stack';
 import cls from './TextArea.module.scss';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {

@@ -1,0 +1,21 @@
+.Icon {
+    fill: currentColor;
+    color: var(--icon-color);
+    cursor: pointer;
+}
+
+.disabled {
+    color: var(--ligth-bg-color);
+    cursor: not-allowed;
+}
+
+.button {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.clear {
+    color: none;
+}

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Page } from '@/widgets/Page';
 import { getMainPath } from '@/shared/config/const/router';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 
 interface ForbiddenPageProps {

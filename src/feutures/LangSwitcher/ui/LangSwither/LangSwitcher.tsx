@@ -2,6 +2,9 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { Button } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import LangRu from './langRu.svg';
+import LangEn from './langEn.svg';
 
 interface LangSwitcherProps {
     className?: string;
@@ -20,13 +23,11 @@ export const LangSwitcher = (props: LangSwitcherProps) => {
         <ToggleFeatureComponent
             name="isRedesignEnable"
             on={
-                <Button
-                    theme={'inverted_clear'}
+                <Icon
+                    Svg={i18n.language === 'ru' ? LangRu : LangEn}
+                    clickable
                     onClick={toggleLang}
-                    className={classNames('', {}, [className])}
-                >
-                    {short ? t('Короткий язык') : t('Язык')}
-                </Button>
+                />
             }
             off={
                 <Button

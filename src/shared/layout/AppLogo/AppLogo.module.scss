@@ -1,5 +1,8 @@
 .AppLogoWrapper {
     position: relative;
+    & svg {
+        color: #000000;
+    }
 }
 
 .AppLogo {

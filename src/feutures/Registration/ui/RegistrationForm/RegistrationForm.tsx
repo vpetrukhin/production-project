@@ -10,7 +10,7 @@ import { URL_REGEXP } from '@/shared/config/const/RegExps';
 import { Button } from '@/shared/ui/deprecated/Button';
 import { Card } from '@/shared/ui/deprecated/Card';
 import { FormInput } from '@/shared/ui/deprecated/Input/FormInput';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 
 interface RegistrationFormProps {

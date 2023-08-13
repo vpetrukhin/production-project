@@ -8,7 +8,7 @@ import { Button } from '@/shared/ui/deprecated/Button';
 import { Card } from '@/shared/ui/deprecated/Card';
 import { Input } from '@/shared/ui/deprecated/Input';
 import { Modal } from '@/shared/ui/deprecated/Modal';
-import { VStack, HStack } from '@/shared/ui/deprecated/Stack';
+import { VStack, HStack } from '@/shared/ui/Stack';
 import { StarRating } from '@/shared/ui/deprecated/StarRating';
 import { Text } from '@/shared/ui/deprecated/Text';
 

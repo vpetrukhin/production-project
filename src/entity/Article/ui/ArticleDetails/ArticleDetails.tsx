@@ -21,7 +21,7 @@ import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { Icon } from '@/shared/ui/deprecated/Icon';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { VStack, HStack } from '@/shared/ui/deprecated/Stack';
+import { VStack, HStack } from '@/shared/ui/Stack';
 
 interface ArticleDetailsProps {
     className?: string;

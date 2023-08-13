@@ -13,7 +13,7 @@ import cls from './LoginForm.module.scss';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { Button } from '@/shared/ui/deprecated/Button';
 import { Input } from '@/shared/ui/deprecated/Input';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 
 interface LoginFormProps {
     className?: string;

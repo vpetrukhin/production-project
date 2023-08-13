@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '../Card/Card';
-import { HStack } from '../Stack';
+import { HStack } from '../../Stack';
 import cls from './Tabs.module.scss';
 
 export interface TabItem<V> {

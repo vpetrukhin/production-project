@@ -9,7 +9,7 @@ import { useProfileValidateErrors } from '../../model/selectors/getProfileValida
 import { useProfileActions } from '../../model/slice/ProfileSlice';
 import { ValidateErrors } from '../../model/const/editableProfileCardConsts';
 import { Button } from '@/shared/ui/deprecated/Button';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 
 interface EditableProfileCardHeaderProps {

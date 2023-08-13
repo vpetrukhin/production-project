@@ -16,7 +16,7 @@ import EditIcon from './edit.svg';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
 import { Button } from '@/shared/ui/deprecated/Button';
 import { Icon } from '@/shared/ui/deprecated/Icon';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 
 export interface NavbarProps {

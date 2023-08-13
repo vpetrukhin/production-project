@@ -9,7 +9,8 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { saveJsonSettings } from '@/entity/User';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { Button } from '@/shared/ui/deprecated/Button';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ThemeSwitcherProps {
     className?: string;
@@ -32,19 +33,20 @@ export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
         <ToggleFeatureComponent
             name="isRedesignEnable"
             on={
-                <Button
-                    className={classNames('', {}, [className])}
+                <Icon
+                    Svg={SwapTheme}
+                    clickable
                     onClick={handleToggleTheme}
-                >
-                    <SwapTheme />
-                </Button>
+                    width={20}
+                    height={20}
+                />
             }
             off={
                 <Button
                     className={classNames('', {}, [className])}
                     onClick={handleToggleTheme}
                 >
-                    <Icon
+                    <IconDeprecated
                         Svg={theme === Theme.DARK ? DarkTheme : LightTheme}
                         color="inverted"
                         width={40}

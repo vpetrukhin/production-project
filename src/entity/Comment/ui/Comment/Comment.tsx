@@ -2,7 +2,7 @@ import { getProfilePath } from '@/shared/config/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { IComment } from '../../model/types/comment';
 import cls from './Comment.module.scss';

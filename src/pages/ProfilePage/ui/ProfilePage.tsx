@@ -4,7 +4,7 @@ import { Page } from '@/widgets/Page';
 import { EditableProfileCard } from '@/feutures/EditableProfileCard';
 import { ProfileRating } from '@/feutures/ProfileRating';
 import { Text } from '@/shared/ui/deprecated/Text';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ProfilePageProps {
     className?: string;

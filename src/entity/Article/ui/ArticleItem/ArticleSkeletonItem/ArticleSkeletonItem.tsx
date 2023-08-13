@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/deprecated/Card';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../../model/const/articleConsts';
 import cls from './ArticleSkeletonItem.module.scss';
 

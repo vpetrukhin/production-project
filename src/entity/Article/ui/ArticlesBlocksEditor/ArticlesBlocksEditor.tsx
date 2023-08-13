@@ -13,7 +13,7 @@ import cls from './ArticlesBlocksEditor.module.scss';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { Button } from '@/shared/ui/deprecated/Button';
 import { FormInput } from '@/shared/ui/deprecated/Input/FormInput';
-import { VStack, HStack } from '@/shared/ui/deprecated/Stack';
+import { VStack, HStack } from '@/shared/ui/Stack';
 import { TextArea } from '@/shared/ui/deprecated/TextArea/TextArea';
 
 interface ArticlesBlocksEditorProps {

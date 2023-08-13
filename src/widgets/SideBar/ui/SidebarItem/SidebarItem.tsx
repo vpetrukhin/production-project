@@ -4,9 +4,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { SidebarItemType } from '../../model/types/SidebarItem';
 import cls from './SidebarItem.module.scss';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { Icon } from '@/shared/ui/deprecated/Icon';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { HStack } from '@/shared/ui/Stack';
+import { AppLink } from '@/shared/ui/redesigned/AppLink';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface SidebarItemProps {
     item: SidebarItemType;
@@ -23,26 +25,23 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
             name="isRedesignEnable"
             on={
                 <AppLink
-                    theme={'inverted'}
                     to={item.path}
                     className={classNames(cls.item, {
                         [cls.collapsed]: collapsed,
                     })}
+                    activeClassName={cls.active}
                 >
                     <HStack
-                        gap="8"
-                        justify="between"
+                        className={cls.wrapper}
+                        gap="16"
                     >
-                        <Icon
-                            Svg={icon}
-                            color="inverted"
-                        />
+                        <Icon Svg={icon} />
                         <span className={cls.link}>{t(item.text)}</span>
                     </HStack>
                 </AppLink>
             }
             off={
-                <AppLink
+                <AppLinkDeprecated
                     theme={'inverted'}
                     to={item.path}
                     className={classNames(cls.item, {
@@ -53,13 +52,13 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
                         gap="8"
                         justify="between"
                     >
-                        <Icon
+                        <IconDeprecated
                             Svg={icon}
                             color="inverted"
                         />
                         <span className={cls.link}>{t(item.text)}</span>
                     </HStack>
-                </AppLink>
+                </AppLinkDeprecated>
             }
         />
     );

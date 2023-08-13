@@ -7,7 +7,7 @@ import { Page } from '@/widgets/Page';
 import { getArticleDetailsPath } from '@/shared/config/const/router';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 
 interface ArticleDetailsEditPageProps {
     className?: string;

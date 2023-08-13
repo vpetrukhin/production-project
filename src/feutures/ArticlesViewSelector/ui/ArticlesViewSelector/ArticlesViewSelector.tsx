@@ -5,7 +5,7 @@ import BlockIcon from '@/shared/assets/icons/blocks.svg';
 import ListIcon from '@/shared/assets/icons/list.svg';
 import { Button } from '@/shared/ui/deprecated/Button';
 import { Icon } from '@/shared/ui/deprecated/Icon';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 
 interface ArticlesViewSelectorProps {
     className?: string;

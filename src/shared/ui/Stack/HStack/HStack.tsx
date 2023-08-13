@@ -1,16 +1,14 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Flex, FlexProps } from '../Flex/Flex';
 
-type VStackProps = Omit<FlexProps, 'direction'>;
-/**
- * @deprecated
- */
-export const VStack = (props: VStackProps) => {
+type HStackProps = Omit<FlexProps, 'direction'>;
+
+export const HStack = (props: HStackProps) => {
     const { className, children, ...otherProps } = props;
 
     return (
         <Flex
-            direction="column"
+            direction="row"
             {...otherProps}
             className={classNames('', {}, [className])}
         >

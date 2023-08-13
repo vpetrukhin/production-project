@@ -10,7 +10,7 @@ import { ArticleDetailsHeader } from './ArticleDetailsHeader/ArticleDetailsHeade
 import cls from './ArticlesDetailsPage.module.scss';
 import { ArticleDetailsComments } from './ArticleDetilsComments/ArticleDetailsComments';
 import { Text } from '@/shared/ui/deprecated/Text';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ArticlesDetailsPageProps {
     className?: string;

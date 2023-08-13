@@ -18,7 +18,7 @@ import { parseArticleTextBlocksToString } from '../../model/lib/helpers/parseArt
 import { ArticleTypeSelect } from '../ArticleTypeSelect/ArticleTypeSelect';
 import { Button } from '@/shared/ui/deprecated/Button';
 import { FormInput } from '@/shared/ui/deprecated/Input/FormInput';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ArticleFormProps {
     className?: string;

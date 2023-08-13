@@ -24,7 +24,7 @@ import { ArticlesViewSelector } from '@/feutures/ArticlesViewSelector';
 import { Card } from '@/shared/ui/deprecated/Card';
 import { Input } from '@/shared/ui/deprecated/Input';
 import { SelectItem, Select } from '@/shared/ui/deprecated/Select';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 import { TabItem, Tabs } from '@/shared/ui/deprecated/Tabs';
 
 interface ArticlesFiltersProps {

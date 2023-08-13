@@ -7,7 +7,7 @@ import {
     getArticleEditPath,
     getArticlesPath,
 } from '@/shared/config/const/router';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/deprecated/Button';
 
 interface ArticleDetailsHeaderProps {

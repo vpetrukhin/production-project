@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
 import { Text } from '../Text';
-import { HStack } from '../Stack';
+import { HStack } from '../../Stack';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<

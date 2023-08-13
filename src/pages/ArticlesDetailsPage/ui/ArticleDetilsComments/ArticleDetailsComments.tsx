@@ -11,7 +11,7 @@ import {
     CommentsReducer,
     getAllComments,
 } from '../../model/slices/CommentsSlice/CommentsSlice';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ArticleDetailsCommentsProps {
     className?: string;

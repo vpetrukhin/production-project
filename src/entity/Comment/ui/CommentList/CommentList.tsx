@@ -1,5 +1,5 @@
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { useTranslation } from 'react-i18next';
 import { IComment } from '../../model/types/comment';

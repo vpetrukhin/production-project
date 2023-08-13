@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Icon } from '../Icon/Icon';
-import { HStack } from '../Stack';
+import { HStack } from '../../Stack';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
 interface StarRatingProps {
