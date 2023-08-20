@@ -2,7 +2,7 @@
     height: 100vh;
     display: grid;
     grid-template-areas: 'sidebar content rigthbar';
-    grid-template-columns: 220px 1fr 176px;
+    grid-template-columns: min-content 1fr 176px;
 
     padding-left: 32px;
 }

@@ -1,0 +1,47 @@
+.Text {
+    color: var(--text-color);
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.text {
+    font: var(--font-text);
+}
+
+.small {
+    .title {
+        font: var(--font-subtitle);
+    }
+}
+
+.medium {
+    .title {
+        font: var(--font-title);
+    }
+}
+
+.large {
+    .title {
+        font: var(--font-title);
+    }
+}
+
+.error {
+    .title {
+        color: var(--cancel-color);
+    }
+
+    .text {
+        color: var(--cancel-color);
+    }
+}

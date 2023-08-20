@@ -1,23 +1,25 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { LoginModal } from '@/feutures/AuthByUserName';
 import { NotificationButton } from '@/feutures/NotificationButton';
 import { AvatarDropdown } from '@/feutures/AvatarDropdown';
 import { useUserInfo } from '@/entity/User';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './NavBar.module.scss';
 import {
     getArticleCreatePath,
     getRegistrationPath,
 } from '@/shared/config/const/router';
-import { useLocation } from 'react-router-dom';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
-import EditIcon from './edit.svg';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { HStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { AppLink } from '@/shared/ui/redesigned/AppLink';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import cls from './NavBar.module.scss';
+import EditIcon from './edit.svg';
 
 export interface NavbarProps {
     className?: string;
@@ -62,10 +64,7 @@ export const NavBar = (props: NavbarProps) => {
                             className,
                         ])}
                     >
-                        <AppLink
-                            to={getArticleCreatePath()}
-                            theme="inverted"
-                        >
+                        <AppLink to={getArticleCreatePath()}>
                             <Icon Svg={EditIcon} />
                         </AppLink>
                         <NotificationButton />
@@ -74,17 +73,17 @@ export const NavBar = (props: NavbarProps) => {
                 }
                 off={
                     <HStack className={classNames(cls.NavBar, {}, [className])}>
-                        <Text title={t('ProdApp')} />
+                        <TextDeprecated title={t('ProdApp')} />
                         <HStack
                             gap="16"
                             className={cls.links}
                         >
-                            <AppLink
+                            <AppLinkDeprecated
                                 to={getArticleCreatePath()}
                                 theme="inverted"
                             >
                                 {t('create-article')}
-                            </AppLink>
+                            </AppLinkDeprecated>
                             <NotificationButton />
                             <AvatarDropdown />
                         </HStack>
@@ -92,54 +91,62 @@ export const NavBar = (props: NavbarProps) => {
                 }
             />
         );
-        return (
-            <HStack className={classNames(cls.NavBar, {}, [className])}>
-                <Text title={t('ProdApp')} />
-                <HStack
-                    gap="16"
-                    className={cls.links}
-                >
-                    <AppLink
-                        to={getArticleCreatePath()}
-                        theme="inverted"
-                    >
-                        {t('create-article')}
-                    </AppLink>
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
-            </HStack>
-        );
     }
 
     return (
-        <HStack className={classNames(cls.NavBar, {}, [className])}>
-            <Text title={t('ProdApp')} />
-            <HStack
-                gap="16"
-                className={cls.links}
-            >
-                {!isRegisrationPage && (
-                    <AppLink
-                        to={getRegistrationPath()}
-                        theme="inverted"
+        <ToggleFeatureComponent
+            name="isRedesignEnable"
+            on={
+                <HStack className={classNames(cls.NavBar, {}, [className])}>
+                    <HStack
+                        gap="16"
+                        className={cls.links}
                     >
-                        {t('registraciya')}
-                    </AppLink>
-                )}
-                <Button
-                    theme={'inverted_outline'}
-                    onClick={handleOpenModal}
-                >
-                    {t('Войти')}
-                </Button>
-                {isModalOpen && (
-                    <LoginModal
-                        isOpen={isModalOpen}
-                        onClose={handleCloseModal}
-                    />
-                )}
-            </HStack>
-        </HStack>
+                        {!isRegisrationPage && (
+                            <AppLink to={getRegistrationPath()}>
+                                {t('registraciya')}
+                            </AppLink>
+                        )}
+                        <Button onClick={handleOpenModal}>{t('Войти')}</Button>
+                        {isModalOpen && (
+                            <LoginModal
+                                isOpen={isModalOpen}
+                                onClose={handleCloseModal}
+                            />
+                        )}
+                    </HStack>
+                </HStack>
+            }
+            off={
+                <HStack className={classNames(cls.NavBar, {}, [className])}>
+                    <TextDeprecated title={t('ProdApp')} />
+                    <HStack
+                        gap="16"
+                        className={cls.links}
+                    >
+                        {!isRegisrationPage && (
+                            <AppLinkDeprecated
+                                to={getRegistrationPath()}
+                                theme="inverted"
+                            >
+                                {t('registraciya')}
+                            </AppLinkDeprecated>
+                        )}
+                        <ButtonDeprecated
+                            theme={'inverted_outline'}
+                            onClick={handleOpenModal}
+                        >
+                            {t('Войти')}
+                        </ButtonDeprecated>
+                        {isModalOpen && (
+                            <LoginModal
+                                isOpen={isModalOpen}
+                                onClose={handleCloseModal}
+                            />
+                        )}
+                    </HStack>
+                </HStack>
+            }
+        />
     );
 };

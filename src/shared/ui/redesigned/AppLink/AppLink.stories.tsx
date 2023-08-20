@@ -5,11 +5,13 @@ import { ThemeDecorator } from '@/shared/config/storybook/decorators/ThemeDecora
 import { Theme } from '@/shared/config/const/theme';
 
 export default {
-    title: 'shared/AppLink',
+    title: 'shared/redesigned/AppLink',
     component: AppLink,
 } as ComponentMeta<typeof AppLink>;
 
-const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />;
+const Template: ComponentStory<typeof AppLink> = (args) => (
+    <AppLink {...args} />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -27,12 +29,10 @@ export const Inverted = Template.bind({});
 Inverted.args = {
     to: '/',
     children: 'test',
-    theme: 'inverted',
 };
 export const InvertedDark = Template.bind({});
 InvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
 InvertedDark.args = {
     to: '/',
     children: 'test',
-    theme: 'inverted',
 };

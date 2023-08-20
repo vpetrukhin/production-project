@@ -6,8 +6,8 @@ import {
     AnimationProvider,
     useAnimationContext,
 } from '@/shared/lib/ui/AnimationProvider';
-import { Overlay } from '../Overlay/Overlay';
-import { Portal } from '../Portal/Portal';
+import { Overlay } from '../../Overlay/Overlay';
+import { Portal } from '../../Portal/Portal';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps extends PropsWithChildren {

@@ -1,0 +1,53 @@
+.popup {
+    position: relative;
+    width: fit-content;
+}
+
+.trigger {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.dropdownContent {
+    position: absolute;
+    z-index: 100000;
+
+    // min-width: 100%;
+}
+
+.active {
+    color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.disabled {
+    color: var(--disabled-color);
+}
+
+.top {
+    &Left {
+        bottom: 100%;
+        left: 0;
+    }
+
+    &Right {
+        bottom: 100%;
+        right: 0;
+    }
+}
+
+.bottom {
+    &Left {
+        top: 100%;
+        left: 0;
+    }
+
+    &Right {
+        top: 100%;
+        right: 0;
+    }
+}

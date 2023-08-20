@@ -1,0 +1,18 @@
+.list {
+    border-radius: var(--border-radius-m);
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    outline: none;
+}
+
+.item {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: var(--inverted-primary-color);
+    border-bottom: 1px solid var(--inverted-primary-color);
+    cursor: pointer;
+}
