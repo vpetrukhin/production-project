@@ -2,14 +2,16 @@ import { useState, useCallback } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { NotificationList } from '@/entity/Notification';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
-import cls from './NotificationButton.module.scss';
+import { Drawer } from '@/shared/ui/Drawer';
 import NotificationsIcon from '@/shared/assets/icons/notifications.svg';
 import NotificationsIconNew from '@/shared/assets/icons/notificationsNew.svg';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { Icon } from '@/shared/ui/deprecated/Icon';
-import { Popover } from '@/shared/ui/deprecated/Popups';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
+import { Icon as IconDepreceted } from '@/shared/ui/deprecated/Icon';
+import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popups';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Popover } from '@/shared/ui/redesigned/Popups';
+import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
     className?: string;
@@ -33,26 +35,23 @@ export const NotificationButton = (props: NotificationButtonProps) => {
             <ToggleFeatureComponent
                 name="isRedesignEnable"
                 on={
-                    <Button
+                    <Icon
                         className={cls.notificationButton}
+                        Svg={NotificationsIconNew}
+                        clickable
                         onClick={handleOpenDrawer}
-                    >
-                        <Icon
-                            Svg={NotificationsIconNew}
-                            color="inverted"
-                        />
-                    </Button>
+                    />
                 }
                 off={
-                    <Button
+                    <ButtonDeprecated
                         className={cls.notificationButton}
                         onClick={handleOpenDrawer}
                     >
-                        <Icon
+                        <IconDepreceted
                             Svg={NotificationsIcon}
                             color="inverted"
                         />
-                    </Button>
+                    </ButtonDeprecated>
                 }
             />
         );
@@ -61,14 +60,29 @@ export const NotificationButton = (props: NotificationButtonProps) => {
     return (
         <>
             <BrowserView>
-                <Popover
-                    className={classNames(cls.NotificationButton, {}, [
-                        className,
-                    ])}
-                    trigger={getTrigger()}
-                >
-                    <NotificationList className={cls.list} />
-                </Popover>
+                <ToggleFeatureComponent
+                    name="isRedesignEnable"
+                    on={
+                        <Popover
+                            className={classNames(cls.NotificationButton, {}, [
+                                className,
+                            ])}
+                            trigger={getTrigger()}
+                        >
+                            <NotificationList className={cls.list} />
+                        </Popover>
+                    }
+                    off={
+                        <PopoverDeprecated
+                            className={classNames(cls.NotificationButton, {}, [
+                                className,
+                            ])}
+                            trigger={getTrigger()}
+                        >
+                            <NotificationList className={cls.list} />
+                        </PopoverDeprecated>
+                    }
+                />
             </BrowserView>
             <MobileView>
                 {getTrigger()}

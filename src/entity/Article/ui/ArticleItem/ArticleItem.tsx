@@ -8,7 +8,7 @@ import { ArticleView, BlockType } from '../../model/const/articleConsts';
 import cls from './ArticleItem.module.scss';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { getArticleDetailsPath } from '@/shared/config/const/router';
-import { AppImage } from '@/shared/ui/deprecated/AppImage';
+import { AppImage } from '@/shared/ui/AppImage';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';

@@ -6,7 +6,6 @@ import { AppLink } from '../../AppLink/AppLink';
 import { mappedDropdownDirectionsClasses } from '../styles/consts';
 import cls from './Dropdown.module.scss';
 import popupCls from '../styles/popup.module.scss';
-// TODO: do refactoring
 
 export interface DropdownItem {
     content: string;
@@ -21,9 +20,7 @@ interface DropdownProps {
     items: DropdownItem[];
     direction?: DropdownDirection;
 }
-/**
- * @deprecated
- */
+
 export const Dropdown = (props: DropdownProps) => {
     const { className, trigger, items, direction = 'bottomRight' } = props;
 

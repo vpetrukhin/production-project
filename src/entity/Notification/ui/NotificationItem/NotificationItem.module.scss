@@ -3,8 +3,12 @@
     padding: 10px;
     border-radius: var(--border-radius-s);
     border: 1px solid var(--main-bg);
+
+    .link:hover {
+        opacity: 0.8;
+    }
 }
 
-.link:hover {
-    opacity: 0.8;
+.NotificationItemRedesigned {
+    width: 100%;
 }

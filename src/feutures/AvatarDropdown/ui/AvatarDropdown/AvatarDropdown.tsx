@@ -13,8 +13,10 @@ import {
     getProfilePath,
 } from '@/shared/config/const/router';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Dropdown } from '@/shared/ui/deprecated/Popups';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
+import { Dropdown } from '@/shared/ui/redesigned/Popups';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -34,6 +36,25 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
         dispatch(UserActions.logout());
     }, [dispatch]);
 
+    const items = [
+        ...(isAvailableToAdminPanel
+            ? [
+                  {
+                      content: t('adminka'),
+                      href: getAdminPanelPath(),
+                  },
+              ]
+            : []),
+        {
+            content: t('Профиль'),
+            href: getProfilePath(userInfo?.id || ''),
+        },
+        {
+            content: t('Выйти'),
+            onClick: handleLogout,
+        },
+    ];
+
     return (
         <ToggleFeatureComponent
             name="isRedesignEnable"
@@ -46,85 +67,21 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
                             src={userInfo?.avatar}
                         />
                     }
-                    items={[
-                        ...(isAvailableToAdminPanel
-                            ? [
-                                  {
-                                      content: t('adminka'),
-                                      href: getAdminPanelPath(),
-                                  },
-                              ]
-                            : []),
-                        {
-                            content: t('Профиль'),
-                            href: getProfilePath(userInfo?.id || ''),
-                        },
-                        {
-                            content: t('Выйти'),
-                            onClick: handleLogout,
-                        },
-                    ]}
+                    items={items}
                 />
             }
             off={
-                <Dropdown
+                <DropdownDeprecated
                     className={className}
                     trigger={
-                        <Avatar
+                        <AvatarDeprecated
                             size={30}
                             src={userInfo?.avatar}
                         />
                     }
-                    items={[
-                        ...(isAvailableToAdminPanel
-                            ? [
-                                  {
-                                      content: t('adminka'),
-                                      href: getAdminPanelPath(),
-                                  },
-                              ]
-                            : []),
-                        {
-                            content: t('Профиль'),
-                            href: getProfilePath(userInfo?.id || ''),
-                        },
-                        {
-                            content: t('Выйти'),
-                            onClick: handleLogout,
-                        },
-                    ]}
+                    items={items}
                 />
             }
-        />
-    );
-
-    return (
-        <Dropdown
-            className={className}
-            trigger={
-                <Avatar
-                    size={30}
-                    src={userInfo?.avatar}
-                />
-            }
-            items={[
-                ...(isAvailableToAdminPanel
-                    ? [
-                          {
-                              content: t('adminka'),
-                              href: getAdminPanelPath(),
-                          },
-                      ]
-                    : []),
-                {
-                    content: t('Профиль'),
-                    href: getProfilePath(userInfo?.id || ''),
-                },
-                {
-                    content: t('Выйти'),
-                    onClick: handleLogout,
-                },
-            ]}
         />
     );
 };

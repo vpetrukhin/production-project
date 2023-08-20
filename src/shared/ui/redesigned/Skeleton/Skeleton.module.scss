@@ -1,0 +1,13 @@
+@keyframes skeleton-loading {
+    0% {
+        background-color: var(--skeleton-light);
+    }
+
+    100% {
+        background-color: var(--skeleton-dark);
+    }
+}
+
+.Skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}

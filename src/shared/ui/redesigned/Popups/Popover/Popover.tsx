@@ -5,15 +5,12 @@ import { DropdownDirection } from '@/shared/types/ui';
 import cls from './Popover.module.scss';
 import popupCls from '../styles/popup.module.scss';
 import { mappedDropdownDirectionsClasses } from '../styles/consts';
-// TODO: do refactoring
 interface PopoverProps extends PropsWithChildren {
     className?: string;
     trigger: ReactNode;
     direction?: DropdownDirection;
 }
-/**
- * @deprecated
- */
+
 export const Popover = (props: PopoverProps) => {
     const { className, trigger, direction = 'bottomRight', children } = props;
 
