@@ -2,13 +2,20 @@ import { MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/Redux';
-import { getScrollStorageScrollByPath, useScrollStorageActions } from '@/feutures/scrollStorage';
+import {
+    getScrollStorageScrollByPath,
+    useScrollStorageActions,
+} from '@/feutures/scrollStorage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useScroll } from '@/shared/lib/hooks/useScroll';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle';
 import { TestProps } from '@/shared/types/tests';
 import cls from './Page.module.scss';
+import {
+    toggleFeature,
+    ToggleFeatureComponent,
+} from '@/shared/lib/featureFlags';
 
 interface PageProps extends TestProps {
     className?: string;
@@ -17,7 +24,12 @@ interface PageProps extends TestProps {
 }
 
 export const Page = (props: PageProps) => {
-    const { className, children, 'data-testid': dataTestId, onScrollEndCallback } = props;
+    const {
+        className,
+        children,
+        'data-testid': dataTestId,
+        onScrollEndCallback,
+    } = props;
 
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
     const targetRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -25,12 +37,18 @@ export const Page = (props: PageProps) => {
     const { pathname } = useLocation();
 
     const { setScroll } = useScrollStorageActions();
-    const scroll = useSelector((state: StateSchema) => getScrollStorageScrollByPath(state, pathname));
+    const scroll = useSelector((state: StateSchema) =>
+        getScrollStorageScrollByPath(state, pathname),
+    );
 
     useScroll({
-        wrapperRef,
+        wrapperRef: toggleFeature({
+            name: 'isRedesignEnable',
+            on: () => undefined,
+            off: () => wrapperRef,
+        }),
         targetRef,
-        callback: onScrollEndCallback
+        callback: onScrollEndCallback,
     });
 
     useInitialEffect(() => {
@@ -38,23 +56,37 @@ export const Page = (props: PageProps) => {
     });
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-        setScroll(
-            {
-                scroll: e.currentTarget.scrollTop,
-                path: pathname,
-            }
-        );
+        setScroll({
+            scroll: e.currentTarget.scrollTop,
+            path: pathname,
+        });
     }, 1000);
 
     return (
-        <section
-            ref={wrapperRef}
-            className={classNames(cls.Page, {}, [className])}
-            onScroll={onScroll}
-            data-testid={dataTestId}
-        >
-            {children}
-            <div ref={targetRef} />
-        </section>
+        <ToggleFeatureComponent
+            name="isRedesignEnable"
+            on={
+                <section
+                    ref={wrapperRef}
+                    className={classNames(cls.PageRedesigned, {}, [className])}
+                    onScroll={onScroll}
+                    data-testid={dataTestId}
+                >
+                    {children}
+                    <div ref={targetRef} />
+                </section>
+            }
+            off={
+                <section
+                    ref={wrapperRef}
+                    className={classNames(cls.Page, {}, [className])}
+                    onScroll={onScroll}
+                    data-testid={dataTestId}
+                >
+                    {children}
+                    <div ref={targetRef} />
+                </section>
+            }
+        />
     );
 };

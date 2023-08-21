@@ -1,5 +1,6 @@
 .MainLayout {
-    height: 100vh;
+    min-height: 100vh;
+    // height: min-content;
     display: grid;
     grid-template-areas: 'sidebar content rigthbar';
     grid-template-columns: min-content 1fr 176px;
@@ -11,6 +12,9 @@
     grid-area: sidebar;
 
     padding: 32px 0;
+
+    position: sticky;
+    top: 0;
 }
 .rightbar {
     grid-area: rigthbar;
@@ -24,6 +28,14 @@
     max-width: 1200px;
     width: 100%;
     justify-self: center;
+    // display: flex;
 }
 .toolbar {
+}
+
+.sidebar,
+.rightbar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }

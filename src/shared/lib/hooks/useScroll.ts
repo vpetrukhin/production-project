@@ -2,7 +2,7 @@ import { MutableRefObject, useEffect } from 'react';
 
 export interface UseScrollProps {
     targetRef: MutableRefObject<HTMLElement>;
-    wrapperRef: MutableRefObject<HTMLElement>;
+    wrapperRef?: MutableRefObject<HTMLElement>;
     callback?: () => void;
 }
 
@@ -23,7 +23,7 @@ export const useScroll = (props: UseScrollProps) => {
 
         // наблюдатель
         const observer = new IntersectionObserver(onCallback, {
-            root: wrapperRef.current,
+            root: wrapperRef?.current || null,
             rootMargin: '0px',
         });
 
