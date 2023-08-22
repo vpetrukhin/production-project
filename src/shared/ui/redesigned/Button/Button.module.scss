@@ -2,7 +2,6 @@
     padding: 6px 15px;
     cursor: pointer;
     color: var(--text-color);
-    border-radius: 16px;
     border: 1px solid var(--icon-color);
 
     &:focus {
@@ -12,11 +11,24 @@
     &:disabled {
         cursor: not-allowed;
     }
+}
 
+.borderRadius {
+    border-radius: 16px;
+}
+
+.outlined {
+    background-color: transparent;
     &:hover {
         border-color: var(--accent-color);
         box-shadow: 0px 3px 10px 0px rgba(16, 55, 163, 0.6);
     }
+}
+
+.filled {
+    background-color: var(--light-bg-color);
+    border: none;
+    padding: 6px 0;
 }
 
 .max {

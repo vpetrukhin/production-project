@@ -2,8 +2,9 @@ import { HTMLAttributes, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
-type CardTheme = 'normal';
+type CardTheme = 'normal' | 'light';
 type CardPadding = '0' | '8' | '16' | '24';
+// type CardBorderRadius = 'round' | 'normal';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
@@ -11,6 +12,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     theme?: CardTheme;
     max?: boolean;
     padding?: CardPadding;
+    // borderRadius?: CardBorderRadius;
 }
 
 const CardPaddingMapClass: Record<CardPadding, string> = {

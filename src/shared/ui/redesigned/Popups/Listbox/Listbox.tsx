@@ -3,13 +3,13 @@ import { Listbox as HListbox } from '@headlessui/react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
 import { Button } from '../../Button/Button';
-import { HStack } from '../../../Stack';
+import { HStack, VStack } from '../../../Stack';
 import { Text } from '../../Text/Text';
 import cls from './Listbox.module.scss';
 import popupCls from '../styles/popup.module.scss';
 import { mappedDropdownDirectionsClasses } from '../styles/consts';
 import CheckIcon from '../../../../assets/icons/check.svg';
-import CaretDownIcon from '../../../../assets/icons/caretdown.svg';
+import ArrowtDownIcon from '../../../../assets/icons/arrowDown.svg';
 import { Icon } from '../../Icon/Icon';
 import { ListBoxItem } from '../types/listBox';
 // TODO: do refactoring
@@ -24,9 +24,7 @@ export interface ListboxProps<T> {
     error?: string;
     onChange?: (value: T) => void;
 }
-/**
- * @deprecated
- */
+
 export const Listbox = <V extends string>(props: ListboxProps<V>) => {
     const {
         items,
@@ -42,8 +40,10 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
 
     const listClasses = [className, mappedDropdownDirectionsClasses[direction]];
 
+    const selectedItem = items.find((item) => item.value === value);
+
     return (
-        <HStack gap="4">
+        <VStack gap="4">
             {label && <Text text={label + ':'} />}
             <HListbox
                 as="div"
@@ -57,13 +57,16 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                 >
                     <Button
                         type="button"
+                        variant="filled"
                         disabled={readonly}
                     >
-                        {value ?? defaultValue}
+                        {selectedItem?.content ?? defaultValue}
                     </Button>
                     <Icon
-                        Svg={CaretDownIcon}
+                        Svg={ArrowtDownIcon}
                         className={cls.caret}
+                        width={12}
+                        height={7}
                     />
                 </HListbox.Button>
                 <HListbox.Options
@@ -83,11 +86,11 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                                         {
                                             [popupCls.active]: active,
                                             [popupCls.disabled]: item.disabled,
+                                            [popupCls.selected]: selected,
                                         },
                                         [],
                                     )}
                                 >
-                                    {selected && <Icon Svg={CheckIcon} />}
                                     {item.content}
                                 </li>
                             )}
@@ -102,6 +105,6 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                     size={'small'}
                 />
             )}
-        </HStack>
+        </VStack>
     );
 };

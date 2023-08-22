@@ -1,11 +1,21 @@
 .ArticlesViewSelector {
     margin-bottom: 10px;
+
+    .button {
+        height: 20px;
+    }
+
+    .notSelected {
+        fill-opacity: 30%;
+    }
 }
 
-.button {
-    height: 20px;
-}
+.ArticlesViewSelectorRedesigned {
+    .button {
+        color: var(--icon-color);
+    }
 
-.notSelected {
-    fill-opacity: 30%;
+    .notSelected {
+        color: var(--light-bg-color);
+    }
 }

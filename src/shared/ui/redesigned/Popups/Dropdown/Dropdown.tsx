@@ -37,7 +37,11 @@ export const Dropdown = (props: DropdownProps) => {
                 popupCls.popup,
             ])}
         >
-            <Menu.Button className={popupCls.trigger}>{trigger}</Menu.Button>
+            <Menu.Button
+                className={classNames(cls.button, {}, [popupCls.trigger])}
+            >
+                {trigger}
+            </Menu.Button>
             <Menu.Items
                 as="div"
                 className={classNames(cls.list, {}, listClasses)}

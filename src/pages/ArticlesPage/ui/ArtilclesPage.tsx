@@ -15,6 +15,9 @@ import { initArticlesPage } from '../model/services/initArticlesPage/initArticle
 import { ArticlesFilters } from './ArticlesFilters/ArticlesFilters';
 import { ArticleInfinityList } from './ArticleInfinityList/ArticleInfinityList';
 import { ArticlePageGreeting } from '@/feutures/ArticlePageGreeting';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { StickyContentLayout } from '@/shared/layout/StickyContentLayout/StickyContentLayout';
+import { ViewSelectorContainer } from './ViewSelectorContainer';
 
 interface ArtilclesPageProps {
     className?: string;
@@ -37,6 +40,38 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
         }
     }, [dispatch, hasMoreArticles]);
 
+    const content = (
+        <ToggleFeatureComponent
+            name="isRedesignEnable"
+            on={
+                <StickyContentLayout
+                    left={<ViewSelectorContainer />}
+                    right={<ArticlesFilters />}
+                >
+                    <Page
+                        className={className}
+                        onScrollEndCallback={onFetchMoreArticles}
+                        data-testid={'ArtilclesPage'}
+                    >
+                        <ArticleInfinityList />
+                        <ArticlePageGreeting />
+                    </Page>
+                </StickyContentLayout>
+            }
+            off={
+                <Page
+                    className={className}
+                    onScrollEndCallback={onFetchMoreArticles}
+                    data-testid={'ArtilclesPage'}
+                >
+                    <ArticlesFilters />
+                    <ArticleInfinityList />
+                    <ArticlePageGreeting />
+                </Page>
+            }
+        />
+    );
+
     return (
         <DynamicModule
             reducers={{
@@ -44,15 +79,7 @@ const ArtilclesPage = (props: ArtilclesPageProps) => {
             }}
             removeAfterUnmount={false}
         >
-            <Page
-                className={className}
-                onScrollEndCallback={onFetchMoreArticles}
-                data-testid={'ArtilclesPage'}
-            >
-                <ArticlesFilters />
-                <ArticleInfinityList />
-                <ArticlePageGreeting />
-            </Page>
+            {content}
         </DynamicModule>
     );
 };

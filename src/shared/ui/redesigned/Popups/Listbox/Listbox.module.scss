@@ -5,38 +5,31 @@
 .button {
     display: flex;
     align-items: center;
+    gap: 8px;
+    background-color: var(--light-bg-color);
+    padding: 0 16px;
     &:focus {
         border-color: var(--accent-color);
     }
 }
 
 .list {
-    background-color: var(--primary-color);
+    background-color: var(--dark-bg-color);
     position: absolute;
     min-width: 100%;
     border-radius: 8px;
     z-index: 10000000;
     overflow: hidden;
     outline: none;
-}
-
-.caret svg {
-    display: block;
-    width: 15px;
-    height: 15px;
+    border-radius: 19px;
+    border: 1px solid var(--accent-color);
 }
 
 .item {
     padding: 5px 10px;
-    color: var(--inverted-primary-color);
+    color: var(--text-color);
     cursor: pointer;
     display: flex;
     gap: 2px;
     align-items: center;
-
-    & svg {
-        width: 15px;
-        height: 15px;
-        fill: var(--inverted-primary-color);
-    }
 }

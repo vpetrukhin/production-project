@@ -4,6 +4,7 @@
     display: grid;
     grid-template-areas: 'sidebar content rigthbar';
     grid-template-columns: min-content 1fr 176px;
+    gap: 24px;
 
     padding-left: 32px;
 }
@@ -18,9 +19,10 @@
 }
 .rightbar {
     grid-area: rigthbar;
+
+    justify-self: end;
 }
 .header {
-    // grid-area: '';
     width: 100%;
 }
 .content {
@@ -28,9 +30,9 @@
     max-width: 1200px;
     width: 100%;
     justify-self: center;
-    // display: flex;
 }
 .toolbar {
+    width: 100px;
 }
 
 .sidebar,

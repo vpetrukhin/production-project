@@ -1,10 +1,15 @@
 .Card {
     padding: 10px;
     border-radius: 12px;
+    border-radius: 32px;
 }
 
 .normal {
     background-color: var(--dark-bg-color);
+}
+
+.light {
+    background-color: var(--light-bg-color);
 }
 
 .p-0 {

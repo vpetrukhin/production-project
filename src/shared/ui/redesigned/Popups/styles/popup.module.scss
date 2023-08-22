@@ -5,11 +5,12 @@
 
 .trigger {
     margin: 0;
-    padding: 0;
+    // padding: 0;
     border: none;
-    background: transparent;
+    // background-color: var(--light-bg-color);
     outline: none;
     cursor: pointer;
+    border-radius: 34px;
 }
 
 .dropdownContent {
