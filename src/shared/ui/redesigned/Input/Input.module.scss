@@ -1,0 +1,57 @@
+.inputWrapper {
+    display: flex;
+    padding: 0 16px;
+
+    border: 1px solid var(--icon-color);
+    border-radius: 48px;
+}
+.input {
+    flex-grow: 1;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font: var(--font-text);
+
+    &::placeholder {
+        color: var(--hint-color);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.readonly {
+        border-color: var(--hint-color);
+    }
+}
+
+.addonLeft,
+.addonRight {
+    display: flex;
+}
+
+.withAddonLeft {
+    padding-left: 8px;
+}
+
+.withAddonRight {
+    padding-right: 8px;
+}
+
+.label {
+    min-width: 10%;
+    color: var(--text-color);
+}
+
+.error {
+    color: var(--cancel-color);
+}
+
+.errorText {
+    height: 16px;
+}
+
+.errorActive {
+    opacity: 1;
+}

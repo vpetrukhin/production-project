@@ -17,6 +17,9 @@ import cls from './ArticlesFilters.module.scss';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { Listbox } from '@/shared/ui/redesigned/Popups';
 import { Tabs } from '@/shared/ui/redesigned/Tabs';
+import { Input } from '@/shared/ui/redesigned/Input';
+import SearchIcon from '@/shared/assets/icons/search.svg';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ArticlesFiltersProps {
     className?: string;
@@ -103,7 +106,14 @@ export const ArticlesFilters = (props: ArticlesFiltersProps) => {
                         gap="16"
                         align="start"
                     >
-                        <InputDeprecated
+                        <Input
+                            addonLeft={
+                                <Icon
+                                    Svg={SearchIcon}
+                                    width={32}
+                                    height={32}
+                                />
+                            }
                             value={search}
                             placeholder={t('poisk')}
                             onChange={onSearchChange}
