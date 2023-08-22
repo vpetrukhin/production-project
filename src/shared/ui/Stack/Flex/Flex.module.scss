@@ -3,29 +3,60 @@
 }
 
 .align {
-    &start { align-items: start; }
-    &center { align-items: center; }
-    &end { align-items: end; }
+    &start {
+        align-items: start;
+    }
+    &center {
+        align-items: center;
+    }
+    &end {
+        align-items: end;
+    }
 }
 
 .justify {
-    &start { justify-content: start; }
-    &center { justify-content: center; }
-    &end { justify-content: end; }
-    &between { justify-content: space-between; }
-    &around { justify-content: space-around; }
+    &start {
+        justify-content: start;
+    }
+    &center {
+        justify-content: center;
+    }
+    &end {
+        justify-content: end;
+    }
+    &between {
+        justify-content: space-between;
+    }
+    &around {
+        justify-content: space-around;
+    }
 }
 
 .direction {
-    &row { flex-direction: row; }
-    &column { flex-direction: column; }
+    &row {
+        flex-direction: row;
+    }
+    &column {
+        flex-direction: column;
+    }
 }
 
 .gap {
-    &4 { gap: 4px; }
-    &8 { gap: 8px; }
-    &16 { gap: 16px; }
-    &32 { gap: 32px; }
+    &4 {
+        gap: 4px;
+    }
+    &8 {
+        gap: 8px;
+    }
+    &16 {
+        gap: 16px;
+    }
+    &24 {
+        gap: 24px;
+    }
+    &32 {
+        gap: 32px;
+    }
 }
 
 .max {

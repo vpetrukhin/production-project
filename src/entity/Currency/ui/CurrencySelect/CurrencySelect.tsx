@@ -1,5 +1,7 @@
-import { Listbox } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Listbox as ListboxDeprecated } from '@/shared/ui/deprecated/Popups';
 import { SelectItem } from '@/shared/ui/deprecated/Select';
+import { Listbox } from '@/shared/ui/redesigned/Popups';
 import { useTranslation } from 'react-i18next';
 import { Currency } from '../../model/types/Currency';
 
@@ -37,15 +39,26 @@ export const CurrencySelect = (props: CurrencySelectProps) => {
         if (onChange) onChange(value as Currency);
     };
 
+    const listboxProps = {
+        className,
+        label: t('Валюта'),
+        items: CurrencyItems,
+        value: value,
+        onChange: handleChange,
+        readonly,
+        direction: 'topLeft' as const,
+    };
+
     return (
-        <Listbox
-            className={className}
-            label={t('Валюта')}
-            items={CurrencyItems}
-            value={value}
-            onChange={handleChange}
-            readonly={readonly}
-            direction="topLeft"
+        <ToggleFeatureComponent
+            name="isRedesignEnable"
+            on={
+                <Listbox
+                    flexDirection="row"
+                    {...listboxProps}
+                />
+            }
+            off={<ListboxDeprecated {...listboxProps} />}
         />
     );
 };

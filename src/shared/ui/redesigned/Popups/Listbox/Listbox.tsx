@@ -12,6 +12,7 @@ import CheckIcon from '../../../../assets/icons/check.svg';
 import ArrowtDownIcon from '../../../../assets/icons/arrowDown.svg';
 import { Icon } from '../../Icon/Icon';
 import { ListBoxItem } from '../types/listBox';
+import { Flex } from '../../../Stack/Flex/Flex';
 // TODO: do refactoring
 export interface ListboxProps<T> {
     className?: string;
@@ -22,6 +23,7 @@ export interface ListboxProps<T> {
     defaultValue?: string;
     direction?: DropdownDirection;
     error?: string;
+    flexDirection?: 'row' | 'column';
     onChange?: (value: T) => void;
 }
 
@@ -36,6 +38,7 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
         defaultValue = items[0].value,
         direction = 'bottomLeft',
         error,
+        flexDirection = 'column',
     } = props;
 
     const listClasses = [className, mappedDropdownDirectionsClasses[direction]];
@@ -43,7 +46,10 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
     const selectedItem = items.find((item) => item.value === value);
 
     return (
-        <VStack gap="4">
+        <Flex
+            direction={flexDirection}
+            gap="4"
+        >
             {label && <Text text={label + ':'} />}
             <HListbox
                 as="div"
@@ -105,6 +111,6 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                     size={'small'}
                 />
             )}
-        </VStack>
+        </Flex>
     );
 };

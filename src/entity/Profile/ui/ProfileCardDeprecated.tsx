@@ -1,70 +1,28 @@
 import { useTranslation } from 'react-i18next';
-import { Currency, CurrencySelect } from '@/entity/Currency';
-import { CountrySelect } from '@/entity/Country';
-import { Country } from '@/entity/Country';
 import { classNames, Mode } from '@/shared/lib/classNames/classNames';
-import { Profile } from '../model/types/profile';
-import cls from './ProfileCard.module.scss';
+import { ProfileCardProps } from './ProfileCard/ProfileCard';
+import cls from './ProfileCard/ProfileCard.module.scss';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Input } from '@/shared/ui/deprecated/Input';
-import { Loader } from '@/shared/ui/deprecated/Loader';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { CurrencySelect } from '@/entity/Currency';
+import { CountrySelect } from '@/entity/Country';
 
-interface ProfileCardProps {
-    className?: string;
-    data?: Profile;
-    isLoading?: boolean;
-    error?: string;
-    readonly?: boolean;
-    onFirstnameChange?: (value: string) => void;
-    onLastnameChange?: (value: string) => void;
-    onAgeChange?: (value: string) => void;
-    onCityChange?: (value: string) => void;
-    onUsernameChange?: (value: string) => void;
-    onAvatarChange?: (value: string) => void;
-    onCurrencyChange?: (value: Currency) => void;
-    onCountryChange?: (value: Country) => void;
-}
-
-export const ProfileCard = (props: ProfileCardProps) => {
+export const ProfileCardDeprecated = (props: ProfileCardProps) => {
     const {
         className,
-        data,
-        isLoading,
-        error,
         readonly,
+        data,
+        onAgeChange,
+        onAvatarChange,
+        onCityChange,
+        onCountryChange,
+        onCurrencyChange,
         onFirstnameChange,
         onLastnameChange,
-        onAgeChange,
-        onCityChange,
         onUsernameChange,
-        onAvatarChange,
-        onCurrencyChange,
-        onCountryChange,
     } = props;
-    const { t } = useTranslation('profile');
-
-    if (isLoading) {
-        return (
-            <HStack justify="center">
-                <Loader />
-            </HStack>
-        );
-    }
-
-    if (error) {
-        return (
-            <HStack justify="center">
-                <Text
-                    error
-                    title={t('Произошла ошибка')}
-                    text={t('Попробуйте обновить страницу')}
-                    align={'center'}
-                />
-            </HStack>
-        );
-    }
+    const { t } = useTranslation();
 
     const mods: Mode = {
         [cls.editableForm]: !readonly,

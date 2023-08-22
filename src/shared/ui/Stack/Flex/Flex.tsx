@@ -5,13 +5,13 @@ import cls from './Flex.module.scss';
 type FlexAlign = 'start' | 'center' | 'end';
 type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
 type FlexDirection = 'row' | 'column';
-type FlexGap = '4' | '8' | '16' | '32';
+type FlexGap = '4' | '8' | '16' | '24' | '32';
 type FlexWrap = 'wrap' | 'nowrap';
 
 const alignClasses: Record<FlexAlign, string> = {
     start: cls.alignstart,
     center: cls.aligncenter,
-    end: cls.alignend
+    end: cls.alignend,
 };
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -19,19 +19,20 @@ const justifyClasses: Record<FlexJustify, string> = {
     center: cls.justifycenter,
     end: cls.justifyend,
     between: cls.justifybetween,
-    around: cls.justifyaround
+    around: cls.justifyaround,
 };
 
 const directionClasses: Record<FlexDirection, string> = {
     column: cls.directioncolumn,
-    row: cls.directionrow
+    row: cls.directionrow,
 };
 
 const gapClasses: Record<FlexGap, string> = {
     4: cls.gap4,
     8: cls.gap8,
     16: cls.gap16,
-    32: cls.gap32
+    24: cls.gap24,
+    32: cls.gap32,
 };
 
 const wrapClasses: Record<FlexWrap, string> = {
@@ -77,7 +78,10 @@ export const Flex = (props: FlexProps) => {
     };
 
     return (
-        <div className={classNames(cls.Flex, mods, classes)} {...otherProps}>
+        <div
+            className={classNames(cls.Flex, mods, classes)}
+            {...otherProps}
+        >
             {children}
         </div>
     );

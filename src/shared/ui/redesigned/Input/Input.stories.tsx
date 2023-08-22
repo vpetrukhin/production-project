@@ -9,7 +9,7 @@ export default {
     component: Input,
     argTypes: {
         backgroundColor: { control: 'color' },
-    }
+    },
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
@@ -38,11 +38,9 @@ PrimaryDark.args = {
 export const Inverted = Template.bind({});
 Inverted.args = {
     placeholder: 'Text',
-    theme: 'inverted'
 };
 export const InvertedDark = Template.bind({});
 InvertedDark.decorators = [ThemeDecorator(Theme.DARK)];
 InvertedDark.args = {
     placeholder: 'Text',
-    theme: 'inverted'
 };

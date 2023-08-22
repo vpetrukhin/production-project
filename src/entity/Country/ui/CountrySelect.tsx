@@ -1,5 +1,7 @@
-import { Listbox } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Listbox as ListboxDeprecated } from '@/shared/ui/deprecated/Popups';
 import { SelectItem } from '@/shared/ui/deprecated/Select';
+import { Listbox } from '@/shared/ui/redesigned/Popups';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Country } from '../consts/Countries';
@@ -37,15 +39,26 @@ export const CountrySelect = (props: CountryProps) => {
         [onChange],
     );
 
+    const listboxProps = {
+        className,
+        items: countryItems,
+        readonly,
+        label: t('Страна'),
+        value,
+        onChange: handleChange,
+        direction: 'topLeft' as const,
+    };
+
     return (
-        <Listbox
-            className={className}
-            items={countryItems}
-            readonly={readonly}
-            label={t('Страна')}
-            value={value}
-            onChange={handleChange}
-            direction="topLeft"
+        <ToggleFeatureComponent
+            name="isRedesignEnable"
+            on={
+                <Listbox
+                    {...listboxProps}
+                    flexDirection="row"
+                />
+            }
+            off={<ListboxDeprecated {...listboxProps} />}
         />
     );
 };

@@ -9,10 +9,12 @@ export default {
     component: ProfileCard,
     argTypes: {
         backgroundColor: { control: 'color' },
-    }
+    },
 } as ComponentMeta<typeof ProfileCard>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />;
+const Template: ComponentStory<typeof ProfileCard> = (args) => (
+    <ProfileCard {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -22,7 +24,7 @@ Default.args = {
         first: 'name',
         lastname: 'lastname',
         username: 'admin',
-        avatar: 'https://images.unsplash.com/photo-1665856314098-4aa9ff7a3d76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80'
+        avatar: 'https://images.unsplash.com/photo-1665856314098-4aa9ff7a3d76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
     },
     readonly: true,
 };
@@ -36,7 +38,7 @@ DefaultDark.args = {
         first: 'name',
         lastname: 'lastname',
         username: 'admin',
-        avatar: 'https://images.unsplash.com/photo-1665856314098-4aa9ff7a3d76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80'
+        avatar: 'https://images.unsplash.com/photo-1665856314098-4aa9ff7a3d76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
     },
     readonly: true,
 };
