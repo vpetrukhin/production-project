@@ -5,6 +5,9 @@ import { EditableProfileCard } from '@/feutures/EditableProfileCard';
 import { ProfileRating } from '@/feutures/ProfileRating';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/Stack';
+import cls from './ProfilePage.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { toggleFeature } from '@/shared/lib/featureFlags';
 
 interface ProfilePageProps {
     className?: string;
@@ -19,12 +22,16 @@ const ProfilePage = (props: ProfilePageProps) => {
 
     return (
         <Page
-            className={className}
+            className={toggleFeature({
+                name: 'isRedesignEnable',
+                on: () => classNames(cls.ProfilePage, {}, [className]),
+                off: () => className,
+            })}
             data-testid={'ProfilePage'}
         >
             <VStack gap="16">
                 <EditableProfileCard id={id} />
-                <ProfileRating profileId={id} />
+                {/* <ProfileRating profileId={id} /> */}
             </VStack>
         </Page>
     );

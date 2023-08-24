@@ -12,6 +12,7 @@ import { ProfileCardDeprecated } from '../ProfileCardDeprecated';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { ReactNode } from 'react';
 
 export interface ProfileCardProps {
     className?: string;
@@ -27,10 +28,12 @@ export interface ProfileCardProps {
     onAvatarChange?: (value: string) => void;
     onCurrencyChange?: (value: Currency) => void;
     onCountryChange?: (value: Country) => void;
+    leftContainerRender?: ReactNode;
+    rightContainerRender?: ReactNode;
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
-    const { isLoading, error, readonly } = props;
+    const { isLoading, error } = props;
     const { t } = useTranslation('profile');
 
     if (isLoading) {

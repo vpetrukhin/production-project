@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ProfileCardProps } from './ProfileCard/ProfileCard';
+import { ProfileCardProps as ProfileCardPropsOld } from './ProfileCard/ProfileCard';
 import { CountrySelect } from '@/entity/Country';
 import { CurrencySelect } from '@/entity/Currency';
 import { VStack, HStack } from '@/shared/ui/Stack';
@@ -8,6 +8,13 @@ import { Avatar } from '@/shared/ui/redesigned/Avatar/Avatar';
 import { Input } from '@/shared/ui/redesigned/Input';
 import cls from './ProfileCard/ProfileCard.module.scss';
 import { Card } from '@/shared/ui/redesigned/Card';
+import { ReactNode } from 'react';
+import { Flex } from '@/shared/ui/Stack/Flex/Flex';
+
+type ProfileCardProps = ProfileCardPropsOld & {
+    leftContainerRender?: ReactNode;
+    rightContainerRender?: ReactNode;
+};
 
 export const ProfileCardRedesigned = (props: ProfileCardProps) => {
     const {
@@ -22,6 +29,8 @@ export const ProfileCardRedesigned = (props: ProfileCardProps) => {
         onLastnameChange,
         onUsernameChange,
         readonly,
+        leftContainerRender,
+        rightContainerRender,
     } = props;
     const { t } = useTranslation();
 
@@ -34,13 +43,25 @@ export const ProfileCardRedesigned = (props: ProfileCardProps) => {
         >
             <VStack gap={'16'}>
                 <HStack
-                    justify="center"
+                    justify="around"
                     max
                 >
+                    <Flex
+                        justify="center"
+                        className={cls.headerItem}
+                    >
+                        {leftContainerRender}
+                    </Flex>
                     <Avatar
                         size={128}
                         src={data?.avatar}
                     />
+                    <Flex
+                        justify="center"
+                        className={cls.headerItem}
+                    >
+                        {rightContainerRender}
+                    </Flex>
                 </HStack>
                 <HStack
                     gap={'24'}

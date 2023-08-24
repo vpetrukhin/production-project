@@ -42,7 +42,7 @@ export const CountrySelect = (props: CountryProps) => {
     const listboxProps = {
         className,
         items: countryItems,
-        readonly,
+        disabled: readonly,
         label: t('Страна'),
         value,
         onChange: handleChange,

@@ -23,6 +23,7 @@ export interface ListboxProps<T> {
     defaultValue?: string;
     direction?: DropdownDirection;
     error?: string;
+    disabled?: boolean;
     flexDirection?: 'row' | 'column';
     onChange?: (value: T) => void;
 }
@@ -38,6 +39,7 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
         defaultValue = items[0].value,
         direction = 'bottomLeft',
         error,
+        disabled,
         flexDirection = 'column',
     } = props;
 
@@ -56,9 +58,14 @@ export const Listbox = <V extends string>(props: ListboxProps<V>) => {
                 value={value}
                 onChange={onChange}
                 className={classNames(cls.Listbox, {}, [popupCls.popup])}
+                disabled={disabled}
             >
                 <HListbox.Button
-                    className={classNames(cls.button, {}, [popupCls.trigger])}
+                    className={classNames(
+                        cls.button,
+                        { [cls.disabled]: disabled },
+                        [popupCls.trigger],
+                    )}
                     as="div"
                 >
                     <Button

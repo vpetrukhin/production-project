@@ -45,7 +45,7 @@ export const CurrencySelect = (props: CurrencySelectProps) => {
         items: CurrencyItems,
         value: value,
         onChange: handleChange,
-        readonly,
+        disabled: readonly,
         direction: 'topLeft' as const,
     };
 

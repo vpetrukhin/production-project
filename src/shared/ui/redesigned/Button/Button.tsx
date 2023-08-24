@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
 // type ButtonSize = 'medium' | 'large' | 'extralarge';
-type ButtonVariant = 'outlined' | 'filled';
+type ButtonVariant = 'outlined' | 'success' | 'cancel' | 'filled';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
