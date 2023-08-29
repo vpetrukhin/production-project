@@ -11,8 +11,8 @@ const featureState = process.argv[3];
 
 const project = new Project({});
 
-// project.addSourceFilesAtPaths('src/**/*.ts');
-project.addSourceFilesAtPaths('src/**/ArticlesDetailsPage.tsx');
+project.addSourceFilesAtPaths('src/**/*.ts');
+project.addSourceFilesAtPaths('src/**/*.tsx');
 
 const sourceFiles = project.getSourceFiles();
 
@@ -64,6 +64,8 @@ function replaceToggleComponent(node: JsxSelfClosingElement) {
         node.replaceWithText(OffValue);
     }
 }
+
+// console.log(sourceFiles, 's')
 
 sourceFiles.forEach((file) => {
     file.forEachDescendant((node) => {

@@ -1,10 +1,10 @@
 @keyframes skeleton-loading {
     0% {
-        background-color: var(--skeleton-light);
+        background-color: var(--light-bg-color);
     }
 
     100% {
-        background-color: var(--skeleton-dark);
+        background-color: var(--dark-bg-color);
     }
 }
 
