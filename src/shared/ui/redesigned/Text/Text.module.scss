@@ -45,3 +45,10 @@
         color: var(--cancel-color);
     }
 }
+
+.bold {
+    .title,
+    .text {
+        font-weight: 700;
+    }
+}

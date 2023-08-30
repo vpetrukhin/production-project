@@ -12,6 +12,7 @@ interface TextProps {
     error?: boolean;
     align?: TextAlign;
     size?: TextSize;
+    bold?: boolean;
     'data-testid'?: string;
 }
 
@@ -23,6 +24,7 @@ export const Text = memo((props: TextProps) => {
         error,
         align = 'left',
         size = 'medium',
+        bold,
         'data-testid': dataTestID = 'Text',
     } = props;
 
@@ -32,6 +34,7 @@ export const Text = memo((props: TextProps) => {
                 cls.Text,
                 {
                     [cls.error]: error,
+                    [cls.bold]: bold,
                 },
                 [className, cls[align], cls[size]],
             )}

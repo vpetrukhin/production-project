@@ -58,6 +58,11 @@
         max-height: 178px;
         object-fit: cover;
     }
+
+    .paragraph {
+        max-height: 70px;
+        overflow: hidden;
+    }
 }
 
 .SMALL.card:hover {

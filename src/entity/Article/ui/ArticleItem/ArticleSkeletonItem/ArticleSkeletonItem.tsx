@@ -1,6 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card } from '@/shared/ui/deprecated/Card';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { toggleFeature } from '@/shared/lib/featureFlags';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
+import { Card as CardRedesigned } from '@/shared/ui/redesigned/Card';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { HStack } from '@/shared/ui/Stack';
 import { ArticleView } from '../../../model/const/articleConsts';
 import cls from './ArticleSkeletonItem.module.scss';
@@ -12,6 +15,17 @@ interface ArticleSkeletonItemProps {
 
 export const ArticleSkeletonItem = (props: ArticleSkeletonItemProps) => {
     const { className, view = ArticleView.SMALL } = props;
+
+    const Skeleton = toggleFeature({
+        name: 'isRedesignEnable',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    });
+    const Card = toggleFeature({
+        name: 'isRedesignEnable',
+        on: () => CardRedesigned,
+        off: () => CardDeprecated,
+    });
 
     if (view === ArticleView.BIG) {
         return (

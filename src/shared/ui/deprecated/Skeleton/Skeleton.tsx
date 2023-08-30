@@ -8,9 +8,6 @@ interface SceletonProps {
     height?: number | string;
     border?: number | string;
 }
-/**
- * @deprecated
- */
 export const Skeleton = memo((props: SceletonProps) => {
     const { className, border, height = 100, width = '100%' } = props;
 
