@@ -60,7 +60,10 @@ export const ArticleItemRedesigned = (props: ArticleItemProps) => {
         return (
             <Card
                 max
-                className={classNames('', {}, [className, cls[view]])}
+                className={classNames(cls.ArticleItemRedesigned, {}, [
+                    className,
+                    cls[view],
+                ])}
                 padding={'24'}
             >
                 <VStack
@@ -124,38 +127,56 @@ export const ArticleItemRedesigned = (props: ArticleItemProps) => {
     return (
         <AppLink
             to={getArticleDetailsPath(article.id)}
-            className={classNames(cls.ArticleItem, {}, [className, cls[view]])}
+            className={classNames(cls.ArticleItemRedesigned, {}, [
+                className,
+                cls[view],
+            ])}
             target={target}
         >
             <Card className={cls.card}>
-                <div className={cls.imgWrapper}>
-                    <AppImage
-                        fallback={
-                            <Skeleton
-                                width={200}
-                                height={236}
-                            />
-                        }
-                        className={cls.img}
-                        src={article.img}
-                        alt={article.title}
-                    />
-                    <Text
-                        className={cls.date}
-                        text={article.createdAt}
-                    />
-                </div>
-                <HStack
-                    justify="between"
-                    className={cls.info}
-                >
-                    {types}
-                    {views}
-                </HStack>
-                <Text
-                    className={cls.title}
-                    text={article.title}
+                <AppImage
+                    fallback={
+                        <Skeleton
+                            width={200}
+                            height={236}
+                        />
+                    }
+                    className={cls.img}
+                    src={article.img}
                 />
+                <VStack
+                    max
+                    align="start"
+                    gap={'8'}
+                    className={cls.content}
+                >
+                    <Text
+                        title={article.title}
+                        className={cls.title}
+                    />
+                    <HStack
+                        justify="between"
+                        max
+                    >
+                        <Text text={article.createdAt} />
+
+                        {views}
+                    </HStack>
+                    <HStack
+                        max
+                        gap="4"
+                        className={cls.userinfo}
+                    >
+                        <Avatar
+                            size={32}
+                            src={article.user.avatar}
+                        />
+                        <Text
+                            bold
+                            text={article.user.username}
+                        />
+                    </HStack>
+                </VStack>
             </Card>
         </AppLink>
     );

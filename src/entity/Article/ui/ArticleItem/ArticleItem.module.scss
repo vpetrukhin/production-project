@@ -2,75 +2,113 @@
     width: 100%;
 }
 
-.SMALL {
-    .date {
-        display: none;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
+.ArticleItem {
+    .SMALL {
+        .date {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
 
-    .card {
-        width: 230px;
-    }
+        .card {
+            width: 230px;
+        }
 
-    .imgWrapper {
-        width: 200px;
-        position: relative;
-    }
+        .imgWrapper {
+            width: 200px;
+            position: relative;
+        }
 
-    .img {
-        height: 230px;
-        object-fit: contain;
-    }
+        .img {
+            height: 230px;
+            object-fit: contain;
+        }
 
-    .info {
-        margin-top: 8px;
+        .info {
+            margin-top: 8px;
 
-        & svg {
-            fill: var(--primary-color);
+            & svg {
+                fill: var(--primary-color);
+            }
+        }
+
+        .type {
+            width: 45%;
+
+            & p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .title {
+            margin-top: 8px;
+
+            & p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
 
-    .type {
-        width: 45%;
+    .BIG {
+        .img {
+            max-height: 178px;
+            object-fit: cover;
+        }
 
-        & p {
-            white-space: nowrap;
+        .paragraph {
+            max-height: 70px;
             overflow: hidden;
-            text-overflow: ellipsis;
         }
     }
 
-    .title {
-        margin-top: 8px;
+    .SMALL.card:hover {
+        opacity: 0.8;
+        transform: scale(1.01);
+        cursor: pointer;
 
-        & p {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .date {
+            display: block;
         }
     }
 }
 
-.BIG {
-    .img {
-        max-height: 178px;
-        object-fit: cover;
-    }
+.ArticleItemRedesigned {
+    &.SMALL {
+        .card {
+            max-width: 250px;
+            overflow: hidden;
+            border-radius: 32px;
+        }
 
-    .paragraph {
-        max-height: 70px;
-        overflow: hidden;
-    }
-}
+        .img {
+            width: 250px;
+            min-height: 140px;
+            max-height: 140px;
+            object-fit: cover;
+        }
 
-.SMALL.card:hover {
-    opacity: 0.8;
-    transform: scale(1.01);
-    cursor: pointer;
+        .content {
+            padding: 8px;
+            padding-bottom: 16px;
+        }
 
-    .date {
-        display: block;
+        .title {
+            width: 100%;
+            min-height: 135px;
+
+            & div {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .userinfo {
+            padding: 0 8px;
+        }
     }
 }

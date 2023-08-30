@@ -54,6 +54,7 @@ module.exports = {
                     'size',
                     'theme',
                     'mode',
+                    'outlined'
                 ],
             },
         ],
