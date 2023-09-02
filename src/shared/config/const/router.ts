@@ -1,5 +1,6 @@
 export enum Routes {
     MAIN = 'main',
+    SETTINGS = 'settings',
     ABOUT = 'about',
     PROFILE = 'profile',
     ARTICLES = 'articles',
@@ -15,6 +16,7 @@ export enum Routes {
 }
 
 export const getMainPath = () => '/';
+export const getSettingsPath = () => '/settings';
 export const getAboutPath = () => '/about';
 export const getProfilePath = (id: string) => `/profile/${id}`;
 export const getArticlesPath = () => '/articles';

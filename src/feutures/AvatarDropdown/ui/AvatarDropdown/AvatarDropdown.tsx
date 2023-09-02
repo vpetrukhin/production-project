@@ -11,6 +11,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import {
     getAdminPanelPath,
     getProfilePath,
+    getSettingsPath,
 } from '@/shared/config/const/router';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
@@ -48,6 +49,10 @@ export const AvatarDropdown = (props: AvatarDropdownProps) => {
         {
             content: t('Профиль'),
             href: getProfilePath(userInfo?.id || ''),
+        },
+        {
+            content: t('nastroiki'),
+            href: getSettingsPath(),
         },
         {
             content: t('Выйти'),

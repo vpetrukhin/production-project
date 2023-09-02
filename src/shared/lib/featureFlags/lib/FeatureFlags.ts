@@ -1,4 +1,4 @@
-import { FeatureFlags } from './types';
+import { FeatureFlags } from '../model/types';
 
 let feuturesFlags: FeatureFlags = {};
 
@@ -12,4 +12,8 @@ export function getFeatureFlag(featuresFlag: keyof FeatureFlags) {
     }
 
     return feuturesFlags[featuresFlag];
+}
+
+export function getFeatureFlags() {
+    return feuturesFlags
 }

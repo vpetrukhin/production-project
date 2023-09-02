@@ -1,4 +1,4 @@
-import { FeatureFlags } from '@/shared/lib/featureFlags/types';
+import { FeatureFlags } from '@/shared/lib/featureFlags/model/types';
 import { UserRoles } from '../const/userConsts';
 import { JsonSettings } from './JsonSettings';
 

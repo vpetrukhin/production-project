@@ -64,5 +64,8 @@
   "create-article": "Создать статью",
   "tip-ne-vybran": "Тип не выбран",
   "vy-eshe-ne-dobavili-blokov-v-svoyu-statyu": "Вы еще не добавили блоков в свою статью",
-  "fragment-koda": "Фрагмент кода"
+  "fragment-koda": "Фрагмент кода",
+  "nastroiki-polzovatelya": "Настройки пользователя",
+  "nastroiki": "Настройки",
+  "tema-prilozheniya": "Тема приложения"
 }

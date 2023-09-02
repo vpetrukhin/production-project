@@ -1,5 +1,5 @@
 import { getFeatureFlag } from './FeatureFlags';
-import { FeatureFlags } from './types';
+import { FeatureFlags } from '../model/types';
 
 interface ToggleFeatureOptions<T> {
     name: keyof FeatureFlags
