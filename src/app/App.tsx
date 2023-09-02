@@ -31,7 +31,10 @@ export const App = () => {
         <ToggleFeatureComponent
             name="isRedesignEnable"
             on={
-                <div className={classNames('app_redesign', {}, [theme])}>
+                <div
+                    id="app"
+                    className={classNames('app_redesign', {}, [theme])}
+                >
                     <MainLayout
                         content={inited && <AppRouter />}
                         sidebar={<SideBar />}
@@ -48,7 +51,10 @@ export const App = () => {
                 </div>
             }
             off={
-                <div className={classNames('app', {}, [theme])}>
+                <div
+                    id="app"
+                    className={classNames('app', {}, [theme])}
+                >
                     <Suspense fallback="">
                         <NavBar />
                         <div className="page-content">

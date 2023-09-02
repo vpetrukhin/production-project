@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal';
-import { Overlay } from '../../Overlay/Overlay';
-import { Portal } from '../../Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
+import { toggleFeature } from '@/shared/lib/featureFlags';
 
 interface ModalProps {
     className?: string;
@@ -13,9 +14,6 @@ interface ModalProps {
     lazy?: boolean;
 }
 
-/**
- * @deprecated
- */
 export const Modal = (props: ModalProps) => {
     const { className, isOpen, onClose, children, lazy } = props;
 
@@ -41,11 +39,16 @@ export const Modal = (props: ModalProps) => {
     }
 
     return (
-        <Portal>
+        <Portal element={document.getElementById('app') ?? document.body}>
             <div
                 className={classNames(cls.Modal, mods, [
                     className,
                     'app_modal',
+                    toggleFeature({
+                        name: 'isRedesignEnable',
+                        on: () => cls.modalNew,
+                        off: () => cls.modalOld,
+                    }),
                 ])}
             >
                 <Overlay onClose={handleClose} />

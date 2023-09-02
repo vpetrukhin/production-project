@@ -4,25 +4,15 @@
 @import './themes/dark';
 @import './themes/light';
 
-.app,
-.app_modal,
-.app_drawer {
-    font: var(--font-m);
-    color: var(--primary-color);
-}
-
 .app {
     background-color: var(--main-bg);
     min-height: 100vh;
+    font: var(--font-m);
+    color: var(--primary-color);
 }
 .app_redesign {
     background-color: var(--bg-color);
     min-height: 100vh;
-}
-
-.app_redesign,
-.app_modal_redesign,
-.app_drawer_redesign {
     font: var(--font-text);
     color: var(--text-color);
 }
