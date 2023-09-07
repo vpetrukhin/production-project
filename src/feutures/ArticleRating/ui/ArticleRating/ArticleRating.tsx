@@ -5,7 +5,9 @@ import {
     useGetArticleRatingQuery,
     useRateArticleMutation,
 } from '../../api/ArticleRatingApi';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
+import { toggleFeature } from '@/shared/lib/featureFlags';
 
 interface ArticleRatingProps {
     className?: string;
@@ -25,6 +27,12 @@ export const ArticleRating = (props: ArticleRatingProps) => {
     const [rateArticle] = useRateArticleMutation();
 
     const rate = data?.[0];
+
+    const Skeleton = toggleFeature({
+        name: 'isRedesignEnable',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    });
 
     if (isLoading) {
         return <Skeleton height={140} />;

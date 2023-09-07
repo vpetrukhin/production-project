@@ -1,7 +1,9 @@
 import { ArticleList } from '@/entity/Article';
 import { useGetArticleRecomendationListQuery } from '../../api/ArticleRecomendationList';
 import { useTranslation } from 'react-i18next';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface ArticleRecomendationListProps {
     className?: string;
@@ -25,7 +27,11 @@ export const ArticleRecomendationList = (
 
     return (
         <>
-            <Text title={t('rekomendacii')} />
+            <ToggleFeatureComponent
+                name="isRedesignEnable"
+                on={<Text title={t('rekomendacii')} />}
+                off={<TextDeprecated title={t('rekomendacii')} />}
+            />
             <ArticleList
                 articles={articles ?? []}
                 isLoading={isLoading}

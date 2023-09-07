@@ -1,10 +1,16 @@
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { useTranslation } from 'react-i18next';
 import { IComment } from '../../model/types/comment';
 import { Comment } from '../Comment/Comment';
 import cls from './CommentList.module.scss';
+import {
+    toggleFeature,
+    ToggleFeatureComponent,
+} from '@/shared/lib/featureFlags';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface CommentListProps {
     className?: string;
@@ -16,10 +22,20 @@ export const CommentList = (props: CommentListProps) => {
     const { className, comments, isLoading } = props;
     const { t } = useTranslation();
 
+    const Skeleton = toggleFeature({
+        name: 'isRedesignEnable',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    });
+
     if (isLoading) {
         return (
             <>
-                <Text title={t('Комментарии')} />
+                <ToggleFeatureComponent
+                    name="isRedesignEnable"
+                    on={<Text title={t('Комментарии')} />}
+                    off={<TextDeprecated title={t('Комментарии')} />}
+                />
                 <div className={cls.loadingComment}>
                     <div className={cls.userInfo}>
                         <Skeleton
@@ -57,8 +73,13 @@ export const CommentList = (props: CommentListProps) => {
             gap="16"
             max
             className={className}
+            align="start"
         >
-            <Text title={t('Комментарии')} />
+            <ToggleFeatureComponent
+                name="isRedesignEnable"
+                on={<Text title={t('Комментарии')} />}
+                off={<TextDeprecated title={t('Комментарии')} />}
+            />
             {comments.length > 0 ? (
                 comments.map((comment) => (
                     <Comment
@@ -67,7 +88,13 @@ export const CommentList = (props: CommentListProps) => {
                     />
                 ))
             ) : (
-                <Text text={t('Комментарии отсутствуют')} />
+                <ToggleFeatureComponent
+                    name="isRedesignEnable"
+                    on={<Text title={t('Комментарии отсутствуют')} />}
+                    off={
+                        <TextDeprecated title={t('Комментарии отсутствуют')} />
+                    }
+                />
             )}
         </VStack>
     );

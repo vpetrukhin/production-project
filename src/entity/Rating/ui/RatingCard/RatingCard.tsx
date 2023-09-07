@@ -4,13 +4,18 @@ import { BrowserView, MobileView } from 'react-device-detect';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Drawer } from '@/shared/ui/Drawer';
 import cls from './RatingCard.module.scss';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { Card } from '@/shared/ui/deprecated/Card';
-import { Input } from '@/shared/ui/deprecated/Input';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
+import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Modal } from '@/shared/ui/Modal';
 import { VStack, HStack } from '@/shared/ui/Stack';
-import { StarRating } from '@/shared/ui/deprecated/StarRating';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { StarRating } from '@/shared/ui/StarRating';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Input } from '@/shared/ui/redesigned/Input';
+import { Button } from '@/shared/ui/redesigned/Button';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface RatingCardProps {
     className?: string;
@@ -67,74 +72,136 @@ export const RatingCard = (props: RatingCardProps) => {
     };
 
     const getFeedBackForm = (type: 'desktop' | 'mobile') => (
-        <form onSubmit={handleFeedbackFormSubmit}>
-            <VStack
-                gap="16"
-                max
-            >
-                <Text
-                    color="inverted"
-                    title={feedbackTitle}
-                />
-                <Input
-                    value={feedback}
-                    onChange={setFeedback}
-                    theme={'inverted'}
-                    label={t('vash-otzyv')}
-                />
-                {type === 'desktop' ? (
-                    <HStack
-                        gap="8"
+        <ToggleFeatureComponent
+            name={'isRedesignEnable'}
+            on={
+                <form onSubmit={handleFeedbackFormSubmit}>
+                    <VStack
+                        gap="16"
                         max
-                        justify="end"
                     >
-                        <Button
-                            onClick={handleCancel}
-                            theme={'outline_red'}
-                        >
-                            {t('Отменить')}
-                        </Button>
-                        <Button
-                            type="submit"
-                            theme={'inverted_outline'}
-                        >
-                            {t('Отправить')}
-                        </Button>
-                    </HStack>
-                ) : (
-                    <Button
-                        type="submit"
-                        theme={'inverted_outline'}
+                        <Text title={feedbackTitle} />
+                        <Input
+                            value={feedback}
+                            onChange={setFeedback}
+                            label={t('vash-otzyv')}
+                        />
+                        {type === 'desktop' ? (
+                            <HStack
+                                gap="8"
+                                max
+                                justify="end"
+                            >
+                                <Button onClick={handleCancel}>
+                                    {t('Отменить')}
+                                </Button>
+                                <Button type="submit">{t('Отправить')}</Button>
+                            </HStack>
+                        ) : (
+                            <Button type="submit">{t('Отправить')}</Button>
+                        )}
+                    </VStack>
+                </form>
+            }
+            off={
+                <form onSubmit={handleFeedbackFormSubmit}>
+                    <VStack
+                        gap="16"
+                        max
                     >
-                        {t('Отправить')}
-                    </Button>
-                )}
+                        <TextDeprecated
+                            color="inverted"
+                            title={feedbackTitle}
+                        />
+                        <InputDeprecated
+                            value={feedback}
+                            onChange={setFeedback}
+                            theme={'inverted'}
+                            label={t('vash-otzyv')}
+                        />
+                        {type === 'desktop' ? (
+                            <HStack
+                                gap="8"
+                                max
+                                justify="end"
+                            >
+                                <ButtonDeprecated
+                                    onClick={handleCancel}
+                                    theme={'outline_red'}
+                                >
+                                    {t('Отменить')}
+                                </ButtonDeprecated>
+                                <ButtonDeprecated
+                                    type="submit"
+                                    theme={'inverted_outline'}
+                                >
+                                    {t('Отправить')}
+                                </ButtonDeprecated>
+                            </HStack>
+                        ) : (
+                            <ButtonDeprecated
+                                type="submit"
+                                theme={'inverted_outline'}
+                            >
+                                {t('Отправить')}
+                            </ButtonDeprecated>
+                        )}
+                    </VStack>
+                </form>
+            }
+        />
+    );
+
+    const content = (
+        <>
+            <VStack
+                align="center"
+                justify="center"
+                max
+                gap="16"
+            >
+                <ToggleFeatureComponent
+                    name="isRedesignEnable"
+                    on={<Text title={title} />}
+                    off={
+                        <TextDeprecated
+                            title={title}
+                            color="inverted"
+                        />
+                    }
+                />
+                <StarRating
+                    onSelect={handleSetRating}
+                    selectedStars={rating}
+                />
             </VStack>
-        </form>
+        </>
     );
 
     return (
         <>
-            <Card
-                className={classNames(cls.RatingCard, {}, [className])}
-                max
-            >
-                <VStack
-                    align="center"
-                    justify="center"
-                    max
-                    gap="16"
-                >
-                    <Text
-                        title={title}
-                        color="inverted"
-                    />
-                    <StarRating
-                        onSelect={handleSetRating}
-                        selectedStars={rating}
-                    />
-                </VStack>
-            </Card>
+            <ToggleFeatureComponent
+                name="isRedesignEnable"
+                on={
+                    <Card
+                        padding="24"
+                        className={classNames(cls.RatingCardRedesigned, {}, [
+                            className,
+                        ])}
+                        max
+                    >
+                        {content}
+                    </Card>
+                }
+                off={
+                    <CardDeprecated
+                        className={classNames(cls.RatingCard, {}, [className])}
+                        max
+                    >
+                        {content}
+                    </CardDeprecated>
+                }
+            />
             <BrowserView>
                 <Modal
                     isOpen={isModalOpen}
