@@ -1,0 +1,1 @@
+export { AdditionalArcticleInfo } from './ui/AdditionalArcticleInfo'

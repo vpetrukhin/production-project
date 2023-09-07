@@ -78,7 +78,7 @@ export const ArticleItemRedesigned = (props: ArticleItemProps) => {
                     >
                         <Avatar
                             size={32}
-                            src={article.user.avatar}
+                            src={article.user?.avatar}
                         />
                         <Text
                             bold
@@ -169,11 +169,11 @@ export const ArticleItemRedesigned = (props: ArticleItemProps) => {
                     >
                         <Avatar
                             size={32}
-                            src={article.user.avatar}
+                            src={article.user?.avatar}
                         />
                         <Text
                             bold
-                            text={article.user.username}
+                            text={article.user?.username}
                         />
                     </HStack>
                 </VStack>

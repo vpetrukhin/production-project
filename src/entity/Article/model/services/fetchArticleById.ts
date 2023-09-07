@@ -13,6 +13,7 @@ export const fetchArticleById = createAsyncThunk<Article, string | undefined, Th
 
             const response = await extra.api.get<Article>(`/articles/${id}`, {
                 params: {
+
                     _expand: 'user',
                 }
             });

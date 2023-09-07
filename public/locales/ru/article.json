@@ -23,8 +23,10 @@
     "obratno-k-state": "Обратно к статье",
     "sozdanie-stati": "Создание статьи",
     "reiting-skoro-budet-dostupen": "Рейтинг скоро будет доступен",
-    "article.reiting-skoro-budet-dostupen": "Рейтинг скоро будет доступен)",
-    "article.nekorrektnyi-url-stati": "Некоректный url статьи",
-    "article.zdes-vy-mozhete-prosmatrivat-stati-na-raznye-temy": "Здесь вы можете просматривать статьи на разные темы",
-    "article.dobro-pozhalovat-na-stranicu-statei": "Добро пожаловать на страницу статей"
+    "zdes-vy-mozhete-prosmatrivat-stati-na-raznye-temy": "Здесь вы можете просматривать статьи на разные темы",
+    "dobro-pozhalovat-na-stranicu-statei": "Добро пожаловать на страницу статей",
+    "views_one": "{{ count }} просмотр",
+    "views_two": "{{ count }} просмотра",
+    "views_few": "{{ count }} просмотра",
+    "views_many": "{{ count }} просмотров"
 }

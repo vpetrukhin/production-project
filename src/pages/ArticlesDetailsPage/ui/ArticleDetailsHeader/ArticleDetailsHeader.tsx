@@ -9,6 +9,7 @@ import {
 } from '@/shared/config/const/router';
 import { HStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/deprecated/Button';
+import { EditArticleButton } from '@/feutures/EditArticleButton';
 
 interface ArticleDetailsHeaderProps {
     className?: string;
@@ -19,8 +20,6 @@ export const ArticleDetailsHeader = (props: ArticleDetailsHeaderProps) => {
     const { className, id } = props;
     const { t } = useTranslation('article');
     const navigate = useNavigate();
-
-    const canEdit = useCanEdit();
 
     const navigateToArticleList = useCallback(() => {
         navigate(getArticlesPath());
@@ -39,9 +38,7 @@ export const ArticleDetailsHeader = (props: ArticleDetailsHeaderProps) => {
             <Button onClick={navigateToArticleList}>
                 {'<- ' + t('К списку статей')}
             </Button>
-            {canEdit && (
-                <Button onClick={navigateToEdit}>{t('Редактировать')}</Button>
-            )}
+            <EditArticleButton id={id} />
         </HStack>
     );
 };
