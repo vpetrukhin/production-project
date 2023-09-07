@@ -1,5 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { ArticleImageBlock } from '../../model/types/article';
 import cls from './ArticleImageBlockComponent.module.scss';
 
@@ -22,9 +24,20 @@ export const ArticleImageBlockComponent = (
                 src={block.src}
             />
             {block.title && (
-                <Text
-                    text={block.title}
-                    align={'center'}
+                <ToggleFeatureComponent
+                    name="isRedesignEnable"
+                    on={
+                        <Text
+                            text={block.title}
+                            align={'center'}
+                        />
+                    }
+                    off={
+                        <TextDeprecated
+                            text={block.title}
+                            align={'center'}
+                        />
+                    }
                 />
             )}
         </>

@@ -1,5 +1,7 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { ArticleTextBlock } from '../../model/types/article';
 import cls from './ArticalTextBlockComponent.module.scss';
 
@@ -20,18 +22,37 @@ export const ArticalTextBlockComponent = (
             ])}
         >
             {block.title && (
-                <Text
-                    title={block.title}
-                    color="inverted"
+                <ToggleFeatureComponent
+                    name="isRedesignEnable"
+                    on={<Text title={block.title} />}
+                    off={
+                        <TextDeprecated
+                            title={block.title}
+                            color="inverted"
+                        />
+                    }
                 />
             )}
             {Array.isArray(block.paragraphs)
                 ? block.paragraphs.map((paragraph) => (
-                      <Text
-                          className={cls.paragraph}
+                      <ToggleFeatureComponent
                           key={paragraph}
-                          text={paragraph}
-                          color="inverted"
+                          name="isRedesignEnable"
+                          on={
+                              <Text
+                                  className={cls.paragraph}
+                                  key={paragraph}
+                                  text={paragraph}
+                              />
+                          }
+                          off={
+                              <TextDeprecated
+                                  className={cls.paragraph}
+                                  key={paragraph}
+                                  text={paragraph}
+                                  color="inverted"
+                              />
+                          }
                       />
                   ))
                 : null}

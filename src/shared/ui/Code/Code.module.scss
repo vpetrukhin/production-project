@@ -1,0 +1,29 @@
+.Code {
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    position: relative;
+    overflow: scroll;
+
+    .copyBtn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        & svg path {
+            stroke: var(--primary-color);
+        }
+    }
+}
+
+.CodeRedesigned {
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    overflow-y: auto;
+
+    .copyBtn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+    }
+}
