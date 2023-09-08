@@ -9,7 +9,10 @@ import {
     getArticleCreatePath,
     getRegistrationPath,
 } from '@/shared/config/const/router';
-import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
+import {
+    toggleFeature,
+    ToggleFeatureComponent,
+} from '@/shared/lib/featureFlags';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { HStack } from '@/shared/ui/Stack';
 import { AppLink } from '@/shared/ui/redesigned/AppLink';
@@ -52,6 +55,12 @@ export const NavBar = (props: NavbarProps) => {
         handleCloseModal();
     }, [handleCloseModal, userInfo]);
 
+    const mainClass = toggleFeature({
+        name: 'isRedesignEnable',
+        on: () => cls.NavBar_redesign,
+        off: () => cls.NavBar,
+    });
+
     if (userInfo) {
         return (
             <ToggleFeatureComponent
@@ -60,9 +69,7 @@ export const NavBar = (props: NavbarProps) => {
                     <HStack
                         gap="16"
                         justify="end"
-                        className={classNames(cls.NavBar_redesign, {}, [
-                            className,
-                        ])}
+                        className={classNames(mainClass, {}, [className])}
                     >
                         <AppLink to={getArticleCreatePath()}>
                             <Icon Svg={EditIcon} />
@@ -72,7 +79,7 @@ export const NavBar = (props: NavbarProps) => {
                     </HStack>
                 }
                 off={
-                    <HStack className={classNames(cls.NavBar, {}, [className])}>
+                    <HStack className={classNames(mainClass, {}, [className])}>
                         <TextDeprecated title={t('ProdApp')} />
                         <HStack
                             gap="16"
@@ -97,7 +104,7 @@ export const NavBar = (props: NavbarProps) => {
         <ToggleFeatureComponent
             name="isRedesignEnable"
             on={
-                <HStack className={classNames(cls.NavBar, {}, [className])}>
+                <HStack className={classNames(mainClass, {}, [className])}>
                     <HStack
                         gap="16"
                         className={cls.links}
@@ -118,7 +125,7 @@ export const NavBar = (props: NavbarProps) => {
                 </HStack>
             }
             off={
-                <HStack className={classNames(cls.NavBar, {}, [className])}>
+                <HStack className={classNames(mainClass, {}, [className])}>
                     <TextDeprecated title={t('ProdApp')} />
                     <HStack
                         gap="16"

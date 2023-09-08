@@ -11,5 +11,5 @@ export function useSidebarItems() {
         return sidebarItems
     }
 
-    return sidebarItems.filter(item => item.onlyAuthorized)
+    return sidebarItems.filter(item => !item.onlyAuthorized)
 }

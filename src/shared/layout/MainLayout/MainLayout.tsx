@@ -7,7 +7,7 @@ interface MainLayoutProps {
     sidebar: ReactElement;
     content: ReactElement;
     header: ReactElement;
-    toolbar: ReactElement;
+    toolbar?: ReactElement;
 }
 
 export const MainLayout = (props: MainLayoutProps) => {

@@ -31,7 +31,6 @@ export const UserSlice = buildSlice({
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
             state.isAuth = false;
             state.userInfo = undefined;
-            setFeatureFlags({})
         },
     },
     extraReducers: (builder) => {

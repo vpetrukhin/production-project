@@ -39,15 +39,7 @@ export const App = () => {
                         content={inited && <AppRouter />}
                         sidebar={<SideBar />}
                         header={<NavBar />}
-                        toolbar={<>toolbar</>}
                     />
-                    {/* <Suspense fallback="">
-                        <NavBar />
-                        <div className="page-content">
-                            <SideBar />
-                            {inited && <AppRouter />}
-                        </div>
-                    </Suspense> */}
                 </div>
             }
             off={

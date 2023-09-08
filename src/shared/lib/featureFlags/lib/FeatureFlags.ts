@@ -1,6 +1,8 @@
 import { FeatureFlags } from '../model/types';
 
-let feuturesFlags: FeatureFlags = {};
+let feuturesFlags: FeatureFlags = {
+    isRedesignEnable: true
+};
 
 export function setFeatureFlags(featuresFlags: FeatureFlags) {
     feuturesFlags = featuresFlags
@@ -11,7 +13,7 @@ export function getFeatureFlag(featuresFlag: keyof FeatureFlags) {
         return false
     }
 
-    return feuturesFlags[featuresFlag];
+    return feuturesFlags[featuresFlag] ?? true;
 }
 
 export function getFeatureFlags() {
