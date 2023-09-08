@@ -13,11 +13,14 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatureComponent } from '@/shared/lib/featureFlags';
 import { MainLayout } from '@/shared/layout';
+import { useToolbar } from './lib/useToolbar';
 
 export const App = () => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
     const inited = useSelector(getInited);
+
+    const Toolbar = useToolbar();
 
     useEffect(() => {
         dispatch(initAuthData());
@@ -39,6 +42,7 @@ export const App = () => {
                         content={inited && <AppRouter />}
                         sidebar={<SideBar />}
                         header={<NavBar />}
+                        toolbar={Toolbar}
                     />
                 </div>
             }
@@ -58,16 +62,4 @@ export const App = () => {
             }
         />
     );
-
-    // return (
-    //     <div className={classNames('app', {}, [theme])}>
-    //         <Suspense fallback="">
-    //             <NavBar />
-    //             <div className="page-content">
-    //                 <SideBar />
-    //                 {inited && <AppRouter />}
-    //             </div>
-    //         </Suspense>
-    //     </div>
-    // );
 };
